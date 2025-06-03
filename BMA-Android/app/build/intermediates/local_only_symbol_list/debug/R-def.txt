@@ -15,9 +15,12 @@ id backButton
 id cancelButton
 id connectButton
 id connectionStatus
+id disconnectButton
 id durationText
 id emptyText
 id instructionText
+id manualEntryHelpText
+id manualEntryText
 id playPauseButton
 id positionText
 id previewView
@@ -28,6 +31,7 @@ id scanningOverlay
 id seekBar
 id serverLayout
 id serverUrlInput
+id serverUrlInputLayout
 id songsRecyclerView
 id statusText
 id timeLayout

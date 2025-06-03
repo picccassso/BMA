@@ -5,6 +5,9 @@ struct ConnectedDevicesView: View {
     @Environment(\.dismiss) private var dismiss
     let onShowPairing: () -> Void
     
+    // DEBUG: Add state to track device count changes
+    @State private var lastDeviceCount = 0
+    
     var body: some View {
         VStack(spacing: 20) {
             HStack {
@@ -51,6 +54,7 @@ struct ConnectedDevicesView: View {
                         Spacer()
                         
                         Button("Disconnect All") {
+                            print("🔍 [UI DEBUG] Disconnect All clicked")
                             serverManager.disconnectAllDevices()
                         }
                         .buttonStyle(.bordered)
@@ -82,8 +86,17 @@ struct ConnectedDevicesView: View {
         }
         .frame(width: 450, height: 400)
         .onAppear {
+            print("🔍 [UI DEBUG] ConnectedDevicesView appeared with \(serverManager.connectedDevices.count) devices")
+            lastDeviceCount = serverManager.connectedDevices.count
             // Clean up inactive devices when view appears
             serverManager.cleanupInactiveDevices()
+        }
+        .onChange(of: serverManager.connectedDevices.count) { newCount in
+            print("🔍 [UI DEBUG] Device count changed from \(lastDeviceCount) to \(newCount)")
+            lastDeviceCount = newCount
+        }
+        .onReceive(serverManager.objectWillChange) {
+            print("🔍 [UI DEBUG] ServerManager objectWillChange received - current device count: \(serverManager.connectedDevices.count)")
         }
     }
 }
@@ -134,6 +147,7 @@ struct DeviceRow: View {
             
             VStack(spacing: 8) {
                 Button("Disconnect") {
+                    print("🔍 [UI DEBUG] Individual disconnect clicked for device: \(device.displayName) with token: \(device.token.prefix(8))...")
                     serverManager.disconnectDevice(device)
                 }
                 .buttonStyle(.bordered)

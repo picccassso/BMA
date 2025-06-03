@@ -3455,6 +3455,7 @@ id disableHome
 id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
+id disconnectButton
 id disjoint
 id dragAnticlockwise
 id dragClockwise
@@ -3602,6 +3603,8 @@ id linear
 id listMode
 id list_item
 id m3_side_sheet
+id manualEntryHelpText
+id manualEntryText
 id marquee
 id masked
 id match_constraint
@@ -3765,6 +3768,7 @@ id selected
 id selection_type
 id serverLayout
 id serverUrlInput
+id serverUrlInputLayout
 id sharedValueSet
 id sharedValueUnset
 id shortcut

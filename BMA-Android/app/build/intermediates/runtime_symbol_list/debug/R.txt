@@ -3454,6 +3454,7 @@ int id disableHome 0x7f0a00a4
 int id disableIntraAutoTransition 0x7f0a00a5
 int id disablePostScroll 0x7f0a00a6
 int id disableScroll 0x7f0a00a7
+int id disconnectButton 0x7f0a0255
 int id disjoint 0x7f0a00a8
 int id dragAnticlockwise 0x7f0a00a9
 int id dragClockwise 0x7f0a00aa
@@ -3601,6 +3602,8 @@ int id linear 0x7f0a0137
 int id listMode 0x7f0a0138
 int id list_item 0x7f0a0139
 int id m3_side_sheet 0x7f0a013a
+int id manualEntryHelpText 0x7f0a0256
+int id manualEntryText 0x7f0a0257
 int id marquee 0x7f0a013b
 int id masked 0x7f0a013c
 int id match_constraint 0x7f0a013d
@@ -3764,6 +3767,7 @@ int id selected 0x7f0a01da
 int id selection_type 0x7f0a01db
 int id serverLayout 0x7f0a01dc
 int id serverUrlInput 0x7f0a01dd
+int id serverUrlInputLayout 0x7f0a0258
 int id sharedValueSet 0x7f0a01de
 int id sharedValueUnset 0x7f0a01df
 int id shortcut 0x7f0a01e0

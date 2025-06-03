@@ -88,10 +88,28 @@ class ServerManager: ObservableObject {
     }
     
     func disconnectDevice(_ device: ConnectedDevice) {
+        print("🔍 [UI DISCONNECT DEBUG] disconnectDevice called for: \(device.displayName) with token: \(device.token.prefix(8))...")
+        print("🔍 [UI DISCONNECT DEBUG] Current devices count before removal: \(connectedDevices.count)")
+        
+        // Debug: List all current devices before removal
+        for (index, currentDevice) in connectedDevices.enumerated() {
+            print("🔍 [UI DISCONNECT DEBUG] Device \(index): \(currentDevice.displayName) with ID: \(currentDevice.id)")
+        }
+        
+        // Remove device by ID
+        let initialCount = connectedDevices.count
         connectedDevices.removeAll { $0.id == device.id }
+        
+        print("🔍 [UI DISCONNECT DEBUG] Devices count after removal: \(connectedDevices.count)")
+        print("🔍 [UI DISCONNECT DEBUG] Removed \(initialCount - connectedDevices.count) device(s)")
+        
         // Optionally revoke the token
         revokePairingToken(device.token)
         print("📱 Device disconnected: \(device.displayName)")
+        
+        // DEBUG: Force SwiftUI update
+        objectWillChange.send()
+        print("🔍 [UI DISCONNECT DEBUG] Sent objectWillChange notification")
     }
     
     func disconnectAllDevices() {
@@ -489,6 +507,78 @@ class ServerManager: ObservableObject {
                 self.revokePairingToken(token)
             }
             return Response(status: .noContent)
+        }
+        
+        // NEW: Device disconnect endpoint (authenticated)
+        app.post("disconnect") { req async throws -> Response in
+            print("📱 Disconnect request received")
+            
+            // Get token from authorization header
+            guard let authorization = req.headers.bearerAuthorization else {
+                print("❌ Disconnect request missing authorization")
+                throw Abort(.unauthorized, reason: "Missing authorization token")
+            }
+            
+            let token = authorization.token
+            let clientIP = req.remoteAddress?.description ?? "unknown"
+            print("📱 Processing disconnect for token: \(token.prefix(8))... from IP: \(clientIP)")
+            
+            await MainActor.run {
+                print("🔍 [DISCONNECT DEBUG] Current connected devices count: \(self.connectedDevices.count)")
+                
+                // Debug: List all current devices before removal
+                for (index, device) in self.connectedDevices.enumerated() {
+                    print("🔍 [DISCONNECT DEBUG] Device \(index): \(device.displayName) with token: \(device.token.prefix(8))...")
+                }
+                
+                // Find and remove the device
+                if let deviceIndex = self.connectedDevices.firstIndex(where: { $0.token == token }) {
+                    let device = self.connectedDevices[deviceIndex]
+                    print("🔍 [DISCONNECT DEBUG] Found device to remove at index \(deviceIndex): \(device.displayName)")
+                    
+                    // Remove the device (this should trigger SwiftUI update)
+                    self.connectedDevices.remove(at: deviceIndex)
+                    print("📱 Device disconnected: \(device.displayName) (\(device.ipAddress))")
+                    print("🔍 [DISCONNECT DEBUG] Devices count after removal: \(self.connectedDevices.count)")
+                    
+                    // DEBUG: Force additional update notification
+                    self.objectWillChange.send()
+                    print("🔍 [DISCONNECT DEBUG] Sent objectWillChange notification")
+                    
+                } else {
+                    print("⚠️ No device found with token for disconnect")
+                    print("🔍 [DISCONNECT DEBUG] Searched for token: \(token.prefix(8))...")
+                    
+                    // Debug: Show all tokens we have
+                    for device in self.connectedDevices {
+                        print("🔍 [DISCONNECT DEBUG] Available token: \(device.token.prefix(8))...")
+                    }
+                }
+                
+                // Also revoke the token for security
+                self.revokePairingToken(token)
+                print("🔒 Token revoked for disconnected device")
+                
+                // DEBUG: Final state
+                print("🔍 [DISCONNECT DEBUG] Final connected devices count: \(self.connectedDevices.count)")
+            }
+            
+            let responseData = [
+                "status": "disconnected",
+                "message": "Device successfully disconnected"
+            ]
+            
+            let encoder = JSONEncoder()
+            if let jsonData = try? encoder.encode(responseData) {
+                let response = Response(status: .ok)
+                response.headers.contentType = .json
+                response.body = .init(data: jsonData)
+                print("✅ Disconnect response sent successfully")
+                return response
+            } else {
+                print("❌ Failed to encode disconnect response")
+                return Response(status: .internalServerError)
+            }
         }
         
         // List songs endpoint (authenticated)

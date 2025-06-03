@@ -18,6 +18,9 @@ interface BmaApi {
     @DELETE("pair/{token}")
     suspend fun revokePairing(@Path("token") token: String): ResponseBody
     
+    @POST("disconnect")
+    suspend fun disconnect(@Header("Authorization") authToken: String): Map<String, String>
+    
     @GET("songs")
     suspend fun getSongs(@Header("Authorization") authToken: String): List<Song>
     
