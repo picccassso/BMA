@@ -1,0 +1,50 @@
+com.bma.android.app-lifecycle-viewmodel-2.7.0-0 /Users/alex/.gradle/caches/8.12/transforms/0213f1ce729bdd5e641971477a1e7525/transformed/lifecycle-viewmodel-2.7.0/res
+com.bma.android.app-annotation-experimental-1.3.1-1 /Users/alex/.gradle/caches/8.12/transforms/02eea259154c5e1b372d07fbe534700b/transformed/annotation-experimental-1.3.1/res
+com.bma.android.app-drawerlayout-1.1.1-2 /Users/alex/.gradle/caches/8.12/transforms/081f4a32ddefdec896ef10be4bf15f8b/transformed/drawerlayout-1.1.1/res
+com.bma.android.app-transition-1.2.0-3 /Users/alex/.gradle/caches/8.12/transforms/084cdcbd255e18e6202296b155780144/transformed/transition-1.2.0/res
+com.bma.android.app-camera-video-1.3.1-4 /Users/alex/.gradle/caches/8.12/transforms/13943c6dc4b5d0034523b3c3bfc7da31/transformed/camera-video-1.3.1/res
+com.bma.android.app-savedstate-1.2.1-5 /Users/alex/.gradle/caches/8.12/transforms/1a2f32a3e1946bc563c9beb9182c69d8/transformed/savedstate-1.2.1/res
+com.bma.android.app-camera-view-1.3.1-6 /Users/alex/.gradle/caches/8.12/transforms/1e4e7167e71be08dd10037eb6370454e/transformed/camera-view-1.3.1/res
+com.bma.android.app-core-ktx-1.12.0-7 /Users/alex/.gradle/caches/8.12/transforms/2fb23f43d4210e2849b771f2846d56c0/transformed/core-ktx-1.12.0/res
+com.bma.android.app-activity-1.8.2-8 /Users/alex/.gradle/caches/8.12/transforms/32d0efc3c8ac1491f8ff900d1c0e0a94/transformed/activity-1.8.2/res
+com.bma.android.app-emoji2-1.2.0-9 /Users/alex/.gradle/caches/8.12/transforms/4507033e7dcf5606efa190bcf046268e/transformed/emoji2-1.2.0/res
+com.bma.android.app-media-1.6.0-10 /Users/alex/.gradle/caches/8.12/transforms/4ca8e76088b21a50d3ce95bc3a32d9d9/transformed/media-1.6.0/res
+com.bma.android.app-lifecycle-livedata-core-2.7.0-11 /Users/alex/.gradle/caches/8.12/transforms/549947a1f1d4142d185804b8726c7df0/transformed/lifecycle-livedata-core-2.7.0/res
+com.bma.android.app-exoplayer-core-2.19.1-12 /Users/alex/.gradle/caches/8.12/transforms/57220cfab7d49529500e31af2ab9f17d/transformed/exoplayer-core-2.19.1/res
+com.bma.android.app-customview-poolingcontainer-1.0.0-13 /Users/alex/.gradle/caches/8.12/transforms/5cd23a9833bdd5ce1a76c4439ecc3184/transformed/customview-poolingcontainer-1.0.0/res
+com.bma.android.app-appcompat-1.6.1-14 /Users/alex/.gradle/caches/8.12/transforms/6792d915a9b9b807d955d2aeb9dcb931/transformed/appcompat-1.6.1/res
+com.bma.android.app-recyclerview-1.3.0-15 /Users/alex/.gradle/caches/8.12/transforms/67c0288b33274eb0885fb0b532f499d8/transformed/recyclerview-1.3.0/res
+com.bma.android.app-exoplayer-ui-2.19.1-16 /Users/alex/.gradle/caches/8.12/transforms/716442283d80d6c28207bffcf3148282/transformed/exoplayer-ui-2.19.1/res
+com.bma.android.app-fragment-1.3.6-17 /Users/alex/.gradle/caches/8.12/transforms/7aa9fe6f0227b352d5a725705b721335/transformed/fragment-1.3.6/res
+com.bma.android.app-camera-core-1.3.1-18 /Users/alex/.gradle/caches/8.12/transforms/81ad7e6d64b8e7e1ca339687375b0024/transformed/camera-core-1.3.1/res
+com.bma.android.app-lifecycle-livedata-core-ktx-2.7.0-19 /Users/alex/.gradle/caches/8.12/transforms/81e3e843656cf90d4b055d2559df55cc/transformed/lifecycle-livedata-core-ktx-2.7.0/res
+com.bma.android.app-play-services-base-18.1.0-20 /Users/alex/.gradle/caches/8.12/transforms/855948322f8b252f65fdeff027a51041/transformed/play-services-base-18.1.0/res
+com.bma.android.app-lifecycle-viewmodel-ktx-2.7.0-21 /Users/alex/.gradle/caches/8.12/transforms/8d0d3a7111da86942e9d9103dc325b69/transformed/lifecycle-viewmodel-ktx-2.7.0/res
+com.bma.android.app-camera-camera2-1.3.1-22 /Users/alex/.gradle/caches/8.12/transforms/92a779f7abc4201a9b393eb3c3fa8bdf/transformed/camera-camera2-1.3.1/res
+com.bma.android.app-lifecycle-process-2.7.0-23 /Users/alex/.gradle/caches/8.12/transforms/92baaec3718441f02f0348a4af6f8ec2/transformed/lifecycle-process-2.7.0/res
+com.bma.android.app-lifecycle-livedata-2.7.0-24 /Users/alex/.gradle/caches/8.12/transforms/97be52206fa86d1f5749a460983916c8/transformed/lifecycle-livedata-2.7.0/res
+com.bma.android.app-core-runtime-2.2.0-25 /Users/alex/.gradle/caches/8.12/transforms/9cd7251e8748c03adfc7b71fc5f46e45/transformed/core-runtime-2.2.0/res
+com.bma.android.app-material-1.11.0-26 /Users/alex/.gradle/caches/8.12/transforms/9d449ec0a89daad98e4a66c463afffb9/transformed/material-1.11.0/res
+com.bma.android.app-camera-lifecycle-1.3.1-27 /Users/alex/.gradle/caches/8.12/transforms/a254f9194b4fd21d08aa275630372a67/transformed/camera-lifecycle-1.3.1/res
+com.bma.android.app-core-1.12.0-28 /Users/alex/.gradle/caches/8.12/transforms/a46390cd6facb46197be8d79ea42e995/transformed/core-1.12.0/res
+com.bma.android.app-cardview-1.0.0-29 /Users/alex/.gradle/caches/8.12/transforms/a511f0c4914be8f07aff6a2304bd328a/transformed/cardview-1.0.0/res
+com.bma.android.app-play-services-basement-18.1.0-30 /Users/alex/.gradle/caches/8.12/transforms/ab74b2eeef04382c13dff74d2774e473/transformed/play-services-basement-18.1.0/res
+com.bma.android.app-appcompat-resources-1.6.1-31 /Users/alex/.gradle/caches/8.12/transforms/b0b432d9a72c40f3b211e7e47de6b703/transformed/appcompat-resources-1.6.1/res
+com.bma.android.app-lifecycle-runtime-2.7.0-32 /Users/alex/.gradle/caches/8.12/transforms/be320940e2dd62bf14711084fb840a91/transformed/lifecycle-runtime-2.7.0/res
+com.bma.android.app-profileinstaller-1.3.0-33 /Users/alex/.gradle/caches/8.12/transforms/c39406c1cd3314fd28ce4697a95fb510/transformed/profileinstaller-1.3.0/res
+com.bma.android.app-constraintlayout-2.1.4-34 /Users/alex/.gradle/caches/8.12/transforms/c7444161da338612f7e3d129cc776f00/transformed/constraintlayout-2.1.4/res
+com.bma.android.app-lifecycle-viewmodel-savedstate-2.7.0-35 /Users/alex/.gradle/caches/8.12/transforms/ce20ada470c5e136044101d04a2a177d/transformed/lifecycle-viewmodel-savedstate-2.7.0/res
+com.bma.android.app-viewpager2-1.0.0-36 /Users/alex/.gradle/caches/8.12/transforms/d2d45eeff16494d2f5d634eb85eb5dc9/transformed/viewpager2-1.0.0/res
+com.bma.android.app-coordinatorlayout-1.1.0-37 /Users/alex/.gradle/caches/8.12/transforms/de21bf7ec6c6877619f5640f0c2392ee/transformed/coordinatorlayout-1.1.0/res
+com.bma.android.app-lifecycle-runtime-ktx-2.7.0-38 /Users/alex/.gradle/caches/8.12/transforms/eccbe0757664f79f4634234a5d3d033e/transformed/lifecycle-runtime-ktx-2.7.0/res
+com.bma.android.app-activity-ktx-1.8.2-39 /Users/alex/.gradle/caches/8.12/transforms/f9079812d2fb3703010ff9e342482228/transformed/activity-ktx-1.8.2/res
+com.bma.android.app-emoji2-views-helper-1.2.0-40 /Users/alex/.gradle/caches/8.12/transforms/fab8df47f2baa17435e78bbc5415a19b/transformed/emoji2-views-helper-1.2.0/res
+com.bma.android.app-savedstate-ktx-1.2.1-41 /Users/alex/.gradle/caches/8.12/transforms/fad62965a462082ae2c2830d621e3cfb/transformed/savedstate-ktx-1.2.1/res
+com.bma.android.app-startup-runtime-1.1.1-42 /Users/alex/.gradle/caches/8.12/transforms/ff5717d8d3cb1f9c0c47db8a0af7c550/transformed/startup-runtime-1.1.1/res
+com.bma.android.app-pngs-43 /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/generated/res/pngs/release
+com.bma.android.app-resValues-44 /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/generated/res/resValues/release
+com.bma.android.app-packageReleaseResources-45 /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/incremental/release/packageReleaseResources/merged.dir
+com.bma.android.app-packageReleaseResources-46 /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/incremental/release/packageReleaseResources/stripped.dir
+com.bma.android.app-merged_res-47 /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/merged_res/release
+com.bma.android.app-main-48 /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/res
+com.bma.android.app-release-49 /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/release/res

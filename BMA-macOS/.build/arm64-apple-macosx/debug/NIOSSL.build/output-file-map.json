@@ -1,0 +1,203 @@
+{
+  "": {
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/master.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/AndroidCABundle.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/AndroidCABundle.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/AndroidCABundle.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/AndroidCABundle~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/AndroidCABundle.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/ByteBufferBIO.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/ByteBufferBIO.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/ByteBufferBIO.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/ByteBufferBIO~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/ByteBufferBIO.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/CustomPrivateKey.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/CustomPrivateKey.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/CustomPrivateKey.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/CustomPrivateKey~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/CustomPrivateKey.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/IdentityVerification.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/IdentityVerification.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/IdentityVerification.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/IdentityVerification~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/IdentityVerification.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/LinuxCABundle.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/LinuxCABundle.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/LinuxCABundle.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/LinuxCABundle~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/LinuxCABundle.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/NIOSSLClientHandler.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLClientHandler.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLClientHandler.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLClientHandler~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLClientHandler.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/NIOSSLHandler+Configuration.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLHandler+Configuration.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLHandler+Configuration.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLHandler+Configuration~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLHandler+Configuration.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/NIOSSLHandler.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLHandler.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLHandler.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLHandler~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLHandler.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/NIOSSLServerHandler.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLServerHandler.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLServerHandler.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLServerHandler~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLServerHandler.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/ObjectIdentifier.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/ObjectIdentifier.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/ObjectIdentifier.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/ObjectIdentifier~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/ObjectIdentifier.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/PosixPort.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/PosixPort.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/PosixPort.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/PosixPort~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/PosixPort.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SSLCallbacks.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCallbacks.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCallbacks.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCallbacks~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCallbacks.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SSLCertificate.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCertificate.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCertificate.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCertificate~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCertificate.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SSLCertificateExtensions.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCertificateExtensions.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCertificateExtensions.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCertificateExtensions~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCertificateExtensions.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SSLCertificateName.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCertificateName.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCertificateName.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCertificateName~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLCertificateName.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SSLConnection.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLConnection.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLConnection.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLConnection~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLConnection.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SSLContext.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLContext.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLContext.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLContext~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLContext.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SSLErrors.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLErrors.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLErrors.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLErrors~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLErrors.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SSLInit.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLInit.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLInit.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLInit~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLInit.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SSLPKCS12Bundle.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLPKCS12Bundle.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLPKCS12Bundle.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLPKCS12Bundle~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLPKCS12Bundle.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SSLPrivateKey.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLPrivateKey.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLPrivateKey.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLPrivateKey~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLPrivateKey.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SSLPublicKey.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLPublicKey.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLPublicKey.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLPublicKey~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SSLPublicKey.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SecurityFrameworkCertificateVerification.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SecurityFrameworkCertificateVerification.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SecurityFrameworkCertificateVerification.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SecurityFrameworkCertificateVerification~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SecurityFrameworkCertificateVerification.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/String+unsafeUninitializedCapacity.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/String+unsafeUninitializedCapacity.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/String+unsafeUninitializedCapacity.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/String+unsafeUninitializedCapacity~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/String+unsafeUninitializedCapacity.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SubjectAlternativeName.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SubjectAlternativeName.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SubjectAlternativeName.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SubjectAlternativeName~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SubjectAlternativeName.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SwiftCrypto/NIOSSLSecureBytes.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLSecureBytes.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLSecureBytes.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLSecureBytes~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/NIOSSLSecureBytes.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SwiftCrypto/RNG.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/RNG.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/RNG.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/RNG~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/RNG.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SwiftCrypto/SafeCompare.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SafeCompare.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SafeCompare.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SafeCompare~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/SafeCompare.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/SwiftCrypto/Zeroization.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/Zeroization.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/Zeroization.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/Zeroization~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/Zeroization.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/TLSConfiguration.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/TLSConfiguration.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/TLSConfiguration.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/TLSConfiguration~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/TLSConfiguration.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/UniversalBootstrapSupport.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/UniversalBootstrapSupport.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/UniversalBootstrapSupport.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/UniversalBootstrapSupport~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/UniversalBootstrapSupport.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-ssl/Sources/NIOSSL/UnsafeKeyAndChainTarget.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/UnsafeKeyAndChainTarget.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/UnsafeKeyAndChainTarget.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/UnsafeKeyAndChainTarget~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/UnsafeKeyAndChainTarget.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/DerivedSources/resource_bundle_accessor.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/resource_bundle_accessor.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/resource_bundle_accessor.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/resource_bundle_accessor~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSSL.build/resource_bundle_accessor.swiftdeps"
+  }
+}

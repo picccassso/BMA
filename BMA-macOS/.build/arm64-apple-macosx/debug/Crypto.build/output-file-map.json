@@ -1,0 +1,485 @@
+{
+  "": {
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/master.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/AEADs/AES/GCM/AES-GCM.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AES-GCM.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AES-GCM.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AES-GCM~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AES-GCM.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/AEADs/AES/GCM/BoringSSL/AES-GCM_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AES-GCM_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AES-GCM_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AES-GCM_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AES-GCM_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/AEADs/ChachaPoly/BoringSSL/ChaChaPoly_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ChaChaPoly_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ChaChaPoly_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ChaChaPoly_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ChaChaPoly_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/AEADs/ChachaPoly/ChaChaPoly.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ChaChaPoly.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ChaChaPoly.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ChaChaPoly~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ChaChaPoly.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/AEADs/Cipher.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Cipher.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Cipher.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Cipher~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Cipher.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/AEADs/Nonces.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Nonces.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Nonces.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Nonces~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Nonces.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/ASN1.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/Basic ASN1 Types/ASN1Any.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Any.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Any.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Any~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Any.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/Basic ASN1 Types/ASN1BitString.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1BitString.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1BitString.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1BitString~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1BitString.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/Basic ASN1 Types/ASN1Boolean.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Boolean.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Boolean.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Boolean~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Boolean.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/Basic ASN1 Types/ASN1Identifier.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Identifier.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Identifier.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Identifier~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Identifier.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/Basic ASN1 Types/ASN1Integer.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Integer.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Integer.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Integer~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Integer.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/Basic ASN1 Types/ASN1Null.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Null.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Null.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Null~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Null.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/Basic ASN1 Types/ASN1OctetString.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1OctetString.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1OctetString.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1OctetString~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1OctetString.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/Basic ASN1 Types/ASN1Strings.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Strings.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Strings.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Strings~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ASN1Strings.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/Basic ASN1 Types/ArraySliceBigint.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ArraySliceBigint.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ArraySliceBigint.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ArraySliceBigint~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ArraySliceBigint.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/Basic ASN1 Types/GeneralizedTime.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/GeneralizedTime.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/GeneralizedTime.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/GeneralizedTime~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/GeneralizedTime.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/Basic ASN1 Types/ObjectIdentifier.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ObjectIdentifier.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ObjectIdentifier.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ObjectIdentifier~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ObjectIdentifier.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/ECDSASignature.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSASignature.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSASignature.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSASignature~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSASignature.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/PEMDocument.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/PEMDocument.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/PEMDocument.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/PEMDocument~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/PEMDocument.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/PKCS8PrivateKey.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/PKCS8PrivateKey.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/PKCS8PrivateKey.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/PKCS8PrivateKey~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/PKCS8PrivateKey.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/SEC1PrivateKey.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SEC1PrivateKey.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SEC1PrivateKey.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SEC1PrivateKey~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SEC1PrivateKey.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/ASN1/SubjectPublicKeyInfo.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SubjectPublicKeyInfo.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SubjectPublicKeyInfo.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SubjectPublicKeyInfo~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SubjectPublicKeyInfo.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/CryptoKitErrors.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/CryptoKitErrors.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/CryptoKitErrors.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/CryptoKitErrors~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/CryptoKitErrors.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Digests/BoringSSL/Digest_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Digest_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Digest_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Digest_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Digest_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Digests/Digest.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Digest.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Digest.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Digest~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Digest.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Digests/Digests.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Digests.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Digests.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Digests~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Digests.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Digests/HashFunctions.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HashFunctions.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HashFunctions.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HashFunctions~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HashFunctions.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Digests/HashFunctions_SHA2.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HashFunctions_SHA2.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HashFunctions_SHA2.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HashFunctions_SHA2~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HashFunctions_SHA2.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Ciphersuite/HPKE-AEAD.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-AEAD.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-AEAD.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-AEAD~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-AEAD.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Ciphersuite/HPKE-Ciphersuite.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Ciphersuite.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Ciphersuite.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Ciphersuite~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Ciphersuite.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Ciphersuite/HPKE-KDF.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KDF.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KDF.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KDF~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KDF.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Ciphersuite/HPKE-KexKeyDerivation.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KexKeyDerivation.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KexKeyDerivation.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KexKeyDerivation~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KexKeyDerivation.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Ciphersuite/HPKE-LabeledExtract.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-LabeledExtract.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-LabeledExtract.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-LabeledExtract~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-LabeledExtract.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Ciphersuite/HPKE-Utils.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Utils.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Utils.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Utils~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Utils.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Ciphersuite/KEM/Conformances/DHKEM.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/DHKEM.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/DHKEM.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/DHKEM~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/DHKEM.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Ciphersuite/KEM/Conformances/HPKE-KEM-Curve25519.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KEM-Curve25519.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KEM-Curve25519.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KEM-Curve25519~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KEM-Curve25519.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Ciphersuite/KEM/Conformances/HPKE-NIST-EC-KEMs.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-NIST-EC-KEMs.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-NIST-EC-KEMs.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-NIST-EC-KEMs~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-NIST-EC-KEMs.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Ciphersuite/KEM/HPKE-KEM.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KEM.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KEM.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KEM~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KEM.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/HPKE-Errors.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Errors.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Errors.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Errors~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Errors.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/HPKE.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Key Schedule/HPKE-Context.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Context.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Context.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Context~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Context.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Key Schedule/HPKE-KeySchedule.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KeySchedule.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KeySchedule.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KeySchedule~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-KeySchedule.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/HPKE/Modes/HPKE-Modes.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Modes.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Modes.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Modes~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HPKE-Modes.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Insecure/Insecure.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Insecure.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Insecure.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Insecure~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Insecure.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Insecure/Insecure_HashFunctions.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Insecure_HashFunctions.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Insecure_HashFunctions.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Insecure_HashFunctions~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Insecure_HashFunctions.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/KEM/KEM.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/KEM.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/KEM.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/KEM~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/KEM.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Key Agreement/BoringSSL/ECDH_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDH_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDH_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDH_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDH_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Key Agreement/DH.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/DH.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/DH.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/DH~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/DH.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Key Agreement/ECDH.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDH.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDH.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDH~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDH.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Key Derivation/HKDF.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HKDF.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HKDF.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HKDF~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HKDF.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Key Wrapping/AESWrap.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AESWrap.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AESWrap.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AESWrap~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AESWrap.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Key Wrapping/BoringSSL/AESWrap_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AESWrap_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AESWrap_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AESWrap_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AESWrap_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Keys/EC/BoringSSL/Ed25519_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Ed25519_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Ed25519_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Ed25519_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Ed25519_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Keys/EC/BoringSSL/NISTCurvesKeys_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/NISTCurvesKeys_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/NISTCurvesKeys_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/NISTCurvesKeys_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/NISTCurvesKeys_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Keys/EC/BoringSSL/X25519Keys_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/X25519Keys_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/X25519Keys_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/X25519Keys_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/X25519Keys_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Keys/EC/Curve25519.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Curve25519.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Curve25519.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Curve25519~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Curve25519.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Keys/EC/Ed25519Keys.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Ed25519Keys.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Ed25519Keys.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Ed25519Keys~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Ed25519Keys.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Keys/EC/NISTCurvesKeys.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/NISTCurvesKeys.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/NISTCurvesKeys.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/NISTCurvesKeys~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/NISTCurvesKeys.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Keys/EC/X25519Keys.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/X25519Keys.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/X25519Keys.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/X25519Keys~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/X25519Keys.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Keys/Symmetric/SymmetricKeys.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SymmetricKeys.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SymmetricKeys.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SymmetricKeys~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SymmetricKeys.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Message Authentication Codes/HMAC/HMAC.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HMAC.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HMAC.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HMAC~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/HMAC.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Message Authentication Codes/MACFunctions.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/MACFunctions.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/MACFunctions.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/MACFunctions~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/MACFunctions.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Message Authentication Codes/MessageAuthenticationCode.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/MessageAuthenticationCode.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/MessageAuthenticationCode.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/MessageAuthenticationCode~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/MessageAuthenticationCode.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/PRF/AES.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AES.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AES.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AES~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/AES.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Signatures/BoringSSL/ECDSASignature_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSASignature_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSASignature_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSASignature_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSASignature_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Signatures/BoringSSL/ECDSA_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSA_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSA_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSA_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSA_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Signatures/BoringSSL/EdDSA_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/EdDSA_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/EdDSA_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/EdDSA_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/EdDSA_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Signatures/ECDSA.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSA.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSA.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSA~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/ECDSA.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Signatures/Ed25519.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Ed25519.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Ed25519.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Ed25519~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Ed25519.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Signatures/Signature.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Signature.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Signature.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Signature~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Signature.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Util/BoringSSL/CryptoKitErrors_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/CryptoKitErrors_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/CryptoKitErrors_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/CryptoKitErrors_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/CryptoKitErrors_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Util/BoringSSL/RNG_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/RNG_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/RNG_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/RNG_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/RNG_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Util/BoringSSL/SafeCompare_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SafeCompare_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SafeCompare_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SafeCompare_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SafeCompare_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Util/BoringSSL/Zeroization_boring.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Zeroization_boring.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Zeroization_boring.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Zeroization_boring~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Zeroization_boring.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Util/PrettyBytes.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/PrettyBytes.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/PrettyBytes.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/PrettyBytes~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/PrettyBytes.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Util/SafeCompare.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SafeCompare.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SafeCompare.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SafeCompare~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SafeCompare.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Util/SecureBytes.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SecureBytes.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SecureBytes.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SecureBytes~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/SecureBytes.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-crypto/Sources/Crypto/Util/Zeroization.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Zeroization.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Zeroization.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Zeroization~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/Zeroization.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/DerivedSources/resource_bundle_accessor.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/resource_bundle_accessor.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/resource_bundle_accessor.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/resource_bundle_accessor~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Crypto.build/resource_bundle_accessor.swiftdeps"
+  }
+}

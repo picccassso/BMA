@@ -1,0 +1,4 @@
+module CNIOWASI {
+    umbrella header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio/Sources/CNIOWASI/include/CNIOWASI.h"
+    export *
+}

@@ -1,0 +1,35 @@
+{
+  "": {
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/master.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-distributed-tracing/Sources/Instrumentation/Instrument.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/Instrument.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/Instrument.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/Instrument~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/Instrument.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-distributed-tracing/Sources/Instrumentation/InstrumentationSystem.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/InstrumentationSystem.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/InstrumentationSystem.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/InstrumentationSystem~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/InstrumentationSystem.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-distributed-tracing/Sources/Instrumentation/Locks.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/Locks.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/Locks.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/Locks~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/Locks.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-distributed-tracing/Sources/Instrumentation/MultiplexInstrument.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/MultiplexInstrument.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/MultiplexInstrument.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/MultiplexInstrument~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/MultiplexInstrument.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-distributed-tracing/Sources/Instrumentation/NoOpInstrument.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/NoOpInstrument.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/NoOpInstrument.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/NoOpInstrument~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/NoOpInstrument.swiftdeps"
+  }
+}

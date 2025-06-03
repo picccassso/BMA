@@ -1,0 +1,53 @@
+{
+  "": {
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/master.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-service-lifecycle/Sources/ServiceLifecycle/AsyncCancelOnGracefulShutdownSequence.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/AsyncCancelOnGracefulShutdownSequence.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/AsyncCancelOnGracefulShutdownSequence.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/AsyncCancelOnGracefulShutdownSequence~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/AsyncCancelOnGracefulShutdownSequence.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-service-lifecycle/Sources/ServiceLifecycle/AsyncGracefulShutdownSequence.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/AsyncGracefulShutdownSequence.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/AsyncGracefulShutdownSequence.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/AsyncGracefulShutdownSequence~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/AsyncGracefulShutdownSequence.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-service-lifecycle/Sources/ServiceLifecycle/CancellationWaiter.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/CancellationWaiter.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/CancellationWaiter.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/CancellationWaiter~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/CancellationWaiter.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-service-lifecycle/Sources/ServiceLifecycle/GracefulShutdown.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/GracefulShutdown.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/GracefulShutdown.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/GracefulShutdown~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/GracefulShutdown.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-service-lifecycle/Sources/ServiceLifecycle/Service.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/Service.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/Service.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/Service~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/Service.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-service-lifecycle/Sources/ServiceLifecycle/ServiceGroup.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/ServiceGroup.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/ServiceGroup.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/ServiceGroup~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/ServiceGroup.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-service-lifecycle/Sources/ServiceLifecycle/ServiceGroupConfiguration.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/ServiceGroupConfiguration.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/ServiceGroupConfiguration.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/ServiceGroupConfiguration~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/ServiceGroupConfiguration.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-service-lifecycle/Sources/ServiceLifecycle/ServiceRunnerError.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/ServiceRunnerError.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/ServiceRunnerError.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/ServiceRunnerError~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycle.build/ServiceRunnerError.swiftdeps"
+  }
+}

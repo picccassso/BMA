@@ -1,0 +1,4 @@
+module ConsoleKit {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ConsoleKit.build/ConsoleKit-Swift.h"
+    requires objc
+}

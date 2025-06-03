@@ -1,0 +1,407 @@
+{
+  "": {
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/master.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/AsyncAwait/AnyAsyncSequence.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/AnyAsyncSequence.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/AnyAsyncSequence.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/AnyAsyncSequence~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/AnyAsyncSequence.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/AsyncAwait/AnyAsyncSequenceProucerDelete.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/AnyAsyncSequenceProucerDelete.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/AnyAsyncSequenceProucerDelete.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/AnyAsyncSequenceProucerDelete~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/AnyAsyncSequenceProucerDelete.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/AsyncAwait/AsyncLazySequence.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/AsyncLazySequence.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/AsyncLazySequence.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/AsyncLazySequence~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/AsyncLazySequence.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/AsyncAwait/HTTPClient+execute.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+execute.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+execute.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+execute~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+execute.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/AsyncAwait/HTTPClient+shutdown.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+shutdown.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+shutdown.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+shutdown~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+shutdown.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/AsyncAwait/HTTPClientRequest+Prepared.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientRequest+Prepared.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientRequest+Prepared.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientRequest+Prepared~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientRequest+Prepared.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/AsyncAwait/HTTPClientRequest+auth.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientRequest+auth.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientRequest+auth.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientRequest+auth~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientRequest+auth.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/AsyncAwait/HTTPClientRequest.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientRequest.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientRequest.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientRequest~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientRequest.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/AsyncAwait/HTTPClientResponse.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientResponse.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientResponse.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientResponse~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClientResponse.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/AsyncAwait/SingleIteratorPrecondition.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/SingleIteratorPrecondition.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/SingleIteratorPrecondition.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/SingleIteratorPrecondition~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/SingleIteratorPrecondition.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/AsyncAwait/Transaction+StateMachine.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Transaction+StateMachine.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Transaction+StateMachine.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Transaction+StateMachine~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Transaction+StateMachine.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/AsyncAwait/Transaction.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Transaction.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Transaction.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Transaction~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Transaction.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/Base64.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Base64.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Base64.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Base64~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Base64.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/BasicAuth.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/BasicAuth.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/BasicAuth.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/BasicAuth~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/BasicAuth.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/BestEffortHashableTLSConfiguration.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/BestEffortHashableTLSConfiguration.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/BestEffortHashableTLSConfiguration.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/BestEffortHashableTLSConfiguration~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/BestEffortHashableTLSConfiguration.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/Configuration+BrowserLike.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Configuration+BrowserLike.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Configuration+BrowserLike.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Configuration+BrowserLike~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Configuration+BrowserLike.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/ConnectionPool.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/ConnectionPool.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/ConnectionPool~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/ConnectionPool.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/ChannelHandler/HTTP1ProxyConnectHandler.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1ProxyConnectHandler.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1ProxyConnectHandler.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1ProxyConnectHandler~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1ProxyConnectHandler.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/ChannelHandler/SOCKSEventsHandler.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/SOCKSEventsHandler.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/SOCKSEventsHandler.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/SOCKSEventsHandler~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/SOCKSEventsHandler.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/ChannelHandler/TLSEventsHandler.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/TLSEventsHandler.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/TLSEventsHandler.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/TLSEventsHandler~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/TLSEventsHandler.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTP1/HTTP1ClientChannelHandler.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1ClientChannelHandler.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1ClientChannelHandler.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1ClientChannelHandler~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1ClientChannelHandler.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTP1/HTTP1Connection.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1Connection.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1Connection.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1Connection~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1Connection.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTP1/HTTP1ConnectionStateMachine.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1ConnectionStateMachine.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1ConnectionStateMachine.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1ConnectionStateMachine~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP1ConnectionStateMachine.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTP2/HTTP2ClientRequestHandler.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP2ClientRequestHandler.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP2ClientRequestHandler.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP2ClientRequestHandler~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP2ClientRequestHandler.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTP2/HTTP2Connection.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP2Connection.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP2Connection.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP2Connection~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP2Connection.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTP2/HTTP2IdleHandler.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP2IdleHandler.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP2IdleHandler.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP2IdleHandler~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTP2IdleHandler.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTPConnectionEvent.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionEvent.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionEvent.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionEvent~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionEvent.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTPConnectionPool+Factory.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+Factory.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+Factory.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+Factory~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+Factory.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTPConnectionPool+Manager.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+Manager.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+Manager.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+Manager~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+Manager.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTPConnectionPool.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTPExecutableRequest.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPExecutableRequest.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPExecutableRequest.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPExecutableRequest~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPExecutableRequest.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTPRequestStateMachine+Demand.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPRequestStateMachine+Demand.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPRequestStateMachine+Demand.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPRequestStateMachine+Demand~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPRequestStateMachine+Demand.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/HTTPRequestStateMachine.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPRequestStateMachine.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPRequestStateMachine.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPRequestStateMachine~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPRequestStateMachine.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/RequestBodyLength.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestBodyLength.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestBodyLength.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestBodyLength~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestBodyLength.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/RequestFramingMetadata.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestFramingMetadata.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestFramingMetadata.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestFramingMetadata~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestFramingMetadata.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/RequestOptions.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestOptions.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestOptions.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestOptions~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestOptions.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/State Machine/HTTPConnectionPool+Backoff.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+Backoff.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+Backoff.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+Backoff~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+Backoff.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/State Machine/HTTPConnectionPool+HTTP1Connections.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP1Connections.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP1Connections.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP1Connections~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP1Connections.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/State Machine/HTTPConnectionPool+HTTP1StateMachine.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP1StateMachine.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP1StateMachine.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP1StateMachine~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP1StateMachine.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/State Machine/HTTPConnectionPool+HTTP2Connections.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP2Connections.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP2Connections.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP2Connections~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP2Connections.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/State Machine/HTTPConnectionPool+HTTP2StateMachine.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP2StateMachine.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP2StateMachine.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP2StateMachine~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+HTTP2StateMachine.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/State Machine/HTTPConnectionPool+RequestQueue.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+RequestQueue.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+RequestQueue.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+RequestQueue~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+RequestQueue.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionPool/State Machine/HTTPConnectionPool+StateMachine.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+StateMachine.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+StateMachine.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+StateMachine~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPConnectionPool+StateMachine.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/ConnectionTarget.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/ConnectionTarget.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/ConnectionTarget.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/ConnectionTarget~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/ConnectionTarget.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/DeconstructedURL.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/DeconstructedURL.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/DeconstructedURL.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/DeconstructedURL~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/DeconstructedURL.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/FileDownloadDelegate.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/FileDownloadDelegate.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/FileDownloadDelegate.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/FileDownloadDelegate~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/FileDownloadDelegate.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/FoundationExtensions.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/FoundationExtensions.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/FoundationExtensions.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/FoundationExtensions~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/FoundationExtensions.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/HTTPClient+HTTPCookie.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+HTTPCookie.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+HTTPCookie.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+HTTPCookie~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+HTTPCookie.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/HTTPClient+Proxy.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+Proxy.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+Proxy.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+Proxy~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+Proxy.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/HTTPClient+StructuredConcurrency.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+StructuredConcurrency.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+StructuredConcurrency.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+StructuredConcurrency~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient+StructuredConcurrency.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/HTTPClient.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPClient.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/HTTPHandler.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPHandler.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPHandler.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPHandler~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/HTTPHandler.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/LRUCache.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/LRUCache.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/LRUCache.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/LRUCache~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/LRUCache.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/NIOLoopBound+Execute.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/NIOLoopBound+Execute.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/NIOLoopBound+Execute.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/NIOLoopBound+Execute~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/NIOLoopBound+Execute.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/NIOTransportServices/NWErrorHandler.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/NWErrorHandler.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/NWErrorHandler.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/NWErrorHandler~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/NWErrorHandler.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/NIOTransportServices/NWWaitingHandler.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/NWWaitingHandler.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/NWWaitingHandler.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/NWWaitingHandler~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/NWWaitingHandler.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/NIOTransportServices/TLSConfiguration.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/TLSConfiguration.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/TLSConfiguration.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/TLSConfiguration~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/TLSConfiguration.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/RedirectState.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RedirectState.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RedirectState.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RedirectState~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RedirectState.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/RequestBag+StateMachine.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestBag+StateMachine.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestBag+StateMachine.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestBag+StateMachine~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestBag+StateMachine.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/RequestBag.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestBag.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestBag.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestBag~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestBag.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/RequestValidation.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestValidation.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestValidation.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestValidation~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/RequestValidation.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/SSLContextCache.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/SSLContextCache.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/SSLContextCache.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/SSLContextCache~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/SSLContextCache.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/Scheme.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Scheme.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Scheme.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Scheme~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Scheme.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/Singleton.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Singleton.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Singleton.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Singleton~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Singleton.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/StringConvertibleInstances.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/StringConvertibleInstances.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/StringConvertibleInstances.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/StringConvertibleInstances~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/StringConvertibleInstances.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/StructuredConcurrencyHelpers.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/StructuredConcurrencyHelpers.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/StructuredConcurrencyHelpers.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/StructuredConcurrencyHelpers~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/StructuredConcurrencyHelpers.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/async-http-client/Sources/AsyncHTTPClient/Utils.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Utils.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Utils.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Utils~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncHTTPClient.build/Utils.swiftdeps"
+  }
+}

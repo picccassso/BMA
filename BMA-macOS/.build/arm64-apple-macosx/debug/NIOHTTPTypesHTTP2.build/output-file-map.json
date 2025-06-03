@@ -1,0 +1,23 @@
+{
+  "": {
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/master.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-extras/Sources/NIOHTTPTypesHTTP2/HTTP2HeadersStateMachine.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/HTTP2HeadersStateMachine.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/HTTP2HeadersStateMachine.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/HTTP2HeadersStateMachine~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/HTTP2HeadersStateMachine.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-extras/Sources/NIOHTTPTypesHTTP2/HTTP2ToHTTPCodec.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/HTTP2ToHTTPCodec.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/HTTP2ToHTTPCodec.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/HTTP2ToHTTPCodec~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/HTTP2ToHTTPCodec.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/checkouts/swift-nio-extras/Sources/NIOHTTPTypesHTTP2/HTTPTypeConversion.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/HTTPTypeConversion.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/HTTPTypeConversion.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/HTTPTypeConversion~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/HTTPTypeConversion.swiftdeps"
+  }
+}

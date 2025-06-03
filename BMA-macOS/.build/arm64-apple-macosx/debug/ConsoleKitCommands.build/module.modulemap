@@ -1,0 +1,4 @@
+module ConsoleKitCommands {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ConsoleKitCommands.build/ConsoleKitCommands-Swift.h"
+    requires objc
+}

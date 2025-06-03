@@ -1,0 +1,4 @@
+module _NIOFileSystemFoundationCompat {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/_NIOFileSystemFoundationCompat.build/_NIOFileSystemFoundationCompat-Swift.h"
+    requires objc
+}

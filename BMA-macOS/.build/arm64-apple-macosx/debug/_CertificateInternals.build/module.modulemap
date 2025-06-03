@@ -1,0 +1,4 @@
+module _CertificateInternals {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/_CertificateInternals.build/_CertificateInternals-Swift.h"
+    requires objc
+}

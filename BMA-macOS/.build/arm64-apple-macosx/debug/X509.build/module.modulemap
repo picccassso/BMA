@@ -1,0 +1,4 @@
+module X509 {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/X509.build/X509-Swift.h"
+    requires objc
+}

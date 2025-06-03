@@ -1,0 +1,4 @@
+module NIOTransportServices {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOTransportServices.build/NIOTransportServices-Swift.h"
+    requires objc
+}

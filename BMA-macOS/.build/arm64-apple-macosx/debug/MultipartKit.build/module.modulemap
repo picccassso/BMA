@@ -1,0 +1,4 @@
+module MultipartKit {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/MultipartKit.build/MultipartKit-Swift.h"
+    requires objc
+}

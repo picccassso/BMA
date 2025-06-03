@@ -1,0 +1,78 @@
+/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/lint-baseline.xml: Information: 1 errors/warnings were listed in the baseline file (lint-baseline.xml) but not found in the project; perhaps they have been fixed? Another possible explanation is that lint recently stopped analyzing (and including results from) dependent projects by default. You can turn this back on with android.lintOptions.checkDependencies=true. Unmatched issue types: HardcodedText [LintBaseline]
+/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/lint-baseline.xml: Information: 5 errors and 53 warnings were filtered out because they are listed in the baseline file, lint-baseline.xml
+ [LintBaseline]
+/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/java/com/bma/android/api/ApiClient.kt:61: Warning: checkClientTrusted is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers [TrustAllX509TrustManager]
+                            override fun checkClientTrusted(chain: Array<out X509Certificate>?, authType: String?) {}
+                                         ~~~~~~~~~~~~~~~~~~
+/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/java/com/bma/android/api/ApiClient.kt:62: Warning: checkServerTrusted is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers [TrustAllX509TrustManager]
+                            override fun checkServerTrusted(chain: Array<out X509Certificate>?, authType: String?) {}
+                                         ~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "TrustAllX509TrustManager":
+   This check looks for X509TrustManager implementations whose
+   checkServerTrusted or checkClientTrusted methods do nothing (thus trusting
+   any certificate chain) which could result in insecure network traffic
+   caused by trusting arbitrary TLS/SSL certificates presented by peers.
+
+   https://goo.gle/TrustAllX509TrustManager
+
+/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/java/com/bma/android/api/ApiClient.kt:60: Warning: Implementing a custom X509TrustManager is error-prone and likely to be insecure. It is likely to disable certificate validation altogether, and is non-trivial to implement correctly without calling Android's default implementation. [CustomX509TrustManager]
+                        object : X509TrustManager {
+                        ~~~~~~
+
+   Explanation for issues of type "CustomX509TrustManager":
+   This check looks for custom X509TrustManager implementations.
+
+   https://goo.gle/CustomX509TrustManager
+
+/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/java/com/bma/android/MainActivity.kt:133: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+        binding.statusText.text = "Connecting via $protocol..."
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/java/com/bma/android/MainActivity.kt:145: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                        binding.statusText.text = "Server healthy but not authenticated. Please scan QR code."
+                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/java/com/bma/android/MainActivity.kt:171: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                binding.statusText.text = "Loaded ${songs.size} songs"
+                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/java/com/bma/android/MainActivity.kt:171: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                binding.statusText.text = "Loaded ${songs.size} songs"
+                                           ~~~~~~~
+/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/java/com/bma/android/MainActivity.kt:171: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                binding.statusText.text = "Loaded ${songs.size} songs"
+                                                               ~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/res/layout/activity_main.xml:58: Warning: Hardcoded string "💡 Use HTTPS for secure connections outside local network", should use @string resource [HardcodedText]
+            android:text="💡 Use HTTPS for secure connections outside local network"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/res/layout/activity_main.xml:66: Warning: Hardcoded string "e.g. https://hostname.ts.net:8443", should use @string resource [HardcodedText]
+            android:hint="e.g. https://hostname.ts.net:8443"
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "HardcodedText":
+   Hardcoding text attributes directly in layout files is bad for several
+   reasons:
+
+   * When creating configuration variations (for example for landscape or
+   portrait) you have to repeat the actual text (and keep it up to date when
+   making changes)
+
+   * The application cannot be translated to other languages by just adding
+   new translations for existing string resources.
+
+   There are quickfixes to automatically extract this hardcoded string into a
+   resource lookup.
+
+0 errors, 10 warnings (5 errors, 53 warnings filtered by baseline lint-baseline.xml)

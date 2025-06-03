@@ -1,0 +1,4 @@
+module UnixSignals {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/UnixSignals.build/UnixSignals-Swift.h"
+    requires objc
+}

@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.2.0" type="incidents">
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;BMA - Basic Music App&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="24"
+            column="13"
+            startOffset="933"
+            endLine="24"
+            endColumn="49"
+            endOffset="969"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Not connected&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="35"
+            column="13"
+            startOffset="1356"
+            endLine="35"
+            endColumn="41"
+            endOffset="1384"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;📱 Scan QR Code from Mac&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="44"
+            column="13"
+            startOffset="1683"
+            endLine="44"
+            endColumn="52"
+            endOffset="1722"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Or manually enter server URL:&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="51"
+            column="13"
+            startOffset="1955"
+            endLine="51"
+            endColumn="57"
+            endOffset="1999"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;💡 Use HTTPS for secure connections outside local network&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="58"
+            column="13"
+            startOffset="2217"
+            endLine="58"
+            endColumn="85"
+            endOffset="2289"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;e.g. https://hostname.ts.net:8443&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="66"
+            column="13"
+            startOffset="2588"
+            endLine="66"
+            endColumn="61"
+            endOffset="2636"/>
+    </incident>
+
+    <incident
+        id="ButtonStyle"
+        severity="warning"
+        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)">
+        <fix-composite
+            description="Make borderless">
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarStyle">
+                <range
+                    file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+                    startOffset="3179"
+                    endOffset="3993"/>
+            </fix-attribute>
+            <fix-attribute
+                description="Set style=&quot;?android:attr/buttonBarButtonStyle&quot;"
+                attribute="style"
+                value="?android:attr/buttonBarButtonStyle">
+                <range
+                    file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+                    startOffset="3392"
+                    endOffset="3674"/>
+            </fix-attribute>
+        </fix-composite>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="85"
+            column="14"
+            startOffset="3393"
+            endLine="85"
+            endColumn="20"
+            endOffset="3399"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Connect&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="90"
+            column="17"
+            startOffset="3602"
+            endLine="90"
+            endColumn="39"
+            endOffset="3624"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Refresh&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="97"
+            column="17"
+            startOffset="3865"
+            endLine="97"
+            endColumn="39"
+            endOffset="3887"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Not connected&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="106"
+            column="13"
+            startOffset="4206"
+            endLine="106"
+            endColumn="41"
+            endOffset="4234"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;No songs found&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="125"
+            column="9"
+            startOffset="4853"
+            endLine="125"
+            endColumn="38"
+            endOffset="4882"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_player.xml"
+            line="10"
+            column="6"
+            startOffset="413"
+            endLine="10"
+            endColumn="17"
+            endOffset="424"/>
+    </incident>
+
+    <incident
+        id="UseAppTint"
+        severity="error"
+        message="Must use `app:tint` instead of `android:tint`">
+        <fix-composite>
+            <fix-attribute
+                description="Set tint=&quot;@android:color/white&quot;"
+                namespace="http://schemas.android.com/apk/res-auto"
+                attribute="tint"
+                value="@android:color/white"/>
+            <fix-attribute
+                description="Delete tint"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="tint"/>
+        </fix-composite>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_player.xml"
+            line="17"
+            column="9"
+            startOffset="713"
+            endLine="17"
+            endColumn="44"
+            endOffset="748"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_player.xml"
+            line="21"
+            column="6"
+            startOffset="862"
+            endLine="21"
+            endColumn="15"
+            endOffset="871"/>
+    </incident>
+
+    <incident
+        id="UseAppTint"
+        severity="error"
+        message="Must use `app:tint` instead of `android:tint`">
+        <fix-composite>
+            <fix-attribute
+                description="Set tint=&quot;#808080&quot;"
+                namespace="http://schemas.android.com/apk/res-auto"
+                attribute="tint"
+                value="#808080"/>
+            <fix-attribute
+                description="Delete tint"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="tint"/>
+        </fix-composite>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_player.xml"
+            line="29"
+            column="9"
+            startOffset="1152"
+            endLine="29"
+            endColumn="31"
+            endOffset="1174"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Song Title&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_player.xml"
+            line="44"
+            column="9"
+            startOffset="1699"
+            endLine="44"
+            endColumn="34"
+            endOffset="1724"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Artist&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_player.xml"
+            line="62"
+            column="9"
+            startOffset="2361"
+            endLine="62"
+            endColumn="30"
+            endOffset="2382"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;0:00&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_player.xml"
+            line="98"
+            column="13"
+            startOffset="3780"
+            endLine="98"
+            endColumn="32"
+            endOffset="3799"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;0:00&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_player.xml"
+            line="110"
+            column="13"
+            startOffset="4149"
+            endLine="110"
+            endColumn="32"
+            endOffset="4168"/>
+    </incident>
+
+    <incident
+        id="ContentDescription"
+        severity="warning"
+        message="Missing `contentDescription` attribute on image">
+        <fix-alternatives>
+            <fix-attribute
+                description="Set contentDescription"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="contentDescription"
+                value="TODO"
+                dot="4"
+                mark="0"/>
+            <fix-attribute
+                description="Set importantForAccessibility=&quot;no&quot;"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="importantForAccessibility"
+                value="no"/>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_player.xml"
+            line="115"
+            column="6"
+            startOffset="4239"
+            endLine="115"
+            endColumn="17"
+            endOffset="4250"/>
+    </incident>
+
+    <incident
+        id="UseAppTint"
+        severity="error"
+        message="Must use `app:tint` instead of `android:tint`">
+        <fix-composite>
+            <fix-attribute
+                description="Set tint=&quot;@android:color/white&quot;"
+                namespace="http://schemas.android.com/apk/res-auto"
+                attribute="tint"
+                value="@android:color/white"/>
+            <fix-attribute
+                description="Delete tint"
+                namespace="http://schemas.android.com/apk/res/android"
+                attribute="tint"/>
+        </fix-composite>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_player.xml"
+            line="122"
+            column="9"
+            startOffset="4528"
+            endLine="122"
+            endColumn="44"
+            endOffset="4563"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Point your camera at the QR code displayed on your Mac to connect&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_qr_scanner.xml"
+            line="37"
+            column="9"
+            startOffset="1500"
+            endLine="37"
+            endColumn="89"
+            endOffset="1580"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Cancel&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_qr_scanner.xml"
+            line="52"
+            column="9"
+            startOffset="2118"
+            endLine="52"
+            endColumn="30"
+            endOffset="2139"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="107"
+            column="45"
+            startOffset="3675"
+            endLine="107"
+            endColumn="85"
+            endOffset="3715"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="107"
+            column="46"
+            startOffset="3676"
+            endLine="107"
+            endColumn="60"
+            endOffset="3690"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="107"
+            column="69"
+            startOffset="3699"
+            endLine="107"
+            endColumn="74"
+            endOffset="3704"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="111"
+            column="45"
+            startOffset="3983"
+            endLine="111"
+            endColumn="91"
+            endOffset="4029"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="111"
+            column="46"
+            startOffset="3984"
+            endLine="111"
+            endColumn="58"
+            endOffset="3996"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="111"
+            column="67"
+            startOffset="4005"
+            endLine="111"
+            endColumn="90"
+            endOffset="4028"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="114"
+            column="46"
+            startOffset="4186"
+            endLine="114"
+            endColumn="94"
+            endOffset="4234"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="133"
+            column="35"
+            startOffset="4900"
+            endLine="133"
+            endColumn="64"
+            endOffset="4929"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="133"
+            column="36"
+            startOffset="4901"
+            endLine="133"
+            endColumn="51"
+            endOffset="4916"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="142"
+            column="52"
+            startOffset="5267"
+            endLine="142"
+            endColumn="71"
+            endOffset="5286"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="145"
+            column="52"
+            startOffset="5404"
+            endLine="145"
+            endColumn="110"
+            endOffset="5462"/>
+    </incident>
+
+    <incident
+        id="NotifyDataSetChanged"
+        severity="warning"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="169"
+            column="17"
+            startOffset="6258"
+            endLine="169"
+            endColumn="51"
+            endOffset="6292"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="171"
+            column="43"
+            startOffset="6352"
+            endLine="171"
+            endColumn="71"
+            endOffset="6380"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="171"
+            column="44"
+            startOffset="6353"
+            endLine="171"
+            endColumn="51"
+            endOffset="6360"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/MainActivity.kt"
+            line="171"
+            column="64"
+            startOffset="6373"
+            endLine="171"
+            endColumn="70"
+            endOffset="6379"/>
+    </incident>
+
+    <incident
+        id="SwitchIntDef"
+        severity="warning"
+        message="Switch statement on an `int` with known associated constant missing case `Player.STATE_BUFFERING`, `Player.STATE_IDLE`">
+        <fix-data cases="com.google.android.exoplayer2.Player.STATE_BUFFERING, com.google.android.exoplayer2.Player.STATE_IDLE"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/PlayerActivity.kt"
+            line="92"
+            column="17"
+            startOffset="3396"
+            endLine="92"
+            endColumn="21"
+            endOffset="3400"/>
+    </incident>
+
+    <incident
+        id="UnsafeOptInUsageError"
+        severity="error"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.camera.core.ExperimentalGetImage` or `@OptIn(markerClass = androidx.camera.core.ExperimentalGetImage.class)`">
+        <fix-alternatives>
+            <fix-replace
+                description="Add &apos;@androidx.annotation.OptIn(androidx.camera.core.ExperimentalGetImage::class)&apos; annotation to &apos;analyze&apos;"
+                oldString="_lint_insert_begin_"
+                replacement="@androidx.annotation.OptIn(androidx.camera.core.ExperimentalGetImage::class) "
+                shortenNames="true">
+                <range
+                    file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/QRScannerActivity.kt"
+                    startOffset="5540"
+                    endOffset="5548"/>
+            </fix-replace>
+            <fix-replace
+                description="Add &apos;@androidx.camera.core.ExperimentalGetImage&apos; annotation to &apos;analyze&apos;"
+                oldString="_lint_insert_begin_"
+                replacement="@androidx.camera.core.ExperimentalGetImage "
+                shortenNames="true">
+                <range
+                    file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/QRScannerActivity.kt"
+                    startOffset="5540"
+                    endOffset="5548"/>
+            </fix-replace>
+            <fix-replace
+                description="Add &apos;@androidx.camera.core.ExperimentalGetImage&apos; annotation to containing class &apos;QRCodeAnalyzer&apos;"
+                oldString="_lint_insert_begin_"
+                replacement="@androidx.camera.core.ExperimentalGetImage "
+                shortenNames="true">
+                <range
+                    file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/QRScannerActivity.kt"
+                    startOffset="5332"
+                    endOffset="5345"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/QRScannerActivity.kt"
+            line="168"
+            column="41"
+            startOffset="5627"
+            endLine="168"
+            endColumn="46"
+            endOffset="5632"/>
+    </incident>
+
+    <incident
+        id="CustomX509TrustManager"
+        severity="warning"
+        message="Implementing a custom `X509TrustManager` is error-prone and likely to be insecure. It is likely to disable certificate validation altogether, and is non-trivial to implement correctly without calling Android&apos;s default implementation.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/api/ApiClient.kt"
+            line="60"
+            column="25"
+            startOffset="1929"
+            endLine="60"
+            endColumn="31"
+            endOffset="1935"/>
+    </incident>
+
+    <incident
+        id="TrustAllX509TrustManager"
+        severity="warning"
+        message="`checkServerTrusted` is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/api/ApiClient.kt"
+            line="62"
+            column="42"
+            startOffset="2116"
+            endLine="62"
+            endColumn="60"
+            endOffset="2134"/>
+    </incident>
+
+    <incident
+        id="TrustAllX509TrustManager"
+        severity="warning"
+        message="`checkClientTrusted` is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/bma/android/api/ApiClient.kt"
+            line="61"
+            column="42"
+            startOffset="1998"
+            endLine="61"
+            endColumn="60"
+            endOffset="2016"/>
+    </incident>
+
+    <incident
+        id="OldTargetApi"
+        severity="warning"
+        message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details.">
+        <fix-replace
+            description="Update targetSdkVersion to 35"
+            oldString="34"
+            replacement="35"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="13"
+            column="9"
+            startOffset="241"
+            endLine="13"
+            endColumn="23"
+            endOffset="255"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.core:core-ktx than 1.12.0 is available: 1.16.0">
+        <fix-replace
+            description="Change to 1.16.0"
+            family="Update versions"
+            oldString="1.12.0"
+            replacement="1.16.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="46"
+            column="21"
+            startOffset="1001"
+            endLine="46"
+            endColumn="50"
+            endOffset="1030"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.0">
+        <fix-replace
+            description="Change to 1.7.0"
+            family="Update versions"
+            oldString="1.6.1"
+            replacement="1.7.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="47"
+            column="21"
+            startOffset="1053"
+            endLine="47"
+            endColumn="55"
+            endOffset="1087"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.material:material than 1.11.0 is available: 1.12.0">
+        <fix-replace
+            description="Change to 1.12.0"
+            family="Update versions"
+            oldString="1.11.0"
+            replacement="1.12.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="48"
+            column="21"
+            startOffset="1110"
+            endLine="48"
+            endColumn="64"
+            endOffset="1153"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.constraintlayout:constraintlayout than 2.1.4 is available: 2.2.1">
+        <fix-replace
+            description="Change to 2.2.1"
+            family="Update versions"
+            oldString="2.1.4"
+            replacement="2.2.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="49"
+            column="21"
+            startOffset="1176"
+            endLine="49"
+            endColumn="69"
+            endOffset="1224"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.7.0 is available: 2.9.0">
+        <fix-replace
+            description="Change to 2.9.0"
+            family="Update versions"
+            oldString="2.7.0"
+            replacement="2.9.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="62"
+            column="21"
+            startOffset="1781"
+            endLine="62"
+            endColumn="67"
+            endOffset="1827"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.lifecycle:lifecycle-viewmodel-ktx than 2.7.0 is available: 2.9.0">
+        <fix-replace
+            description="Change to 2.9.0"
+            family="Update versions"
+            oldString="2.7.0"
+            replacement="2.9.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="63"
+            column="21"
+            startOffset="1850"
+            endLine="63"
+            endColumn="69"
+            endOffset="1898"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.mlkit:barcode-scanning than 17.2.0 is available: 17.3.0">
+        <fix-replace
+            description="Change to 17.3.0"
+            family="Update versions"
+            oldString="17.2.0"
+            replacement="17.3.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="66"
+            column="21"
+            startOffset="1950"
+            endLine="66"
+            endColumn="61"
+            endOffset="1990"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.camera:camera-core than 1.3.1 is available: 1.4.2">
+        <fix-replace
+            description="Change to 1.4.2"
+            family="Update versions"
+            oldString="1.3.1"
+            replacement="1.4.2"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="67"
+            column="21"
+            startOffset="2013"
+            endLine="67"
+            endColumn="54"
+            endOffset="2046"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.camera:camera-camera2 than 1.3.1 is available: 1.4.2">
+        <fix-replace
+            description="Change to 1.4.2"
+            family="Update versions"
+            oldString="1.3.1"
+            replacement="1.4.2"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="68"
+            column="21"
+            startOffset="2069"
+            endLine="68"
+            endColumn="57"
+            endOffset="2105"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.camera:camera-lifecycle than 1.3.1 is available: 1.4.2">
+        <fix-replace
+            description="Change to 1.4.2"
+            family="Update versions"
+            oldString="1.3.1"
+            replacement="1.4.2"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="69"
+            column="21"
+            startOffset="2128"
+            endLine="69"
+            endColumn="59"
+            endOffset="2166"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.camera:camera-view than 1.3.1 is available: 1.4.2">
+        <fix-replace
+            description="Change to 1.4.2"
+            family="Update versions"
+            oldString="1.3.1"
+            replacement="1.4.2"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="70"
+            column="21"
+            startOffset="2189"
+            endLine="70"
+            endColumn="54"
+            endOffset="2222"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.activity:activity-ktx than 1.8.2 is available: 1.10.1">
+        <fix-replace
+            description="Change to 1.10.1"
+            family="Update versions"
+            oldString="1.8.2"
+            replacement="1.10.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="73"
+            column="21"
+            startOffset="2278"
+            endLine="73"
+            endColumn="57"
+            endOffset="2314"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.ext:junit than 1.1.5 is available: 1.2.1">
+        <fix-replace
+            description="Change to 1.2.1"
+            family="Update versions"
+            oldString="1.1.5"
+            replacement="1.2.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="76"
+            column="32"
+            startOffset="2398"
+            endLine="76"
+            endColumn="61"
+            endOffset="2427"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.5.1 is available: 3.6.1">
+        <fix-replace
+            description="Change to 3.6.1"
+            family="Update versions"
+            oldString="3.5.1"
+            replacement="3.6.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="77"
+            column="32"
+            startOffset="2461"
+            endLine="77"
+            endColumn="74"
+            endOffset="2503"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
+        message="Possible overdraw: Root element paints background `#1E1E1E` with a theme that also paints a background (inferred theme is `@style/Theme.BMA`)">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="7"
+            column="5"
+            startOffset="341"
+            endLine="7"
+            endColumn="33"
+            endOffset="369"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
+        message="Possible overdraw: Root element paints background `#1E1E1E` with a theme that also paints a background (inferred theme is `@style/Theme.BMA`)">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_player.xml"
+            line="7"
+            column="5"
+            startOffset="341"
+            endLine="7"
+            endColumn="33"
+            endOffset="369"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
+        message="Possible overdraw: Root element paints background `@android:color/black` with a theme that also paints a background (inferred theme is `@style/Theme.BMA`)">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_qr_scanner.xml"
+            line="7"
+            column="5"
+            startOffset="341"
+            endLine="7"
+            endColumn="46"
+            endOffset="382"/>
+    </incident>
+
+    <incident
+        id="Overdraw"
+        severity="warning"
+        message="Possible overdraw: Root element paints background `?android:attr/selectableItemBackground` with a theme that also paints a background (inferred theme is `@style/Theme.BMA`)">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/item_song.xml"
+            line="6"
+            column="5"
+            startOffset="290"
+            endLine="6"
+            endColumn="64"
+            endOffset="349"/>
+    </incident>
+
+</incidents>

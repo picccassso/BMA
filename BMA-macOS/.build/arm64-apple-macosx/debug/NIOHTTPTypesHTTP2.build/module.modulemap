@@ -1,0 +1,4 @@
+module NIOHTTPTypesHTTP2 {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPTypesHTTP2.build/NIOHTTPTypesHTTP2-Swift.h"
+    requires objc
+}

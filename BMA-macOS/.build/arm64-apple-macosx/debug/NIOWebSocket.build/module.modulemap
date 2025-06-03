@@ -1,0 +1,4 @@
+module NIOWebSocket {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOWebSocket.build/NIOWebSocket-Swift.h"
+    requires objc
+}

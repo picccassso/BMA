@@ -1,0 +1,4 @@
+module NIOResumableUpload {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOResumableUpload.build/NIOResumableUpload-Swift.h"
+    requires objc
+}

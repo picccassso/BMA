@@ -1,0 +1,4 @@
+module _NIOBase64 {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/_NIOBase64.build/_NIOBase64-Swift.h"
+    requires objc
+}

@@ -1,0 +1,4 @@
+module HTTPTypesFoundation {
+    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/HTTPTypesFoundation.build/HTTPTypesFoundation-Swift.h"
+    requires objc
+}
