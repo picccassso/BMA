@@ -1,4 +1,4 @@
-BMSA - Basic Music Streaming App (Yes, that's the name I am going with).
+BMSA - Basic Music Streaming App (Yes, that's the name I am going with and I am a bit too lazy to change the folder names for it!).
 
 This is a basic streaming app I am working on that allows you to self-host your music library easily. This app is currently being developed on MacOS & Android (before moving to other platforms). 
 
