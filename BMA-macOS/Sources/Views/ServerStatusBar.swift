@@ -8,6 +8,7 @@ struct ServerStatusBar: View {
     @EnvironmentObject var serverManager: ServerManager
     @EnvironmentObject var musicLibrary: MusicLibrary
     @State private var showingPairingSheet = false
+    @State private var showingConnectedDevicesSheet = false
     
     var body: some View {
         HStack {
@@ -20,6 +21,17 @@ struct ServerStatusBar: View {
                     
                     Text(serverManager.isRunning ? "Server Running" : "Server Stopped")
                         .font(.caption)
+                    
+                    // Connected devices indicator
+                    if serverManager.isRunning && serverManager.hasConnectedDevices {
+                        Text("(\(serverManager.connectedDevices.count) connected)")
+                            .font(.caption2)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Color.green.opacity(0.2))
+                            .foregroundColor(.green)
+                            .cornerRadius(4)
+                    }
                     
                     // Protocol indicator
                     Text(serverManager.hasTailscale ? "HTTP via Tailscale" : "HTTP (Local)")
@@ -62,15 +74,18 @@ struct ServerStatusBar: View {
             }
             .buttonStyle(.bordered)
             
-            // Pairing button (only when server is running)
+            // Device management buttons (only when server is running)
             if serverManager.isRunning {
-                Button("Pair Device") {
-                    showingPairingSheet = true
-                }
-                .buttonStyle(.bordered)
-                .sheet(isPresented: $showingPairingSheet) {
-                    PairingView()
-                        .environmentObject(serverManager)
+                if serverManager.hasConnectedDevices {
+                    Button("Connected Devices") {
+                        showingConnectedDevicesSheet = true
+                    }
+                    .buttonStyle(.bordered)
+                } else {
+                    Button("Pair Device") {
+                        showingPairingSheet = true
+                    }
+                    .buttonStyle(.bordered)
                 }
             }
             
@@ -83,6 +98,19 @@ struct ServerStatusBar: View {
                 }
             }
             .buttonStyle(.borderedProminent)
+        }
+        .sheet(isPresented: $showingConnectedDevicesSheet) {
+            ConnectedDevicesView(onShowPairing: {
+                showingConnectedDevicesSheet = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    showingPairingSheet = true
+                }
+            })
+            .environmentObject(serverManager)
+        }
+        .sheet(isPresented: $showingPairingSheet) {
+            PairingView()
+                .environmentObject(serverManager)
         }
     }
 }

@@ -14,6 +14,12 @@
     "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/BMAApp~partial.swiftmodule",
     "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/BMAApp.swiftdeps"
   },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/ConnectedDevice.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevice.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevice.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevice~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevice.swiftdeps"
+  },
   "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/MusicLibrary.swift": {
     "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/MusicLibrary.d",
     "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/MusicLibrary.swift.o",
@@ -37,6 +43,12 @@
     "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ServerManager.swift.o",
     "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ServerManager~partial.swiftmodule",
     "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ServerManager.swiftdeps"
+  },
+  "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ConnectedDevicesView.swift": {
+    "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevicesView.d",
+    "object": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevicesView.swift.o",
+    "swiftmodule": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevicesView~partial.swiftmodule",
+    "swift-dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevicesView.swiftdeps"
   },
   "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ContentView.swift": {
     "dependencies": "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ContentView.d",

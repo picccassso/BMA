@@ -39,11 +39,75 @@ class ServerManager: ObservableObject {
     @Published var hasTailscale = false
     @Published var currentPairingToken: String? = nil
     @Published var useHTTPS = false // User can choose protocol
+    @Published var connectedDevices: [ConnectedDevice] = []
     
     private var app: Application?
     private let httpsPort = 8443
     private let httpPort = 8008
     private var pairingTokens: [String: Date] = [:] // token -> expiration
+    
+    // Device tracking
+    var hasConnectedDevices: Bool {
+        !connectedDevices.isEmpty
+    }
+    
+    func trackDeviceConnection(token: String, ipAddress: String, userAgent: String?) {
+        let deviceName = parseDeviceName(from: userAgent)
+        
+        // Check if device already exists (update last seen)
+        if let index = connectedDevices.firstIndex(where: { $0.token == token }) {
+            connectedDevices[index].lastSeenAt = Date()
+            print("📱 Updated device activity: \(connectedDevices[index].displayName)")
+        } else {
+            // Add new device
+            let device = ConnectedDevice(token: token, deviceName: deviceName, ipAddress: ipAddress)
+            connectedDevices.append(device)
+            print("📱 New device connected: \(device.displayName)")
+            
+            // Clean up inactive devices
+            cleanupInactiveDevices()
+        }
+    }
+    
+    private func parseDeviceName(from userAgent: String?) -> String? {
+        guard let userAgent = userAgent else { return nil }
+        
+        // Simple parsing to extract device info from user agent
+        if userAgent.contains("Android") {
+            return "Android Device"
+        } else if userAgent.contains("iPhone") {
+            return "iPhone"
+        } else if userAgent.contains("iPad") {
+            return "iPad"
+        } else if userAgent.contains("Mac") {
+            return "Mac"
+        } else if userAgent.contains("BMA") {
+            return "BMA App"
+        }
+        return nil
+    }
+    
+    func disconnectDevice(_ device: ConnectedDevice) {
+        connectedDevices.removeAll { $0.id == device.id }
+        // Optionally revoke the token
+        revokePairingToken(device.token)
+        print("📱 Device disconnected: \(device.displayName)")
+    }
+    
+    func disconnectAllDevices() {
+        connectedDevices.removeAll()
+        revokeAllTokens()
+        print("📱 All devices disconnected")
+    }
+    
+    func cleanupInactiveDevices() {
+        let activeDevices = connectedDevices.filter { $0.isActive }
+        if activeDevices.count != connectedDevices.count {
+            let removedCount = connectedDevices.count - activeDevices.count
+            connectedDevices = activeDevices
+            print("📱 Cleaned up \(removedCount) inactive devices")
+        }
+    }
     
     init() {
         print("🚀 Initializing ServerManager...")
@@ -208,26 +272,40 @@ class ServerManager: ObservableObject {
     }
     
     private func setupServer() async {
-        // Create Vapor app using new API
-        app = try? await Application.make(.development)
-        
-        guard let app = app else { return }
-        
-        // Enable detailed logging
-        app.logger.logLevel = .debug
-        
-        // Add request logging middleware
-        app.middleware.use(RequestLoggingMiddleware())
-        
-        // Always run HTTP locally - Tailscale handles HTTPS termination
-        app.http.server.configuration.hostname = "0.0.0.0"
-        app.http.server.configuration.port = httpPort
-        
-        // Setup authentication middleware
-        await setupAuthenticationMiddleware(app: app)
-        
-        // Setup routes
-        await setupRoutes()
+        do {
+            // Create Vapor app using new API with proper error handling
+            print("🔨 Creating Vapor application...")
+            app = try await Application.make(.development)
+            
+            guard let app = app else { 
+                print("❌ Failed to create Vapor application - app is nil")
+                return 
+            }
+            
+            print("✅ Vapor application created successfully")
+            
+            // Enable detailed logging
+            app.logger.logLevel = .debug
+            
+            // Add request logging middleware
+            app.middleware.use(RequestLoggingMiddleware())
+            
+            // Always run HTTP locally - Tailscale handles HTTPS termination
+            app.http.server.configuration.hostname = "0.0.0.0"
+            app.http.server.configuration.port = httpPort
+            
+            // Setup authentication middleware
+            await setupAuthenticationMiddleware(app: app)
+            
+            // Setup routes
+            await setupRoutes()
+            
+            print("✅ Server configuration completed")
+            
+        } catch {
+            print("❌ Failed to setup server: \(error)")
+            app = nil
+        }
     }
     
     private func setupHTTPS(app: Application) async {
@@ -263,6 +341,14 @@ class ServerManager: ObservableObject {
                 }
                 
                 if isValid {
+                    // Track successful device connection
+                    let clientIP = request.remoteAddress?.description ?? "unknown"
+                    let userAgent = request.headers.first(name: "User-Agent")
+                    
+                    await MainActor.run {
+                        serverManager.trackDeviceConnection(token: token, ipAddress: clientIP, userAgent: userAgent)
+                    }
+                    
                     return try await next.respond(to: request)
                 } else {
                     throw Abort(.unauthorized, reason: "Invalid or expired token")
@@ -467,8 +553,8 @@ class ServerManager: ObservableObject {
     }
     
     func startServer() {
-        guard let app = app, !isRunning else { 
-            print("⚠️ Server start requested but app is nil or already running")
+        guard !isRunning else { 
+            print("⚠️ Server start requested but already running")
             return 
         }
         
@@ -476,11 +562,35 @@ class ServerManager: ObservableObject {
         print("📊 Tailscale available: \(hasTailscale)")
         print("🔗 Tailscale URL: \(tailscaleURL)")
         
-        Task {
+        Task { @MainActor in
             do {
-                try await app.startup()
+                // Ensure we have a clean state
+                if let existingApp = self.app {
+                    print("🧹 Cleaning up existing server instance...")
+                    try? await existingApp.asyncShutdown()
+                    self.app = nil
+                }
                 
-                await MainActor.run {
+                // Create a fresh application instance
+                print("📡 Creating new server instance...")
+                await setupServer()
+                
+                guard let app = self.app else {
+                    print("❌ Failed to create server application")
+                    await MainActor.run {
+                        self.isRunning = false
+                    }
+                    return
+                }
+                
+                // Start the server with proper error handling
+                print("📡 Starting server...")
+                
+                // Wrap startup in proper error handling
+                do {
+                    try await app.startup()
+                    
+                    // Only set running state after successful startup
                     self.isRunning = true
                     
                     // Show detailed network information
@@ -518,11 +628,27 @@ class ServerManager: ObservableObject {
                     print("\n🎵 Server is ready for music streaming!")
                     print("📱 Generate a QR code to pair devices")
                     print("🔍 Watching for incoming connections...")
+                    
+                } catch {
+                    print("❌ Server startup failed: \(error)")
+                    
+                    // Clean up failed server instance
+                    do {
+                        try await app.asyncShutdown()
+                    } catch {
+                        print("❌ Failed to shutdown after startup error: \(error)")
+                    }
+                    
+                    self.app = nil
+                    self.isRunning = false
+                    
+                    throw error
                 }
                 
             } catch {
                 print("❌ Failed to start server: \(error)")
                 await MainActor.run {
+                    self.app = nil
                     self.isRunning = false
                 }
             }
@@ -530,25 +656,115 @@ class ServerManager: ObservableObject {
     }
     
     func stopServer() {
-        guard let app = app else { return }
+        guard isRunning else {
+            print("⚠️ Server stop requested but not running")
+            return
+        }
         
-        Task {
-            do {
-                try await app.asyncShutdown()
-                await MainActor.run {
-                    self.isRunning = false
-                    self.serverURL = ""
-                    self.revokeAllTokens()
-                    print("Server stopped")
-                }
-            } catch {
-                print("Failed to shutdown server gracefully: \(error)")
-                await MainActor.run {
-                    self.isRunning = false
-                    self.serverURL = ""
-                    self.revokeAllTokens()
+        print("🛑 Stopping server...")
+        
+        // For normal shutdown, try async first but with immediate fallback
+        if let app = self.app {
+            self.app = nil
+            self.isRunning = false
+            self.serverURL = ""
+            self.connectedDevices.removeAll()
+            self.revokeAllTokens()
+            
+            // Try async shutdown with a timeout
+            Task.detached {
+                do {
+                    try await app.asyncShutdown()
+                    print("✅ Server shutdown completed")
+                } catch {
+                    print("❌ Server shutdown error: \(error)")
+                    // Force shutdown if async fails
+                    Task.detached {
+                        await self.forceShutdownServer(app)
+                    }
                 }
             }
+        }
+        
+        print("🔄 Server ready for restart")
+    }
+    
+    func stopServerSync() {
+        guard isRunning else {
+            print("⚠️ Sync server stop requested but not running")
+            return
+        }
+        
+        print("🛑 Force stopping server immediately...")
+        
+        let appToShutdown = self.app
+        
+        // Clear state immediately
+        self.app = nil
+        self.isRunning = false
+        self.serverURL = ""
+        self.connectedDevices.removeAll()
+        self.revokeAllTokens()
+        
+        // Properly shutdown the Vapor app synchronously to avoid assertion failures
+        if let app = appToShutdown {
+            print("🧹 Performing synchronous server shutdown...")
+            
+            // Create a semaphore to wait for shutdown completion
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            // Perform shutdown in background with timeout
+            DispatchQueue.global(qos: .userInitiated).async {
+                // Use the RunLoop to run async shutdown synchronously
+                let runLoop = RunLoop.current
+                var finished = false
+                
+                Task {
+                    do {
+                        try await app.asyncShutdown()
+                        print("✅ Vapor server shutdown completed")
+                    } catch {
+                        print("❌ Vapor server shutdown error: \(error)")
+                    }
+                    finished = true
+                }
+                
+                // Run the run loop until shutdown completes or timeout
+                let timeout = Date().addingTimeInterval(2.0)
+                while !finished && Date() < timeout {
+                    runLoop.run(mode: .default, before: Date().addingTimeInterval(0.1))
+                }
+                
+                if !finished {
+                    print("⚠️ Server shutdown timed out")
+                }
+                
+                semaphore.signal()
+            }
+            
+            // Wait for shutdown with timeout
+            let timeoutResult = semaphore.wait(timeout: .now() + 3.0)
+            
+            if timeoutResult == .timedOut {
+                print("⚠️ Server shutdown timed out - proceeding with termination")
+            }
+        }
+        
+        print("✅ Server forcefully stopped for app termination")
+    }
+    
+    private func forceShutdownServer(_ app: Application) async {
+        print("🛑 Force shutting down Vapor server...")
+        
+        do {
+            // Try to shutdown the application gracefully first
+            try await app.asyncShutdown()
+            print("✅ Vapor server shutdown completed")
+        } catch {
+            print("❌ Vapor server shutdown error: \(error)")
+            
+            // If graceful shutdown fails, just clear everything
+            print("🧹 Forcing cleanup of server resources")
         }
     }
     
@@ -582,12 +798,38 @@ class ServerManager: ObservableObject {
     }
     
     deinit {
-        Task { [weak app] in
-            do {
-                try await app?.asyncShutdown()
-            } catch {
-                print("Failed to shutdown server in deinit: \(error)")
+        print("🗑️ ServerManager deinit - performing safe cleanup...")
+        
+        // Store current app reference before clearing it
+        let appToCleanup = self.app
+        
+        // Clear app reference immediately to prevent further use
+        self.app = nil
+        
+        // If there's an app instance that needs cleanup
+        if let app = appToCleanup {
+            print("⚠️ App instance found during deinit - performing emergency shutdown")
+            
+            // Use a synchronous wait with timeout for cleanup
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            Task.detached {
+                do {
+                    try await app.asyncShutdown()
+                    print("✅ Emergency server shutdown completed in deinit")
+                } catch {
+                    print("❌ Emergency server shutdown error in deinit: \(error)")
+                }
+                semaphore.signal()
+            }
+            
+            // Wait briefly for shutdown, but don't block deinit indefinitely
+            let timeoutResult = semaphore.wait(timeout: .now() + 1.0)
+            if timeoutResult == .timedOut {
+                print("⚠️ Server shutdown timed out in deinit - proceeding anyway")
             }
         }
+        
+        print("✅ ServerManager deinit completed safely")
     }
 } 

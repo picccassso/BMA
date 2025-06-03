@@ -137,6 +137,8 @@
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Atomics.build/UnsafeAtomicLazyReference.swift.o'
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/AudioPlayer.swift.o'
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/BMAApp.swift.o'
+'/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevice.swift.o'
+'/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevicesView.swift.o'
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ContentView.swift.o'
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/MusicLibrary.swift.o'
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/PlayerControlsBar.swift.o'

@@ -2602,6 +2602,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/ConnectedDevice.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/MusicLibrary.swift"
         },
         {
@@ -2615,6 +2619,10 @@
         {
           "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Server/ServerManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ConnectedDevicesView.swift"
         },
         {
           "kind" : "file",
@@ -2659,10 +2667,12 @@
       "objects" : [
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/AudioPlayer.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/BMAApp.swift.o",
+        "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevice.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/MusicLibrary.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/QRCodeGenerator.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/Song.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ServerManager.swift.o",
+        "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevicesView.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ContentView.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/PlayerControlsBar.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/PlayerView.swift.o",
@@ -2808,6 +2818,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevice.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/MusicLibrary.swift.o"
         },
         {
@@ -2821,6 +2835,10 @@
         {
           "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ServerManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevicesView.swift.o"
         },
         {
           "kind" : "file",
@@ -2851,10 +2869,12 @@
       "sources" : [
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Audio/AudioPlayer.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/BMA/BMAApp.swift",
+        "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/ConnectedDevice.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/MusicLibrary.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/QRCodeGenerator.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/Song.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Server/ServerManager.swift",
+        "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ConnectedDevicesView.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ContentView.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerControlsBar.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerView.swift",
@@ -30587,10 +30607,12 @@
       "-c",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Audio/AudioPlayer.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/BMA/BMAApp.swift",
+      "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/ConnectedDevice.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/MusicLibrary.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/QRCodeGenerator.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/Song.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Server/ServerManager.swift",
+      "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ConnectedDevicesView.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ContentView.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerControlsBar.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerView.swift",
@@ -40320,6 +40342,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/ConnectedDevice.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/MusicLibrary.swift"
         },
         {
@@ -40333,6 +40359,10 @@
         {
           "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Server/ServerManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ConnectedDevicesView.swift"
         },
         {
           "kind" : "file",
@@ -40919,6 +40949,14 @@
         {
           "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/BMAApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevice.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevicesView.swift.o"
         },
         {
           "kind" : "file",
@@ -47763,6 +47801,14 @@
         {
           "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/BMAApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevice.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevicesView.swift.o"
         },
         {
           "kind" : "file",
