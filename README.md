@@ -8,3 +8,5 @@ I will keep updates here as it is easier for me to keep track of everything that
 
 03/06/2025 - I have updated the app to integrate Tailscale in order to help generated QR codes in order to pair between the app on your phone and the app on your Mac. This means you can connect your music library over mobile data as well so you can take your music library anywhere. 
 
+04/06/2025 - Improved the Android app music player. Made sure you can easily connect properly and diconnect if needed. Added ability to see the album cover art on mobile, folder struture is much better. 
+
