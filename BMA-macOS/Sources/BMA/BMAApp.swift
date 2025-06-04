@@ -4,14 +4,12 @@ import SwiftUI
 struct BMAApp: App {
     @StateObject private var serverManager = ServerManager()
     @StateObject private var musicLibrary = MusicLibrary.shared
-    @StateObject private var audioPlayer = AudioPlayer()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(serverManager)
                 .environmentObject(musicLibrary)
-                .environmentObject(audioPlayer)
                 .frame(minWidth: 600, minHeight: 400)
                 .onReceive(NotificationCenter.default.publisher(for: NSApplication.willTerminateNotification)) { _ in
                     // Ensure server is stopped before app terminates

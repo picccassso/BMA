@@ -8,17 +8,19 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bma.android.adapters.SongAdapter
+import com.bma.android.adapters.AlbumAdapter
 import com.bma.android.api.ApiClient
 import com.bma.android.databinding.ActivityMainBinding
+import com.bma.android.models.Album
 import com.bma.android.models.Song
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     
     private lateinit var binding: ActivityMainBinding
-    private lateinit var songAdapter: SongAdapter
+    private lateinit var albumAdapter: AlbumAdapter
     private var songs = mutableListOf<Song>()
+    private var albums = mutableListOf<Album>()
     
     // DEBUG: Add logging for connection state changes
     private fun debugLog(message: String) {
@@ -109,7 +111,7 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun setupRecyclerView() {
-        songAdapter = SongAdapter(songs) { song ->
+        albumAdapter = AlbumAdapter { song ->
             debugLog("Song selected: ${song.title} by ${song.artist}")
             // Open player activity
             val intent = Intent(this, PlayerActivity::class.java).apply {
@@ -122,7 +124,7 @@ class MainActivity : AppCompatActivity() {
         
         binding.songsRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = songAdapter
+            adapter = albumAdapter
         }
     }
     
@@ -269,9 +271,10 @@ class MainActivity : AppCompatActivity() {
             .remove("auth_token")
             .apply()
         
-        // Clear songs list
+        // Clear songs and albums
         songs.clear()
-        songAdapter.notifyDataSetChanged()
+        albums.clear()
+        albumAdapter.updateAlbums(emptyList())
         
         // Update status and UI
         val statusMessage = if (serverNotified) {
@@ -465,18 +468,34 @@ class MainActivity : AppCompatActivity() {
                 val songList = ApiClient.api.getSongs(authHeader)
                 songs.clear()
                 songs.addAll(songList)
-                songAdapter.notifyDataSetChanged()
                 
-                debugLog("Successfully loaded ${songs.size} songs")
-                binding.statusText.text = "Loaded ${songs.size} songs"
+                debugLog("Raw songs loaded: ${songList.size}")
+                
+                // DEBUG: Show sample of received song data
+                debugLog("🔍 [API RECEIVED] Sample song data from server:")
+                songList.take(5).forEach { song ->
+                    debugLog("🔍 [API RECEIVED]   Song: '${song.title}'")
+                    debugLog("🔍 [API RECEIVED]     Artist: '${song.artist}'")
+                    debugLog("🔍 [API RECEIVED]     Album: '${song.album}'")
+                }
+                
+                // NEW: Organize songs into albums
+                organizeSongsIntoAlbums(songList)
+                debugLog("Albums organized: ${albums.size} albums created")
+                albumAdapter.updateAlbums(albums)
+                
+                debugLog("Successfully loaded ${songs.size} songs in ${albums.size} albums")
+                binding.statusText.text = "Loaded ${albums.size} albums • ${songs.size} songs"
                 binding.progressBar.visibility = View.GONE
                 updateConnectionStatus()
                 
-                if (songs.isEmpty()) {
+                if (albums.isEmpty()) {
+                    debugLog("No albums found - showing empty state")
                     binding.emptyText.visibility = View.VISIBLE
-                    binding.emptyText.text = "No songs found on server"
+                    binding.emptyText.text = "No albums found on server"
                     binding.songsRecyclerView.visibility = View.GONE
                 } else {
+                    debugLog("Albums found - showing RecyclerView")
                     binding.emptyText.visibility = View.GONE
                     binding.songsRecyclerView.visibility = View.VISIBLE
                 }
@@ -511,5 +530,96 @@ class MainActivity : AppCompatActivity() {
         getSharedPreferences("BMA", MODE_PRIVATE).edit()
             .putString("server_url", url)
             .apply()
+    }
+    
+    /**
+     * ENHANCED: Organize songs into albums with smart sorting
+     */
+    private fun organizeSongsIntoAlbums(songList: List<Song>) {
+        debugLog("Organizing ${songList.size} songs into albums...")
+        
+        // Sort songs with numbered track priority (like Mac app)
+        val sortedSongs = songList.sortedWith { song1, song2 ->
+            val album1 = song1.album.ifEmpty { "Unknown Album" }
+            val album2 = song2.album.ifEmpty { "Unknown Album" }
+            
+            if (album1 != album2) {
+                album1.compareTo(album2)
+            } else {
+                // Within same album, apply numbered track priority
+                compareTracksWithNumberPriority(song1.title, song2.title)
+            }
+        }
+        
+        debugLog("Songs sorted, grouping by album...")
+        
+        // Group by album
+        val albumGroups = sortedSongs.groupBy { song ->
+            song.album.ifEmpty { "Unknown Album" }
+        }
+        
+        debugLog("Found ${albumGroups.size} album groups")
+        
+        // Create Album objects
+        albums.clear()
+        albums.addAll(
+            albumGroups.map { (albumName, albumSongs) ->
+                debugLog("Creating album: $albumName with ${albumSongs.size} songs")
+                Album(
+                    name = albumName,
+                    artist = albumSongs.firstOrNull()?.artist?.takeIf { it.isNotEmpty() },
+                    songs = albumSongs
+                )
+            }.sortedBy { it.name }
+        )
+        
+        debugLog("Organized into ${albums.size} albums")
+        printAlbumDebugInfo()
+    }
+    
+    /**
+     * ENHANCED: Lexicographic sorting with numbered track priority (01, 02, 10)
+     * Same logic as Mac app
+     */
+    private fun compareTracksWithNumberPriority(title1: String, title2: String): Int {
+        val number1 = extractLeadingNumber(title1)
+        val number2 = extractLeadingNumber(title2)
+        
+        return when {
+            number1 != null && number2 != null -> {
+                // Both have numbers - compare lexicographically
+                val str1 = String.format("%02d", number1)
+                val str2 = String.format("%02d", number2)
+                when {
+                    str1 != str2 -> str1.compareTo(str2)
+                    else -> title1.compareTo(title2, ignoreCase = true)
+                }
+            }
+            number1 != null && number2 == null -> -1 // numbered comes first
+            number1 == null && number2 != null -> 1  // numbered comes first
+            else -> title1.compareTo(title2, ignoreCase = true) // normal alphabetical
+        }
+    }
+    
+    /**
+     * ENHANCED: Extract leading number from track title
+     */
+    private fun extractLeadingNumber(title: String): Int? {
+        val regex = Regex("^(\\d+)")
+        return regex.find(title)?.groupValues?.get(1)?.toIntOrNull()
+    }
+    
+    /**
+     * DEBUG: Print album organization info
+     */
+    private fun printAlbumDebugInfo() {
+        debugLog("===== ALBUM ORGANIZATION DEBUG =====")
+        albums.take(3).forEach { album -> // Show first 3 albums
+            debugLog("Album: ${album.name} by ${album.artist ?: "Unknown"} (${album.trackCount} tracks)")
+            album.songs.take(5).forEach { song -> // Show first 5 songs per album
+                debugLog("  - ${song.title}")
+            }
+        }
+        debugLog("=====================================")
     }
 } 

@@ -144,15 +144,17 @@
         android:id="@+id/emptyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No songs found"
+        android:text="📁 No albums found - connect to see your music organized by albums"
         android:textColor="#808080"
         android:visibility="gone"
+        android:gravity="center"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/serverLayout" />
 
-    <!-- Songs List -->
+    <!-- Album/Songs List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/songsRecyclerView"
         android:layout_width="0dp"

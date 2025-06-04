@@ -3199,8 +3199,11 @@ drawable ic_call_answer_video
 drawable ic_call_answer_video_low
 drawable ic_call_decline
 drawable ic_call_decline_low
+drawable ic_chevron_down
+drawable ic_chevron_right
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
+drawable ic_folder
 drawable ic_keyboard_black_24dp
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
@@ -3209,6 +3212,7 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_music_note
 drawable ic_search_black_24
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3362,6 +3366,8 @@ id add
 id adjust_height
 id adjust_width
 id albumArt
+id albumInfo
+id albumNameText
 id alertTitle
 id aligned
 id all
@@ -3532,6 +3538,7 @@ id exo_text
 id exo_time
 id exo_track_selection_view
 id exo_vr
+id expandIcon
 id expand_activities_button
 id expanded_menu
 id fade
@@ -3553,6 +3560,7 @@ id fixed_height
 id fixed_width
 id flip
 id floating
+id folderIcon
 id forever
 id fragment_container_view_tag
 id frost
@@ -3853,6 +3861,8 @@ id toggle
 id top
 id topPanel
 id touch_outside
+id trackCountText
+id trackIcon
 id transitionToEnd
 id transitionToStart
 id transition_current_scene
@@ -4037,7 +4047,9 @@ layout exo_styled_sub_settings_list_item
 layout exo_track_selection_dialog
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_album_header
 layout item_song
+layout item_song_in_album
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

@@ -2594,10 +2594,6 @@
       "inputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Audio/AudioPlayer.swift"
-        },
-        {
-          "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/BMA/BMAApp.swift"
         },
         {
@@ -2630,11 +2626,7 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerControlsBar.swift"
-        },
-        {
-          "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerView.swift"
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/LibraryStatusBar.swift"
         },
         {
           "kind" : "file",
@@ -2665,7 +2657,6 @@
       "moduleName" : "BMA",
       "moduleOutputPath" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Modules/BMA.swiftmodule",
       "objects" : [
-        "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/AudioPlayer.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/BMAApp.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevice.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/MusicLibrary.swift.o",
@@ -2674,8 +2665,7 @@
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ServerManager.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ConnectedDevicesView.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ContentView.swift.o",
-        "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/PlayerControlsBar.swift.o",
-        "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/PlayerView.swift.o",
+        "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/LibraryStatusBar.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/ServerStatusBar.swift.o",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/SongListView.swift.o"
       ],
@@ -2810,10 +2800,6 @@
       "outputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/AudioPlayer.swift.o"
-        },
-        {
-          "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/BMAApp.swift.o"
         },
         {
@@ -2846,11 +2832,7 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/PlayerControlsBar.swift.o"
-        },
-        {
-          "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/PlayerView.swift.o"
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/LibraryStatusBar.swift.o"
         },
         {
           "kind" : "file",
@@ -2867,7 +2849,6 @@
       ],
       "prepareForIndexing" : false,
       "sources" : [
-        "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Audio/AudioPlayer.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/BMA/BMAApp.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/ConnectedDevice.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/MusicLibrary.swift",
@@ -2876,8 +2857,7 @@
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Server/ServerManager.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ConnectedDevicesView.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ContentView.swift",
-        "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerControlsBar.swift",
-        "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerView.swift",
+        "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/LibraryStatusBar.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ServerStatusBar.swift",
         "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/SongListView.swift"
       ],
@@ -30605,7 +30585,6 @@
       "bma_macos",
       "-incremental",
       "-c",
-      "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Audio/AudioPlayer.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/BMA/BMAApp.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/ConnectedDevice.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/MusicLibrary.swift",
@@ -30614,8 +30593,7 @@
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Server/ServerManager.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ConnectedDevicesView.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ContentView.swift",
-      "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerControlsBar.swift",
-      "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerView.swift",
+      "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/LibraryStatusBar.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ServerStatusBar.swift",
       "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/SongListView.swift",
       "-I",
@@ -40334,10 +40312,6 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Audio/AudioPlayer.swift"
-        },
-        {
-          "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/BMA/BMAApp.swift"
         },
         {
@@ -40370,11 +40344,7 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerControlsBar.swift"
-        },
-        {
-          "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerView.swift"
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/LibraryStatusBar.swift"
         },
         {
           "kind" : "file",
@@ -40944,10 +40914,6 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/AudioPlayer.swift.o"
-        },
-        {
-          "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/BMAApp.swift.o"
         },
         {
@@ -40964,15 +40930,11 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/LibraryStatusBar.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/MusicLibrary.swift.o"
-        },
-        {
-          "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/PlayerControlsBar.swift.o"
-        },
-        {
-          "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/PlayerView.swift.o"
         },
         {
           "kind" : "file",
@@ -47796,10 +47758,6 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/AudioPlayer.swift.o"
-        },
-        {
-          "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/BMAApp.swift.o"
         },
         {
@@ -47816,15 +47774,11 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/LibraryStatusBar.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/MusicLibrary.swift.o"
-        },
-        {
-          "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/PlayerControlsBar.swift.o"
-        },
-        {
-          "kind" : "file",
-          "name" : "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BMA.build/PlayerView.swift.o"
         },
         {
           "kind" : "file",

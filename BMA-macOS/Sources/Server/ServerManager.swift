@@ -594,9 +594,18 @@ class ServerManager: ObservableObject {
                     "id": song.id.uuidString,
                     "filename": song.filename,
                     "title": song.title,
-                    "artist": song.artist ?? "",
-                    "album": song.album ?? ""
+                    "artist": song.artist ?? song.inferredArtist ?? "",
+                    "album": song.album ?? song.inferredAlbum ?? ""
                 ]
+            }
+            
+            print("🔍 [API] Sample song data being sent:")
+            for song in songs.prefix(3) {
+                let finalArtist = song.artist ?? song.inferredArtist ?? ""
+                let finalAlbum = song.album ?? song.inferredAlbum ?? ""
+                print("🔍 [API]   Song: \(song.title)")
+                print("🔍 [API]     Raw artist: '\(song.artist ?? "nil")' -> Final: '\(finalArtist)'")
+                print("🔍 [API]     Raw album: '\(song.album ?? "nil")' -> Final: '\(finalAlbum)'")
             }
             
             let encoder = JSONEncoder()

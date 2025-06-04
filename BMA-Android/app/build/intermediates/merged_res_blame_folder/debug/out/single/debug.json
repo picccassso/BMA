@@ -1,13 +1,5 @@
 [
     {
-        "merged": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-merged_res-47:/xml_network_security_config.xml.flat",
-        "source": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-main-49:/xml/network_security_config.xml"
-    },
-    {
-        "merged": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-merged_res-47:/layout_activity_player.xml.flat",
-        "source": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-main-49:/layout/activity_player.xml"
-    },
-    {
         "merged": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-merged_res-47:/drawable_circle_background.xml.flat",
         "source": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-main-49:/drawable/circle_background.xml"
     },
@@ -20,6 +12,18 @@
         "source": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-main-49:/layout/activity_qr_scanner.xml"
     },
     {
+        "merged": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-merged_res-47:/layout_item_song.xml.flat",
+        "source": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-main-49:/layout/item_song.xml"
+    },
+    {
+        "merged": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-merged_res-47:/xml_network_security_config.xml.flat",
+        "source": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-main-49:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-merged_res-47:/layout_activity_player.xml.flat",
+        "source": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-main-49:/layout/activity_player.xml"
+    },
+    {
         "merged": "com.bma.android.app-merged_res-47:/layout_activity_main.xml.flat",
         "source": "com.bma.android.app-main-49:/layout/activity_main.xml"
     },
@@ -28,12 +32,32 @@
         "source": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-main-49:/xml/backup_rules.xml"
     },
     {
+        "merged": "com.bma.android.app-merged_res-47:/drawable_ic_chevron_right.xml.flat",
+        "source": "com.bma.android.app-main-49:/drawable/ic_chevron_right.xml"
+    },
+    {
         "merged": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-merged_res-47:/xml_data_extraction_rules.xml.flat",
         "source": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-main-49:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-merged_res-47:/layout_item_song.xml.flat",
-        "source": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-main-49:/layout/item_song.xml"
+        "merged": "com.bma.android.app-merged_res-47:/drawable_ic_folder.xml.flat",
+        "source": "com.bma.android.app-main-49:/drawable/ic_folder.xml"
+    },
+    {
+        "merged": "com.bma.android.app-merged_res-47:/layout_item_song_in_album.xml.flat",
+        "source": "com.bma.android.app-main-49:/layout/item_song_in_album.xml"
+    },
+    {
+        "merged": "com.bma.android.app-merged_res-47:/drawable_ic_chevron_down.xml.flat",
+        "source": "com.bma.android.app-main-49:/drawable/ic_chevron_down.xml"
+    },
+    {
+        "merged": "com.bma.android.app-merged_res-47:/drawable_ic_music_note.xml.flat",
+        "source": "com.bma.android.app-main-49:/drawable/ic_music_note.xml"
+    },
+    {
+        "merged": "com.bma.android.app-merged_res-47:/layout_item_album_header.xml.flat",
+        "source": "com.bma.android.app-main-49:/layout/item_album_header.xml"
     },
     {
         "merged": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-merged_res-47:/layout_activity_main.xml.flat",

@@ -1,4 +1,3 @@
-'/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Audio/AudioPlayer.swift'
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/BMA/BMAApp.swift'
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/ConnectedDevice.swift'
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Models/MusicLibrary.swift'
@@ -7,7 +6,6 @@
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Server/ServerManager.swift'
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ConnectedDevicesView.swift'
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ContentView.swift'
-'/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerControlsBar.swift'
-'/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/PlayerView.swift'
+'/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/LibraryStatusBar.swift'
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/ServerStatusBar.swift'
 '/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/Sources/Views/SongListView.swift'

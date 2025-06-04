@@ -1,5 +1,13 @@
 [
     {
+        "merged": "com.bma.android.app-mergeDebugResources-46:/layout/item_song_in_album.xml",
+        "source": "com.bma.android.app-main-49:/layout/item_song_in_album.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeDebugResources-46:/layout/item_album_header.xml",
+        "source": "com.bma.android.app-main-49:/layout/item_album_header.xml"
+    },
+    {
         "merged": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-mergeDebugResources-46:/layout/activity_qr_scanner.xml",
         "source": "/Users/alex/.gradle/daemon/8.12/com.bma.android.app-main-49:/layout/activity_qr_scanner.xml"
     },

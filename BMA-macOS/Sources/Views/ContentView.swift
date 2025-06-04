@@ -3,7 +3,6 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var serverManager: ServerManager
     @EnvironmentObject var musicLibrary: MusicLibrary
-    @EnvironmentObject var audioPlayer: AudioPlayer
     
     var body: some View {
         VStack(spacing: 0) {
@@ -12,22 +11,16 @@ struct ContentView: View {
                 .padding()
                 .background(Color.gray.opacity(0.1))
             
-            // Main content
+            // Main content - Library Management Focus
             HStack(spacing: 0) {
-                // Song list
+                // Song list (now focused on library management)
                 SongListView()
-                    .frame(minWidth: 200)
-                
-                Divider()
-                
-                // Player view
-                PlayerView()
-                    .frame(minWidth: 300)
+                    .frame(minWidth: 400) // Expanded since no player view
             }
             .frame(maxHeight: .infinity)
             
-            // Player controls bar
-            PlayerControlsBar()
+            // Library status bar (replacing player controls)
+            LibraryStatusBar()
                 .padding()
                 .background(Color.gray.opacity(0.1))
         }
