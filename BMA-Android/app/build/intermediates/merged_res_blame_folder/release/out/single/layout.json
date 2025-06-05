@@ -1,0 +1,58 @@
+[
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/fragment_settings.xml",
+        "source": "com.bma.android.app-main-45:/layout/fragment_settings.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/fragment_tailscale_check.xml",
+        "source": "com.bma.android.app-main-45:/layout/fragment_tailscale_check.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/fragment_search.xml",
+        "source": "com.bma.android.app-main-45:/layout/fragment_search.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/item_song_in_album.xml",
+        "source": "com.bma.android.app-main-45:/layout/item_song_in_album.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/fragment_qr_scanner.xml",
+        "source": "com.bma.android.app-main-45:/layout/fragment_qr_scanner.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/activity_qr_scanner.xml",
+        "source": "com.bma.android.app-main-45:/layout/activity_qr_scanner.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/activity_main.xml",
+        "source": "com.bma.android.app-main-45:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/fragment_library.xml",
+        "source": "com.bma.android.app-main-45:/layout/fragment_library.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/activity_player.xml",
+        "source": "com.bma.android.app-main-45:/layout/activity_player.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/item_song.xml",
+        "source": "com.bma.android.app-main-45:/layout/item_song.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/fragment_loading.xml",
+        "source": "com.bma.android.app-main-45:/layout/fragment_loading.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/fragment_welcome.xml",
+        "source": "com.bma.android.app-main-45:/layout/fragment_welcome.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/activity_setup.xml",
+        "source": "com.bma.android.app-main-45:/layout/activity_setup.xml"
+    },
+    {
+        "merged": "com.bma.android.app-mergeReleaseResources-43:/layout/item_album_header.xml",
+        "source": "com.bma.android.app-main-45:/layout/item_album_header.xml"
+    }
+]
