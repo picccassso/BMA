@@ -1,6 +1,8 @@
 package ui
 
 import (
+	"log"
+	
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
@@ -63,6 +65,48 @@ func (ui *MainUI) initialize() {
 		// Library status bar - more compact  
 		ui.libraryStatus.GetContent(),
 	)
+}
+
+// LoadMusicLibrary loads the music library from the configured folder
+func (ui *MainUI) LoadMusicLibrary() {
+	// Load config to get music folder path
+	config, err := models.LoadConfig()
+	if err != nil {
+		log.Printf("❌ Failed to load config for music library: %v", err)
+		return
+	}
+	
+	// Check if music folder is configured
+	if config.MusicFolder == "" {
+		log.Println("⚠️ No music folder configured")
+		return
+	}
+	
+	log.Printf("🎵 Loading music library from: %s", config.MusicFolder)
+	
+	// Use SelectFolder which sets the path and scans the library
+	go ui.musicLibrary.SelectFolder(config.MusicFolder)
+	
+	// Automatically start the server after music library loading
+	go ui.AutoStartServer()
+}
+
+// AutoStartServer automatically starts the server and generates QR code for seamless UX
+func (ui *MainUI) AutoStartServer() {
+	// Wait a moment for music library to start loading
+	log.Println("🚀 Auto-starting server for seamless experience...")
+	
+	// Start the server automatically
+	err := ui.serverManager.StartServer()
+	if err != nil {
+		log.Printf("❌ Auto-start server failed: %v", err)
+		return
+	}
+	
+	log.Println("✅ Server auto-started successfully!")
+	
+	// Automatically generate and show QR code
+	ui.serverStatus.AutoGenerateQR()
 }
 
 // GetContent returns the main UI content for display

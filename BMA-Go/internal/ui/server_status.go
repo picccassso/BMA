@@ -39,15 +39,15 @@ func NewServerStatusBar(serverManager *server.ServerManager) *ServerStatusBar {
 
 // initialize sets up the UI components
 func (bar *ServerStatusBar) initialize() {
-	// Server control button
-	bar.serverButton = widget.NewButton("Start Server", bar.toggleServer)
+	// Server control button - now shows status instead of manual control
+	bar.serverButton = widget.NewButton("Server Status", bar.toggleServer)
 
 	// Server status label - fixed width to prevent layout changes
-	bar.serverLabel = widget.NewLabel("Server: Stopped")
+	bar.serverLabel = widget.NewLabel("Server: Auto-starting...")
 	bar.serverLabel.Resize(fyne.NewSize(200, 30)) // Fixed width and height
 
-	// QR code generation button
-	bar.qrButton = widget.NewButton("Generate QR", bar.generateQR)
+	// QR code generation button - now for manual regeneration
+	bar.qrButton = widget.NewButton("New QR Code", bar.generateQR)
 	bar.qrButton.Disable() // Disabled until server starts
 
 	// Tailscale status label - fixed width
@@ -78,11 +78,17 @@ func (bar *ServerStatusBar) toggleServer() {
 	if bar.serverManager.IsRunning {
 		// Stop server
 		bar.serverManager.StopServer()
-		bar.serverButton.SetText("Start Server")
+		bar.serverButton.SetText("Server Status")
 		bar.serverLabel.SetText("Server: Stopped")
 		bar.qrButton.Disable()
+		
+		// Close QR window if open
+		if bar.qrWindow != nil {
+			bar.qrWindow.Close()
+			bar.qrWindow = nil
+		}
 	} else {
-		// Start server
+		// Start server manually (in case auto-start failed)
 		go func() {
 			err := bar.serverManager.StartServer()
 			if err != nil {
@@ -91,6 +97,9 @@ func (bar *ServerStatusBar) toggleServer() {
 				bar.serverButton.SetText("Stop Server")
 				bar.updateServerStatus()
 				bar.qrButton.Enable()
+				
+				// Auto-generate QR code
+				go bar.AutoGenerateQR()
 			}
 		}()
 		bar.serverLabel.SetText("Server: Starting...")
@@ -296,6 +305,40 @@ func (bar *ServerStatusBar) startPeriodicUpdates() {
 // GetContent returns the UI content for display
 func (bar *ServerStatusBar) GetContent() fyne.CanvasObject {
 	return bar.content
+}
+
+// AutoGenerateQR automatically generates and shows QR code for seamless UX
+func (bar *ServerStatusBar) AutoGenerateQR() {
+	// Wait a moment for server to fully start
+	time.Sleep(1 * time.Second)
+	
+	if !bar.serverManager.IsRunning {
+		log.Println("⚠️ Cannot auto-generate QR: server not running")
+		return
+	}
+
+	log.Println("🔑 Auto-generating QR code for seamless device pairing...")
+
+	// Update UI to reflect server running state
+	bar.updateServerStatus()
+
+	// Generate QR code using ServerManager
+	qrBytes, jsonData, err := bar.serverManager.GenerateQRCode()
+	if err != nil {
+		log.Printf("❌ Auto QR generation failed: %v", err)
+		return
+	}
+
+	// Debug: Check if we actually have QR code data
+	log.Printf("🔍 Auto-generated QR code: %d bytes", len(qrBytes))
+	if len(qrBytes) == 0 {
+		log.Println("❌ Auto-generated QR code is empty!")
+		return
+	}
+
+	// Automatically show QR code dialog
+	bar.showQRCodeDialog(qrBytes, jsonData)
+	log.Println("✅ QR code auto-displayed - ready for device pairing!")
 }
 
 // startDeviceMonitoring monitors for device connections to auto-hide QR codes

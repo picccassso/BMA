@@ -25,6 +25,20 @@ func NewQRCodeGenerator() *QRCodeGenerator {
 	return &QRCodeGenerator{}
 }
 
+// GenerateSimpleQR creates a QR code for any text/URL (for setup wizard)
+func GenerateSimpleQR(text string, size int) ([]byte, error) {
+	return qrcode.Encode(text, qrcode.Medium, size)
+}
+
+// GenerateSimpleQRString creates a QR code as base64 string for display
+func GenerateSimpleQRString(text string, size int) (string, error) {
+	qrBytes, err := GenerateSimpleQR(text, size)
+	if err != nil {
+		return "", err
+	}
+	return base64.StdEncoding.EncodeToString(qrBytes), nil
+}
+
 // GeneratePairingQR creates a QR code containing pairing information
 func (qr *QRCodeGenerator) GeneratePairingQR(serverURL, token string, expiresAt time.Time) ([]byte, error) {
 	// Create pairing data structure (same as macOS version)

@@ -56,30 +56,31 @@ BMA-Go/
 - [x] Basic UI structure with Fyne
 - [x] Component placeholders
 
-### Phase 2: HTTP Server Implementation (TODO)
-- [ ] Server manager with start/stop functionality
-- [ ] All API endpoints
-- [ ] Bearer token authentication middleware
-- [ ] Tailscale integration
+### Phase 2: HTTP Server Implementation ✅
+- [x] Server manager with start/stop functionality
+- [x] All API endpoints
+- [x] Bearer token authentication middleware
+- [x] Tailscale integration
 
 ### Phase 3: Music Library System (TODO)
 - [ ] Song metadata extraction
 - [ ] Album organization and sorting
 - [ ] Folder scanning and monitoring
 
-### Phase 4: QR Code & Device Management (TODO)
-- [ ] QR code generation
-- [ ] Device tracking
-- [ ] Token management
+### Phase 4: QR Code & Device Management ✅
+- [x] QR code generation
+- [x] Device tracking
+- [x] Token management
 
 ### Phase 5: Complete Fyne GUI (TODO)
 - [ ] Folder selection dialog
 - [ ] Album folder organization display
 - [ ] Real-time updates
 
-### Phase 6: Testing & Cross-Platform Builds (TODO)
-- [ ] Android app compatibility testing
-- [ ] Windows/Linux builds
+### Phase 6: Testing & Cross-Platform Builds ⚠️
+- [ ] Android app compatibility testing  
+- [x] Windows/Linux builds (cross-compilation ready)
+- [x] Build scripts and Makefile
 - [ ] Integration testing
 
 ## Installation
@@ -89,14 +90,78 @@ BMA-Go/
 - C compiler (for Fyne)
 
 ### Build
+
+#### Option 1: Quick Build (Current Platform)
 ```bash
 go mod tidy
 go build -o bma .
 ```
 
+#### Option 2: Using Makefile (Cross-Platform)
+```bash
+# Build for current platform
+make build
+
+# Build for Windows (from macOS/Linux)
+make install-cross-deps  # Install mingw-w64
+make windows
+
+# Build for all platforms
+make all-platforms
+
+# See all options
+make help
+```
+
+#### Option 3: Windows-Specific
+
+**Cross-compilation from macOS/Linux:**
+```bash
+# Install cross-compilation tools
+brew install mingw-w64
+
+# Run build script
+./build-windows.sh
+```
+
+**Native Windows build:**
+```powershell
+# PowerShell (requires TDM-GCC or Visual Studio Build Tools)
+.\build-windows.ps1
+
+# Or manually:
+go mod tidy
+go build -ldflags "-s -w -H windowsgui" -o bma.exe .
+```
+
+#### Windows Prerequisites
+
+**Option A: TDM-GCC (Recommended for simplicity)**
+1. Download from: https://jmeubank.github.io/tdm-gcc/
+2. Install with default settings
+3. Restart PowerShell/Command Prompt
+
+**Option B: Visual Studio Build Tools**
+1. Download VS Build Tools from Microsoft
+2. Install with "C++ build tools" workload
+3. Open "Developer PowerShell for VS"
+
+**Option C: MSYS2 (Alternative)**
+```powershell
+# Install via Chocolatey
+choco install msys2
+
+# Or download from: https://www.msys2.org/
+# Then install gcc: pacman -S mingw-w64-x86_64-gcc
+```
+
 ### Run
 ```bash
+# macOS/Linux
 ./bma
+
+# Windows
+.\bma.exe
 ```
 
 ## Compatibility
