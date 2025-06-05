@@ -2,6 +2,7 @@ import Foundation
 import Vapor
 import NIOCore
 import NIOSSL
+import AVFoundation
 
 // Custom middleware for detailed request/response logging
 struct RequestLoggingMiddleware: AsyncMiddleware {
@@ -649,6 +650,44 @@ class ServerManager: ObservableObject {
             
             return response
         }
+        
+        // Album artwork endpoint (authenticated)
+        app.get("artwork", ":songId") { req async -> Response in
+            guard let songId = req.parameters.get("songId") else {
+                return Response(status: .badRequest)
+            }
+            
+            print("🎨 Artwork requested for song ID: \(songId)")
+            
+            let song = await MainActor.run { MusicLibrary.shared.getSong(by: songId) }
+            
+            guard let song = song else {
+                print("❌ Song not found for artwork request")
+                return Response(status: .notFound)
+            }
+            
+            print("🎨 Extracting artwork from: \(song.filename)")
+            
+            // Extract artwork from MP3 file
+            let artworkData = await MainActor.run { 
+                self.extractArtworkFromMP3(path: song.path) 
+            }
+            
+            guard let imageData = artworkData else {
+                print("❌ No artwork found in MP3 file")
+                return Response(status: .notFound)
+            }
+            
+            print("✅ Artwork extracted successfully (\(imageData.count) bytes)")
+            
+            let response = Response(status: .ok)
+            response.headers.contentType = .jpeg
+            response.headers.add(name: .contentLength, value: String(imageData.count))
+            response.headers.add(name: .cacheControl, value: "public, max-age=86400") // Cache for 1 day
+            response.body = .init(data: imageData)
+            
+            return response
+        }
     }
     
     func startServer() {
@@ -894,6 +933,76 @@ class ServerManager: ObservableObject {
         freeifaddrs(ifaddr)
         
         return address
+    }
+    
+    /**
+     * Extract album artwork from MP3 file using AVFoundation
+     */
+    private func extractArtworkFromMP3(path: String) -> Data? {
+        print("🎨 [ARTWORK] Starting extraction from: \(path)")
+        
+        let fileURL = URL(fileURLWithPath: path)
+        
+        // Create AVAsset from file
+        let asset = AVAsset(url: fileURL)
+        
+        // Get common metadata - this works for most files
+        let commonMetadata = asset.commonMetadata
+        
+        // Look for artwork in common metadata
+        for item in commonMetadata {
+            if let keyString = item.commonKey?.rawValue,
+               keyString == AVMetadataKey.commonKeyArtwork.rawValue {
+                
+                print("🎨 [ARTWORK] Found artwork metadata item")
+                
+                // Try to get the data value
+                if let dataValue = item.dataValue {
+                    print("✅ [ARTWORK] Successfully extracted artwork (\(dataValue.count) bytes)")
+                    return dataValue
+                }
+                
+                // Alternative: try to get value and convert
+                if let value = item.value {
+                    if let data = value as? Data {
+                        print("✅ [ARTWORK] Successfully extracted artwork from value (\(data.count) bytes)")
+                        return data
+                    }
+                    
+                    if let nsData = value as? NSData {
+                        let data = Data(nsData)
+                        print("✅ [ARTWORK] Successfully extracted artwork from NSData (\(data.count) bytes)")
+                        return data
+                    }
+                }
+            }
+        }
+        
+        // If common metadata doesn't work, try ID3 specific metadata
+        let formatDescriptions = asset.availableMetadataFormats
+        
+        for format in formatDescriptions {
+            let metadata = asset.metadata(forFormat: format)
+            
+            for item in metadata {
+                // Check for ID3 artwork (most common for MP3)
+                if format == .id3Metadata {
+                    if let keyString = item.key as? String,
+                       keyString == "APIC" || keyString.contains("artwork") || keyString.contains("picture") {
+                        
+                        print("🎨 [ARTWORK] Found ID3 artwork item: \(keyString)")
+                        
+                        if let dataValue = item.dataValue {
+                            print("✅ [ARTWORK] Successfully extracted ID3 artwork (\(dataValue.count) bytes)")
+                            return dataValue
+                        }
+                    }
+                }
+            }
+        }
+        
+        print("❌ [ARTWORK] No artwork found in file")
+        return nil
     }
     
     deinit {

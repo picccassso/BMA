@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.bma.android.app-mergeDebugResources-45:/values-v25/values-v25.xml",
+            "outputFile": "com.bma.android.app-mergeDebugResources-42:/values-v25/values-v25.xml",
             "map": [
                 {
                     "source": "/Users/alex/.gradle/caches/8.12/transforms/6792d915a9b9b807d955d2aeb9dcb931/transformed/appcompat-1.6.1/res/values-v25/values-v25.xml",

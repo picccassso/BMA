@@ -1,4 +1,4 @@
-#Tue Jun 03 19:50:57 BST 2025
+#Wed Jun 04 17:16:02 BST 2025
 base.0=/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.2=/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex
@@ -7,6 +7,7 @@ base.4=/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/
 base.5=/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
 base.6=/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/dex/debug/mergeProjectDexDebug/6/classes.dex
 base.7=/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes2.dex
+base.8=/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/dex/debug/mergeExtDexDebug/classes3.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=10/classes.dex
@@ -15,6 +16,7 @@ path.4=15/classes.dex
 path.5=4/classes.dex
 path.6=6/classes.dex
 path.7=classes2.dex
+path.8=classes3.dex
 renamed.0=classes.dex
 renamed.1=classes2.dex
 renamed.2=classes3.dex
@@ -23,3 +25,4 @@ renamed.4=classes5.dex
 renamed.5=classes6.dex
 renamed.6=classes7.dex
 renamed.7=classes8.dex
+renamed.8=classes9.dex

@@ -16,6 +16,7 @@ import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.bma.android.R;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -31,7 +32,16 @@ public final class ActivityMainBinding implements ViewBinding {
   public final TextView connectionStatus;
 
   @NonNull
+  public final Button disconnectButton;
+
+  @NonNull
   public final TextView emptyText;
+
+  @NonNull
+  public final TextView manualEntryHelpText;
+
+  @NonNull
+  public final TextView manualEntryText;
 
   @NonNull
   public final ProgressBar progressBar;
@@ -49,25 +59,35 @@ public final class ActivityMainBinding implements ViewBinding {
   public final TextInputEditText serverUrlInput;
 
   @NonNull
+  public final TextInputLayout serverUrlInputLayout;
+
+  @NonNull
   public final RecyclerView songsRecyclerView;
 
   @NonNull
   public final TextView statusText;
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull Button connectButton,
-      @NonNull TextView connectionStatus, @NonNull TextView emptyText,
-      @NonNull ProgressBar progressBar, @NonNull Button refreshButton, @NonNull Button scanQrButton,
+      @NonNull TextView connectionStatus, @NonNull Button disconnectButton,
+      @NonNull TextView emptyText, @NonNull TextView manualEntryHelpText,
+      @NonNull TextView manualEntryText, @NonNull ProgressBar progressBar,
+      @NonNull Button refreshButton, @NonNull Button scanQrButton,
       @NonNull LinearLayout serverLayout, @NonNull TextInputEditText serverUrlInput,
-      @NonNull RecyclerView songsRecyclerView, @NonNull TextView statusText) {
+      @NonNull TextInputLayout serverUrlInputLayout, @NonNull RecyclerView songsRecyclerView,
+      @NonNull TextView statusText) {
     this.rootView = rootView;
     this.connectButton = connectButton;
     this.connectionStatus = connectionStatus;
+    this.disconnectButton = disconnectButton;
     this.emptyText = emptyText;
+    this.manualEntryHelpText = manualEntryHelpText;
+    this.manualEntryText = manualEntryText;
     this.progressBar = progressBar;
     this.refreshButton = refreshButton;
     this.scanQrButton = scanQrButton;
     this.serverLayout = serverLayout;
     this.serverUrlInput = serverUrlInput;
+    this.serverUrlInputLayout = serverUrlInputLayout;
     this.songsRecyclerView = songsRecyclerView;
     this.statusText = statusText;
   }
@@ -111,9 +131,27 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.disconnectButton;
+      Button disconnectButton = ViewBindings.findChildViewById(rootView, id);
+      if (disconnectButton == null) {
+        break missingId;
+      }
+
       id = R.id.emptyText;
       TextView emptyText = ViewBindings.findChildViewById(rootView, id);
       if (emptyText == null) {
+        break missingId;
+      }
+
+      id = R.id.manualEntryHelpText;
+      TextView manualEntryHelpText = ViewBindings.findChildViewById(rootView, id);
+      if (manualEntryHelpText == null) {
+        break missingId;
+      }
+
+      id = R.id.manualEntryText;
+      TextView manualEntryText = ViewBindings.findChildViewById(rootView, id);
+      if (manualEntryText == null) {
         break missingId;
       }
 
@@ -147,6 +185,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.serverUrlInputLayout;
+      TextInputLayout serverUrlInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (serverUrlInputLayout == null) {
+        break missingId;
+      }
+
       id = R.id.songsRecyclerView;
       RecyclerView songsRecyclerView = ViewBindings.findChildViewById(rootView, id);
       if (songsRecyclerView == null) {
@@ -160,7 +204,8 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((ConstraintLayout) rootView, connectButton, connectionStatus,
-          emptyText, progressBar, refreshButton, scanQrButton, serverLayout, serverUrlInput,
+          disconnectButton, emptyText, manualEntryHelpText, manualEntryText, progressBar,
+          refreshButton, scanQrButton, serverLayout, serverUrlInput, serverUrlInputLayout,
           songsRecyclerView, statusText);
     }
     String missingId = rootView.getResources().getResourceName(id);

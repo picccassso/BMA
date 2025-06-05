@@ -6,17 +6,32 @@
     android:background="?android:attr/selectableItemBackground"
     android:padding="16dp">
 
-    <!-- Folder Icon -->
+    <!-- Album Artwork -->
     <ImageView
-        android:id="@+id/folderIcon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:id="@+id/albumArtwork"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:src="@drawable/ic_folder"
-        android:contentDescription="Album folder"
-        app:tint="#3F51B5"
+        android:contentDescription="Album artwork"
+        android:scaleType="centerCrop"
+        android:background="@drawable/artwork_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Folder Icon (overlay on artwork) -->
+    <ImageView
+        android:id="@+id/folderIcon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_folder"
+        android:contentDescription="Album folder"
+        android:background="@android:color/black"
+        android:alpha="0.8"
+        android:padding="2dp"
+        app:tint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/albumArtwork"
+        app:layout_constraintBottom_toBottomOf="@+id/albumArtwork" />
 
     <!-- Album Info -->
     <LinearLayout
@@ -26,7 +41,7 @@
         android:orientation="vertical"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintStart_toEndOf="@+id/folderIcon"
+        app:layout_constraintStart_toEndOf="@+id/albumArtwork"
         app:layout_constraintEnd_toStartOf="@+id/expandIcon"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">

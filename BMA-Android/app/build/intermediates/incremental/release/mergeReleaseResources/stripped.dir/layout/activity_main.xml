@@ -36,6 +36,8 @@
             android:textColor="#808080"
             android:layout_marginBottom="8dp" />
 
+        <!-- CONNECTION CONTROLS (Show when disconnected) -->
+        
         <!-- QR Code Scanner Button -->
         <Button
             android:id="@+id/scanQrButton"
@@ -46,6 +48,7 @@
             android:backgroundTint="@color/purple_500" />
 
         <TextView
+            android:id="@+id/manualEntryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Or manually enter server URL:"
@@ -53,6 +56,7 @@
             android:layout_marginBottom="8dp" />
 
         <TextView
+            android:id="@+id/manualEntryHelpText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="💡 Use HTTPS for secure connections outside local network"
@@ -61,6 +65,7 @@
             android:layout_marginBottom="8dp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/serverUrlInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="e.g. https://hostname.ts.net:8443"
@@ -76,12 +81,14 @@
                 android:textColor="@android:color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- CONNECTION/DISCONNECTION CONTROLS -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="8dp">
 
+            <!-- Connect Button (Show when disconnected) -->
             <Button
                 android:id="@+id/connectButton"
                 android:layout_width="0dp"
@@ -90,14 +97,27 @@
                 android:text="Connect"
                 android:layout_marginEnd="8dp" />
 
+            <!-- Disconnect Button (Show when connected) -->
+            <Button
+                android:id="@+id/disconnectButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🔌 Disconnect"
+                android:backgroundTint="#FF5722"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone" />
+
+            <!-- Refresh Button (Show based on connection state) -->
             <Button
                 android:id="@+id/refreshButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Refresh"
+                android:text="🔄 Refresh"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
         </LinearLayout>
 
+        <!-- Status Text -->
         <TextView
             android:id="@+id/statusText"
             android:layout_width="wrap_content"
@@ -108,6 +128,7 @@
 
     </LinearLayout>
 
+    <!-- Loading Progress Bar -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -118,18 +139,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/serverLayout" />
 
+    <!-- Empty State Text -->
     <TextView
         android:id="@+id/emptyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No songs found"
+        android:text="📁 No albums found - connect to see your music organized by albums"
         android:textColor="#808080"
         android:visibility="gone"
+        android:gravity="center"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/serverLayout" />
 
+    <!-- Album/Songs List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/songsRecyclerView"
         android:layout_width="0dp"

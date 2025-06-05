@@ -12,6 +12,10 @@ import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.source.DefaultMediaSourceFactory
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
 import kotlinx.coroutines.*
 
 class PlayerActivity : AppCompatActivity() {
@@ -20,9 +24,17 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var player: ExoPlayer
     private var updateJob: Job? = null
     
+    // Current song data
     private lateinit var songId: String
     private lateinit var songTitle: String
     private var songArtist: String = ""
+    
+    // Playlist data for prev/next functionality
+    private var albumName: String = ""
+    private var currentPosition: Int = 0
+    private var playlistSongIds: Array<String> = arrayOf()
+    private var playlistSongTitles: Array<String> = arrayOf()
+    private var playlistSongArtists: Array<String> = arrayOf()
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +46,15 @@ class PlayerActivity : AppCompatActivity() {
         songTitle = intent.getStringExtra("song_title") ?: "Unknown"
         songArtist = intent.getStringExtra("song_artist") ?: ""
         
+        // Get playlist context from intent
+        albumName = intent.getStringExtra("album_name") ?: ""
+        currentPosition = intent.getIntExtra("current_position", 0)
+        playlistSongIds = intent.getStringArrayExtra("playlist_song_ids") ?: arrayOf()
+        playlistSongTitles = intent.getStringArrayExtra("playlist_song_titles") ?: arrayOf()
+        playlistSongArtists = intent.getStringArrayExtra("playlist_song_artists") ?: arrayOf()
+        
+        println("🎵 [PlayerActivity] Loaded playlist: ${playlistSongIds.size} songs, current position: $currentPosition")
+        
         setupUI()
         setupPlayer()
     }
@@ -41,6 +62,12 @@ class PlayerActivity : AppCompatActivity() {
     private fun setupUI() {
         binding.titleText.text = songTitle
         binding.artistText.text = songArtist.ifEmpty { "Unknown Artist" }
+        
+        // Load album artwork
+        loadAlbumArtwork()
+        
+        // Update button states
+        updateNavigationButtons()
         
         binding.backButton.setOnClickListener {
             finish()
@@ -54,6 +81,16 @@ class PlayerActivity : AppCompatActivity() {
             }
         }
         
+        // Previous track button
+        binding.previousButton.setOnClickListener {
+            goToPreviousTrack()
+        }
+        
+        // Next track button
+        binding.nextButton.setOnClickListener {
+            goToNextTrack()
+        }
+        
         binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
@@ -64,6 +101,100 @@ class PlayerActivity : AppCompatActivity() {
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
+    }
+    
+    private fun updateNavigationButtons() {
+        // Enable/disable previous button
+        binding.previousButton.isEnabled = currentPosition > 0
+        binding.previousButton.alpha = if (currentPosition > 0) 1.0f else 0.5f
+        
+        // Enable/disable next button
+        val hasNext = currentPosition < playlistSongIds.size - 1
+        binding.nextButton.isEnabled = hasNext
+        binding.nextButton.alpha = if (hasNext) 1.0f else 0.5f
+        
+        println("🎵 [PlayerActivity] Navigation buttons updated - Position: $currentPosition/${playlistSongIds.size}")
+    }
+    
+    private fun goToPreviousTrack() {
+        if (currentPosition > 0) {
+            currentPosition--
+            switchToTrack(currentPosition)
+        }
+    }
+    
+    private fun goToNextTrack() {
+        if (currentPosition < playlistSongIds.size - 1) {
+            currentPosition++
+            switchToTrack(currentPosition)
+        }
+    }
+    
+    private fun switchToTrack(position: Int) {
+        if (position < 0 || position >= playlistSongIds.size) return
+        
+        println("🎵 [PlayerActivity] Switching to track $position: ${playlistSongTitles[position]}")
+        
+        // Update current song data
+        songId = playlistSongIds[position]
+        songTitle = playlistSongTitles[position]
+        songArtist = playlistSongArtists[position]
+        currentPosition = position
+        
+        // Update UI
+        binding.titleText.text = songTitle
+        binding.artistText.text = songArtist.ifEmpty { "Unknown Artist" }
+        
+        // Load new artwork
+        loadAlbumArtwork()
+        
+        // Update navigation buttons
+        updateNavigationButtons()
+        
+        // Load new song in player
+        loadSongInPlayer()
+    }
+    
+    private fun loadSongInPlayer() {
+        println("🎵 [PlayerActivity] Loading song in player: $songId")
+        
+        // Reset seek bar
+        binding.seekBar.progress = 0
+        binding.positionText.text = "0:00"
+        
+        // Load new media item
+        val streamUrl = "${ApiClient.getServerUrl()}stream/$songId"
+        val mediaItem = MediaItem.fromUri(streamUrl)
+        player.setMediaItem(mediaItem)
+        player.prepare()
+        player.play()
+    }
+    
+    private fun loadAlbumArtwork() {
+        val artworkUrl = "${ApiClient.getServerUrl()}/artwork/$songId"
+        val authHeader = ApiClient.getAuthHeader()
+        
+        println("🎨 [PlayerActivity] Loading artwork from: $artworkUrl")
+        
+        if (authHeader != null) {
+            val glideUrl = GlideUrl(
+                artworkUrl, 
+                LazyHeaders.Builder()
+                    .addHeader("Authorization", authHeader)
+                    .build()
+            )
+            
+            Glide.with(this)
+                .load(glideUrl)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(android.R.drawable.ic_media_play)
+                .error(android.R.drawable.ic_media_play)
+                .into(binding.albumArt)
+        } else {
+            println("❌ [PlayerActivity] No auth header available for artwork request")
+            // No auth, show default play icon
+            binding.albumArt.setImageResource(android.R.drawable.ic_media_play)
+        }
     }
     
     private fun setupPlayer() {
@@ -96,8 +227,15 @@ class PlayerActivity : AppCompatActivity() {
                         startProgressUpdate()
                     }
                     Player.STATE_ENDED -> {
-                        player.seekTo(0)
-                        player.pause()
+                        // Auto-advance to next track if available
+                        if (currentPosition < playlistSongIds.size - 1) {
+                            println("🎵 [PlayerActivity] Song ended, auto-advancing to next track")
+                            goToNextTrack()
+                        } else {
+                            println("🎵 [PlayerActivity] Last song in album finished")
+                            player.seekTo(0)
+                            player.pause()
+                        }
                     }
                 }
             }
@@ -114,12 +252,8 @@ class PlayerActivity : AppCompatActivity() {
             }
         })
         
-        // Load and play the song
-        val streamUrl = "${ApiClient.getServerUrl()}stream/$songId"
-        val mediaItem = MediaItem.fromUri(streamUrl)
-        player.setMediaItem(mediaItem)
-        player.prepare()
-        player.play()
+        // Load and play the initial song
+        loadSongInPlayer()
     }
     
     private fun startProgressUpdate() {

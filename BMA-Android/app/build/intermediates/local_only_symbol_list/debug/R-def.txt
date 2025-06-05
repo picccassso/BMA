@@ -7,6 +7,7 @@ color purple_700
 color teal_200
 color teal_700
 color white
+drawable artwork_background
 drawable circle_background
 drawable ic_chevron_down
 drawable ic_chevron_right
@@ -14,6 +15,7 @@ drawable ic_folder
 drawable ic_music_note
 drawable qr_scanner_overlay
 id albumArt
+id albumArtwork
 id albumInfo
 id albumNameText
 id artistText
@@ -29,9 +31,12 @@ id folderIcon
 id instructionText
 id manualEntryHelpText
 id manualEntryText
+id nextButton
 id playPauseButton
+id playerControlsLayout
 id positionText
 id previewView
+id previousButton
 id progressBar
 id refreshButton
 id scanQrButton

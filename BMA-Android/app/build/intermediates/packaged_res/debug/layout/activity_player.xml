@@ -23,10 +23,10 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginTop="32dp"
-        android:background="#2A2A2A"
-        android:padding="50dp"
+        android:background="@drawable/artwork_background"
+        android:scaleType="centerCrop"
         android:src="@android:drawable/ic_media_play"
-        android:tint="#808080"
+        android:contentDescription="Album artwork"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backButton" />
@@ -87,7 +87,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/playPauseButton"
+        app:layout_constraintBottom_toTopOf="@+id/playerControlsLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -112,16 +112,50 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/playPauseButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+    <!-- Player Controls -->
+    <LinearLayout
+        android:id="@+id/playerControlsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
-        android:background="@drawable/circle_background"
-        android:src="@android:drawable/ic_media_play"
-        android:tint="@android:color/white"
+        android:orientation="horizontal"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Previous Button -->
+        <ImageButton
+            android:id="@+id/previousButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="24dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_media_previous"
+            android:tint="@android:color/white"
+            android:contentDescription="Previous track" />
+
+        <!-- Play/Pause Button -->
+        <ImageButton
+            android:id="@+id/playPauseButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/circle_background"
+            android:src="@android:drawable/ic_media_play"
+            android:tint="@android:color/white"
+            android:contentDescription="Play/Pause" />
+
+        <!-- Next Button -->
+        <ImageButton
+            android:id="@+id/nextButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="24dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_media_next"
+            android:tint="@android:color/white"
+            android:contentDescription="Next track" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout> 

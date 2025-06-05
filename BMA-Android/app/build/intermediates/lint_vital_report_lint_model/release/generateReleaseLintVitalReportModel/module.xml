@@ -11,7 +11,7 @@
     compileTarget="android-34"
     neverShrinking="true">
   <lintOptions
-      baselineFile="lint-baseline.xml"
+      abortOnError="true"
       absolutePaths="true"
       checkReleaseBuilds="true"
       explainIssues="true"/>

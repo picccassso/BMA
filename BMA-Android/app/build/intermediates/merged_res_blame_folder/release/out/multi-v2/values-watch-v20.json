@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.bma.android.app-mergeReleaseResources-45:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.bma.android.app-mergeReleaseResources-42:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
                     "source": "/Users/alex/.gradle/caches/8.12/transforms/6792d915a9b9b807d955d2aeb9dcb931/transformed/appcompat-1.6.1/res/values-watch-v20/values-watch-v20.xml",

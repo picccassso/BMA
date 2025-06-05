@@ -1411,8 +1411,6 @@ color bright_foreground_material_dark
 color bright_foreground_material_light
 color button_material_dark
 color button_material_light
-color call_notification_answer_color
-color call_notification_decline_color
 color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
@@ -3076,6 +3074,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable artwork_background
 drawable avd_hide_password
 drawable avd_show_password
 drawable btn_checkbox_checked_mtrl
@@ -3193,12 +3192,6 @@ drawable exo_styled_controls_vr
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_arrow_back_black_24
-drawable ic_call_answer
-drawable ic_call_answer_low
-drawable ic_call_answer_video
-drawable ic_call_answer_video_low
-drawable ic_call_decline
-drawable ic_call_decline_low
 drawable ic_chevron_down
 drawable ic_chevron_right
 drawable ic_clear_black_24
@@ -3281,7 +3274,6 @@ drawable notification_bg_low_pressed
 drawable notification_bg_normal
 drawable notification_bg_normal_pressed
 drawable notification_icon_background
-drawable notification_oversize_large_icon_bg
 drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
@@ -3366,6 +3358,7 @@ id add
 id adjust_height
 id adjust_width
 id albumArt
+id albumArtwork
 id albumInfo
 id albumNameText
 id alertTitle
@@ -3479,7 +3472,6 @@ id easeOut
 id east
 id edge
 id edit_query
-id edit_text_id
 id elastic
 id embed
 id emptyText
@@ -3567,6 +3559,7 @@ id frost
 id fullscreen_header
 id ghost_view
 id ghost_view_holder
+id glide_custom_view_target_tag
 id gone
 id graph
 id graph_wrap
@@ -3574,7 +3567,6 @@ id group_divider
 id grouping
 id groups
 id header_title
-id hide_ime_id
 id hideable
 id home
 id homeAsUp
@@ -3684,6 +3676,7 @@ id navigation_header_container
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
+id nextButton
 id noScroll
 id noState
 id none
@@ -3727,12 +3720,14 @@ id percent
 id performance
 id pin
 id playPauseButton
+id playerControlsLayout
 id pooling_container_listener_holder_tag
 id position
 id positionText
 id postLayout
 id pressed
 id previewView
+id previousButton
 id progressBar
 id progress_circular
 id progress_horizontal
@@ -4045,8 +4040,6 @@ layout exo_styled_settings_list
 layout exo_styled_settings_list_item
 layout exo_styled_sub_settings_list_item
 layout exo_track_selection_dialog
-layout ime_base_split_test_activity
-layout ime_secondary_split_test_activity
 layout item_album_header
 layout item_song
 layout item_song_in_album
@@ -4159,13 +4152,6 @@ string bottomsheet_action_expand
 string bottomsheet_action_expand_halfway
 string bottomsheet_drag_handle_clicked
 string bottomsheet_drag_handle_content_description
-string call_notification_answer_action
-string call_notification_answer_video_action
-string call_notification_decline_action
-string call_notification_hang_up_action
-string call_notification_incoming_text
-string call_notification_ongoing_text
-string call_notification_screening_text
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern

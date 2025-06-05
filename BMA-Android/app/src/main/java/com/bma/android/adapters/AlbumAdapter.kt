@@ -4,10 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bma.android.R
+import com.bma.android.api.ApiClient
 import com.bma.android.databinding.ItemAlbumHeaderBinding
 import com.bma.android.databinding.ItemSongInAlbumBinding
 import com.bma.android.models.Album
 import com.bma.android.models.Song
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
 
 class AlbumAdapter(
     private val onSongClick: (Song) -> Unit
@@ -110,16 +115,50 @@ class AlbumAdapter(
             binding.artistText.text = album.artist ?: "Unknown Artist"
             binding.trackCountText.text = "• ${album.trackCount} tracks"
             
-            // Update folder icon based on expanded state
-            val folderIcon = if (isExpanded) R.drawable.ic_folder else R.drawable.ic_folder
-            binding.folderIcon.setImageResource(folderIcon)
-            
             // Update chevron icon based on expanded state
             val chevronIcon = if (isExpanded) R.drawable.ic_chevron_down else R.drawable.ic_chevron_right
             binding.expandIcon.setImageResource(chevronIcon)
             
+            // Load album artwork from the first song in the album
+            loadAlbumArtwork(album)
+            
             binding.root.setOnClickListener {
                 toggleAlbum(album.id)
+            }
+        }
+        
+        private fun loadAlbumArtwork(album: Album) {
+            if (album.songs.isNotEmpty()) {
+                val firstSong = album.songs.first()
+                val artworkUrl = "${ApiClient.getServerUrl()}/artwork/${firstSong.id}"
+                
+                println("🎨 [AlbumAdapter] Loading artwork for album '${album.name}' from: $artworkUrl")
+                
+                // Get the auth header for the request
+                val authHeader = ApiClient.getAuthHeader()
+                
+                if (authHeader != null) {
+                    val glideUrl = GlideUrl(
+                        artworkUrl, 
+                        LazyHeaders.Builder()
+                            .addHeader("Authorization", authHeader)
+                            .build()
+                    )
+                    
+                    Glide.with(binding.root.context)
+                        .load(glideUrl)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.ic_folder)
+                        .error(R.drawable.ic_folder)
+                        .into(binding.albumArtwork)
+                } else {
+                    println("❌ [AlbumAdapter] No auth header available for artwork request")
+                    // No auth, show default folder icon
+                    binding.albumArtwork.setImageResource(R.drawable.ic_folder)
+                }
+            } else {
+                // No songs in album, show default folder icon
+                binding.albumArtwork.setImageResource(R.drawable.ic_folder)
             }
         }
     }

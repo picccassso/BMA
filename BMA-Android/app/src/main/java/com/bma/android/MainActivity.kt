@@ -113,11 +113,33 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         albumAdapter = AlbumAdapter { song ->
             debugLog("Song selected: ${song.title} by ${song.artist}")
-            // Open player activity
+            
+            // Find the album containing this song and the song's position
+            val currentAlbum = albums.find { album -> album.songs.any { it.id == song.id } }
+            val songPosition = currentAlbum?.songs?.indexOfFirst { it.id == song.id } ?: 0
+            
+            debugLog("🎵 [Player Context] Album: ${currentAlbum?.name}, Position: $songPosition of ${currentAlbum?.songs?.size ?: 0}")
+            
+            // Open player activity with album context
             val intent = Intent(this, PlayerActivity::class.java).apply {
                 putExtra("song_id", song.id)
                 putExtra("song_title", song.title)
                 putExtra("song_artist", song.artist)
+                
+                // Pass album context for prev/next functionality
+                putExtra("album_name", currentAlbum?.name ?: "")
+                putExtra("current_position", songPosition)
+                
+                // Pass all song IDs and titles from the album
+                val songIds = currentAlbum?.songs?.map { it.id }?.toTypedArray() ?: arrayOf()
+                val songTitles = currentAlbum?.songs?.map { it.title }?.toTypedArray() ?: arrayOf()
+                val songArtists = currentAlbum?.songs?.map { it.artist }?.toTypedArray() ?: arrayOf()
+                
+                putExtra("playlist_song_ids", songIds)
+                putExtra("playlist_song_titles", songTitles)
+                putExtra("playlist_song_artists", songArtists)
+                
+                debugLog("🎵 [Player Context] Passing ${songIds.size} songs in playlist")
             }
             startActivity(intent)
         }
@@ -479,7 +501,7 @@ class MainActivity : AppCompatActivity() {
                     debugLog("🔍 [API RECEIVED]     Album: '${song.album}'")
                 }
                 
-                // NEW: Organize songs into albums
+                // NEW: Organize songs into albums with server's explicit sorting
                 organizeSongsIntoAlbums(songList)
                 debugLog("Albums organized: ${albums.size} albums created")
                 albumAdapter.updateAlbums(albums)
@@ -533,25 +555,26 @@ class MainActivity : AppCompatActivity() {
     }
     
     /**
-     * ENHANCED: Organize songs into albums with smart sorting
+     * ENHANCED: Organize songs into albums with server's explicit sorting
      */
     private fun organizeSongsIntoAlbums(songList: List<Song>) {
         debugLog("Organizing ${songList.size} songs into albums...")
         
-        // Sort songs with numbered track priority (like Mac app)
-        val sortedSongs = songList.sortedWith { song1, song2 ->
-            val album1 = song1.album.ifEmpty { "Unknown Album" }
-            val album2 = song2.album.ifEmpty { "Unknown Album" }
-            
-            if (album1 != album2) {
-                album1.compareTo(album2)
-            } else {
-                // Within same album, apply numbered track priority
-                compareTracksWithNumberPriority(song1.title, song2.title)
-            }
+        // Debug: Show sample of received sortOrder values
+        debugLog("🔍 [SORT DEBUG] Sample songs with sortOrder from server:")
+        songList.take(5).forEach { song ->
+            debugLog("🔍 [SORT DEBUG]   '${song.title}' - sortOrder: ${song.sortOrder}")
         }
         
-        debugLog("Songs sorted, grouping by album...")
+        // Use server's explicit sortOrder instead of client-side sorting
+        val sortedSongs = songList.sortedBy { it.sortOrder }
+        debugLog("Songs sorted by server's sortOrder (preserving proper track sequence)")
+        
+        // Debug: Show sample of sorted results
+        debugLog("🔍 [SORT DEBUG] Sample songs after sortOrder sorting:")
+        sortedSongs.take(5).forEach { song ->
+            debugLog("🔍 [SORT DEBUG]   '${song.title}' - sortOrder: ${song.sortOrder}")
+        }
         
         // Group by album
         val albumGroups = sortedSongs.groupBy { song ->
@@ -568,45 +591,13 @@ class MainActivity : AppCompatActivity() {
                 Album(
                     name = albumName,
                     artist = albumSongs.firstOrNull()?.artist?.takeIf { it.isNotEmpty() },
-                    songs = albumSongs
+                    songs = albumSongs // Keep songs in sortOrder sequence within album
                 )
             }.sortedBy { it.name }
         )
         
-        debugLog("Organized into ${albums.size} albums")
+        debugLog("Organized into ${albums.size} albums using server's track ordering")
         printAlbumDebugInfo()
-    }
-    
-    /**
-     * ENHANCED: Lexicographic sorting with numbered track priority (01, 02, 10)
-     * Same logic as Mac app
-     */
-    private fun compareTracksWithNumberPriority(title1: String, title2: String): Int {
-        val number1 = extractLeadingNumber(title1)
-        val number2 = extractLeadingNumber(title2)
-        
-        return when {
-            number1 != null && number2 != null -> {
-                // Both have numbers - compare lexicographically
-                val str1 = String.format("%02d", number1)
-                val str2 = String.format("%02d", number2)
-                when {
-                    str1 != str2 -> str1.compareTo(str2)
-                    else -> title1.compareTo(title2, ignoreCase = true)
-                }
-            }
-            number1 != null && number2 == null -> -1 // numbered comes first
-            number1 == null && number2 != null -> 1  // numbered comes first
-            else -> title1.compareTo(title2, ignoreCase = true) // normal alphabetical
-        }
-    }
-    
-    /**
-     * ENHANCED: Extract leading number from track title
-     */
-    private fun extractLeadingNumber(title: String): Int? {
-        val regex = Regex("^(\\d+)")
-        return regex.find(title)?.groupValues?.get(1)?.toIntOrNull()
     }
     
     /**

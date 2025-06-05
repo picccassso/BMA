@@ -1,7 +1,10 @@
-#Tue Jun 03 13:02:53 BST 2025
+#Tue Jun 03 20:11:17 BST 2025
 base.0=/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
 base.1=/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/dex/release/mergeDexRelease/classes2.dex
+base.2=/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/dex/release/mergeDexRelease/classes3.dex
 path.0=classes.dex
 path.1=classes2.dex
+path.2=classes3.dex
 renamed.0=classes.dex
 renamed.1=classes2.dex
+renamed.2=classes3.dex

@@ -1411,8 +1411,6 @@ color bright_foreground_material_dark
 color bright_foreground_material_light
 color button_material_dark
 color button_material_light
-color call_notification_answer_color
-color call_notification_decline_color
 color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
@@ -3076,6 +3074,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable artwork_background
 drawable avd_hide_password
 drawable avd_show_password
 drawable btn_checkbox_checked_mtrl
@@ -3193,14 +3192,11 @@ drawable exo_styled_controls_vr
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_arrow_back_black_24
-drawable ic_call_answer
-drawable ic_call_answer_low
-drawable ic_call_answer_video
-drawable ic_call_answer_video_low
-drawable ic_call_decline
-drawable ic_call_decline_low
+drawable ic_chevron_down
+drawable ic_chevron_right
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
+drawable ic_folder
 drawable ic_keyboard_black_24dp
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
@@ -3209,6 +3205,7 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_music_note
 drawable ic_search_black_24
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3277,7 +3274,6 @@ drawable notification_bg_low_pressed
 drawable notification_bg_normal
 drawable notification_bg_normal_pressed
 drawable notification_icon_background
-drawable notification_oversize_large_icon_bg
 drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
@@ -3362,6 +3358,9 @@ id add
 id adjust_height
 id adjust_width
 id albumArt
+id albumArtwork
+id albumInfo
+id albumNameText
 id alertTitle
 id aligned
 id all
@@ -3455,6 +3454,7 @@ id disableHome
 id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
+id disconnectButton
 id disjoint
 id dragAnticlockwise
 id dragClockwise
@@ -3472,7 +3472,6 @@ id easeOut
 id east
 id edge
 id edit_query
-id edit_text_id
 id elastic
 id embed
 id emptyText
@@ -3531,6 +3530,7 @@ id exo_text
 id exo_time
 id exo_track_selection_view
 id exo_vr
+id expandIcon
 id expand_activities_button
 id expanded_menu
 id fade
@@ -3552,12 +3552,14 @@ id fixed_height
 id fixed_width
 id flip
 id floating
+id folderIcon
 id forever
 id fragment_container_view_tag
 id frost
 id fullscreen_header
 id ghost_view
 id ghost_view_holder
+id glide_custom_view_target_tag
 id gone
 id graph
 id graph_wrap
@@ -3565,7 +3567,6 @@ id group_divider
 id grouping
 id groups
 id header_title
-id hide_ime_id
 id hideable
 id home
 id homeAsUp
@@ -3602,6 +3603,8 @@ id linear
 id listMode
 id list_item
 id m3_side_sheet
+id manualEntryHelpText
+id manualEntryText
 id marquee
 id masked
 id match_constraint
@@ -3765,6 +3768,7 @@ id selected
 id selection_type
 id serverLayout
 id serverUrlInput
+id serverUrlInputLayout
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -3849,6 +3853,8 @@ id toggle
 id top
 id topPanel
 id touch_outside
+id trackCountText
+id trackIcon
 id transitionToEnd
 id transitionToStart
 id transition_current_scene
@@ -4031,9 +4037,9 @@ layout exo_styled_settings_list
 layout exo_styled_settings_list_item
 layout exo_styled_sub_settings_list_item
 layout exo_track_selection_dialog
-layout ime_base_split_test_activity
-layout ime_secondary_split_test_activity
+layout item_album_header
 layout item_song
+layout item_song_in_album
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -4143,13 +4149,6 @@ string bottomsheet_action_expand
 string bottomsheet_action_expand_halfway
 string bottomsheet_drag_handle_clicked
 string bottomsheet_drag_handle_content_description
-string call_notification_answer_action
-string call_notification_answer_video_action
-string call_notification_decline_action
-string call_notification_hang_up_action
-string call_notification_incoming_text
-string call_notification_ongoing_text
-string call_notification_screening_text
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern

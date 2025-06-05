@@ -59,6 +59,10 @@
             android:name="com.bma.android.QRScannerActivity"
             android:screenOrientation="portrait" />
 
+        <!--
+        Service for holding metadata. Cannot be instantiated.
+        Metadata will be merged from other manifests.
+        -->
         <service
             android:name="androidx.camera.core.impl.MetadataHolderService"
             android:enabled="false"
