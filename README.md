@@ -14,3 +14,6 @@ Current Features:
 - **Album Organization** - Smart folder-based album detection and organization
 - **Cross-Platform GUI** - Native-looking interface on Windows, Linux, and macOS
 - **Android Compatible** - Works with the existing BMSA Android app
+
+
+An APK file has been provided, but the desktop app you will have to build yourself. 
