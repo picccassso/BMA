@@ -2,7 +2,7 @@ BMSA - Basic Music Streaming App (Yes, that's the name I am going with and I am 
 
 As the name suggests, this app has been made to easily turn your PC/Mac/Linux system into a server for your music library which you can then connect to using the Android app made for this.
 
-This desktop app was originally made in Swift but now has been recoded and rebuilt with Go+Fyne.
+The desktop app has been build in Go + Fyne and Android app has been built in Kotlin.
 
 Currently, it is in very early stages, however the desktop app is pretty much complete. The Android app will be made into a full fledged music player that will allow you to easily create playlist along using other features. 
 
