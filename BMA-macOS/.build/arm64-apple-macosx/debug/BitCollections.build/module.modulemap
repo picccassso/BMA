@@ -1,4 +1,0 @@
-module BitCollections {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/BitCollections.build/BitCollections-Swift.h"
-    requires objc
-}

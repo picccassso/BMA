@@ -1,4 +1,0 @@
-module NIOTestUtils {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOTestUtils.build/NIOTestUtils-Swift.h"
-    requires objc
-}

@@ -1,4 +1,0 @@
-module NIOHTTPResponsiveness {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHTTPResponsiveness.build/NIOHTTPResponsiveness-Swift.h"
-    requires objc
-}

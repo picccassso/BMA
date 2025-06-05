@@ -1,4 +1,0 @@
-module XCTVapor {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/XCTVapor.build/XCTVapor-Swift.h"
-    requires objc
-}

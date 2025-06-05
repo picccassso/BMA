@@ -1,4 +1,0 @@
-module Instrumentation {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Instrumentation.build/Instrumentation-Swift.h"
-    requires objc
-}

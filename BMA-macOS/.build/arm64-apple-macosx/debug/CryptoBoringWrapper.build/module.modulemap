@@ -1,4 +1,0 @@
-module CryptoBoringWrapper {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/CryptoBoringWrapper.build/CryptoBoringWrapper-Swift.h"
-    requires objc
-}

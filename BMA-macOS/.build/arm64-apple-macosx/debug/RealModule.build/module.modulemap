@@ -1,4 +1,0 @@
-module RealModule {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/RealModule.build/RealModule-Swift.h"
-    requires objc
-}

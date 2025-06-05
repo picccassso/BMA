@@ -1,4 +1,0 @@
-module RawStructuredFieldValues {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/RawStructuredFieldValues.build/RawStructuredFieldValues-Swift.h"
-    requires objc
-}

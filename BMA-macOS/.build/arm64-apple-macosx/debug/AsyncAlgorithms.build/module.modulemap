@@ -1,4 +1,0 @@
-module AsyncAlgorithms {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/AsyncAlgorithms.build/AsyncAlgorithms-Swift.h"
-    requires objc
-}

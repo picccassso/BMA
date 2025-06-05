@@ -1,4 +1,0 @@
-module ConsoleKitTerminal {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ConsoleKitTerminal.build/ConsoleKitTerminal-Swift.h"
-    requires objc
-}

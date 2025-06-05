@@ -1,4 +1,0 @@
-module NIOHPACK {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOHPACK.build/NIOHPACK-Swift.h"
-    requires objc
-}

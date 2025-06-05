@@ -1,4 +1,0 @@
-module Vapor {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/Vapor.build/Vapor-Swift.h"
-    requires objc
-}

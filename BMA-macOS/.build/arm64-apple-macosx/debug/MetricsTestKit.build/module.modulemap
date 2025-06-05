@@ -1,4 +1,0 @@
-module MetricsTestKit {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/MetricsTestKit.build/MetricsTestKit-Swift.h"
-    requires objc
-}

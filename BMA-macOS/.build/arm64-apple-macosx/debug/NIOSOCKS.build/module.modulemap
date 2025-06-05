@@ -1,4 +1,0 @@
-module NIOSOCKS {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/NIOSOCKS.build/NIOSOCKS-Swift.h"
-    requires objc
-}

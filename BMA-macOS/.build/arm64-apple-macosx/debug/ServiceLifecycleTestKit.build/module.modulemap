@@ -1,4 +1,0 @@
-module ServiceLifecycleTestKit {
-    header "/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-macOS/.build/arm64-apple-macosx/debug/ServiceLifecycleTestKit.build/ServiceLifecycleTestKit-Swift.h"
-    requires objc
-}
