@@ -1,4 +1,4 @@
-BMSA - Basic Music Streaming App (Yes, that's the name I am going with and I am a bit too lazy to change the folder names for it!).
+BMA - Basic Music App (Yes, that's the name I am going with and I am a bit too lazy to change the folder names for it!).
 
 As the name suggests, this app has been made to easily turn your PC/Mac/Linux system into a server for your music library which you can then connect to using the Android app made for this.
 
