@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.bma.android.R;
@@ -18,7 +18,7 @@ import java.lang.String;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final CoordinatorLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final BottomNavigationView bottomNavView;
@@ -26,16 +26,21 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final FrameLayout fragmentContainer;
 
-  private ActivityMainBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull BottomNavigationView bottomNavView, @NonNull FrameLayout fragmentContainer) {
+  @NonNull
+  public final MiniPlayerBinding miniPlayer;
+
+  private ActivityMainBinding(@NonNull ConstraintLayout rootView,
+      @NonNull BottomNavigationView bottomNavView, @NonNull FrameLayout fragmentContainer,
+      @NonNull MiniPlayerBinding miniPlayer) {
     this.rootView = rootView;
     this.bottomNavView = bottomNavView;
     this.fragmentContainer = fragmentContainer;
+    this.miniPlayer = miniPlayer;
   }
 
   @Override
   @NonNull
-  public CoordinatorLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -72,8 +77,15 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((CoordinatorLayout) rootView, bottomNavView,
-          fragmentContainer);
+      id = R.id.mini_player;
+      View miniPlayer = ViewBindings.findChildViewById(rootView, id);
+      if (miniPlayer == null) {
+        break missingId;
+      }
+      MiniPlayerBinding binding_miniPlayer = MiniPlayerBinding.bind(miniPlayer);
+
+      return new ActivityMainBinding((ConstraintLayout) rootView, bottomNavView, fragmentContainer,
+          binding_miniPlayer);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

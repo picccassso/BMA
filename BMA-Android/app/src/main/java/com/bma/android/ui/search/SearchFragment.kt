@@ -3,6 +3,7 @@ package com.bma.android.ui.search
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -12,24 +13,38 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bma.android.AlbumDetailActivity
+import com.bma.android.MusicService
 import com.bma.android.PlayerActivity
 import com.bma.android.R
-import com.bma.android.adapters.AlbumAdapter
 import com.bma.android.api.ApiClient
 import com.bma.android.databinding.FragmentSearchBinding
 import com.bma.android.databinding.ItemRecentSearchBinding
+import com.bma.android.databinding.ItemSongBinding
+import com.bma.android.databinding.ItemAlbumHeaderBinding
 import com.bma.android.models.Album
 import com.bma.android.models.Song
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
 import kotlinx.coroutines.launch
+
+// Sealed class for search result types
+sealed class SearchResult {
+    data class SongResult(val song: Song, val album: Album) : SearchResult()
+    data class AlbumResult(val album: Album) : SearchResult()
+}
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var searchResultsAdapter: AlbumAdapter
+    private lateinit var searchResultsAdapter: SearchResultsAdapter
     private lateinit var recentSearchesAdapter: RecentSearchesAdapter
     private var allAlbums = listOf<Album>()
+    private var allSongs = listOf<Song>()
     private var recentSearches = mutableListOf<String>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,26 +58,34 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun setupRecyclerViews() {
-        // For search results, we can reuse the AlbumAdapter
-        searchResultsAdapter = AlbumAdapter { song ->
-            val album = allAlbums.find { it.songs.contains(song) }
-            if (album != null) {
+        // For search results with mixed content (songs and albums)
+        searchResultsAdapter = SearchResultsAdapter(
+            onSongClick = { song, album ->
+                // Start music service and play the song
+                val serviceIntent = Intent(requireContext(), MusicService::class.java)
+                requireContext().startService(serviceIntent)
+                
+                // Open PlayerActivity
                 val intent = Intent(requireContext(), PlayerActivity::class.java).apply {
                     putExtra("song_id", song.id)
                     putExtra("song_title", song.title)
                     putExtra("song_artist", song.artist)
                     putExtra("album_name", album.name)
-                    val songIds = album.songs.map { it.id }.toTypedArray()
-                    val songTitles = album.songs.map { it.title }.toTypedArray()
-                    val songArtists = album.songs.map { it.artist }.toTypedArray()
-                    putExtra("playlist_song_ids", songIds)
-                    putExtra("playlist_song_titles", songTitles)
-                    putExtra("playlist_song_artists", songArtists)
-                    putExtra("current_position", album.songs.indexOf(song))
+                    // For individual song search results, create a single-song playlist
+                    putExtra("playlist_song_ids", arrayOf(song.id))
+                    putExtra("playlist_song_titles", arrayOf(song.title))
+                    putExtra("playlist_song_artists", arrayOf(song.artist))
+                    putExtra("current_position", 0)
+                }
+                startActivity(intent)
+            },
+            onAlbumClick = { album ->
+                val intent = Intent(requireContext(), AlbumDetailActivity::class.java).apply {
+                    putExtra("album", album)
                 }
                 startActivity(intent)
             }
-        }
+        )
         binding.searchResultsRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = searchResultsAdapter
@@ -119,6 +142,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             try {
                 val authHeader = ApiClient.getAuthHeader() ?: return@launch
                 val songList = ApiClient.api.getSongs(authHeader)
+                allSongs = songList
                 allAlbums = organizeSongsIntoAlbums(songList)
             } catch (e: Exception) {
                 // Errors will be handled on the Library/Settings screen, silently fail here
@@ -129,24 +153,27 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private fun performSearch(query: String) {
         showSearchResults()
         val lowerCaseQuery = query.lowercase()
+        val searchResults = mutableListOf<SearchResult>()
 
-        val filteredAlbums = allAlbums.mapNotNull { album ->
-            val matchingSongs = album.songs.filter { song ->
-                song.title.lowercase().contains(lowerCaseQuery) ||
-                song.artist.lowercase().contains(lowerCaseQuery)
-            }
-            if (matchingSongs.isNotEmpty() || album.name.lowercase().contains(lowerCaseQuery)) {
-                // Return a new album instance with only matching songs, or all songs if album name matches
-                 if (album.name.lowercase().contains(lowerCaseQuery)) {
-                    album
-                } else {
-                    album.copy(songs = matchingSongs)
+        // Find individual songs that match the query
+        allSongs.forEach { song ->
+            if (song.title.lowercase().contains(lowerCaseQuery) || 
+                song.artist.lowercase().contains(lowerCaseQuery)) {
+                val album = allAlbums.find { it.songs.contains(song) }
+                if (album != null) {
+                    searchResults.add(SearchResult.SongResult(song, album))
                 }
-            } else {
-                null
             }
         }
-        searchResultsAdapter.updateAlbums(filteredAlbums)
+
+        // Find albums that match the query by name
+        allAlbums.forEach { album ->
+            if (album.name.lowercase().contains(lowerCaseQuery)) {
+                searchResults.add(SearchResult.AlbumResult(album))
+            }
+        }
+
+        searchResultsAdapter.updateResults(searchResults)
     }
     
     // --- Recent Searches Logic ---
@@ -200,6 +227,153 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+}
+
+
+// Adapter for mixed search results (songs and albums)
+class SearchResultsAdapter(
+    private val onSongClick: (Song, Album) -> Unit,
+    private val onAlbumClick: (Album) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    companion object {
+        private const val VIEW_TYPE_SONG = 0
+        private const val VIEW_TYPE_ALBUM = 1
+    }
+
+    private var searchResults = listOf<SearchResult>()
+
+    fun updateResults(newResults: List<SearchResult>) {
+        searchResults = newResults
+        notifyDataSetChanged()
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return when (searchResults[position]) {
+            is SearchResult.SongResult -> VIEW_TYPE_SONG
+            is SearchResult.AlbumResult -> VIEW_TYPE_ALBUM
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            VIEW_TYPE_SONG -> {
+                val binding = ItemSongBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+                SongViewHolder(binding)
+            }
+            VIEW_TYPE_ALBUM -> {
+                val binding = ItemAlbumHeaderBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+                AlbumViewHolder(binding)
+            }
+            else -> throw IllegalArgumentException("Unknown view type: $viewType")
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (val result = searchResults[position]) {
+            is SearchResult.SongResult -> {
+                (holder as SongViewHolder).bind(result.song, result.album)
+            }
+            is SearchResult.AlbumResult -> {
+                (holder as AlbumViewHolder).bind(result.album)
+            }
+        }
+    }
+
+    override fun getItemCount() = searchResults.size
+
+    inner class SongViewHolder(
+        private val binding: ItemSongBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(song: Song, album: Album) {
+            binding.titleText.text = song.title
+            binding.artistText.text = song.artist.ifEmpty { "Unknown Artist" }
+            
+            // Load album artwork for the song
+            loadAlbumArtwork(song)
+            
+            binding.root.setOnClickListener {
+                onSongClick(song, album)
+            }
+        }
+        
+        private fun loadAlbumArtwork(song: Song) {
+            val artworkUrl = "${ApiClient.getServerUrl()}/artwork/${song.id}"
+            val authHeader = ApiClient.getAuthHeader()
+            
+            if (authHeader != null) {
+                val glideUrl = GlideUrl(
+                    artworkUrl, 
+                    LazyHeaders.Builder()
+                        .addHeader("Authorization", authHeader)
+                        .build()
+                )
+                
+                Glide.with(binding.root.context)
+                    .load(glideUrl)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.drawable.ic_music_note)
+                    .error(R.drawable.ic_music_note)
+                    .into(binding.albumArtwork)
+            } else {
+                binding.albumArtwork.setImageResource(R.drawable.ic_music_note)
+            }
+        }
+    }
+
+    inner class AlbumViewHolder(
+        private val binding: ItemAlbumHeaderBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(album: Album) {
+            binding.albumNameText.text = album.name
+            binding.artistText.text = album.artist ?: "Unknown Artist"
+            binding.trackCountText.text = "• ${album.trackCount} tracks"
+            
+            // Show right chevron to indicate navigation
+            binding.expandIcon.setImageResource(R.drawable.ic_chevron_right)
+            
+            // Load album artwork
+            loadAlbumArtwork(album)
+            
+            binding.root.setOnClickListener {
+                onAlbumClick(album)
+            }
+        }
+        
+        private fun loadAlbumArtwork(album: Album) {
+            if (album.songs.isNotEmpty()) {
+                val firstSong = album.songs.first()
+                val artworkUrl = "${ApiClient.getServerUrl()}/artwork/${firstSong.id}"
+                val authHeader = ApiClient.getAuthHeader()
+                
+                if (authHeader != null) {
+                    val glideUrl = GlideUrl(
+                        artworkUrl, 
+                        LazyHeaders.Builder()
+                            .addHeader("Authorization", authHeader)
+                            .build()
+                    )
+                    
+                    Glide.with(binding.root.context)
+                        .load(glideUrl)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.ic_folder)
+                        .error(R.drawable.ic_folder)
+                        .into(binding.albumArtwork)
+                } else {
+                    binding.albumArtwork.setImageResource(R.drawable.ic_folder)
+                }
+            } else {
+                binding.albumArtwork.setImageResource(R.drawable.ic_folder)
+            }
+        }
     }
 }
 

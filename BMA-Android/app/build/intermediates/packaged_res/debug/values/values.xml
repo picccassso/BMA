@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#121212</color>
-    <color name="card_background">#2D2D2D</color>
+    <color name="background">#000000</color>
+    <color name="card_background">#1A1A1A</color>
     <color name="divider">#1FFFFFFF</color>
-    <color name="error">#CF6679</color>
-    <color name="primary">#BB86FC</color>
-    <color name="primary_variant">#3700B3</color>
+    <color name="error">#FFFFFF</color>
+    <color name="primary">#FFFFFF</color>
+    <color name="primary_variant">#CCCCCC</color>
     <color name="ripple">#33FFFFFF</color>
-    <color name="secondary">#03DAC6</color>
-    <color name="surface">#1E1E1E</color>
+    <color name="secondary">#CCCCCC</color>
+    <color name="surface">#1A1A1A</color>
     <color name="text_disabled">#66FFFFFF</color>
     <color name="text_primary">#FFFFFF</color>
     <color name="text_secondary">#B3FFFFFF</color>
@@ -36,7 +36,8 @@
         <item name="materialButtonStyle">@style/Widget.BMA.Button</item>
     </style>
     <style name="Widget.BMA.Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">@color/background</item>
+        <item name="backgroundTint">@color/text_primary</item>
         <item name="cornerRadius">8dp</item>
         <item name="android:paddingStart">24dp</item>
         <item name="android:paddingEnd">24dp</item>

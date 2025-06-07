@@ -1407,6 +1407,7 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color bottom_nav_color
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -3217,12 +3218,18 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_music_note
+drawable ic_pause
+drawable ic_pause_circle
+drawable ic_play_arrow
+drawable ic_play_circle
 drawable ic_repeat_all
 drawable ic_repeat_off
 drawable ic_repeat_one
 drawable ic_search_black_24
 drawable ic_shuffle_off
 drawable ic_shuffle_on
+drawable ic_skip_next
+drawable ic_skip_previous
 drawable ic_warning
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3351,6 +3358,7 @@ id accessibility_custom_action_7
 id accessibility_custom_action_8
 id accessibility_custom_action_9
 id action0
+id actionButtonsLayout
 id actionDown
 id actionDownUp
 id actionUp
@@ -3379,6 +3387,7 @@ id adjust_width
 id albumArt
 id albumArtwork
 id albumNameText
+id albumTitle
 id albums_recycler_view
 id alertTitle
 id aligned
@@ -3390,6 +3399,7 @@ id animateToStart
 id antiClockwise
 id anticipate
 id arc
+id artistName
 id artistText
 id asConfigured
 id async
@@ -3668,6 +3678,14 @@ id media_controller_compat_view_tag
 id message
 id middle
 id mini
+id miniPlayerArtist
+id miniPlayerArtwork
+id miniPlayerNext
+id miniPlayerPlayPause
+id miniPlayerPrevious
+id miniPlayerProgress
+id miniPlayerTitle
+id mini_player
 id month_grid
 id month_navigation_bar
 id month_navigation_fragment_toggle
@@ -3759,6 +3777,7 @@ id peekHeight
 id percent
 id performance
 id pin
+id playButton
 id playPauseButton
 id playerControlsLayout
 id pooling_container_listener_holder_tag
@@ -3836,6 +3855,7 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id songsRecyclerView
 id south
 id spacer
 id special_effects_controller_view_tag
@@ -3909,6 +3929,7 @@ id toggle
 id top
 id topPanel
 id touch_outside
+id trackCount
 id trackCountText
 id trackIcon
 id transitionToEnd
@@ -4065,6 +4086,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_album_detail
 layout activity_main
 layout activity_player
 layout activity_qr_scanner
@@ -4126,6 +4148,7 @@ layout material_time_input
 layout material_timepicker
 layout material_timepicker_dialog
 layout material_timepicker_textinput_display
+layout mini_player
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1E1E1E"
+    android:background="@color/background"
     tools:context=".PlayerActivity">
 
     <ImageButton
@@ -150,8 +150,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:background="@drawable/circle_background"
-            android:src="@android:drawable/ic_media_play"
-            android:tint="@color/primary"
+            android:src="@drawable/ic_play_circle"
             android:contentDescription="Play/Pause" />
 
         <!-- Next Button -->

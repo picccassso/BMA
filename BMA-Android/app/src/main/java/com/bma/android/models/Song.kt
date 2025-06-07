@@ -1,5 +1,7 @@
 package com.bma.android.models
 
+import java.io.Serializable
+
 data class Song(
     val id: String,
     val filename: String,
@@ -10,4 +12,4 @@ data class Song(
     val parentDirectory: String = "",
     val hasArtwork: Boolean = false,
     val sortOrder: Int = 0  // Server's explicit ordering for proper track sequence
-) 
+) : Serializable 

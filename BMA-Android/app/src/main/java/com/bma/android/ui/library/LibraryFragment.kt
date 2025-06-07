@@ -8,6 +8,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bma.android.AlbumDetailActivity
+import com.bma.android.MusicService
 import com.bma.android.PlayerActivity
 import com.bma.android.R
 import com.bma.android.adapters.AlbumAdapter
@@ -34,25 +36,37 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
     }
 
     private fun setupRecyclerView() {
-        albumAdapter = AlbumAdapter { song ->
-            val album = albums.find { it.songs.contains(song) }
-            if (album != null) {
-                val intent = Intent(requireContext(), PlayerActivity::class.java).apply {
-                    putExtra("song_id", song.id)
-                    putExtra("song_title", song.title)
-                    putExtra("song_artist", song.artist)
-                    putExtra("album_name", album.name)
-                    val songIds = album.songs.map { it.id }.toTypedArray()
-                    val songTitles = album.songs.map { it.title }.toTypedArray()
-                    val songArtists = album.songs.map { it.artist }.toTypedArray()
-                    putExtra("playlist_song_ids", songIds)
-                    putExtra("playlist_song_titles", songTitles)
-                    putExtra("playlist_song_artists", songArtists)
-                    putExtra("current_position", album.songs.indexOf(song))
+        albumAdapter = AlbumAdapter(
+            onSongClick = { song ->
+                val album = albums.find { it.songs.contains(song) }
+                if (album != null) {
+                    // Start music service
+                    val serviceIntent = Intent(requireContext(), MusicService::class.java)
+                    requireContext().startService(serviceIntent)
+                    
+                    val intent = Intent(requireContext(), PlayerActivity::class.java).apply {
+                        putExtra("song_id", song.id)
+                        putExtra("song_title", song.title)
+                        putExtra("song_artist", song.artist)
+                        putExtra("album_name", album.name)
+                        val songIds = album.songs.map { it.id }.toTypedArray()
+                        val songTitles = album.songs.map { it.title }.toTypedArray()
+                        val songArtists = album.songs.map { it.artist }.toTypedArray()
+                        putExtra("playlist_song_ids", songIds)
+                        putExtra("playlist_song_titles", songTitles)
+                        putExtra("playlist_song_artists", songArtists)
+                        putExtra("current_position", album.songs.indexOf(song))
+                    }
+                    startActivity(intent)
+                }
+            },
+            onAlbumClick = { album ->
+                val intent = Intent(requireContext(), AlbumDetailActivity::class.java).apply {
+                    putExtra("album", album)
                 }
                 startActivity(intent)
             }
-        }
+        )
 
         binding.albumsRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

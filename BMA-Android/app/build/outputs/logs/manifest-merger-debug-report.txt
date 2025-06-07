@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:2:1-61:12
-INJECTED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:2:1-61:12
-INJECTED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:2:1-61:12
-INJECTED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:2:1-61:12
+ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:2:1-70:12
+INJECTED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:2:1-70:12
+INJECTED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:2:1-70:12
+INJECTED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:2:1-70:12
 MERGED from [androidx.databinding:viewbinding:8.2.0] /Users/alex/.gradle/caches/transforms-3/34fc6339b57df9991636faf4351fda02/transformed/jetified-viewbinding-8.2.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.11.0] /Users/alex/.gradle/caches/transforms-3/cbed64e75e489e8d84e9746d96547138/transformed/material-1.11.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/alex/.gradle/caches/transforms-3/5a3d8f1450f9a1a04e1bdd38bbf63c11/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
@@ -142,8 +142,8 @@ ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/
 	android:name
 		ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:24:19-57
 application
-ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:26:5-59:19
-INJECTED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:26:5-59:19
+ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:26:5-68:19
+INJECTED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:26:5-68:19
 MERGED from [com.google.android.material:material:1.11.0] /Users/alex/.gradle/caches/transforms-3/cbed64e75e489e8d84e9746d96547138/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] /Users/alex/.gradle/caches/transforms-3/cbed64e75e489e8d84e9746d96547138/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/alex/.gradle/caches/transforms-3/5a3d8f1450f9a1a04e1bdd38bbf63c11/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -234,12 +234,26 @@ ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/
 		ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:53:13-37
 	android:name
 		ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:52:13-43
-activity#com.bma.android.QRScannerActivity
-ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:55:9-57:52
-	android:screenOrientation
-		ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:57:13-49
+activity#com.bma.android.AlbumDetailActivity
+ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:55:9-57:40
+	android:exported
+		ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:57:13-37
 	android:name
-		ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:56:13-46
+		ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:56:13-48
+activity#com.bma.android.QRScannerActivity
+ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:59:9-61:52
+	android:screenOrientation
+		ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:61:13-49
+	android:name
+		ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:60:13-46
+service#com.bma.android.MusicService
+ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:63:9-66:61
+	android:exported
+		ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:65:13-37
+	android:foregroundServiceType
+		ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:66:13-58
+	android:name
+		ADDED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:64:13-41
 uses-sdk
 INJECTED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml

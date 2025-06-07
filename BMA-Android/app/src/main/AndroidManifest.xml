@@ -53,8 +53,17 @@
             android:exported="false" />
             
         <activity
+            android:name=".AlbumDetailActivity"
+            android:exported="false" />
+            
+        <activity
             android:name=".QRScannerActivity"
             android:screenOrientation="portrait" />
+            
+        <service
+            android:name=".MusicService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
             
     </application>
 

@@ -1,49 +1,59 @@
 package com.bma.android
 
+import android.content.*
 import android.os.Bundle
 import android.os.Handler
+import android.os.IBinder
 import android.os.Looper
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bma.android.api.ApiClient
 import com.bma.android.databinding.ActivityPlayerBinding
+import com.bma.android.models.Song
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.model.LazyHeaders
-import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.source.DefaultMediaSourceFactory
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 
-class PlayerActivity : AppCompatActivity() {
+class PlayerActivity : AppCompatActivity(), MusicService.MusicServiceListener {
 
     private lateinit var binding: ActivityPlayerBinding
-    private var exoPlayer: ExoPlayer? = null
     
-    // Playlist and state management
-    private var originalPlaylist: List<Song> = emptyList()
-    private var currentPlaylist: List<Song> = emptyList()
-    private var currentSongIndex: Int = 0
+    // Music service
+    private var musicService: MusicService? = null
+    private var serviceBound = false
+    
+    // Service connection
+    private val serviceConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            val binder = service as MusicService.MusicBinder
+            musicService = binder.getService()
+            serviceBound = true
+            musicService?.addListener(this@PlayerActivity)
+            
+            // Check if we need to load a new song from intent
+            handlePlaybackIntent()
+            
+            // Update UI with current service state
+            updateUI()
+        }
 
-    // Shuffle and Repeat states
-    private var isShuffleEnabled = false
-    private sealed class RepeatState {
-        object OFF : RepeatState()
-        object ALL : RepeatState()
-        object ONE : RepeatState()
+        override fun onServiceDisconnected(name: ComponentName?) {
+            serviceBound = false
+            musicService = null
+        }
     }
-    private var currentRepeatState: RepeatState = RepeatState.OFF
 
     private val handler = Handler(Looper.getMainLooper())
     private val updateSeekBarAction = object : Runnable {
         override fun run() {
-            exoPlayer?.let {
-                binding.seekBar.progress = it.currentPosition.toInt()
-                binding.positionText.text = formatDuration(it.currentPosition)
-                handler.postDelayed(this, 1000)
+            musicService?.let { service ->
+                if (service.isPlaying()) {
+                    binding.seekBar.progress = service.getCurrentPosition()
+                    binding.positionText.text = formatDuration(service.getCurrentPosition().toLong())
+                    handler.postDelayed(this, 1000)
+                }
             }
         }
     }
@@ -53,79 +63,56 @@ class PlayerActivity : AppCompatActivity() {
         binding = ActivityPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupExoPlayer()
-        extractPlaylistFromIntent()
         setupUI()
-
-        playSongAtIndex(currentSongIndex)
+        bindMusicService()
     }
     
-    private fun setupExoPlayer() {
-        val authHeader = ApiClient.getAuthHeader()
-        if (authHeader == null) {
-            Toast.makeText(this, "Authentication error", Toast.LENGTH_SHORT).show()
-            finish()
-            return
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacksAndMessages(null)
+        if (serviceBound) {
+            musicService?.removeListener(this@PlayerActivity)
+            unbindService(serviceConnection)
+            serviceBound = false
         }
+    }
+    
+    private fun bindMusicService() {
+        val intent = Intent(this, MusicService::class.java)
+        startService(intent) // Ensure service is started
+        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
+    }
+    
+    private fun handlePlaybackIntent() {
+        // Check if we have new playback data from intent
+        val songIds = intent.getStringArrayExtra("playlist_song_ids")
+        val songTitles = intent.getStringArrayExtra("playlist_song_titles")
+        val songArtists = intent.getStringArrayExtra("playlist_song_artists")
+        val currentSongId = intent.getStringExtra("song_id")
+        val position = intent.getIntExtra("current_position", 0)
 
-        val httpDataSourceFactory = DefaultHttpDataSource.Factory()
-            .setDefaultRequestProperties(mapOf("Authorization" to authHeader))
-
-        val mediaSourceFactory = DefaultMediaSourceFactory(this)
-            .setDataSourceFactory(httpDataSourceFactory)
-
-        exoPlayer = ExoPlayer.Builder(this)
-            .setMediaSourceFactory(mediaSourceFactory)
-            .build()
-            
-        exoPlayer?.addListener(object : Player.Listener {
-            override fun onIsPlayingChanged(isPlaying: Boolean) {
-                binding.playPauseButton.setImageResource(
-                    if (isPlaying) android.R.drawable.ic_media_pause else android.R.drawable.ic_media_play
+        if (songIds != null && songTitles != null && songArtists != null && currentSongId != null) {
+            // We have new playlist data, load it into the service
+            val playlist = songIds.mapIndexed { index, id ->
+                Song(
+                    id = id,
+                    filename = "",
+                    title = songTitles.getOrElse(index) { "" },
+                    artist = songArtists.getOrElse(index) { "" },
+                    album = intent.getStringExtra("album_name") ?: "",
+                    trackNumber = 0,
+                    parentDirectory = "",
+                    hasArtwork = false,
+                    sortOrder = index
                 )
             }
-
-            override fun onPlaybackStateChanged(playbackState: Int) {
-                if (playbackState == Player.STATE_ENDED) {
-                    // onPlaybackStateChanged is called when a song ends, but before onMediaItemTransition.
-                    // The player's repeat mode will handle repeating one or all.
-                    // If repeat is off, we need to manually move to the next song.
-                    if (exoPlayer?.repeatMode == Player.REPEAT_MODE_OFF) {
-                        playNextSong()
-                    }
-                }
+            
+            val currentSong = playlist.find { it.id == currentSongId }
+            if (currentSong != null) {
+                musicService?.loadAndPlay(currentSong, playlist, position)
             }
-
-            override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
-                // This is called when the player automatically moves to the next item
-                mediaItem?.mediaId?.let { songId ->
-                    val newIndex = currentPlaylist.indexOfFirst { it.id == songId }
-                    if (newIndex != -1) {
-                        currentSongIndex = newIndex
-                        updateUIForNewSong()
-                    }
-                }
-            }
-        })
-    }
-    
-    private fun extractPlaylistFromIntent() {
-        val songIds = intent.getStringArrayExtra("playlist_song_ids") ?: emptyArray()
-        val songTitles = intent.getStringArrayExtra("playlist_song_titles") ?: emptyArray()
-        val songArtists = intent.getStringArrayExtra("playlist_song_artists") ?: emptyArray()
-        val currentSongId = intent.getStringExtra("song_id")
-
-        if (songIds.isEmpty() || songTitles.isEmpty() || songArtists.isEmpty() || currentSongId == null) {
-            Toast.makeText(this, "Playlist data missing", Toast.LENGTH_SHORT).show()
-            finish()
-            return
         }
-        
-        originalPlaylist = songIds.mapIndexed { index, id ->
-            Song(id, songTitles.getOrNull(index) ?: "", songArtists.getOrNull(index) ?: "", "", 0)
-        }
-        currentPlaylist = originalPlaylist
-        currentSongIndex = originalPlaylist.indexOfFirst { it.id == currentSongId }.coerceAtLeast(0)
+        // If no new intent data, just sync with current service state
     }
 
     private fun setupUI() {
@@ -139,7 +126,7 @@ class PlayerActivity : AppCompatActivity() {
         binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
-                    exoPlayer?.seekTo(progress.toLong())
+                    musicService?.seekTo(progress)
                 }
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -147,160 +134,146 @@ class PlayerActivity : AppCompatActivity() {
         })
     }
 
-    private fun playSongAtIndex(index: Int) {
-        if (index < 0 || index >= currentPlaylist.size) return
-        
-        currentSongIndex = index
-        val song = currentPlaylist[currentSongIndex]
-        val songUrl = "${ApiClient.getServerUrl()}/song/${song.id}"
-        val mediaItem = MediaItem.Builder()
-            .setUri(songUrl)
-            .setMediaId(song.id)
-            .build()
+    private fun updateUI() {
+        musicService?.let { service ->
+            val currentSong = service.getCurrentSong()
+            val isPlaying = service.isPlaying()
+            val duration = service.getDuration()
+            val position = service.getCurrentPosition()
             
-        exoPlayer?.setMediaItem(mediaItem)
-        exoPlayer?.prepare()
-        exoPlayer?.play()
-
-        updateUIForNewSong()
-    }
-
-    private fun updateUIForNewSong() {
-        val song = currentPlaylist[currentSongIndex]
-        binding.titleText.text = song.title.replace(Regex("^\\d+\\.?\\s*"), "")
-        binding.artistText.text = song.artist
-
-        val artworkUrl = "${ApiClient.getServerUrl()}/artwork/${song.id}"
-        val glideUrl = GlideUrl(artworkUrl, LazyHeaders.Builder().addHeader("Authorization", ApiClient.getAuthHeader()!!).build())
-
-        Glide.with(this)
-            .load(glideUrl)
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .placeholder(R.drawable.ic_folder)
-            .into(binding.albumArt)
-
-        handler.post(object : Runnable {
-            override fun run() {
-                if (exoPlayer?.duration ?: -1 > 0) {
-                    binding.durationText.text = formatDuration(exoPlayer!!.duration)
-                    binding.seekBar.max = exoPlayer!!.duration.toInt()
+            if (currentSong != null) {
+                // Update song info
+                binding.titleText.text = currentSong.title.replace(Regex("^\\d+\\.?\\s*"), "")
+                binding.artistText.text = currentSong.artist.ifEmpty { "Unknown Artist" }
+                
+                // Update play/pause button
+                binding.playPauseButton.setImageResource(
+                    if (isPlaying) R.drawable.ic_pause_circle else R.drawable.ic_play_circle
+                )
+                
+                // Update duration and seek bar
+                if (duration > 0) {
+                    binding.durationText.text = formatDuration(duration.toLong())
+                    binding.seekBar.max = duration
+                    binding.seekBar.progress = position
+                }
+                
+                binding.positionText.text = formatDuration(position.toLong())
+                
+                // Load album artwork
+                loadAlbumArtwork(currentSong)
+                
+                // Update shuffle and repeat button states
+                updateShuffleButtonUI(service.isShuffleEnabled())
+                updateRepeatButtonUI(service.getRepeatMode())
+                
+                // Start/stop seekbar updates
+                if (isPlaying) {
                     handler.post(updateSeekBarAction)
                 } else {
-                    // Wait until duration is available
-                    handler.postDelayed(this, 100)
+                    handler.removeCallbacks(updateSeekBarAction)
                 }
             }
-        })
+        }
+    }
+    
+    private fun loadAlbumArtwork(song: Song) {
+        val artworkUrl = "${ApiClient.getServerUrl()}/artwork/${song.id}"
+        val authHeader = ApiClient.getAuthHeader()
+        
+        if (authHeader != null) {
+            val glideUrl = GlideUrl(
+                artworkUrl, 
+                LazyHeaders.Builder()
+                    .addHeader("Authorization", authHeader)
+                    .build()
+            )
+            
+            Glide.with(this)
+                .load(glideUrl)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.ic_folder)
+                .error(R.drawable.ic_folder)
+                .into(binding.albumArt)
+        } else {
+            binding.albumArt.setImageResource(R.drawable.ic_folder)
+        }
     }
     
     private fun togglePlayPause() {
-        exoPlayer?.let {
-            if (it.isPlaying) {
-                it.pause()
+        musicService?.let { service ->
+            if (service.isPlaying()) {
+                service.pause()
             } else {
-                it.play()
+                service.play()
             }
         }
     }
 
     private fun playNextSong() {
-        // ExoPlayer handles next in repeat modes
-        if (exoPlayer?.repeatMode != Player.REPEAT_MODE_OFF) {
-            exoPlayer?.seekToNextMediaItem()
-        } else {
-            // Manual handling for REPEAT_OFF
-            if (currentSongIndex < currentPlaylist.size - 1) {
-                playSongAtIndex(currentSongIndex + 1)
-            } else {
-                // End of playlist
-                exoPlayer?.stop()
-                exoPlayer?.seekTo(0)
-                binding.seekBar.progress = 0
-            }
-        }
+        musicService?.skipToNext()
     }
 
     private fun playPreviousSong() {
-         if (exoPlayer?.currentPosition ?: 0 > 3000) {
-            exoPlayer?.seekTo(0)
-        } else {
-            exoPlayer?.seekToPreviousMediaItem()
+        musicService?.let { service ->
+            if (service.getCurrentPosition() > 3000) {
+                service.seekTo(0)
+            } else {
+                service.skipToPrevious()
+            }
         }
     }
     
     private fun toggleShuffle() {
-        isShuffleEnabled = !isShuffleEnabled
-        if (isShuffleEnabled) {
-            val currentSong = currentPlaylist[currentSongIndex]
-            val shuffled = originalPlaylist.shuffled().toMutableList()
-            // Make sure current song is first in the shuffled list
-            shuffled.remove(currentSong)
-            shuffled.add(0, currentSong)
-            currentPlaylist = shuffled
-            currentSongIndex = 0
-            
-            binding.shuffleButton.setImageResource(R.drawable.ic_shuffle_on)
-            Toast.makeText(this, "Shuffle On", Toast.LENGTH_SHORT).show()
-        } else {
-            val currentSong = currentPlaylist[currentSongIndex]
-            currentPlaylist = originalPlaylist
-            currentSongIndex = currentPlaylist.indexOf(currentSong)
-            
-            binding.shuffleButton.setImageResource(R.drawable.ic_shuffle_off)
-            Toast.makeText(this, "Shuffle Off", Toast.LENGTH_SHORT).show()
+        musicService?.let { service ->
+            val isShuffleEnabled = service.toggleShuffle()
+            updateShuffleButtonUI(isShuffleEnabled)
         }
-        
-        // Re-build ExoPlayer's playlist
-        updateExoPlayerPlaylist()
     }
 
     private fun cycleRepeatMode() {
-        currentRepeatState = when (currentRepeatState) {
-            is RepeatState.OFF -> {
-                exoPlayer?.repeatMode = Player.REPEAT_MODE_ALL
-                binding.repeatButton.setImageResource(R.drawable.ic_repeat_all)
-                Toast.makeText(this, "Repeat All", Toast.LENGTH_SHORT).show()
-                RepeatState.ALL
-            }
-            is RepeatState.ALL -> {
-                exoPlayer?.repeatMode = Player.REPEAT_MODE_ONE
-                binding.repeatButton.setImageResource(R.drawable.ic_repeat_one)
-                Toast.makeText(this, "Repeat One", Toast.LENGTH_SHORT).show()
-                RepeatState.ONE
-            }
-            is RepeatState.ONE -> {
-                exoPlayer?.repeatMode = Player.REPEAT_MODE_OFF
-                binding.repeatButton.setImageResource(R.drawable.ic_repeat_off)
-                Toast.makeText(this, "Repeat Off", Toast.LENGTH_SHORT).show()
-                RepeatState.OFF
-            }
+        musicService?.let { service ->
+            val repeatMode = service.cycleRepeatMode()
+            updateRepeatButtonUI(repeatMode)
         }
     }
     
-    private fun updateExoPlayerPlaylist() {
-        val mediaItems = currentPlaylist.map { song ->
-            val songUrl = "${ApiClient.getServerUrl()}/song/${song.id}"
-            MediaItem.Builder()
-                .setUri(songUrl)
-                .setMediaId(song.id)
-                .build()
-        }
-        exoPlayer?.setMediaItems(mediaItems, currentSongIndex, 0)
+    private fun updateShuffleButtonUI(isShuffleEnabled: Boolean) {
+        binding.shuffleButton.setImageResource(
+            if (isShuffleEnabled) R.drawable.ic_shuffle_on else R.drawable.ic_shuffle_off
+        )
     }
-
+    
+    private fun updateRepeatButtonUI(repeatMode: Int) {
+        binding.repeatButton.setImageResource(
+            when (repeatMode) {
+                1 -> R.drawable.ic_repeat_all  // repeat all
+                2 -> R.drawable.ic_repeat_one  // repeat one
+                else -> R.drawable.ic_repeat_off // repeat off
+            }
+        )
+    }
+    
     private fun formatDuration(duration: Long): String {
+        if (duration <= 0) return "0:00"
         val minutes = (duration / 1000) / 60
         val seconds = (duration / 1000) % 60
         return String.format("%d:%02d", minutes, seconds)
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        handler.removeCallbacks(updateSeekBarAction)
-        exoPlayer?.release()
-        exoPlayer = null
+    
+    // MusicService.MusicServiceListener implementation
+    override fun onPlaybackStateChanged(state: Int) {
+        updateUI()
     }
-
-    // A simple data class to hold playlist info
-    data class Song(val id: String, val title: String, val artist: String, val album: String, val sortOrder: Int)
+    
+    override fun onSongChanged(song: Song?) {
+        updateUI()
+    }
+    
+    override fun onProgressChanged(progress: Int, duration: Int) {
+        if (duration > 0) {
+            binding.seekBar.progress = progress
+            binding.positionText.text = formatDuration(progress.toLong())
+        }
+    }
 }

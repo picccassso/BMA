@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Dark Theme Colors -->
-    <color name="background">#121212</color>
-    <color name="surface">#1E1E1E</color>
-    <color name="primary">#BB86FC</color>
-    <color name="primary_variant">#3700B3</color>
-    <color name="secondary">#03DAC6</color>
-    <color name="error">#CF6679</color>
+    <!-- 2-Tone Black & White Theme -->
+    <color name="background">#000000</color>
+    <color name="surface">#1A1A1A</color>
+    <color name="primary">#FFFFFF</color>
+    <color name="primary_variant">#CCCCCC</color>
+    <color name="secondary">#CCCCCC</color>
+    <color name="error">#FFFFFF</color>
     
     <!-- Text Colors -->
     <color name="text_primary">#FFFFFF</color>
@@ -14,7 +14,7 @@
     <color name="text_disabled">#66FFFFFF</color>
     
     <!-- Component Colors -->
-    <color name="card_background">#2D2D2D</color>
+    <color name="card_background">#1A1A1A</color>
     <color name="divider">#1FFFFFFF</color>
     <color name="ripple">#33FFFFFF</color>
 </resources> 

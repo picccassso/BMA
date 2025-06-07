@@ -4,7 +4,6 @@ package com.bma.android.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.bma.android.R;
+import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -27,17 +27,17 @@ public final class FragmentSettingsBinding implements ViewBinding {
   public final TextView connectionStatusText;
 
   @NonNull
-  public final Button disconnectButton;
+  public final MaterialButton disconnectButton;
 
   @NonNull
-  public final Button reconnectButton;
+  public final MaterialButton reconnectButton;
 
   @NonNull
   public final TextView settingsTitle;
 
   private FragmentSettingsBinding(@NonNull ConstraintLayout rootView,
       @NonNull TextView connectionStatusLabel, @NonNull TextView connectionStatusText,
-      @NonNull Button disconnectButton, @NonNull Button reconnectButton,
+      @NonNull MaterialButton disconnectButton, @NonNull MaterialButton reconnectButton,
       @NonNull TextView settingsTitle) {
     this.rootView = rootView;
     this.connectionStatusLabel = connectionStatusLabel;
@@ -87,13 +87,13 @@ public final class FragmentSettingsBinding implements ViewBinding {
       }
 
       id = R.id.disconnect_button;
-      Button disconnectButton = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton disconnectButton = ViewBindings.findChildViewById(rootView, id);
       if (disconnectButton == null) {
         break missingId;
       }
 
       id = R.id.reconnect_button;
-      Button reconnectButton = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton reconnectButton = ViewBindings.findChildViewById(rootView, id);
       if (reconnectButton == null) {
         break missingId;
       }

@@ -4,6 +4,7 @@ package com.bma.android.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,14 +21,18 @@ public final class ItemSongBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final ImageView albumArtwork;
+
+  @NonNull
   public final TextView artistText;
 
   @NonNull
   public final TextView titleText;
 
-  private ItemSongBinding(@NonNull ConstraintLayout rootView, @NonNull TextView artistText,
-      @NonNull TextView titleText) {
+  private ItemSongBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView albumArtwork,
+      @NonNull TextView artistText, @NonNull TextView titleText) {
     this.rootView = rootView;
+    this.albumArtwork = albumArtwork;
     this.artistText = artistText;
     this.titleText = titleText;
   }
@@ -59,6 +64,12 @@ public final class ItemSongBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.albumArtwork;
+      ImageView albumArtwork = ViewBindings.findChildViewById(rootView, id);
+      if (albumArtwork == null) {
+        break missingId;
+      }
+
       id = R.id.artistText;
       TextView artistText = ViewBindings.findChildViewById(rootView, id);
       if (artistText == null) {
@@ -71,7 +82,7 @@ public final class ItemSongBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemSongBinding((ConstraintLayout) rootView, artistText, titleText);
+      return new ItemSongBinding((ConstraintLayout) rootView, albumArtwork, artistText, titleText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
