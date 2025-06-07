@@ -3217,7 +3217,12 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_music_note
+drawable ic_repeat_all
+drawable ic_repeat_off
+drawable ic_repeat_one
 drawable ic_search_black_24
+drawable ic_shuffle_off
+drawable ic_shuffle_on
 drawable ic_warning
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3775,6 +3780,7 @@ id recent_searches_title
 id reconnect_button
 id rectangles
 id remove_recent_search
+id repeatButton
 id report_drawn
 id retry_button
 id reverseSawtooth
@@ -3821,6 +3827,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id shuffleButton
 id sin
 id skipCollapsed
 id skipped

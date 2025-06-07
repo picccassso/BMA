@@ -28,8 +28,8 @@
         "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/fragment_qr_scanner.xml"
     },
     {
-        "merged": "com.bma.android.app-mergeDebugResources-43:/layout/fragment_settings.xml",
-        "source": "com.bma.android.app-main-46:/layout/fragment_settings.xml"
+        "merged": "com.bma.android.app-mergeDebugResources-43:/layout/activity_player.xml",
+        "source": "com.bma.android.app-main-46:/layout/activity_player.xml"
     },
     {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-mergeDebugResources-43:/layout/fragment_welcome.xml",

@@ -115,7 +115,7 @@
     <!-- Player Controls -->
     <LinearLayout
         android:id="@+id/playerControlsLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
         android:orientation="horizontal"
@@ -123,6 +123,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/shuffleButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_shuffle_off"
+            android:scaleType="centerInside"
+            android:contentDescription="Shuffle" />
 
         <!-- Previous Button -->
         <ImageButton
@@ -150,11 +159,21 @@
             android:id="@+id/nextButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="16dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_media_next"
             android:tint="@color/primary"
             android:contentDescription="Next track" />
+
+        <ImageButton
+            android:id="@+id/repeatButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_repeat_off"
+            android:scaleType="centerInside"
+            android:contentDescription="Repeat" />
 
     </LinearLayout>
 

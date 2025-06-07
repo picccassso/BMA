@@ -3216,7 +3216,12 @@ int drawable ic_mtrl_chip_checked_black 0x7f0800f9
 int drawable ic_mtrl_chip_checked_circle 0x7f0800fa
 int drawable ic_mtrl_chip_close_circle 0x7f0800fb
 int drawable ic_music_note 0x7f0800fc
+int drawable ic_repeat_all 0x7f08014c
+int drawable ic_repeat_off 0x7f08014d
+int drawable ic_repeat_one 0x7f08014e
 int drawable ic_search_black_24 0x7f0800fd
+int drawable ic_shuffle_off 0x7f08014f
+int drawable ic_shuffle_on 0x7f080150
 int drawable ic_warning 0x7f0800fe
 int drawable m3_avd_hide_password 0x7f0800ff
 int drawable m3_avd_show_password 0x7f080100
@@ -3774,6 +3779,7 @@ int id recent_searches_title 0x7f0a027d
 int id reconnect_button 0x7f0a0284
 int id rectangles 0x7f0a01d4
 int id remove_recent_search 0x7f0a027e
+int id repeatButton 0x7f0a0286
 int id report_drawn 0x7f0a01d5
 int id retry_button 0x7f0a01d6
 int id reverseSawtooth 0x7f0a01d7
@@ -3820,6 +3826,7 @@ int id shortcut 0x7f0a01fc
 int id showCustom 0x7f0a01fd
 int id showHome 0x7f0a01fe
 int id showTitle 0x7f0a01ff
+int id shuffleButton 0x7f0a0287
 int id sin 0x7f0a0200
 int id skipCollapsed 0x7f0a0201
 int id skipped 0x7f0a0202

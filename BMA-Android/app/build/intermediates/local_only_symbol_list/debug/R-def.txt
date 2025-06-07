@@ -24,6 +24,11 @@ drawable ic_chevron_right
 drawable ic_folder
 drawable ic_logo
 drawable ic_music_note
+drawable ic_repeat_all
+drawable ic_repeat_off
+drawable ic_repeat_one
+drawable ic_shuffle_off
+drawable ic_shuffle_on
 drawable ic_warning
 drawable qr_scanner_overlay
 drawable scan_frame
@@ -80,6 +85,7 @@ id recent_searches_recycler_view
 id recent_searches_title
 id reconnect_button
 id remove_recent_search
+id repeatButton
 id retry_button
 id scan_area
 id scan_frame
@@ -89,6 +95,7 @@ id search_view
 id seekBar
 id settings_title
 id setup_container
+id shuffleButton
 id statusText
 id status_card
 id status_description

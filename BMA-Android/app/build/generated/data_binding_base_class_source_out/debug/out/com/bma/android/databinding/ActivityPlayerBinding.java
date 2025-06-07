@@ -51,7 +51,13 @@ public final class ActivityPlayerBinding implements ViewBinding {
   public final ImageButton previousButton;
 
   @NonNull
+  public final ImageButton repeatButton;
+
+  @NonNull
   public final SeekBar seekBar;
+
+  @NonNull
+  public final ImageButton shuffleButton;
 
   @NonNull
   public final LinearLayout timeLayout;
@@ -63,7 +69,8 @@ public final class ActivityPlayerBinding implements ViewBinding {
       @NonNull TextView artistText, @NonNull ImageButton backButton, @NonNull TextView durationText,
       @NonNull ImageButton nextButton, @NonNull ImageButton playPauseButton,
       @NonNull LinearLayout playerControlsLayout, @NonNull TextView positionText,
-      @NonNull ImageButton previousButton, @NonNull SeekBar seekBar,
+      @NonNull ImageButton previousButton, @NonNull ImageButton repeatButton,
+      @NonNull SeekBar seekBar, @NonNull ImageButton shuffleButton,
       @NonNull LinearLayout timeLayout, @NonNull TextView titleText) {
     this.rootView = rootView;
     this.albumArt = albumArt;
@@ -75,7 +82,9 @@ public final class ActivityPlayerBinding implements ViewBinding {
     this.playerControlsLayout = playerControlsLayout;
     this.positionText = positionText;
     this.previousButton = previousButton;
+    this.repeatButton = repeatButton;
     this.seekBar = seekBar;
+    this.shuffleButton = shuffleButton;
     this.timeLayout = timeLayout;
     this.titleText = titleText;
   }
@@ -161,9 +170,21 @@ public final class ActivityPlayerBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.repeatButton;
+      ImageButton repeatButton = ViewBindings.findChildViewById(rootView, id);
+      if (repeatButton == null) {
+        break missingId;
+      }
+
       id = R.id.seekBar;
       SeekBar seekBar = ViewBindings.findChildViewById(rootView, id);
       if (seekBar == null) {
+        break missingId;
+      }
+
+      id = R.id.shuffleButton;
+      ImageButton shuffleButton = ViewBindings.findChildViewById(rootView, id);
+      if (shuffleButton == null) {
         break missingId;
       }
 
@@ -181,7 +202,7 @@ public final class ActivityPlayerBinding implements ViewBinding {
 
       return new ActivityPlayerBinding((ConstraintLayout) rootView, albumArt, artistText,
           backButton, durationText, nextButton, playPauseButton, playerControlsLayout, positionText,
-          previousButton, seekBar, timeLayout, titleText);
+          previousButton, repeatButton, seekBar, shuffleButton, timeLayout, titleText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

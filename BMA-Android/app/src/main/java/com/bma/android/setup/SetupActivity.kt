@@ -1,9 +1,12 @@
 package com.bma.android.setup
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bma.android.MainActivity
 import com.bma.android.R
 import com.bma.android.setup.fragments.LoadingFragment
 import com.bma.android.setup.fragments.QRScannerFragment
@@ -15,6 +18,15 @@ class SetupActivity : AppCompatActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Check if setup is already complete
+        if (isSetupComplete()) {
+            // If so, go straight to the main app
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+            return // Important to prevent the rest of onCreate from running
+        }
+
         setContentView(R.layout.activity_setup)
         
         viewModel = ViewModelProvider(this)[SetupViewModel::class.java]
@@ -25,6 +37,13 @@ class SetupActivity : AppCompatActivity() {
                 .replace(R.id.setup_container, WelcomeFragment())
                 .commit()
         }
+    }
+
+    private fun isSetupComplete(): Boolean {
+        val prefs = getSharedPreferences("BMA", Context.MODE_PRIVATE)
+        val serverUrl = prefs.getString("server_url", null)
+        val authToken = prefs.getString("auth_token", null)
+        return !serverUrl.isNullOrEmpty() && !authToken.isNullOrEmpty()
     }
     
     fun navigateToNext(currentFragment: Fragment) {
@@ -56,4 +75,4 @@ class SetupActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
-} 
+}
