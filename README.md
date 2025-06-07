@@ -36,3 +36,12 @@ Using Tailscale for secure networking, your desktop becomes a music server, and 
 - Mobile App: Kotlin (Jetpack Compose)
 - Networking: Tailscale
 - Streaming: HTTP (within Tailscale network)
+
+🪳**KNOWN BUGS/ISSUES**
+- Some users get stuck on "Checking server connection..." or when loading library.
+- Some users can't get past "Tailscale not found. Please download and install it" - especially Linux, even if it is up and running and connected.
+- Android App gets in a loop if it is disconnected and needs to be reset completely to work again and to connect to server.
+- Shuffle mode does not work properly, it will shuffle, but does not keep the position of the queue.
+- App keeps playing even if you close the app on android.
+- Going back from Settings/Library takes you directly to the home screen/app launcher instead of back to library.
+- If there is a space after typing half a word when searching a song, it will not display anything.
