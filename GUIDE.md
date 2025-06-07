@@ -1,27 +1,30 @@
-Step-by-step Guide for setting up BMA.
+Step-by-step Guide for setting up BMA **without** building!
 
 Link: https://github.com/picccassso/BMA
 
+⚠️ Note: This app is provided as open-source. 
 
-⚠️ Note: This app is provided as open-source.
-You are encouraged to review and build it yourself, however, on the releases section there is 1) pre-built .apk file for you to install 2) pre-built .exe file 3) pre-built universal (Apple Silicon/Intel) universal binary. All of these can be used without installing any additional dependencies. For Linux, there is a 
+You are encouraged to review and build it yourself, however, on the releases section there is 1) pre-built .apk file for you to install 2) pre-built .exe file 3) pre-built universal (Apple Silicon/Intel) universal binary. All of these can be used without installing any additional dependencies. For Linux, there is a build-flatpak.sh that will build a flatpak for you. Here are the instructions for doing it here:
+
+*You WILL need flatpak-builder to build the flatpak, as well as flatpak already installed, both can be installed and set up through the following links:*
+
+https://flatpak.org/
+https://docs.flatpak.org/en/latest/flatpak-builder.html
+
+In the BMA-Go folder, open a terminal and enter the following commands:
+
+./build-flatpak.sh
+
+flatpak install --user bma-go-linux.flatpak
+
+To uninstall:
+
+flatpak uninstall --user com.bma.BasicMusicApp
+
 
 1. Please install Tailscale from the official download page and install it on your system, making sure you login into your account. Please install it on your Android device as well, and make sure you login into the **SAME** account as you did on your desktop system. **THIS IS CRUCIAL**.
 
 Link: https://tailscale.com/download
-
-
-2. To build the app yourself, you will be needing the Go language installed on your system. Please install it from their official website. After you do that, please install fyne as well, as the app is built using the fyne GUI framework. I have left the command used in order to install it. 
-
-Link: https://go.dev/dl/
-
-Fyne install command (**AFTER** installing Go): go get fyne.io/fyne/v2
-
-If you would like to package the app as a .app or .exe, you can also install fyne CLI using the command below:
-
-go install fyne.io/fyne/v2/cmd/fyne@latest
-
-*I have provided a .exe for Windows, a working UNIX executable file for MacOS (test-build) and ___ for Linux.*
 
 3. After doing Step 1 and 2, you are ready to launch the app on your system and on your Android device. Please make sure to have Tailscale connected **BEFORE** you launch both apps on both devices. This will make the setup process MUCH easier. 
 
@@ -39,18 +42,6 @@ go install fyne.io/fyne/v2/cmd/fyne@latest
     - After scanning, you will be taken to the page with all your albums.
     
 This is how you setup the desktop app and Android app for BMA. 
-
-**BUILDING THE APP YOURSELF**
-
-To build the app yourself, you will be needing the Go language installed on your system. Please install it from their official website. After you do that, please install fyne as well, as the app is built using the fyne GUI framework. I have left the command used in order to install it. 
-
-Link: https://go.dev/dl/
-
-Fyne install command (**AFTER** installing Go): go get fyne.io/fyne/v2
-
-If you would like to package the app as a .app or .exe, you can also install fyne CLI using the command below:
-
-go install fyne.io/fyne/v2/cmd/fyne@latest
 
 
 
