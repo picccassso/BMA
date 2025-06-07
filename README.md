@@ -2,6 +2,8 @@
 
 A secure, self-hosted music streaming solution built with Go (desktop) and Kotlin (Android).
 
+📹 Video Demonstration: https://youtu.be/52-zsbF-0v4
+
 🖥️ What is **BMA**?
 
 BMA lets you stream your personal music library from your PC, Mac, or Linux machine to your Android device — securely and privately.
