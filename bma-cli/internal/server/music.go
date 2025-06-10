@@ -564,14 +564,11 @@ func (ms *MusicServer) handleQRPage(w http.ResponseWriter, r *http.Request) {
 func (ms *MusicServer) handlePair(w http.ResponseWriter, r *http.Request) {
 	log.Println("📱 Pairing request received")
 	
-	// Generate pairing data
-	pairingData := ms.generatePairingData()
-	
+	// Generate simple pairing response matching mobile app expectations
 	response := map[string]interface{}{
-		"serverURL": ms.getPreferredURL(),
+		"serverUrl": ms.getPreferredURL(),
 		"token":     uuid.New().String(),
-		"expiresAt": time.Now().Add(60 * time.Minute),
-		"data":      pairingData,
+		"expiresAt": time.Now().Add(60 * time.Minute).Format(time.RFC3339),
 	}
 	
 	w.Header().Set("Content-Type", "application/json")
@@ -586,21 +583,11 @@ func (ms *MusicServer) handlePair(w http.ResponseWriter, r *http.Request) {
 
 // generatePairingData creates the JSON data for QR code
 func (ms *MusicServer) generatePairingData() string {
+	// Match exact format expected by mobile app
 	pairingInfo := map[string]interface{}{
-		"serverURL": ms.getPreferredURL(),
+		"serverUrl": ms.getPreferredURL(),
 		"token":     uuid.New().String(),
-		"expiresAt": time.Now().Add(60 * time.Minute),
-		"server":    "BMA CLI Music Server",
-		"version":   "1.0",
-		"protocol":  "http",
-	}
-	
-	// Add library info
-	if ms.musicLibrary != nil {
-		pairingInfo["library"] = map[string]interface{}{
-			"songCount":  ms.musicLibrary.GetSongCount(),
-			"albumCount": ms.musicLibrary.GetAlbumCount(),
-		}
+		"expiresAt": time.Now().Add(60 * time.Minute).Format(time.RFC3339),
 	}
 	
 	data, _ := json.Marshal(pairingInfo)
