@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app"
+    name=":app"
+    type="APP"
+    maven="BMA:app:"
+    agpVersion="8.2.0"
+    buildFolder="build"
+    bootClassPath="/Users/alex/Library/Android/sdk/platforms/android-34/android.jar:/Users/alex/Library/Android/sdk/build-tools/34.0.0/core-lambda-stubs.jar"
+    javaSourceLevel="1.8"
+    compileTarget="android-34"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>

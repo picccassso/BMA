@@ -33,8 +33,15 @@ class SetupActivity : AppCompatActivity() {
         
         // Start with welcome fragment if no saved state
         if (savedInstanceState == null) {
+            val skipToQr = intent.getBooleanExtra("skip_to_qr", false)
+            val startFragment = if (skipToQr) {
+                QRScannerFragment()
+            } else {
+                WelcomeFragment()
+            }
+            
             supportFragmentManager.beginTransaction()
-                .replace(R.id.setup_container, WelcomeFragment())
+                .replace(R.id.setup_container, startFragment)
                 .commit()
         }
     }

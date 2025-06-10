@@ -90,6 +90,7 @@ class PlayerActivity : AppCompatActivity(), MusicService.MusicServiceListener {
         val songArtists = intent.getStringArrayExtra("playlist_song_artists")
         val currentSongId = intent.getStringExtra("song_id")
         val position = intent.getIntExtra("current_position", 0)
+        val shuffleEnabled = intent.getBooleanExtra("shuffle_enabled", false)
 
         if (songIds != null && songTitles != null && songArtists != null && currentSongId != null) {
             // We have new playlist data, load it into the service
@@ -110,6 +111,11 @@ class PlayerActivity : AppCompatActivity(), MusicService.MusicServiceListener {
             val currentSong = playlist.find { it.id == currentSongId }
             if (currentSong != null) {
                 musicService?.loadAndPlay(currentSong, playlist, position)
+                
+                // Enable shuffle if requested from the album page
+                if (shuffleEnabled && musicService?.isShuffleEnabled() == false) {
+                    musicService?.toggleShuffle()
+                }
             }
         }
         // If no new intent data, just sync with current service state
@@ -122,6 +128,7 @@ class PlayerActivity : AppCompatActivity(), MusicService.MusicServiceListener {
         binding.previousButton.setOnClickListener { playPreviousSong() }
         binding.shuffleButton.setOnClickListener { toggleShuffle() }
         binding.repeatButton.setOnClickListener { cycleRepeatMode() }
+        binding.queueButton.setOnClickListener { showQueue() }
 
         binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -252,6 +259,43 @@ class PlayerActivity : AppCompatActivity(), MusicService.MusicServiceListener {
                 else -> R.drawable.ic_repeat_off // repeat off
             }
         )
+    }
+    
+    private fun showQueue() {
+        musicService?.let { service ->
+            // NEW: Launch QueueActivity for Spotify-like queue management
+            val intent = Intent(this, QueueActivity::class.java)
+            startActivity(intent)
+            
+            /* OLD IMPLEMENTATION: Simple AlertDialog (preserved as fallback)
+            val upcomingQueue = service.getUpcomingQueue()
+            val currentSong = service.getCurrentSong()
+            
+            if (upcomingQueue.isEmpty()) {
+                Toast.makeText(this, "Queue is empty", Toast.LENGTH_SHORT).show()
+                return
+            }
+            
+            // Create a simple dialog showing the queue
+            val queueText = StringBuilder()
+            queueText.append("Now Playing:\n${currentSong?.title ?: "Unknown"}\n\n")
+            queueText.append("Up Next:\n")
+            
+            upcomingQueue.take(10).forEachIndexed { index, song ->
+                queueText.append("${index + 1}. ${song.title}\n")
+            }
+            
+            if (upcomingQueue.size > 10) {
+                queueText.append("... and ${upcomingQueue.size - 10} more songs")
+            }
+            
+            android.app.AlertDialog.Builder(this)
+                .setTitle("Current Queue")
+                .setMessage(queueText.toString())
+                .setPositiveButton("OK", null)
+                .show()
+            */
+        }
     }
     
     private fun formatDuration(duration: Long): String {

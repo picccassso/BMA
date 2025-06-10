@@ -72,12 +72,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="8dp"
         android:progressTint="@color/primary"
         android:thumbTint="@color/primary"
         app:layout_constraintBottom_toTopOf="@+id/timeLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artistText" />
 
     <LinearLayout
         android:id="@+id/timeLayout"
@@ -85,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="24dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/playerControlsLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,12 +114,12 @@
 
     </LinearLayout>
 
-    <!-- Player Controls -->
+    <!-- Main Player Controls (Spotify-style) -->
     <LinearLayout
         android:id="@+id/playerControlsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="80dp"
         android:orientation="horizontal"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -128,6 +130,7 @@
             android:id="@+id/shuffleButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginEnd="12dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_shuffle_off"
             android:scaleType="centerInside"
@@ -138,7 +141,7 @@
             android:id="@+id/previousButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="16dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_media_previous"
             android:tint="@color/primary"
@@ -159,6 +162,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="12dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_media_next"
             android:tint="@color/primary"
@@ -168,12 +172,26 @@
             android:id="@+id/repeatButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="16dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_repeat_off"
             android:scaleType="centerInside"
             android:contentDescription="Repeat" />
 
     </LinearLayout>
+
+    <!-- Queue Button (Positioned between Next and Repeat) -->
+    <ImageButton
+        android:id="@+id/queueButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_queue"
+        android:scaleType="centerInside"
+        android:contentDescription="Queue"
+        app:layout_constraintTop_toBottomOf="@+id/playerControlsLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout> 

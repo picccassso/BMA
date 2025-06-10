@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strings"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
@@ -135,17 +136,24 @@ func (s *TailscaleStep) checkTailscaleInstallation() {
 
 // isTailscaleInstalled checks for Tailscale installation in multiple ways
 func (s *TailscaleStep) isTailscaleInstalled() bool {
-	// Method 1: Check if tailscale CLI is in PATH
+	// Method 1: Check if running in Flatpak and use flatpak-spawn
+	if s.isRunningInFlatpak() {
+		if s.checkTailscaleViaFlatpak() {
+			return true
+		}
+	}
+	
+	// Method 2: Check if tailscale CLI is in PATH
 	if _, err := exec.LookPath("tailscale"); err == nil {
 		return true
 	}
 	
-	// Method 2: Check for macOS app installation
+	// Method 3: Check for macOS app installation
 	if s.checkMacOSApp() {
 		return true
 	}
 	
-	// Method 3: Check for Homebrew installation
+	// Method 4: Check for Homebrew installation
 	if s.checkHomebrewInstallation() {
 		return true
 	}
@@ -184,6 +192,21 @@ func (s *TailscaleStep) checkHomebrewInstallation() bool {
 	}
 	
 	return false
+}
+
+// isRunningInFlatpak checks if the application is running inside a Flatpak sandbox
+func (s *TailscaleStep) isRunningInFlatpak() bool {
+	cmd := exec.Command("sh", "-c", "echo $FLATPAK_ID")
+	output, err := cmd.Output()
+	return err == nil && strings.TrimSpace(string(output)) != ""
+}
+
+// checkTailscaleViaFlatpak checks if Tailscale is accessible via flatpak-spawn --host
+func (s *TailscaleStep) checkTailscaleViaFlatpak() bool {
+	// Test if flatpak-spawn can access tailscale on host
+	cmd := exec.Command("flatpak-spawn", "--host", "tailscale", "version")
+	err := cmd.Run()
+	return err == nil
 }
 
 // SetStateChangeCallback sets the callback for when installation state changes

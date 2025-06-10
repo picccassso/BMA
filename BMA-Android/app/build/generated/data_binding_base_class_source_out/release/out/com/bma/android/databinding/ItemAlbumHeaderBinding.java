@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,9 +24,6 @@ public final class ItemAlbumHeaderBinding implements ViewBinding {
   public final ImageView albumArtwork;
 
   @NonNull
-  public final LinearLayout albumInfo;
-
-  @NonNull
   public final TextView albumNameText;
 
   @NonNull
@@ -37,22 +33,17 @@ public final class ItemAlbumHeaderBinding implements ViewBinding {
   public final ImageView expandIcon;
 
   @NonNull
-  public final ImageView folderIcon;
-
-  @NonNull
   public final TextView trackCountText;
 
   private ItemAlbumHeaderBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView albumArtwork, @NonNull LinearLayout albumInfo,
-      @NonNull TextView albumNameText, @NonNull TextView artistText, @NonNull ImageView expandIcon,
-      @NonNull ImageView folderIcon, @NonNull TextView trackCountText) {
+      @NonNull ImageView albumArtwork, @NonNull TextView albumNameText,
+      @NonNull TextView artistText, @NonNull ImageView expandIcon,
+      @NonNull TextView trackCountText) {
     this.rootView = rootView;
     this.albumArtwork = albumArtwork;
-    this.albumInfo = albumInfo;
     this.albumNameText = albumNameText;
     this.artistText = artistText;
     this.expandIcon = expandIcon;
-    this.folderIcon = folderIcon;
     this.trackCountText = trackCountText;
   }
 
@@ -89,12 +80,6 @@ public final class ItemAlbumHeaderBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.albumInfo;
-      LinearLayout albumInfo = ViewBindings.findChildViewById(rootView, id);
-      if (albumInfo == null) {
-        break missingId;
-      }
-
       id = R.id.albumNameText;
       TextView albumNameText = ViewBindings.findChildViewById(rootView, id);
       if (albumNameText == null) {
@@ -113,20 +98,14 @@ public final class ItemAlbumHeaderBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.folderIcon;
-      ImageView folderIcon = ViewBindings.findChildViewById(rootView, id);
-      if (folderIcon == null) {
-        break missingId;
-      }
-
       id = R.id.trackCountText;
       TextView trackCountText = ViewBindings.findChildViewById(rootView, id);
       if (trackCountText == null) {
         break missingId;
       }
 
-      return new ItemAlbumHeaderBinding((ConstraintLayout) rootView, albumArtwork, albumInfo,
-          albumNameText, artistText, expandIcon, folderIcon, trackCountText);
+      return new ItemAlbumHeaderBinding((ConstraintLayout) rootView, albumArtwork, albumNameText,
+          artistText, expandIcon, trackCountText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

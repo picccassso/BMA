@@ -1,6 +1,7 @@
 package ui
 
 import (
+	"log"
 	"time"
 
 	"fyne.io/fyne/v2"
@@ -245,14 +246,19 @@ func (sw *SetupWizard) updateStepContent(newContent fyne.CanvasObject, newStep i
 
 // completeSetup finalizes the setup process
 func (sw *SetupWizard) completeSetup() {
+	log.Println("🔧 [DEBUG] completeSetup() called - Start Streaming clicked")
+	
 	// Mark setup as complete in config
 	if err := sw.config.MarkSetupComplete(); err != nil {
-		// Handle error
+		log.Printf("🔧 [DEBUG] MarkSetupComplete failed: %v", err)
 		return
 	}
+	log.Println("🔧 [DEBUG] MarkSetupComplete succeeded")
 	
 	// Call completion callback
 	if sw.onComplete != nil {
+		log.Println("🔧 [DEBUG] Calling onComplete callback")
 		sw.onComplete()
+		log.Println("🔧 [DEBUG] onComplete callback finished")
 	}
 } 

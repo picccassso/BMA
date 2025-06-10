@@ -61,12 +61,18 @@ func showSetupWizard(fyneApp fyne.App, config *models.Config) {
 	wizard := ui.NewSetupWizard(config, func() {
 		// On setup completion, hide setup window and show main app
 		log.Println("✅ Setup completed - transitioning to main application")
+		log.Println("🔧 [DEBUG] About to call LoadMusicLibrary()")
 		
 		// Load the music library now that setup is complete
 		mainUI.LoadMusicLibrary()
 		
+		log.Println("🔧 [DEBUG] LoadMusicLibrary() call returned")
+		log.Println("🔧 [DEBUG] About to hide setup window")
+		
 		setupWindow.Hide()
 		mainWindow.Show()
+		
+		log.Println("🔧 [DEBUG] Windows switched - transition complete")
 	})
 	
 	wizard.SetWindow(setupWindow)

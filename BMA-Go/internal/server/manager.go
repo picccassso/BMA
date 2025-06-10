@@ -40,6 +40,9 @@ type ServerManager struct {
 	tokensMutex      sync.RWMutex
 	currentPairingToken string
 	
+	// Flatpak detection
+	useFlatpakSpawn bool
+	
 	// Shutdown context
 	ctx        context.Context
 	cancelFunc context.CancelFunc

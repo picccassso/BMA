@@ -8,16 +8,19 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.bma.android.api.ApiClient
 import com.bma.android.databinding.ActivityMainBinding
 import com.bma.android.models.Song
 import com.bma.android.ui.library.LibraryFragment
 import com.bma.android.ui.search.SearchFragment
 import com.bma.android.ui.settings.SettingsFragment
+import com.bma.android.ui.disconnection.DisconnectionFragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.model.LazyHeaders
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
 
@@ -26,10 +29,19 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
     private val libraryFragment = LibraryFragment()
     private val searchFragment = SearchFragment()
     private val settingsFragment = SettingsFragment()
+    private val disconnectionFragment = DisconnectionFragment()
     
     // Music service
     private var musicService: MusicService? = null
     private var serviceBound = false
+    
+    // Auth failure handling
+    private var isHandlingAuthFailure = false
+    
+    // Health check timer
+    private var healthCheckHandler: Handler? = null
+    private var healthCheckRunnable: Runnable? = null
+    private var isInNormalMode = false
     
     // Service connection
     private val serviceConnection = object : ServiceConnection {
@@ -100,11 +112,8 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
             }
         }
 
-        // Load the initial fragment
-        if (savedInstanceState == null) {
-            binding.bottomNavView.selectedItemId = R.id.navigation_library
-            loadFragment(libraryFragment)
-        }
+        // Initial fragment loading will be handled by connection check
+        // Don't load fragments until we know connection status
         
         // Bind to music service
         android.util.Log.d("MainActivity", "About to bind music service...")
@@ -116,6 +125,10 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
         android.util.Log.d("MainActivity", "=== ONDESTROY CALLED ===")
         android.util.Log.d("MainActivity", "Service bound: $serviceBound")
         super.onDestroy()
+        
+        // Stop health check timer
+        stopHealthCheckTimer()
+        
         if (serviceBound) {
             android.util.Log.d("MainActivity", "Unbinding from service...")
             musicService?.removeListener(this@MainActivity)
@@ -126,6 +139,24 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
             android.util.Log.d("MainActivity", "Service was not bound, no unbinding needed")
         }
         android.util.Log.d("MainActivity", "=== ONDESTROY COMPLETED ===")
+    }
+    
+    override fun onPause() {
+        super.onPause()
+        // Pause health checks when app goes to background
+        if (isInNormalMode) {
+            stopHealthCheckTimer()
+            android.util.Log.d("MainActivity", "Health checks paused (app going to background)")
+        }
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        // Resume health checks when app comes to foreground
+        if (isInNormalMode) {
+            startHealthCheckTimer()
+            android.util.Log.d("MainActivity", "Health checks resumed (app coming to foreground)")
+        }
     }
 
     private fun loadFragment(fragment: Fragment) {
@@ -144,6 +175,159 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
         }
         if (!savedToken.isNullOrEmpty()) {
             ApiClient.setAuthToken(savedToken)
+        }
+        
+        // Set up authentication failure callback
+        ApiClient.onAuthFailure = {
+            runOnUiThread {
+                handleAuthenticationFailure()
+            }
+        }
+        
+        // Check connection status
+        lifecycleScope.launch {
+            when (ApiClient.checkConnection(this@MainActivity)) {
+                ApiClient.ConnectionStatus.CONNECTED -> {
+                    runOnUiThread {
+                        setupNormalMode()
+                    }
+                }
+                ApiClient.ConnectionStatus.DISCONNECTED -> {
+                    runOnUiThread {
+                        showDisconnectionScreen()
+                    }
+                }
+                ApiClient.ConnectionStatus.TOKEN_EXPIRED -> {
+                    runOnUiThread {
+                        showDisconnectionScreen()
+                    }
+                }
+                ApiClient.ConnectionStatus.NO_CREDENTIALS -> {
+                    runOnUiThread {
+                        redirectToSetup()
+                    }
+                }
+            }
+        }
+    }
+    
+    private fun handleAuthenticationFailure() {
+        if (isHandlingAuthFailure) {
+            android.util.Log.d("MainActivity", "Already handling auth failure, ignoring duplicate call")
+            return
+        }
+        
+        isHandlingAuthFailure = true
+        android.util.Log.e("MainActivity", "Authentication failure detected, clearing stored credentials")
+        
+        // Clear stored credentials to prevent loop
+        val prefs = getSharedPreferences("BMA", Context.MODE_PRIVATE)
+        prefs.edit()
+            .remove("auth_token")
+            .remove("token_expires_at")
+            .apply()
+        
+        // Clear from ApiClient
+        ApiClient.setAuthToken(null)
+        
+        // Redirect to setup
+        val intent = Intent(this, com.bma.android.setup.SetupActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
+    
+    private fun setupNormalMode() {
+        // Show normal UI
+        binding.bottomNavView.isVisible = true
+        binding.fragmentContainer.isVisible = true
+        
+        // Load the initial fragment
+        binding.bottomNavView.selectedItemId = R.id.navigation_library
+        loadFragment(libraryFragment)
+        
+        // Start health check timer
+        isInNormalMode = true
+        startHealthCheckTimer()
+    }
+    
+    private fun showDisconnectionScreen() {
+        // Hide bottom navigation but keep fragment container
+        binding.bottomNavView.isVisible = false
+        binding.fragmentContainer.isVisible = true
+        
+        // Stop health check timer since we're no longer in normal mode
+        isInNormalMode = false
+        stopHealthCheckTimer()
+        
+        // Show disconnection fragment
+        loadFragment(disconnectionFragment)
+    }
+    
+    private fun redirectToSetup() {
+        val intent = Intent(this, com.bma.android.setup.SetupActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
+    
+    private fun startHealthCheckTimer() {
+        stopHealthCheckTimer() // Stop any existing timer
+        
+        healthCheckHandler = Handler(Looper.getMainLooper())
+        healthCheckRunnable = object : Runnable {
+            override fun run() {
+                performHealthCheck()
+                // Schedule next check in 30 seconds if still in normal mode
+                if (isInNormalMode && healthCheckHandler != null) {
+                    healthCheckHandler?.postDelayed(this, 30000) // 30 seconds
+                }
+            }
+        }
+        
+        // Start first check after 30 seconds
+        healthCheckHandler?.postDelayed(healthCheckRunnable!!, 30000)
+        android.util.Log.d("MainActivity", "Health check timer started")
+    }
+    
+    private fun stopHealthCheckTimer() {
+        healthCheckHandler?.removeCallbacks(healthCheckRunnable ?: return)
+        healthCheckHandler = null
+        healthCheckRunnable = null
+        android.util.Log.d("MainActivity", "Health check timer stopped")
+    }
+    
+    private fun performHealthCheck() {
+        android.util.Log.d("MainActivity", "Performing health check...")
+        
+        lifecycleScope.launch {
+            try {
+                when (ApiClient.checkConnection(this@MainActivity)) {
+                    ApiClient.ConnectionStatus.CONNECTED -> {
+                        android.util.Log.d("MainActivity", "Health check: Still connected")
+                        // All good, continue
+                    }
+                    ApiClient.ConnectionStatus.DISCONNECTED,
+                    ApiClient.ConnectionStatus.TOKEN_EXPIRED -> {
+                        android.util.Log.w("MainActivity", "Health check: Server disconnected, showing disconnect screen")
+                        runOnUiThread {
+                            showDisconnectionScreen()
+                        }
+                    }
+                    ApiClient.ConnectionStatus.NO_CREDENTIALS -> {
+                        android.util.Log.w("MainActivity", "Health check: No credentials, redirecting to setup")
+                        runOnUiThread {
+                            redirectToSetup()
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                android.util.Log.e("MainActivity", "Health check failed", e)
+                // On exception, assume disconnected
+                runOnUiThread {
+                    showDisconnectionScreen()
+                }
+            }
         }
     }
     
@@ -291,4 +475,17 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
     }
     
     fun getMusicService(): MusicService? = musicService
+    
+    override fun onBackPressed() {
+        // If user is on Search or Settings tab, navigate back to Library
+        when (binding.bottomNavView.selectedItemId) {
+            R.id.navigation_search, R.id.navigation_settings -> {
+                binding.bottomNavView.selectedItemId = R.id.navigation_library
+            }
+            else -> {
+                // If already on Library or any other state, use default back behavior (exit app)
+                super.onBackPressed()
+            }
+        }
+    }
 }

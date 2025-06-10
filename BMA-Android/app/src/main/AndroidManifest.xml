@@ -53,6 +53,10 @@
             android:exported="false" />
             
         <activity
+            android:name=".QueueActivity"
+            android:exported="false" />
+            
+        <activity
             android:name=".AlbumDetailActivity"
             android:exported="false" />
             
