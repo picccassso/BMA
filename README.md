@@ -1,38 +1,36 @@
-🎵 **BMA** – Basic Music App
+🎵 BMA – Basic Music App
+A secure, self-hosted music streaming solution built in Go (Desktop & CLI) and Kotlin (Android).
 
-A secure, self-hosted music streaming solution built with Go (desktop) and Kotlin (Android).
+🖥️ What is BMA?
+BMA turns your personal music library into a private streaming service — powered by your own devices. Whether you're on a PC, Mac, Linux machine, or a Raspberry Pi, BMA lets you stream music to your Android phone securely using Tailscale, without exposing anything to the public internet.
 
-🖥️ What is **BMA**?
+There’s no cloud, no port forwarding, and no privacy trade-offs — just instant, encrypted access to your music wherever you are.
 
-BMA lets you stream your personal music library from your PC, Mac, or Linux machine to your Android device — securely and privately.
-Using Tailscale for secure networking, your desktop becomes a music server, and your phone becomes your personal player. No cloud, no open ports, no setup headaches.
+🛠️ How It Works
+- The desktop app (Go + Fyne) lets you select a local folder as your music library.
+- The server runs locally and streams your music over HTTP via Tailscale’s secure mesh VPN.
+- Your Android device connects by scanning a QR code, pairing instantly with the server.
+- Metadata is retrieved, albums are organized, and the music starts flowing — just like a private Spotify.
+- A CLI version is available for Raspberry Pi, ideal for low-power streaming setups. Supports setup via browser and runs headlessly.
 
-🛠️ **How It Works**
+🔐 Note: Music currently streams over HTTP within Tailscale’s encrypted tunnel. Native HTTPS support is planned.
 
-- The desktop app (written in Go) turns your system into a lightweight music server.
-- You select a folder to act as your music library.
-- The server runs locally and securely, streaming over HTTP within a Tailscale mesh network.
-- Your Android device scans a QR code to pair with the server.
-- Music metadata is pulled instantly, albums and tracks are displayed, and you’re ready to listen.
-- // 🔐 Note: The app currently streams over HTTP, secured by Tailscale’s encrypted tunnel. HTTPS support is planned. //
+🚀 Key Features
+- ✅ One-tap pairing – Instantly connect your Android device to the server using a secure QR code.
+- 🎵 Organized album browsing – Albums are displayed with full track listings for smooth navigation.
+- 🔊 Intuitive mini player – Access playback controls (play/pause, next, previous, shuffle, repeat) at any time.
+- 🔍 Powerful search – Quickly find albums or individual tracks from your library.
+- 📶 Live connection feedback – View server status and connection info directly in the app’s settings.
+- 📡 Auto-reconnect – The app automatically reconnects to your server whenever it's available.
 
-📱 **Android App Features**
-
-- ✅ Instant connection via QR pairing
-- 🎵 Smart album organization: tap an album to browse its tracks
-- 🔊 Mini player UI with play/pause, next/previous, shuffle, repeat
-- 🔍 Search functionality for albums and tracks
-- 📶 Connection status and server info available in Settings
-- 📡 Automatically connects to your server if reachable
-
-🧩 **Future Improvements**
-- 📊 Streaming time tracker (stats)
-- 📁 Playlist support
-- 📃 Queue management
-- 👨🏻‍🔧 Any feedback given by community!
+🧩 Planned Enhancements
+- 📊 Listening stats – Track how much time you’ve spent streaming music.
+- 📁 Playlist creation – Support for building and saving custom playlists.
+- 📃 Better queue management – Full control over playback order and upcoming tracks.
+- 💬 Community-driven improvements – Actively shaped by user feedback and contributions.
 
 🤝 Tech Stack
-- Desktop App: Go
+- Desktop Server: Go (with optional GUI via Fyne)
 - Mobile App: Kotlin (Jetpack Compose)
-- Networking: Tailscale
-- Streaming: HTTP (within Tailscale network)
+- Networking Layer: Tailscale (zero-config, encrypted mesh VPN)
+- Streaming Protocol: HTTP (served securely over Tailscale’s encrypted tunnel)
