@@ -65,22 +65,40 @@ To authenticate, visit: https://login.tailscale.com/a/xxxxxxxxx
 BMA CLI is written in Go, so we need to install it first.
 
 ### On Raspberry Pi or Ubuntu/Debian:
-1. Open Terminal (the black screen with text)
-2. Type these commands one at a time, pressing Enter after each:
 
+**Option 1: Try the system Go first (might be too old)**
 ```bash
 sudo apt update
 sudo apt install golang-go
-```
-
-3. Check if it worked by typing:
-```bash
 go version
 ```
 
-You should see something like "go version go1.19.x linux/arm64" or similar.
+**If you see Go 1.19 or older, use Option 2 to install Go 1.20+:**
 
-**Note:** If you see Go 1.18 or older, you may need to install a newer version. The Raspberry Pi's default Go should work fine for BMA CLI.
+**Option 2: Install newer Go manually (recommended for Raspberry Pi)**
+```bash
+# Remove old Go if installed
+sudo apt remove golang-go
+
+# Download and install Go 1.20 for ARM64 (or ARM32 for older Pi)
+cd ~/Downloads
+wget https://go.dev/dl/go1.20.14.linux-arm64.tar.gz
+
+# For older Raspberry Pi (32-bit), use this instead:
+# wget https://go.dev/dl/go1.20.14.linux-armv6l.tar.gz
+
+# Extract and install
+sudo tar -C /usr/local -xzf go1.20.14.linux-arm64.tar.gz
+
+# Add Go to your PATH
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+source ~/.bashrc
+
+# Verify installation
+go version
+```
+
+You should see "go version go1.20.14 linux/arm64" or similar.
 
 ### On macOS:
 1. Go to https://golang.org/dl/
@@ -151,12 +169,25 @@ Open this URL in your web browser to configure BMA CLI
 
 ## 🌐 Step 6: Web Setup
 
-1. Open your web browser (Chrome, Firefox, Safari, etc.)
+1. **Find your Raspberry Pi's IP address** (you'll need this to access the setup page):
+   ```bash
+   hostname -I
+   ```
+   You'll see something like `192.168.1.100` - this is your Pi's IP address.
 
-2. Go to this address:
-```
-http://localhost:8080/setup
-```
+2. **Open your web browser** on your laptop, phone, or any device on the same WiFi network
+
+3. **Go to the setup page** using your Pi's IP address:
+   ```
+   http://[YOUR-PI-IP]:8080/setup
+   ```
+   
+   **Example**: If your Pi's IP is `192.168.1.100`, go to:
+   ```
+   http://192.168.1.100:8080/setup
+   ```
+
+   **Note**: Don't use `localhost` - that only works if you're browsing directly on the Pi itself!
 
 3. You'll see the BMA CLI setup page with 3 steps:
 
@@ -252,8 +283,21 @@ Once you have the BMA mobile app:
 
 ## 🔧 Troubleshooting
 
-### Problem: "go.mod file indicates go 1.21, but maximum version supported by tidy is 1.19"
-**Solution:** Your Raspberry Pi has an older Go version, but that's fine! The project has been updated to work with Go 1.19. Try running the commands again:
+### Problem: "go.mod file indicates go 1.20, but maximum version supported by tidy is 1.19" OR "undefined: time.DateOnly"
+**Solution:** Your Raspberry Pi has an older Go version. You need Go 1.20 or newer. Go back to Step 2 and use **Option 2** to install Go 1.20:
+
+```bash
+# Quick install of Go 1.20 for Raspberry Pi
+sudo apt remove golang-go
+cd ~/Downloads
+wget https://go.dev/dl/go1.20.14.linux-arm64.tar.gz
+sudo tar -C /usr/local -xzf go1.20.14.linux-arm64.tar.gz
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+source ~/.bashrc
+go version
+```
+
+Then try building again:
 ```bash
 go mod tidy
 go build -o bma-cli .
@@ -278,10 +322,16 @@ Then stop that program or restart your computer.
 - Make sure you have MP3 files in that folder
 - The folder needs MP3, M4A, FLAC, or WAV files
 
-### Problem: Can't access from web browser
+### Problem: Can't access setup page from web browser
 **Solution:**
+- **Don't use `localhost`** - that only works on the Pi itself
+- **Use your Pi's IP address instead**:
+  ```bash
+  hostname -I
+  ```
+  Then go to `http://[PI-IP]:8080/setup`
 - Make sure the terminal with BMA CLI is still running
-- Try typing the address exactly: `http://localhost:8080/setup`
+- Make sure both devices are on the same WiFi network
 - Check for typos in the web address
 
 ### Problem: Tailscale setup shows red X or QR code

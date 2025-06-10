@@ -49,12 +49,18 @@ func startSetupServer(config *models.Config) {
 		os.Exit(0)
 	}()
 	
-	fmt.Println("\n" + strings.Repeat("=", 50))
+	fmt.Println("\n" + strings.Repeat("=", 60))
 	fmt.Println("🎵 BMA CLI Setup")
-	fmt.Println(strings.Repeat("=", 50))
-	fmt.Println("Setup server is running at: http://localhost:8080/setup")
-	fmt.Println("Open this URL in your web browser to configure BMA CLI")
-	fmt.Println(strings.Repeat("=", 50) + "\n")
+	fmt.Println(strings.Repeat("=", 60))
+	fmt.Println("Setup server is running on port 8080")
+	fmt.Println("")
+	fmt.Println("To access the setup page:")
+	fmt.Println("1. Find this device's IP address: hostname -I")
+	fmt.Println("2. Open web browser on any device (same WiFi)")
+	fmt.Println("3. Go to: http://[YOUR-IP]:8080/setup")
+	fmt.Println("")
+	fmt.Println("Example: http://192.168.1.100:8080/setup")
+	fmt.Println(strings.Repeat("=", 60) + "\n")
 	
 	// Start the setup server (this will block)
 	if err := setupServer.Start(); err != nil {

@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"time"
@@ -423,8 +424,6 @@ func (ss *SetupServer) handleSetupPage(w http.ResponseWriter, r *http.Request) {
 func (ss *SetupServer) handleTailscaleStatus(w http.ResponseWriter, r *http.Request) {
 	log.Println("🔍 Tailscale status requested")
 	
-	// TODO: Implement actual Tailscale detection
-	// For now, simulate the response
 	response := map[string]interface{}{
 		"available":     false,
 		"authenticated": false,
@@ -433,12 +432,24 @@ func (ss *SetupServer) handleTailscaleStatus(w http.ResponseWriter, r *http.Requ
 	}
 	
 	// Try to detect Tailscale and get auth URL
-	if authURL := ss.getTailscaleAuthURL(); authURL != "" {
+	authResult := ss.getTailscaleAuthURL()
+	if authResult == "authenticated" {
+		// Tailscale is available and already authenticated
 		response["available"] = true
-		response["authURL"] = authURL
+		response["authenticated"] = true
+		
+		// Get Tailscale IP for the config
+		if tailscaleIP := ss.getTailscaleIP(); tailscaleIP != "" {
+			ss.config.TailscaleIP = tailscaleIP
+			ss.config.SaveConfig()
+		}
+	} else if authResult != "" {
+		// Tailscale is available but needs authentication
+		response["available"] = true
+		response["authURL"] = authResult
 		
 		// Generate QR code for auth URL
-		if qrData := ss.generateAuthQR(authURL); qrData != "" {
+		if qrData := ss.generateAuthQR(authResult); qrData != "" {
 			response["qrCode"] = qrData
 		}
 	}
@@ -533,9 +544,37 @@ func (ss *SetupServer) handleSetupComplete(w http.ResponseWriter, r *http.Reques
 
 // getTailscaleAuthURL gets the Tailscale authentication URL
 func (ss *SetupServer) getTailscaleAuthURL() string {
-	// TODO: Implement actual Tailscale auth URL generation
-	// This would typically involve running 'tailscale up' or 'tailscale login'
+	// Check if Tailscale is installed and get status
+	cmd := exec.Command("tailscale", "status")
+	output, err := cmd.Output()
+	if err != nil {
+		log.Printf("🔍 Tailscale not available: %v", err)
+		return ""
+	}
+	
+	// If we can get status, Tailscale is available and likely authenticated
+	statusStr := string(output)
+	if len(statusStr) > 0 {
+		log.Println("✅ Tailscale is available and authenticated")
+		// Return empty string to indicate it's already set up
+		return "authenticated"
+	}
+	
 	return ""
+}
+
+// getTailscaleIP gets the Tailscale IP address
+func (ss *SetupServer) getTailscaleIP() string {
+	cmd := exec.Command("tailscale", "ip", "-4")
+	output, err := cmd.Output()
+	if err != nil {
+		log.Printf("⚠️ Failed to get Tailscale IP: %v", err)
+		return ""
+	}
+	
+	ip := strings.TrimSpace(string(output))
+	log.Printf("🔗 Found Tailscale IP: %s", ip)
+	return ip
 }
 
 // generateAuthQR generates a QR code for the auth URL
