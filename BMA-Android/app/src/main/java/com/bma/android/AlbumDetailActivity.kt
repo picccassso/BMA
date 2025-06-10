@@ -1,7 +1,12 @@
 package com.bma.android
 
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
+import android.content.ServiceConnection
 import android.os.Bundle
+import android.os.IBinder
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -22,6 +27,23 @@ class AlbumDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlbumDetailBinding
     private lateinit var album: Album
     private lateinit var songAdapter: AlbumSongAdapter
+    
+    // Music service connection
+    private var musicService: MusicService? = null
+    private var serviceBound = false
+    
+    private val serviceConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            val binder = service as MusicService.MusicBinder
+            musicService = binder.getService()
+            serviceBound = true
+        }
+
+        override fun onServiceDisconnected(name: ComponentName?) {
+            serviceBound = false
+            musicService = null
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +60,7 @@ class AlbumDetailActivity : AppCompatActivity() {
         setupUI()
         setupRecyclerView()
         setupClickListeners()
+        bindMusicService()
     }
 
     private fun setupUI() {
@@ -80,9 +103,10 @@ class AlbumDetailActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        songAdapter = AlbumSongAdapter { song ->
-            playSong(song)
-        }
+        songAdapter = AlbumSongAdapter(
+            onSongClick = { song -> playSong(song) },
+            onSongLongClick = { song -> showSongOptions(song) }
+        )
         
         binding.songsRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@AlbumDetailActivity)
@@ -90,6 +114,42 @@ class AlbumDetailActivity : AppCompatActivity() {
         }
         
         songAdapter.updateSongs(album.songs)
+    }
+    
+    private fun bindMusicService() {
+        val intent = Intent(this, MusicService::class.java)
+        startService(intent)
+        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
+    }
+    
+    override fun onDestroy() {
+        super.onDestroy()
+        if (serviceBound) {
+            unbindService(serviceConnection)
+            serviceBound = false
+        }
+    }
+    
+    private fun showSongOptions(song: Song) {
+        android.app.AlertDialog.Builder(this)
+            .setTitle(song.title)
+            .setItems(arrayOf("Add to Queue", "Add Next")) { _, which ->
+                when (which) {
+                    0 -> addToQueue(song)
+                    1 -> addNext(song)
+                }
+            }
+            .show()
+    }
+    
+    private fun addToQueue(song: Song) {
+        musicService?.addToQueue(song)
+        Toast.makeText(this, "Added to queue: ${song.title}", Toast.LENGTH_SHORT).show()
+    }
+    
+    private fun addNext(song: Song) {
+        musicService?.addNext(song)
+        Toast.makeText(this, "Added next: ${song.title}", Toast.LENGTH_SHORT).show()
     }
 
     private fun setupClickListeners() {
@@ -143,7 +203,8 @@ class AlbumDetailActivity : AppCompatActivity() {
 
     // Simple adapter for songs in album detail
     private class AlbumSongAdapter(
-        private val onSongClick: (Song) -> Unit
+        private val onSongClick: (Song) -> Unit,
+        private val onSongLongClick: (Song) -> Unit
     ) : RecyclerView.Adapter<AlbumSongAdapter.SongViewHolder>() {
 
         private var songs = listOf<Song>()
@@ -177,6 +238,11 @@ class AlbumDetailActivity : AppCompatActivity() {
                 
                 binding.root.setOnClickListener {
                     onSongClick(song)
+                }
+                
+                binding.root.setOnLongClickListener {
+                    onSongLongClick(song)
+                    true
                 }
             }
         }

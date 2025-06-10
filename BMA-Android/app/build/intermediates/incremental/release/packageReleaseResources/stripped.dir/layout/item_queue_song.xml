@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Section Header (for "Up Next") - Completely separate and non-draggable -->
+    <TextView
+        android:id="@+id/sectionHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UP NEXT"
+        android:textColor="#808080"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:visibility="gone"
+        android:clickable="false"
+        android:focusable="false"
+        android:longClickable="false"
+        android:focusableInTouchMode="false"
+        android:importantForAccessibility="no"
+        android:background="@android:color/transparent" />
+
+    <!-- Main Song Item - This is the ONLY draggable part -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/draggableContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:minHeight="72dp"
+        android:background="?android:attr/selectableItemBackground">
+
+        <!-- Drag Handle -->
+        <ImageView
+            android:id="@+id/dragHandle"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:tint="#808080"
+            android:alpha="0.6"
+            android:contentDescription="Drag to reorder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Queue Position Number -->
+    <TextView
+        android:id="@+id/queuePosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="1"
+        android:textColor="#808080"
+        android:textSize="14sp"
+        android:minWidth="24dp"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/dragHandle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Album Artwork -->
+    <ImageView
+        android:id="@+id/albumArtwork"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/artwork_background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_music_note"
+        android:contentDescription="Album artwork"
+        app:layout_constraintStart_toEndOf="@id/queuePosition"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Song Info -->
+    <LinearLayout
+        android:id="@+id/songInfoLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@id/albumArtwork"
+        app:layout_constraintEnd_toStartOf="@id/removeButton"
+        app:layout_constraintTop_toTopOf="@id/albumArtwork"
+        app:layout_constraintBottom_toBottomOf="@id/albumArtwork">
+
+        <TextView
+            android:id="@+id/songTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Song Title"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/songArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Artist Name"
+            android:textColor="#808080"
+            android:textSize="14sp"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+    </LinearLayout>
+
+    <!-- Remove Button -->
+    <ImageButton
+        android:id="@+id/removeButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_delete"
+        android:tint="#808080"
+        android:scaleType="centerInside"
+        android:contentDescription="Remove from queue"
+        android:alpha="0.7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

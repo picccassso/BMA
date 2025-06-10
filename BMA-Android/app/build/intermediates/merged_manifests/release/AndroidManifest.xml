@@ -62,8 +62,19 @@
             android:name="com.bma.android.PlayerActivity"
             android:exported="false" />
         <activity
+            android:name="com.bma.android.QueueActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.bma.android.AlbumDetailActivity"
+            android:exported="false" />
+        <activity
             android:name="com.bma.android.QRScannerActivity"
             android:screenOrientation="portrait" />
+
+        <service
+            android:name="com.bma.android.MusicService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
 
         <!--
         Service for holding metadata. Cannot be instantiated.

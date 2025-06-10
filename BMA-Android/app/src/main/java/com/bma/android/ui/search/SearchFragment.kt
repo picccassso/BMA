@@ -140,7 +140,10 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private fun loadAllMusicForSearching() {
         lifecycleScope.launch {
             try {
-                val authHeader = ApiClient.getAuthHeader() ?: return@launch
+                val authHeader = ApiClient.getAuthHeader()
+                if (authHeader == null || ApiClient.isTokenExpired(requireContext())) {
+                    return@launch
+                }
                 val songList = ApiClient.api.getSongs(authHeader)
                 allSongs = songList
                 allAlbums = organizeSongsIntoAlbums(songList)

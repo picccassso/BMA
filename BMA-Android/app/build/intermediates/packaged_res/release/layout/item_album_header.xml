@@ -1,99 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?android:attr/selectableItemBackground"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="?android:attr/selectableItemBackground">
 
-    <!-- Album Artwork -->
     <ImageView
         android:id="@+id/albumArtwork"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/ic_folder"
-        android:contentDescription="Album artwork"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:scaleType="centerCrop"
-        android:background="@drawable/artwork_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        tools:src="@drawable/ic_folder" />
 
-    <!-- Folder Icon (overlay on artwork) -->
-    <ImageView
-        android:id="@+id/folderIcon"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:src="@drawable/ic_folder"
-        android:contentDescription="Album folder"
-        android:background="@android:color/black"
-        android:alpha="0.8"
-        android:padding="2dp"
-        app:tint="@android:color/white"
-        app:layout_constraintEnd_toEndOf="@+id/albumArtwork"
-        app:layout_constraintBottom_toBottomOf="@+id/albumArtwork" />
-
-    <!-- Album Info -->
-    <LinearLayout
-        android:id="@+id/albumInfo"
+    <TextView
+        android:id="@+id/albumNameText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintStart_toEndOf="@+id/albumArtwork"
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/expandIcon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toEndOf="@+id/albumArtwork"
+        app:layout_constraintTop_toTopOf="@+id/albumArtwork"
+        tools:text="Album Name" />
 
-        <TextView
-            android:id="@+id/albumNameText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:ellipsize="end"
-            android:maxLines="1" />
+    <TextView
+        android:id="@+id/artistText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#B3FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/expandIcon"
+        app:layout_constraintStart_toStartOf="@+id/albumNameText"
+        app:layout_constraintTop_toBottomOf="@+id/albumNameText"
+        tools:text="Artist Name" />
+        
+    <TextView
+        android:id="@+id/trackCountText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#B3FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/expandIcon"
+        app:layout_constraintStart_toStartOf="@+id/artistText"
+        app:layout_constraintTop_toBottomOf="@+id/artistText"
+        tools:text="• 12 tracks" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="2dp">
-
-            <TextView
-                android:id="@+id/artistText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#808080"
-                android:textSize="13sp"
-                android:ellipsize="end"
-                android:maxLines="1" />
-
-            <TextView
-                android:id="@+id/trackCountText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="#808080"
-                android:textSize="13sp"
-                android:text="• tracks" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <!-- Expand/Collapse Icon -->
     <ImageView
         android:id="@+id/expandIcon"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/ic_chevron_right"
-        android:contentDescription="Expand album"
-        app:tint="#808080"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        tools:src="@drawable/ic_chevron_right" />
 
 </androidx.constraintlayout.widget.ConstraintLayout> 

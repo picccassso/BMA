@@ -4,25 +4,52 @@ package com.bma.android.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import com.bma.android.R;
+import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
+import java.lang.String;
 
 public final class FragmentSettingsBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final ConstraintLayout rootView;
 
-  private FragmentSettingsBinding(@NonNull FrameLayout rootView) {
+  @NonNull
+  public final TextView connectionStatusLabel;
+
+  @NonNull
+  public final TextView connectionStatusText;
+
+  @NonNull
+  public final MaterialButton disconnectButton;
+
+  @NonNull
+  public final MaterialButton reconnectButton;
+
+  @NonNull
+  public final TextView settingsTitle;
+
+  private FragmentSettingsBinding(@NonNull ConstraintLayout rootView,
+      @NonNull TextView connectionStatusLabel, @NonNull TextView connectionStatusText,
+      @NonNull MaterialButton disconnectButton, @NonNull MaterialButton reconnectButton,
+      @NonNull TextView settingsTitle) {
     this.rootView = rootView;
+    this.connectionStatusLabel = connectionStatusLabel;
+    this.connectionStatusText = connectionStatusText;
+    this.disconnectButton = disconnectButton;
+    this.reconnectButton = reconnectButton;
+    this.settingsTitle = settingsTitle;
   }
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -43,10 +70,44 @@ public final class FragmentSettingsBinding implements ViewBinding {
 
   @NonNull
   public static FragmentSettingsBinding bind(@NonNull View rootView) {
-    if (rootView == null) {
-      throw new NullPointerException("rootView");
-    }
+    // The body of this method is generated in a way you would not otherwise write.
+    // This is done to optimize the compiled bytecode for size and performance.
+    int id;
+    missingId: {
+      id = R.id.connection_status_label;
+      TextView connectionStatusLabel = ViewBindings.findChildViewById(rootView, id);
+      if (connectionStatusLabel == null) {
+        break missingId;
+      }
 
-    return new FragmentSettingsBinding((FrameLayout) rootView);
+      id = R.id.connection_status_text;
+      TextView connectionStatusText = ViewBindings.findChildViewById(rootView, id);
+      if (connectionStatusText == null) {
+        break missingId;
+      }
+
+      id = R.id.disconnect_button;
+      MaterialButton disconnectButton = ViewBindings.findChildViewById(rootView, id);
+      if (disconnectButton == null) {
+        break missingId;
+      }
+
+      id = R.id.reconnect_button;
+      MaterialButton reconnectButton = ViewBindings.findChildViewById(rootView, id);
+      if (reconnectButton == null) {
+        break missingId;
+      }
+
+      id = R.id.settings_title;
+      TextView settingsTitle = ViewBindings.findChildViewById(rootView, id);
+      if (settingsTitle == null) {
+        break missingId;
+      }
+
+      return new FragmentSettingsBinding((ConstraintLayout) rootView, connectionStatusLabel,
+          connectionStatusText, disconnectButton, reconnectButton, settingsTitle);
+    }
+    String missingId = rootView.getResources().getResourceName(id);
+    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
   }
 }

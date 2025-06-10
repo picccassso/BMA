@@ -80,7 +80,7 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
             binding.errorText.isVisible = false
             try {
                 val authHeader = ApiClient.getAuthHeader()
-                if (authHeader == null) {
+                if (authHeader == null || ApiClient.isTokenExpired(requireContext())) {
                     showError("Not authenticated. Please connect in settings.")
                     return@launch
                 }

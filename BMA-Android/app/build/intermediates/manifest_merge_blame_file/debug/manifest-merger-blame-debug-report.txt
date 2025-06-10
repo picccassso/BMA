@@ -58,7 +58,7 @@
 35-->[androidx.core:core:1.9.0] /Users/alex/.gradle/caches/transforms-3/1be2f7b99c4696fd5ad9974aa4b3206b/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
 36
 37    <application
-37-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:26:5-68:19
+37-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:26:5-72:19
 38        android:allowBackup="true"
 38-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:27:9-35
 39        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -75,232 +75,239 @@
 45-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:34:9-69
 46        android:supportsRtl="true"
 46-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:31:9-35
-47        android:theme="@style/Theme.BMA"
-47-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:32:9-41
-48        android:usesCleartextTraffic="true" >
-48-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:33:9-44
-49        <activity
-49-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:37:9-45:20
-50            android:name="com.bma.android.setup.SetupActivity"
-50-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:38:13-48
-51            android:exported="true"
-51-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:39:13-36
-52            android:screenOrientation="portrait" >
-52-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:40:13-49
-53            <intent-filter>
-53-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:41:13-44:29
-54                <action android:name="android.intent.action.MAIN" />
-54-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:42:17-69
-54-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:42:25-66
-55
-56                <category android:name="android.intent.category.LAUNCHER" />
-56-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:43:17-77
-56-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:43:27-74
-57            </intent-filter>
-58        </activity>
-59        <activity
-59-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:47:9-49:40
-60            android:name="com.bma.android.MainActivity"
-60-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:48:13-41
-61            android:exported="false" />
-61-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:49:13-37
-62        <activity
-62-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:51:9-53:40
-63            android:name="com.bma.android.PlayerActivity"
-63-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:52:13-43
-64            android:exported="false" />
-64-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:53:13-37
-65        <activity
-65-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:55:9-57:40
-66            android:name="com.bma.android.AlbumDetailActivity"
-66-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:56:13-48
-67            android:exported="false" />
-67-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:57:13-37
-68        <activity
-68-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:59:9-61:52
-69            android:name="com.bma.android.QRScannerActivity"
-69-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:60:13-46
-70            android:screenOrientation="portrait" />
-70-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:61:13-49
-71
-72        <service
-72-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:63:9-66:61
-73            android:name="com.bma.android.MusicService"
-73-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:64:13-41
-74            android:exported="false"
-74-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:65:13-37
-75            android:foregroundServiceType="mediaPlayback" />
-75-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:66:13-58
-76
-77        <!--
-78        Service for holding metadata. Cannot be instantiated.
-79        Metadata will be merged from other manifests.
-80        -->
-81        <service
-81-->[androidx.camera:camera-core:1.3.1] /Users/alex/.gradle/caches/transforms-3/091f7ac7a0db8efc3fe8bd3753b69f12/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:29:9-33:78
-82            android:name="androidx.camera.core.impl.MetadataHolderService"
-82-->[androidx.camera:camera-core:1.3.1] /Users/alex/.gradle/caches/transforms-3/091f7ac7a0db8efc3fe8bd3753b69f12/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:30:13-75
-83            android:enabled="false"
-83-->[androidx.camera:camera-core:1.3.1] /Users/alex/.gradle/caches/transforms-3/091f7ac7a0db8efc3fe8bd3753b69f12/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:31:13-36
-84            android:exported="false" >
-84-->[androidx.camera:camera-core:1.3.1] /Users/alex/.gradle/caches/transforms-3/091f7ac7a0db8efc3fe8bd3753b69f12/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:32:13-37
-85            <meta-data
-85-->[androidx.camera:camera-camera2:1.3.1] /Users/alex/.gradle/caches/transforms-3/b65bd460c57f2537b73533e90d04172d/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:30:13-32:89
-86                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
-86-->[androidx.camera:camera-camera2:1.3.1] /Users/alex/.gradle/caches/transforms-3/b65bd460c57f2537b73533e90d04172d/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:31:17-103
-87                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
-87-->[androidx.camera:camera-camera2:1.3.1] /Users/alex/.gradle/caches/transforms-3/b65bd460c57f2537b73533e90d04172d/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:32:17-86
-88        </service>
-89        <service
-89-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/alex/.gradle/caches/transforms-3/023ccde57c7109494f9813060de38034/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:9:9-15:19
-90            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
-90-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/alex/.gradle/caches/transforms-3/023ccde57c7109494f9813060de38034/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:10:13-91
-91            android:directBootAware="true"
-91-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:17:13-43
-92            android:exported="false" >
-92-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/alex/.gradle/caches/transforms-3/023ccde57c7109494f9813060de38034/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:11:13-37
-93            <meta-data
-93-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/alex/.gradle/caches/transforms-3/023ccde57c7109494f9813060de38034/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:12:13-14:85
-94                android:name="com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar"
-94-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/alex/.gradle/caches/transforms-3/023ccde57c7109494f9813060de38034/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:13:17-120
-95                android:value="com.google.firebase.components.ComponentRegistrar" />
-95-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/alex/.gradle/caches/transforms-3/023ccde57c7109494f9813060de38034/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:14:17-82
-96            <meta-data
-96-->[com.google.mlkit:vision-common:17.3.0] /Users/alex/.gradle/caches/transforms-3/a805e42985b43d8c4f376eb38e170b7f/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
-97                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
-97-->[com.google.mlkit:vision-common:17.3.0] /Users/alex/.gradle/caches/transforms-3/a805e42985b43d8c4f376eb38e170b7f/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:13:17-124
-98                android:value="com.google.firebase.components.ComponentRegistrar" />
-98-->[com.google.mlkit:vision-common:17.3.0] /Users/alex/.gradle/caches/transforms-3/a805e42985b43d8c4f376eb38e170b7f/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:14:17-82
-99            <meta-data
-99-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:20:13-22:85
-100                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
-100-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:21:17-120
-101                android:value="com.google.firebase.components.ComponentRegistrar" />
-101-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:22:17-82
-102        </service>
-103
-104        <provider
-104-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:9:9-13:38
-105            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
-105-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:10:13-78
-106            android:authorities="com.bma.android.mlkitinitprovider"
-106-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:11:13-69
-107            android:exported="false"
-107-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:12:13-37
-108            android:initOrder="99" />
-108-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:13:13-35
-109
-110        <activity
-110-->[com.google.android.gms:play-services-base:18.1.0] /Users/alex/.gradle/caches/transforms-3/1bb9621c0623dd6b7d3d650cdd7b1f6d/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
-111            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-111-->[com.google.android.gms:play-services-base:18.1.0] /Users/alex/.gradle/caches/transforms-3/1bb9621c0623dd6b7d3d650cdd7b1f6d/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:19-85
-112            android:exported="false"
-112-->[com.google.android.gms:play-services-base:18.1.0] /Users/alex/.gradle/caches/transforms-3/1bb9621c0623dd6b7d3d650cdd7b1f6d/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:22:19-43
-113            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-113-->[com.google.android.gms:play-services-base:18.1.0] /Users/alex/.gradle/caches/transforms-3/1bb9621c0623dd6b7d3d650cdd7b1f6d/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:21:19-78
-114
-115        <meta-data
-115-->[com.google.android.gms:play-services-basement:18.1.0] /Users/alex/.gradle/caches/transforms-3/b3d1be131b8d177ca0b0c06cc60e9704/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
-116            android:name="com.google.android.gms.version"
-116-->[com.google.android.gms:play-services-basement:18.1.0] /Users/alex/.gradle/caches/transforms-3/b3d1be131b8d177ca0b0c06cc60e9704/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
-117            android:value="@integer/google_play_services_version" />
-117-->[com.google.android.gms:play-services-basement:18.1.0] /Users/alex/.gradle/caches/transforms-3/b3d1be131b8d177ca0b0c06cc60e9704/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+47        android:testOnly="true"
+48        android:theme="@style/Theme.BMA"
+48-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:32:9-41
+49        android:usesCleartextTraffic="true" >
+49-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:33:9-44
+50        <activity
+50-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:37:9-45:20
+51            android:name="com.bma.android.setup.SetupActivity"
+51-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:38:13-48
+52            android:exported="true"
+52-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:39:13-36
+53            android:screenOrientation="portrait" >
+53-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:40:13-49
+54            <intent-filter>
+54-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:41:13-44:29
+55                <action android:name="android.intent.action.MAIN" />
+55-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:42:17-69
+55-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:42:25-66
+56
+57                <category android:name="android.intent.category.LAUNCHER" />
+57-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:43:17-77
+57-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:43:27-74
+58            </intent-filter>
+59        </activity>
+60        <activity
+60-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:47:9-49:40
+61            android:name="com.bma.android.MainActivity"
+61-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:48:13-41
+62            android:exported="false" />
+62-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:49:13-37
+63        <activity
+63-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:51:9-53:40
+64            android:name="com.bma.android.PlayerActivity"
+64-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:52:13-43
+65            android:exported="false" />
+65-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:53:13-37
+66        <activity
+66-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:55:9-57:40
+67            android:name="com.bma.android.QueueActivity"
+67-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:56:13-42
+68            android:exported="false" />
+68-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:57:13-37
+69        <activity
+69-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:59:9-61:40
+70            android:name="com.bma.android.AlbumDetailActivity"
+70-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:60:13-48
+71            android:exported="false" />
+71-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:61:13-37
+72        <activity
+72-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:63:9-65:52
+73            android:name="com.bma.android.QRScannerActivity"
+73-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:64:13-46
+74            android:screenOrientation="portrait" />
+74-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:65:13-49
+75
+76        <service
+76-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:67:9-70:61
+77            android:name="com.bma.android.MusicService"
+77-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:68:13-41
+78            android:exported="false"
+78-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:69:13-37
+79            android:foregroundServiceType="mediaPlayback" />
+79-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/src/main/AndroidManifest.xml:70:13-58
+80
+81        <!--
+82        Service for holding metadata. Cannot be instantiated.
+83        Metadata will be merged from other manifests.
+84        -->
+85        <service
+85-->[androidx.camera:camera-core:1.3.1] /Users/alex/.gradle/caches/transforms-3/091f7ac7a0db8efc3fe8bd3753b69f12/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:29:9-33:78
+86            android:name="androidx.camera.core.impl.MetadataHolderService"
+86-->[androidx.camera:camera-core:1.3.1] /Users/alex/.gradle/caches/transforms-3/091f7ac7a0db8efc3fe8bd3753b69f12/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:30:13-75
+87            android:enabled="false"
+87-->[androidx.camera:camera-core:1.3.1] /Users/alex/.gradle/caches/transforms-3/091f7ac7a0db8efc3fe8bd3753b69f12/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:31:13-36
+88            android:exported="false" >
+88-->[androidx.camera:camera-core:1.3.1] /Users/alex/.gradle/caches/transforms-3/091f7ac7a0db8efc3fe8bd3753b69f12/transformed/jetified-camera-core-1.3.1/AndroidManifest.xml:32:13-37
+89            <meta-data
+89-->[androidx.camera:camera-camera2:1.3.1] /Users/alex/.gradle/caches/transforms-3/b65bd460c57f2537b73533e90d04172d/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:30:13-32:89
+90                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+90-->[androidx.camera:camera-camera2:1.3.1] /Users/alex/.gradle/caches/transforms-3/b65bd460c57f2537b73533e90d04172d/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:31:17-103
+91                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+91-->[androidx.camera:camera-camera2:1.3.1] /Users/alex/.gradle/caches/transforms-3/b65bd460c57f2537b73533e90d04172d/transformed/jetified-camera-camera2-1.3.1/AndroidManifest.xml:32:17-86
+92        </service>
+93        <service
+93-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/alex/.gradle/caches/transforms-3/023ccde57c7109494f9813060de38034/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:9:9-15:19
+94            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+94-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/alex/.gradle/caches/transforms-3/023ccde57c7109494f9813060de38034/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:10:13-91
+95            android:directBootAware="true"
+95-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:17:13-43
+96            android:exported="false" >
+96-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/alex/.gradle/caches/transforms-3/023ccde57c7109494f9813060de38034/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:11:13-37
+97            <meta-data
+97-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/alex/.gradle/caches/transforms-3/023ccde57c7109494f9813060de38034/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:12:13-14:85
+98                android:name="com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar"
+98-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/alex/.gradle/caches/transforms-3/023ccde57c7109494f9813060de38034/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:13:17-120
+99                android:value="com.google.firebase.components.ComponentRegistrar" />
+99-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0] /Users/alex/.gradle/caches/transforms-3/023ccde57c7109494f9813060de38034/transformed/jetified-play-services-mlkit-barcode-scanning-18.3.0/AndroidManifest.xml:14:17-82
+100            <meta-data
+100-->[com.google.mlkit:vision-common:17.3.0] /Users/alex/.gradle/caches/transforms-3/a805e42985b43d8c4f376eb38e170b7f/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:12:13-14:85
+101                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+101-->[com.google.mlkit:vision-common:17.3.0] /Users/alex/.gradle/caches/transforms-3/a805e42985b43d8c4f376eb38e170b7f/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:13:17-124
+102                android:value="com.google.firebase.components.ComponentRegistrar" />
+102-->[com.google.mlkit:vision-common:17.3.0] /Users/alex/.gradle/caches/transforms-3/a805e42985b43d8c4f376eb38e170b7f/transformed/jetified-vision-common-17.3.0/AndroidManifest.xml:14:17-82
+103            <meta-data
+103-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:20:13-22:85
+104                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+104-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:21:17-120
+105                android:value="com.google.firebase.components.ComponentRegistrar" />
+105-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:22:17-82
+106        </service>
+107
+108        <provider
+108-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:9:9-13:38
+109            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+109-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:10:13-78
+110            android:authorities="com.bma.android.mlkitinitprovider"
+110-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:11:13-69
+111            android:exported="false"
+111-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:12:13-37
+112            android:initOrder="99" />
+112-->[com.google.mlkit:common:18.9.0] /Users/alex/.gradle/caches/transforms-3/8393fe21ae35496f65e0cdff0636bb65/transformed/jetified-common-18.9.0/AndroidManifest.xml:13:13-35
+113
+114        <activity
+114-->[com.google.android.gms:play-services-base:18.1.0] /Users/alex/.gradle/caches/transforms-3/1bb9621c0623dd6b7d3d650cdd7b1f6d/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
+115            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+115-->[com.google.android.gms:play-services-base:18.1.0] /Users/alex/.gradle/caches/transforms-3/1bb9621c0623dd6b7d3d650cdd7b1f6d/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:19-85
+116            android:exported="false"
+116-->[com.google.android.gms:play-services-base:18.1.0] /Users/alex/.gradle/caches/transforms-3/1bb9621c0623dd6b7d3d650cdd7b1f6d/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:22:19-43
+117            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+117-->[com.google.android.gms:play-services-base:18.1.0] /Users/alex/.gradle/caches/transforms-3/1bb9621c0623dd6b7d3d650cdd7b1f6d/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:21:19-78
 118
-119        <provider
-119-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-120            android:name="androidx.startup.InitializationProvider"
-120-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
-121            android:authorities="com.bma.android.androidx-startup"
-121-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
-122            android:exported="false" >
-122-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
-123            <meta-data
-123-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-124                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-124-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
-125                android:value="androidx.startup" />
-125-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
-126            <meta-data
-126-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/alex/.gradle/caches/transforms-3/ab6ae78f9a69fb384e9fa752f3c6881b/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
-127                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-127-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/alex/.gradle/caches/transforms-3/ab6ae78f9a69fb384e9fa752f3c6881b/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
-128                android:value="androidx.startup" />
-128-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/alex/.gradle/caches/transforms-3/ab6ae78f9a69fb384e9fa752f3c6881b/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
-129            <meta-data
-129-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
-130                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-130-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
-131                android:value="androidx.startup" />
-131-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
-132        </provider>
-133
-134        <receiver
-134-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
-135            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-135-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
-136            android:directBootAware="false"
-136-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
-137            android:enabled="true"
-137-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
-138            android:exported="true"
-138-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
-139            android:permission="android.permission.DUMP" >
-139-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
-140            <intent-filter>
-140-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
-141                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-141-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
-141-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
-142            </intent-filter>
-143            <intent-filter>
-143-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
-144                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-144-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
-144-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
-145            </intent-filter>
-146            <intent-filter>
-146-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
-147                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-147-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
-147-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
-148            </intent-filter>
-149            <intent-filter>
-149-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
-150                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-150-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
-150-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
-151            </intent-filter>
-152        </receiver>
-153
-154        <service
-154-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/alex/.gradle/caches/transforms-3/2316c7eb294e879defbe8af0b30f8818/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
-155            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-155-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/alex/.gradle/caches/transforms-3/2316c7eb294e879defbe8af0b30f8818/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
-156            android:exported="false" >
-156-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/alex/.gradle/caches/transforms-3/2316c7eb294e879defbe8af0b30f8818/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
-157            <meta-data
-157-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/alex/.gradle/caches/transforms-3/2316c7eb294e879defbe8af0b30f8818/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
-158                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-158-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/alex/.gradle/caches/transforms-3/2316c7eb294e879defbe8af0b30f8818/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
-159                android:value="cct" />
-159-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/alex/.gradle/caches/transforms-3/2316c7eb294e879defbe8af0b30f8818/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
-160        </service>
-161        <service
-161-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:26:9-30:19
-162            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-162-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:27:13-117
-163            android:exported="false"
-163-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:28:13-37
-164            android:permission="android.permission.BIND_JOB_SERVICE" >
-164-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:29:13-69
-165        </service>
-166
-167        <receiver
-167-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:32:9-34:40
-168            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-168-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:33:13-132
-169            android:exported="false" />
-169-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:34:13-37
-170    </application>
-171
-172</manifest>
+119        <meta-data
+119-->[com.google.android.gms:play-services-basement:18.1.0] /Users/alex/.gradle/caches/transforms-3/b3d1be131b8d177ca0b0c06cc60e9704/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+120            android:name="com.google.android.gms.version"
+120-->[com.google.android.gms:play-services-basement:18.1.0] /Users/alex/.gradle/caches/transforms-3/b3d1be131b8d177ca0b0c06cc60e9704/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+121            android:value="@integer/google_play_services_version" />
+121-->[com.google.android.gms:play-services-basement:18.1.0] /Users/alex/.gradle/caches/transforms-3/b3d1be131b8d177ca0b0c06cc60e9704/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+122
+123        <provider
+123-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+124            android:name="androidx.startup.InitializationProvider"
+124-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+125            android:authorities="com.bma.android.androidx-startup"
+125-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+126            android:exported="false" >
+126-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+127            <meta-data
+127-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+128                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+128-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+129                android:value="androidx.startup" />
+129-->[androidx.emoji2:emoji2:1.2.0] /Users/alex/.gradle/caches/transforms-3/f4638e14170ce58a135ac45eecf1ff24/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+130            <meta-data
+130-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/alex/.gradle/caches/transforms-3/ab6ae78f9a69fb384e9fa752f3c6881b/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
+131                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+131-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/alex/.gradle/caches/transforms-3/ab6ae78f9a69fb384e9fa752f3c6881b/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
+132                android:value="androidx.startup" />
+132-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/alex/.gradle/caches/transforms-3/ab6ae78f9a69fb384e9fa752f3c6881b/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
+133            <meta-data
+133-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+134                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+134-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+135                android:value="androidx.startup" />
+135-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+136        </provider>
+137
+138        <receiver
+138-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+139            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+139-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+140            android:directBootAware="false"
+140-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+141            android:enabled="true"
+141-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+142            android:exported="true"
+142-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+143            android:permission="android.permission.DUMP" >
+143-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+144            <intent-filter>
+144-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+145                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+145-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+145-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+146            </intent-filter>
+147            <intent-filter>
+147-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+148                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+148-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+148-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+149            </intent-filter>
+150            <intent-filter>
+150-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+151                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+151-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+151-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+152            </intent-filter>
+153            <intent-filter>
+153-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+154                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+154-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+154-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/alex/.gradle/caches/transforms-3/438cca632653b6268d35f5698de61ddc/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+155            </intent-filter>
+156        </receiver>
+157
+158        <service
+158-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/alex/.gradle/caches/transforms-3/2316c7eb294e879defbe8af0b30f8818/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:29:9-35:19
+159            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+159-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/alex/.gradle/caches/transforms-3/2316c7eb294e879defbe8af0b30f8818/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:30:13-103
+160            android:exported="false" >
+160-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/alex/.gradle/caches/transforms-3/2316c7eb294e879defbe8af0b30f8818/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:31:13-37
+161            <meta-data
+161-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/alex/.gradle/caches/transforms-3/2316c7eb294e879defbe8af0b30f8818/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:32:13-34:39
+162                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+162-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/alex/.gradle/caches/transforms-3/2316c7eb294e879defbe8af0b30f8818/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:33:17-94
+163                android:value="cct" />
+163-->[com.google.android.datatransport:transport-backend-cct:2.3.3] /Users/alex/.gradle/caches/transforms-3/2316c7eb294e879defbe8af0b30f8818/transformed/jetified-transport-backend-cct-2.3.3/AndroidManifest.xml:34:17-36
+164        </service>
+165        <service
+165-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:26:9-30:19
+166            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+166-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:27:13-117
+167            android:exported="false"
+167-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:28:13-37
+168            android:permission="android.permission.BIND_JOB_SERVICE" >
+168-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:29:13-69
+169        </service>
+170
+171        <receiver
+171-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:32:9-34:40
+172            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+172-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:33:13-132
+173            android:exported="false" />
+173-->[com.google.android.datatransport:transport-runtime:2.2.6] /Users/alex/.gradle/caches/transforms-3/2a998e35a88bbfbf226818a3d5af723a/transformed/jetified-transport-runtime-2.2.6/AndroidManifest.xml:34:13-37
+174    </application>
+175
+176</manifest>

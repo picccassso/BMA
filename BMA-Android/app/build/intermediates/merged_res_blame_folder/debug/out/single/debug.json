@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/layout_fragment_qr_scanner.xml.flat",
-        "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/fragment_qr_scanner.xml"
-    },
-    {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/layout_fragment_library.xml.flat",
         "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/fragment_library.xml"
+    },
+    {
+        "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/layout_fragment_qr_scanner.xml.flat",
+        "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/fragment_qr_scanner.xml"
     },
     {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/drawable_ic_repeat_off.xml.flat",
@@ -22,6 +22,10 @@
     {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/layout_activity_player.xml.flat",
         "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/activity_player.xml"
+    },
+    {
+        "merged": "com.bma.android.app-merged_res-44:/layout_item_queue_song.xml.flat",
+        "source": "com.bma.android.app-main-46:/layout/item_queue_song.xml"
     },
     {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/drawable_qr_scanner_overlay.xml.flat",
@@ -52,12 +56,16 @@
         "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/anim/slide_in_right.xml"
     },
     {
+        "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/layout_fragment_welcome.xml.flat",
+        "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/fragment_welcome.xml"
+    },
+    {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/xml_backup_rules.xml.flat",
         "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/xml/backup_rules.xml"
     },
     {
-        "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/layout_fragment_welcome.xml.flat",
-        "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/fragment_welcome.xml"
+        "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/layout_item_queue_current_song.xml.flat",
+        "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/item_queue_current_song.xml"
     },
     {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/drawable_ic_repeat_all.xml.flat",
@@ -74,6 +82,10 @@
     {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/drawable_ic_skip_next.xml.flat",
         "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/drawable/ic_skip_next.xml"
+    },
+    {
+        "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/layout_activity_queue.xml.flat",
+        "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/activity_queue.xml"
     },
     {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/drawable_ic_pause.xml.flat",
@@ -108,6 +120,10 @@
         "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/drawable/search_view_bg.xml"
     },
     {
+        "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/layout_item_queue_song.xml.flat",
+        "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/item_queue_song.xml"
+    },
+    {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/layout_fragment_loading.xml.flat",
         "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/fragment_loading.xml"
     },
@@ -140,6 +156,14 @@
         "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/item_recent_search.xml"
     },
     {
+        "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/layout_fragment_disconnection.xml.flat",
+        "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/layout/fragment_disconnection.xml"
+    },
+    {
+        "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/drawable_ic_queue.xml.flat",
+        "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/drawable/ic_queue.xml"
+    },
+    {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/color_bottom_nav_color.xml.flat",
         "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/color/bottom_nav_color.xml"
     },
@@ -150,10 +174,6 @@
     {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/drawable_ic_play_arrow.xml.flat",
         "source": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-main-46:/drawable/ic_play_arrow.xml"
-    },
-    {
-        "merged": "com.bma.android.app-merged_res-44:/layout_mini_player.xml.flat",
-        "source": "com.bma.android.app-main-46:/layout/mini_player.xml"
     },
     {
         "merged": "/Users/alex/.gradle/daemon/8.2/com.bma.android.app-merged_res-44:/drawable_ic_play_circle.xml.flat",

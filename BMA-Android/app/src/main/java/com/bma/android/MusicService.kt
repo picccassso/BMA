@@ -21,6 +21,256 @@ import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.source.DefaultMediaSourceFactory
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 
+/**
+ * Queue management class for handling both normal and shuffled playback order
+ */
+private class MusicQueue {
+    private var originalPlaylist: List<Song> = emptyList()
+    private var currentQueue: List<Song> = emptyList()
+    private var queuePosition: Int = 0
+    private var isShuffled: Boolean = false
+    
+    fun setPlaylist(songs: List<Song>, startIndex: Int = 0) {
+        originalPlaylist = songs
+        currentQueue = songs.toList()
+        queuePosition = startIndex.coerceIn(0, songs.size - 1)
+        isShuffled = false
+    }
+    
+    fun shuffle() {
+        if (originalPlaylist.isEmpty()) return
+        
+        // Get current song before shuffling
+        val currentSong = getCurrentSong()
+        
+        // Create shuffled copy using Fisher-Yates algorithm
+        val shuffled = originalPlaylist.toMutableList()
+        for (i in shuffled.size - 1 downTo 1) {
+            val j = (0..i).random()
+            val temp = shuffled[i]
+            shuffled[i] = shuffled[j]
+            shuffled[j] = temp
+        }
+        
+        currentQueue = shuffled
+        isShuffled = true
+        
+        // Find current song in shuffled queue and set position
+        currentSong?.let { song ->
+            queuePosition = currentQueue.indexOfFirst { it.id == song.id }
+            if (queuePosition == -1) queuePosition = 0
+        }
+    }
+    
+    fun unshuffle() {
+        if (originalPlaylist.isEmpty()) return
+        
+        // Get current song before unshuffling
+        val currentSong = getCurrentSong()
+        
+        // Restore original order
+        currentQueue = originalPlaylist.toList()
+        isShuffled = false
+        
+        // Find current song in original order and set position
+        currentSong?.let { song ->
+            queuePosition = currentQueue.indexOfFirst { it.id == song.id }
+            if (queuePosition == -1) queuePosition = 0
+        }
+    }
+    
+    fun next(): Song? {
+        android.util.Log.d("MusicQueue", "🎵 === NEXT() CALLED ===")
+        android.util.Log.d("MusicQueue", "Current queue size: ${currentQueue.size}")
+        android.util.Log.d("MusicQueue", "Current position: $queuePosition")
+        android.util.Log.d("MusicQueue", "Can move next: ${queuePosition < currentQueue.size - 1}")
+        
+        if (currentQueue.isEmpty()) {
+            android.util.Log.d("MusicQueue", "❌ Queue is empty")
+            return null
+        }
+        
+        if (queuePosition < currentQueue.size - 1) {
+            queuePosition++
+            val nextSong = currentQueue[queuePosition]
+            android.util.Log.d("MusicQueue", "✅ Moving to position $queuePosition: ${nextSong.title}")
+            
+            // Log current queue state
+            android.util.Log.d("MusicQueue", "📝 Current queue after next():")
+            currentQueue.forEachIndexed { index, song ->
+                val marker = if (index == queuePosition) "👉" else "  "
+                android.util.Log.d("MusicQueue", "$marker[$index] ${song.title}")
+            }
+            
+            return nextSong
+        }
+        
+        android.util.Log.d("MusicQueue", "⏭️ Reached end of queue")
+        return null // End of queue
+    }
+    
+    fun previous(): Song? {
+        if (currentQueue.isEmpty()) return null
+        
+        if (queuePosition > 0) {
+            queuePosition--
+            return currentQueue[queuePosition]
+        }
+        
+        return null // Beginning of queue
+    }
+    
+    fun getCurrentSong(): Song? {
+        return if (currentQueue.isNotEmpty() && queuePosition in currentQueue.indices) {
+            currentQueue[queuePosition]
+        } else null
+    }
+    
+    fun hasNext(): Boolean = queuePosition < currentQueue.size - 1
+    
+    fun hasPrevious(): Boolean = queuePosition > 0
+    
+    fun getIsShuffled(): Boolean = isShuffled
+    
+    fun getCurrentPosition(): Int = queuePosition
+    
+    fun size(): Int = currentQueue.size
+    
+    fun isEmpty(): Boolean = currentQueue.isEmpty()
+    
+    fun getOriginalPlaylist(): List<Song> = originalPlaylist.toList()
+    
+    // Dynamic queue management methods
+    fun addToQueue(song: Song) {
+        if (currentQueue.isEmpty()) return
+        
+        currentQueue = currentQueue.toMutableList().apply { add(song) }
+        if (!isShuffled) {
+            originalPlaylist = originalPlaylist.toMutableList().apply { add(song) }
+        }
+    }
+    
+    fun addToQueue(songs: List<Song>) {
+        if (currentQueue.isEmpty() || songs.isEmpty()) return
+        
+        currentQueue = currentQueue.toMutableList().apply { addAll(songs) }
+        if (!isShuffled) {
+            originalPlaylist = originalPlaylist.toMutableList().apply { addAll(songs) }
+        }
+    }
+    
+    fun addNext(song: Song) {
+        if (currentQueue.isEmpty()) return
+        
+        val nextPosition = queuePosition + 1
+        currentQueue = currentQueue.toMutableList().apply { 
+            add(nextPosition.coerceAtMost(size), song) 
+        }
+        if (!isShuffled) {
+            // For original playlist, add after current song's original position
+            val currentSong = getCurrentSong()
+            val originalIndex = originalPlaylist.indexOfFirst { it.id == currentSong?.id }
+            if (originalIndex >= 0) {
+                originalPlaylist = originalPlaylist.toMutableList().apply { 
+                    add(originalIndex + 1, song) 
+                }
+            }
+        }
+    }
+    
+    /**
+     * Remove a song from the queue at the specified position
+     * @param position The position in the queue to remove (0-based)
+     * @return true if removal was successful, false if position invalid or current song
+     */
+    fun removeFromQueue(position: Int): Boolean {
+        if (position < 0 || position >= currentQueue.size) return false
+        if (position == queuePosition) return false // Don't remove currently playing song
+        
+        val mutableQueue = currentQueue.toMutableList()
+        val songToRemove = mutableQueue[position]
+        mutableQueue.removeAt(position)
+        currentQueue = mutableQueue
+        
+        // Adjust queue position if removing before current position
+        if (position < queuePosition) {
+            queuePosition--
+        }
+        
+        // Also remove from original playlist if not shuffled
+        if (!isShuffled) {
+            originalPlaylist = originalPlaylist.toMutableList().apply { 
+                removeAll { it.id == songToRemove.id }
+            }
+        }
+        
+        return true
+    }
+    
+    /**
+     * Move a song in the queue from one position to another
+     * @param fromPosition Source position (0-based)
+     * @param toPosition Target position (0-based)
+     * @return true if move was successful, false if positions invalid
+     */
+    fun moveQueueItem(fromPosition: Int, toPosition: Int): Boolean {
+        if (fromPosition < 0 || fromPosition >= currentQueue.size) return false
+        if (toPosition < 0 || toPosition >= currentQueue.size) return false
+        if (fromPosition == toPosition) return false
+        
+        // Update the current queue
+        val mutableQueue = currentQueue.toMutableList()
+        val songToMove = mutableQueue.removeAt(fromPosition)
+        mutableQueue.add(toPosition, songToMove)
+        currentQueue = mutableQueue
+        
+        // CRITICAL FIX: Also update the original playlist if not shuffled
+        // This ensures the queue stays consistent when skipping tracks
+        if (!isShuffled) {
+            val mutableOriginal = originalPlaylist.toMutableList()
+            val originalSongToMove = mutableOriginal.removeAt(fromPosition)
+            mutableOriginal.add(toPosition, originalSongToMove)
+            originalPlaylist = mutableOriginal
+            
+            android.util.Log.d("MusicQueue", "📝 Updated original playlist:")
+            originalPlaylist.forEachIndexed { index, song ->
+                android.util.Log.d("MusicQueue", "  [$index] ${song.title}")
+            }
+        }
+        
+        // Update queue position if needed
+        when {
+            fromPosition == queuePosition -> queuePosition = toPosition
+            fromPosition < queuePosition && toPosition >= queuePosition -> queuePosition--
+            fromPosition > queuePosition && toPosition <= queuePosition -> queuePosition++
+        }
+        
+        return true
+    }
+    
+    /**
+     * Jump to a specific position in the queue
+     * @param position The queue position to jump to (0-based)
+     * @return The song at that position, or null if position invalid
+     */
+    fun jumpToQueuePosition(position: Int): Song? {
+        if (position < 0 || position >= currentQueue.size) return null
+        
+        queuePosition = position
+        return getCurrentSong()
+    }
+    
+    fun getQueueContents(): List<Song> = currentQueue.toList()
+    
+    fun getQueueFromPosition(position: Int = queuePosition): List<Song> {
+        return if (position < currentQueue.size) {
+            currentQueue.drop(position)
+        } else {
+            emptyList()
+        }
+    }
+}
+
 class MusicService : Service() {
     
     companion object {
@@ -37,10 +287,8 @@ class MusicService : Service() {
     private var exoPlayer: ExoPlayer? = null
     private var mediaSession: MediaSessionCompat? = null
     private var currentSong: Song? = null
-    private var playlist: List<Song> = emptyList()
-    private var currentPosition = 0
+    private var musicQueue = MusicQueue()
     private var playbackState = STATE_IDLE
-    private var isShuffleEnabled = false
     private var repeatMode = 0 // 0 = off, 1 = all, 2 = one
     
     // Audio focus management
@@ -60,6 +308,7 @@ class MusicService : Service() {
         fun onPlaybackStateChanged(state: Int)
         fun onSongChanged(song: Song?)
         fun onProgressChanged(progress: Int, duration: Int)
+        fun onQueueChanged(queue: List<Song>) {}  // Optional method with default implementation
     }
     
     private val listeners = mutableListOf<MusicServiceListener>()
@@ -279,17 +528,19 @@ class MusicService : Service() {
     }
     
     private fun createNotificationChannel() {
-        val channel = NotificationChannel(
-            CHANNEL_ID,
-            "Music Playback",
-            NotificationManager.IMPORTANCE_LOW
-        ).apply {
-            description = "Controls for music playback"
-            setShowBadge(false)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                "Music Playback",
+                NotificationManager.IMPORTANCE_LOW
+            ).apply {
+                description = "Controls for music playback"
+                setShowBadge(false)
+            }
+            
+            val notificationManager = getSystemService(NotificationManager::class.java)
+            notificationManager.createNotificationChannel(channel)
         }
-        
-        val notificationManager = getSystemService(NotificationManager::class.java)
-        notificationManager.createNotificationChannel(channel)
     }
     
     private fun initializeMediaSession() {
@@ -311,9 +562,9 @@ class MusicService : Service() {
         android.util.Log.d("MusicService", "Playlist size: ${songList.size}, Position: $position")
         android.util.Log.d("MusicService", "Current listener: ${listeners.isNotEmpty()}")
         
+        // Initialize queue with new playlist
+        musicQueue.setPlaylist(songList, position)
         currentSong = song
-        playlist = songList
-        currentPosition = position
         
         // Temporarily disable audio focus to prevent conflicts
         // requestAudioFocus()
@@ -366,7 +617,7 @@ class MusicService : Service() {
         // Set audio attributes for music playback
         val exoAudioAttributes = com.google.android.exoplayer2.audio.AudioAttributes.Builder()
             .setUsage(com.google.android.exoplayer2.C.USAGE_MEDIA)
-            .setContentType(com.google.android.exoplayer2.C.CONTENT_TYPE_MUSIC)
+            .setContentType(com.google.android.exoplayer2.C.AUDIO_CONTENT_TYPE_MUSIC)
             .build()
         exoPlayer?.setAudioAttributes(exoAudioAttributes, true)
             
@@ -417,6 +668,22 @@ class MusicService : Service() {
                 android.util.Log.e("MusicService", "ExoPlayer error: ${error.message}", error)
                 android.util.Log.e("MusicService", "Error code: ${error.errorCode}")
                 
+                // Check if this is an authentication error
+                val isAuthError = error.message?.contains("401") == true || 
+                                error.message?.contains("403") == true ||
+                                error.message?.contains("Unauthorized") == true ||
+                                error.message?.contains("Forbidden") == true
+                
+                if (isAuthError) {
+                    android.util.Log.e("MusicService", "Authentication error detected, triggering auth failure callback")
+                    ApiClient.onAuthFailure?.invoke()
+                    playbackState = STATE_STOPPED
+                    listeners.forEach { listener ->
+                        listener.onPlaybackStateChanged(playbackState)
+                    }
+                    return
+                }
+                
                 // Handle different types of errors
                 when (error.errorCode) {
                     PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED,
@@ -426,7 +693,7 @@ class MusicService : Service() {
                         handler.postDelayed({
                             currentSong?.let { song ->
                                 android.util.Log.d("MusicService", "Retrying playback for ${song.title}")
-                                loadAndPlay(song, playlist, currentPosition)
+                                playNewSong(song)
                             }
                         }, 2000)
                     }
@@ -483,57 +750,120 @@ class MusicService : Service() {
     }
     
     fun skipToNext() {
+        android.util.Log.d("MusicService", "🎵 === SKIP TO NEXT ===")
+        android.util.Log.d("MusicService", "Repeat mode: $repeatMode")
+        android.util.Log.d("MusicService", "Current queue position: ${musicQueue.getCurrentPosition()}")
+        android.util.Log.d("MusicService", "Queue size: ${musicQueue.size()}")
+        android.util.Log.d("MusicService", "Has next: ${musicQueue.hasNext()}")
+        
         if (repeatMode == 2) { // Repeat one
+            android.util.Log.d("MusicService", "🔂 Repeat one - seeking to 0")
             seekTo(0)
             return
         }
         
-        if (isShuffleEnabled) {
-            // Pick a random song from the playlist (excluding current song)
-            val availableIndices = playlist.indices.filter { it != currentPosition }
-            if (availableIndices.isNotEmpty()) {
-                currentPosition = availableIndices.random()
-                loadAndPlay(playlist[currentPosition], playlist, currentPosition)
-            } else if (repeatMode == 1) { // Repeat all - pick any random song
-                currentPosition = playlist.indices.random()
-                loadAndPlay(playlist[currentPosition], playlist, currentPosition)
-            } else {
-                stop()
+        val nextSong = musicQueue.next()
+        if (nextSong != null) {
+            android.util.Log.d("MusicService", "▶️ Playing next song: ${nextSong.title}")
+            // Move to next song in queue - don't reinitialize the queue
+            currentSong = nextSong
+            playNewSong(nextSong)
+        } else if (repeatMode == 1) { // Repeat all - go back to beginning
+            android.util.Log.d("MusicService", "🔁 Repeat all - resetting to beginning")
+            
+            // POTENTIAL ISSUE: This might be resetting our reordered queue!
+            val playlist = getCurrentPlaylistFromQueue()
+            android.util.Log.d("MusicService", "📝 Playlist from queue (size: ${playlist.size}):")
+            playlist.forEachIndexed { index, song ->
+                android.util.Log.d("MusicService", "  [$index] ${song.title}")
+            }
+            
+            val wasShuffled = musicQueue.getIsShuffled()
+            android.util.Log.d("MusicService", "Was shuffled: $wasShuffled")
+            
+            musicQueue.setPlaylist(playlist, 0)
+            if (wasShuffled) {
+                musicQueue.shuffle()
+            }
+            val firstSong = musicQueue.getCurrentSong()
+            if (firstSong != null) {
+                android.util.Log.d("MusicService", "▶️ Playing first song: ${firstSong.title}")
+                currentSong = firstSong
+                playNewSong(firstSong)
             }
         } else {
-            // Normal linear progression
-            if (currentPosition < playlist.size - 1) {
-                currentPosition++
-                loadAndPlay(playlist[currentPosition], playlist, currentPosition)
-            } else if (repeatMode == 1) { // Repeat all
-                currentPosition = 0
-                loadAndPlay(playlist[currentPosition], playlist, currentPosition)
-            } else {
-                stop()
-            }
+            android.util.Log.d("MusicService", "⏹️ End of queue, no repeat - stopping")
+            // End of queue, no repeat
+            stop()
         }
+        
+        android.util.Log.d("MusicService", "🏁 === SKIP TO NEXT COMPLETE ===")
     }
     
     fun skipToPrevious() {
-        if (isShuffleEnabled) {
-            // Pick a random song from the playlist (excluding current song)
-            val availableIndices = playlist.indices.filter { it != currentPosition }
-            if (availableIndices.isNotEmpty()) {
-                currentPosition = availableIndices.random()
-                loadAndPlay(playlist[currentPosition], playlist, currentPosition)
-            } else if (repeatMode == 1) { // Repeat all - pick any random song
-                currentPosition = playlist.indices.random()
-                loadAndPlay(playlist[currentPosition], playlist, currentPosition)
+        val previousSong = musicQueue.previous()
+        if (previousSong != null) {
+            // Move to previous song in queue - don't reinitialize the queue
+            currentSong = previousSong
+            playNewSong(previousSong)
+        } else if (repeatMode == 1) { // Repeat all - go to end
+            // Reset queue position to end
+            val playlist = getCurrentPlaylistFromQueue()
+            val wasShuffled = musicQueue.getIsShuffled()
+            musicQueue.setPlaylist(playlist, playlist.size - 1)
+            if (wasShuffled) {
+                musicQueue.shuffle()
+                // Navigate to last position in shuffled queue
+                repeat(playlist.size - 1) { musicQueue.next() }
+            }
+            val lastSong = musicQueue.getCurrentSong()
+            if (lastSong != null) {
+                currentSong = lastSong
+                playNewSong(lastSong)
+            }
+        }
+        // If no previous and no repeat, just stay at current song
+    }
+    
+    private fun getCurrentPlaylistFromQueue(): List<Song> {
+        android.util.Log.d("MusicService", "🔍 getCurrentPlaylistFromQueue() called")
+        val originalPlaylist = musicQueue.getOriginalPlaylist()
+        android.util.Log.d("MusicService", "📋 Original playlist size: ${originalPlaylist.size}")
+        originalPlaylist.forEachIndexed { index, song ->
+            android.util.Log.d("MusicService", "  [$index] ${song.title}")
+        }
+        return originalPlaylist
+    }
+    
+    private fun playNewSong(song: Song) {
+        android.util.Log.d("MusicService", "=== PLAY NEW SONG ===")
+        android.util.Log.d("MusicService", "Song: ${song.title} (${song.id})")
+        
+        releasePlayer()
+        createExoPlayer()
+        
+        val streamUrl = "${ApiClient.getServerUrl()}/stream/${song.id}"
+        val authHeader = ApiClient.getAuthHeader()
+        
+        android.util.Log.d("MusicService", "Stream URL: $streamUrl")
+        android.util.Log.d("MusicService", "Auth header present: ${authHeader != null}")
+        
+        if (authHeader != null) {
+            val mediaItem = MediaItem.Builder()
+                .setUri(streamUrl)
+                .setMediaId(song.id)
+                .build()
+                
+            android.util.Log.d("MusicService", "Setting media item and preparing...")
+            exoPlayer?.apply {
+                setMediaItem(mediaItem)
+                prepare()
+                playWhenReady = true
+                android.util.Log.d("MusicService", "ExoPlayer prepared, playWhenReady set to true")
             }
         } else {
-            // Normal linear progression
-            if (currentPosition > 0) {
-                currentPosition--
-                loadAndPlay(playlist[currentPosition], playlist, currentPosition)
-            } else if (repeatMode == 1) { // Repeat all
-                currentPosition = playlist.size - 1
-                loadAndPlay(playlist[currentPosition], playlist, currentPosition)
-            }
+            // Handle auth error
+            android.util.Log.e("MusicService", "No auth header available")
         }
     }
     
@@ -549,12 +879,22 @@ class MusicService : Service() {
     
     // Shuffle and repeat controls
     fun toggleShuffle(): Boolean {
-        isShuffleEnabled = !isShuffleEnabled
+        if (musicQueue.getIsShuffled()) {
+            // Currently shuffled, turn off shuffle
+            musicQueue.unshuffle()
+            android.util.Log.d("MusicService", "Shuffle disabled - restored original order")
+        } else {
+            // Currently not shuffled, turn on shuffle
+            musicQueue.shuffle()
+            android.util.Log.d("MusicService", "Shuffle enabled - created shuffled order")
+        }
+        
+        val isShuffleEnabled = musicQueue.getIsShuffled()
         android.util.Log.d("MusicService", "Shuffle toggled: $isShuffleEnabled")
         return isShuffleEnabled
     }
     
-    fun isShuffleEnabled(): Boolean = isShuffleEnabled
+    fun isShuffleEnabled(): Boolean = musicQueue.getIsShuffled()
     
     fun cycleRepeatMode(): Int {
         repeatMode = when (repeatMode) {
@@ -568,6 +908,131 @@ class MusicService : Service() {
     }
     
     fun getRepeatMode(): Int = repeatMode
+    
+    // Queue management methods
+    fun addToQueue(song: Song) {
+        musicQueue.addToQueue(song)
+        android.util.Log.d("MusicService", "Added to queue: ${song.title}")
+        notifyQueueChanged()
+    }
+    
+    fun addToQueue(songs: List<Song>) {
+        musicQueue.addToQueue(songs)
+        android.util.Log.d("MusicService", "Added ${songs.size} songs to queue")
+        notifyQueueChanged()
+    }
+    
+    fun addNext(song: Song) {
+        musicQueue.addNext(song)
+        android.util.Log.d("MusicService", "Added next: ${song.title}")
+        notifyQueueChanged()
+    }
+    
+    fun getCurrentQueue(): List<Song> = musicQueue.getQueueContents()
+    
+    fun getUpcomingQueue(): List<Song> {
+        val currentPos = musicQueue.getCurrentPosition()
+        val upcomingQueue = musicQueue.getQueueFromPosition(currentPos + 1)
+        android.util.Log.d("MusicService", "📋 getUpcomingQueue() - currentPos=$currentPos, upcoming size=${upcomingQueue.size}")
+        return upcomingQueue
+    }
+    
+    /**
+     * Remove a song from the queue at the specified position
+     * @param position The position in the queue to remove (0-based)
+     * @return true if removal was successful
+     */
+    fun removeFromQueue(position: Int): Boolean {
+        val success = musicQueue.removeFromQueue(position)
+        if (success) {
+            android.util.Log.d("MusicService", "Removed song from queue at position: $position")
+            notifyQueueChanged()
+        }
+        return success
+    }
+    
+    /**
+     * Move a song in the queue from one position to another
+     * @param fromPosition Source position (0-based)
+     * @param toPosition Target position (0-based)
+     * @return true if move was successful
+     */
+    fun moveQueueItem(fromPosition: Int, toPosition: Int): Boolean {
+        android.util.Log.d("MusicService", "🎯 === MOVE QUEUE ITEM ===")
+        android.util.Log.d("MusicService", "fromPosition=$fromPosition, toPosition=$toPosition")
+        android.util.Log.d("MusicService", "Current queue size: ${musicQueue.size()}")
+        android.util.Log.d("MusicService", "Current position in queue: ${musicQueue.getCurrentPosition()}")
+        
+        try {
+            // Log current queue before move
+            android.util.Log.d("MusicService", "📝 Queue before move:")
+            val currentQueueContents = musicQueue.getQueueContents()
+            currentQueueContents.forEachIndexed { index, song ->
+                android.util.Log.d("MusicService", "  [$index] ${song.title}")
+            }
+            
+            val success = musicQueue.moveQueueItem(fromPosition, toPosition)
+            
+            if (success) {
+                android.util.Log.d("MusicService", "✅ Successfully moved queue item from $fromPosition to $toPosition")
+                
+                // Log queue after move
+                android.util.Log.d("MusicService", "📝 Queue after move:")
+                val newQueueContents = musicQueue.getQueueContents()
+                newQueueContents.forEachIndexed { index, song ->
+                    android.util.Log.d("MusicService", "  [$index] ${song.title}")
+                }
+                
+                // Immediate notification to ensure UI updates quickly
+                android.util.Log.d("MusicService", "🔔 Notifying queue changed immediately")
+                notifyQueueChanged()
+            } else {
+                android.util.Log.w("MusicService", "❌ Failed to move queue item from $fromPosition to $toPosition")
+            }
+            
+            android.util.Log.d("MusicService", "🏁 === MOVE QUEUE ITEM COMPLETE ===")
+            return success
+        } catch (e: Exception) {
+            android.util.Log.e("MusicService", "💥 Error moving queue item: ${e.message}", e)
+            return false
+        }
+    }
+    
+    /**
+     * Jump to a specific position in the queue and start playing
+     * @param position The queue position to jump to (0-based)
+     * @return true if jump was successful
+     */
+    fun jumpToQueuePosition(position: Int): Boolean {
+        val song = musicQueue.jumpToQueuePosition(position)
+        if (song != null) {
+            android.util.Log.d("MusicService", "Jumped to queue position: $position, song: ${song.title}")
+            currentSong = song
+            // Start playing the new song
+            playNewSong(song)
+            // Notify listeners of song change
+            listeners.forEach { listener ->
+                listener.onSongChanged(song)
+            }
+            notifyQueueChanged()
+            return true
+        }
+        return false
+    }
+    
+    private fun notifyQueueChanged() {
+        val queue = getCurrentQueue()
+        android.util.Log.d("MusicService", "🔔 === NOTIFYING QUEUE CHANGED ===")
+        android.util.Log.d("MusicService", "Queue size: ${queue.size}")
+        android.util.Log.d("MusicService", "Number of listeners: ${listeners.size}")
+        
+        listeners.forEach { listener ->
+            android.util.Log.d("MusicService", "📢 Notifying listener: ${listener.javaClass.simpleName}")
+            listener.onQueueChanged(queue)
+        }
+        
+        android.util.Log.d("MusicService", "🏁 === QUEUE CHANGE NOTIFICATION COMPLETE ===")
+    }
     
     private fun releasePlayer() {
         exoPlayer?.apply {
@@ -611,7 +1076,17 @@ class MusicService : Service() {
     private fun updateNotification() {
         if (playbackState != STATE_STOPPED) {
             val notification = createNotification()
-            NotificationManagerCompat.from(this).notify(NOTIFICATION_ID, notification)
+            
+            // Check notification permission on API 33+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) == 
+                    android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                    NotificationManagerCompat.from(this).notify(NOTIFICATION_ID, notification)
+                }
+            } else {
+                // Below API 33, no explicit permission needed
+                NotificationManagerCompat.from(this).notify(NOTIFICATION_ID, notification)
+            }
         }
     }
     
