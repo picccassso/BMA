@@ -78,7 +78,9 @@ sudo apt install golang-go
 go version
 ```
 
-You should see something like "go version go1.21.1 linux/arm64"
+You should see something like "go version go1.19.x linux/arm64" or similar.
+
+**Note:** If you see Go 1.18 or older, you may need to install a newer version. The Raspberry Pi's default Go should work fine for BMA CLI.
 
 ### On macOS:
 1. Go to https://golang.org/dl/
@@ -97,12 +99,12 @@ cd ~/Desktop
 
 3. Download the code:
 ```bash
-git clone https://github.com/your-username/BasicStreamingApp.git
+git clone https://github.com/picccassso/BMA.git
 ```
 
 4. Go into the BMA CLI folder:
 ```bash
-cd BasicStreamingApp/bma-cli
+cd BMA/bma-cli
 ```
 
 ---
@@ -249,6 +251,13 @@ Once you have the BMA mobile app:
 ---
 
 ## 🔧 Troubleshooting
+
+### Problem: "go.mod file indicates go 1.21, but maximum version supported by tidy is 1.19"
+**Solution:** Your Raspberry Pi has an older Go version, but that's fine! The project has been updated to work with Go 1.19. Try running the commands again:
+```bash
+go mod tidy
+go build -o bma-cli .
+```
 
 ### Problem: "Permission denied" when running ./bma-cli
 **Solution:**

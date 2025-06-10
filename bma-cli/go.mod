@@ -1,6 +1,6 @@
 module bma-cli
 
-go 1.21
+go 1.19
 
 require (
 	github.com/dhowden/tag v0.0.0-20240417053706-3d75831295e8
