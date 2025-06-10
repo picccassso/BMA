@@ -256,28 +256,40 @@ Should show a list of all your music files
 
 ---
 
-## 📱 Step 9: Connect Your Phone (Future)
+## 📱 Step 9: Connect Your Phone with QR Code
 
 Once you have the BMA mobile app:
 
-### For Local Access (same WiFi):
-1. Make sure your phone is on the same WiFi network
-2. Find your computer's IP address
-3. Connect the app to `http://YOUR-IP-ADDRESS:8080`
+### **Easy QR Code Pairing (Recommended):**
 
-### For Remote Access (anywhere in the world):
+1. **Open the QR code page** in your web browser:
+   ```
+   http://[PI-IP]:8080/qr
+   ```
+   Example: `http://192.168.1.100:8080/qr`
+
+2. **Open the BMA app** on your phone
+
+3. **Look for "Add Server" or "Scan QR Code"** in the app
+
+4. **Scan the QR code** displayed on your screen
+
+5. **Your phone will automatically connect!** ✅
+
+### **Manual Connection (Alternative):**
+
+**For Local Access (same WiFi):**
+1. Make sure your phone is on the same WiFi network  
+2. In the BMA app, manually enter: `http://[PI-IP]:8080`
+
+**For Remote Access (anywhere in the world):**
 1. **Install Tailscale on your phone**:
    - iPhone: Get "Tailscale" from App Store
    - Android: Get "Tailscale" from Play Store
 2. **Log in with the same Tailscale account** you created in Step 1
-3. **Find your server's Tailscale IP**:
-   ```bash
-   tailscale ip -4
-   ```
-   This will show something like `100.64.1.2`
-4. **Connect the app to** `http://100.64.1.2:8080` (use your actual Tailscale IP)
+3. **In the BMA app, enter your Tailscale URL**: `http://100.87.136.73:8080`
 
-**🌍 Now you can access your music from anywhere in the world!**
+**🌍 With Tailscale, you can access your music from anywhere in the world!**
 
 ---
 

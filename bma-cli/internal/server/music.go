@@ -2,16 +2,23 @@ package server
 
 import (
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"html/template"
 	"io"
 	"log"
+	"net"
 	"net/http"
 	"os"
+	"os/exec"
+	"strings"
 	"time"
 
 	"bma-cli/internal/models"
+	"github.com/google/uuid"
 	"github.com/gorilla/mux"
+	"github.com/skip2/go-qrcode"
 )
 
 // MusicServer handles music streaming and API endpoints
@@ -48,6 +55,10 @@ func (ms *MusicServer) setupRoutes() {
 	ms.router.HandleFunc("/albums", ms.handleAlbums).Methods("GET")
 	ms.router.HandleFunc("/stream/{songId}", ms.handleStream).Methods("GET")
 	ms.router.HandleFunc("/artwork/{songId}", ms.handleArtwork).Methods("GET")
+	
+	// Pairing endpoints
+	ms.router.HandleFunc("/pair", ms.handlePair).Methods("POST")
+	ms.router.HandleFunc("/qr", ms.handleQRPage).Methods("GET")
 	
 	log.Println("✅ Music server routes configured")
 }
@@ -407,4 +418,237 @@ func (ms *MusicServer) writeFileResponse(w http.ResponseWriter, filePath, conten
 	// Stream file content
 	_, err = io.Copy(w, file)
 	return err
+}
+
+// handleQRPage serves the QR code pairing page
+func (ms *MusicServer) handleQRPage(w http.ResponseWriter, r *http.Request) {
+	log.Println("🔗 QR code page requested")
+	
+	// Generate pairing data
+	pairingData := ms.generatePairingData()
+	
+	// Generate QR code
+	qrCode, err := qrcode.Encode(pairingData, qrcode.Medium, 256)
+	if err != nil {
+		log.Printf("❌ Failed to generate QR code: %v", err)
+		http.Error(w, "Failed to generate QR code", http.StatusInternalServerError)
+		return
+	}
+	
+	// Convert to base64 for embedding in HTML
+	qrCodeBase64 := base64.StdEncoding.EncodeToString(qrCode)
+	
+	// HTML template for QR code page
+	tmpl := `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMA CLI - Pair Device</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .qr-container {
+            margin: 30px 0;
+        }
+        .qr-code {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            max-width: 256px;
+        }
+        .info {
+            background: #e7f3ff;
+            border: 1px solid #b3d7ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .server-info {
+            text-align: left;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 BMA CLI - Pair Your Device</h1>
+        
+        <div class="info">
+            <strong>Instructions:</strong><br>
+            1. Open the BMA app on your phone<br>
+            2. Look for "Add Server" or "Scan QR Code"<br>
+            3. Scan the QR code below
+        </div>
+        
+        <div class="qr-container">
+            <img class="qr-code" src="data:image/png;base64,{{.QRCode}}" alt="Pairing QR Code">
+        </div>
+        
+        <div class="server-info">
+            <strong>Server Information:</strong><br>
+            <strong>Local URL:</strong> {{.LocalURL}}<br>
+            {{if .TailscaleURL}}<strong>Remote URL:</strong> {{.TailscaleURL}}<br>{{end}}
+            <strong>Music Library:</strong> {{.MusicPath}}<br>
+            <strong>Songs:</strong> {{.SongCount}} | <strong>Albums:</strong> {{.AlbumCount}}
+        </div>
+        
+        <button onclick="window.location.reload()">🔄 Refresh QR Code</button>
+        <button onclick="window.location.href='/info'">📊 Server Info</button>
+    </div>
+</body>
+</html>`
+	
+	// Prepare template data
+	data := struct {
+		QRCode       string
+		LocalURL     string
+		TailscaleURL string
+		MusicPath    string
+		SongCount    int
+		AlbumCount   int
+	}{
+		QRCode:       qrCodeBase64,
+		LocalURL:     ms.getLocalURL(),
+		TailscaleURL: ms.getTailscaleURL(),
+		MusicPath:    ms.config.MusicFolder,
+		SongCount:    ms.musicLibrary.GetSongCount(),
+		AlbumCount:   ms.musicLibrary.GetAlbumCount(),
+	}
+	
+	// Parse and execute template
+	t, err := template.New("qr").Parse(tmpl)
+	if err != nil {
+		http.Error(w, "Template error", http.StatusInternalServerError)
+		return
+	}
+	
+	w.Header().Set("Content-Type", "text/html")
+	t.Execute(w, data)
+	
+	log.Println("✅ QR code page served successfully")
+}
+
+// handlePair creates a new pairing token for device authentication
+func (ms *MusicServer) handlePair(w http.ResponseWriter, r *http.Request) {
+	log.Println("📱 Pairing request received")
+	
+	// Generate pairing data
+	pairingData := ms.generatePairingData()
+	
+	response := map[string]interface{}{
+		"serverURL": ms.getPreferredURL(),
+		"token":     uuid.New().String(),
+		"expiresAt": time.Now().Add(60 * time.Minute),
+		"data":      pairingData,
+	}
+	
+	w.Header().Set("Content-Type", "application/json")
+	if err := json.NewEncoder(w).Encode(response); err != nil {
+		log.Printf("❌ Failed to encode pairing response: %v", err)
+		http.Error(w, "Internal server error", http.StatusInternalServerError)
+		return
+	}
+	
+	log.Println("✅ Pairing response sent successfully")
+}
+
+// generatePairingData creates the JSON data for QR code
+func (ms *MusicServer) generatePairingData() string {
+	pairingInfo := map[string]interface{}{
+		"serverURL": ms.getPreferredURL(),
+		"token":     uuid.New().String(),
+		"expiresAt": time.Now().Add(60 * time.Minute),
+		"server":    "BMA CLI Music Server",
+		"version":   "1.0",
+		"protocol":  "http",
+	}
+	
+	// Add library info
+	if ms.musicLibrary != nil {
+		pairingInfo["library"] = map[string]interface{}{
+			"songCount":  ms.musicLibrary.GetSongCount(),
+			"albumCount": ms.musicLibrary.GetAlbumCount(),
+		}
+	}
+	
+	data, _ := json.Marshal(pairingInfo)
+	return string(data)
+}
+
+// getLocalURL returns the local network URL
+func (ms *MusicServer) getLocalURL() string {
+	ip := ms.getLocalIPAddress()
+	return fmt.Sprintf("http://%s:8080", ip)
+}
+
+// getTailscaleURL returns the Tailscale URL if available
+func (ms *MusicServer) getTailscaleURL() string {
+	if ms.config.TailscaleIP != "" {
+		return fmt.Sprintf("http://%s:8080", ms.config.TailscaleIP)
+	}
+	
+	// Try to get Tailscale IP dynamically
+	cmd := exec.Command("tailscale", "ip", "-4")
+	output, err := cmd.Output()
+	if err == nil {
+		ip := strings.TrimSpace(string(output))
+		if ip != "" {
+			return fmt.Sprintf("http://%s:8080", ip)
+		}
+	}
+	
+	return ""
+}
+
+// getPreferredURL returns the preferred URL (Tailscale if available, local otherwise)
+func (ms *MusicServer) getPreferredURL() string {
+	if tailscaleURL := ms.getTailscaleURL(); tailscaleURL != "" {
+		return tailscaleURL
+	}
+	return ms.getLocalURL()
+}
+
+// getLocalIPAddress gets the local network IP address
+func (ms *MusicServer) getLocalIPAddress() string {
+	// Get local IP address by connecting to a remote address
+	conn, err := net.Dial("udp", "8.8.8.8:80")
+	if err != nil {
+		return "localhost"
+	}
+	defer conn.Close()
+	
+	localAddr := conn.LocalAddr().(*net.UDPAddr)
+	return localAddr.IP.String()
 }
