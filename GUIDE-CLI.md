@@ -459,6 +459,4 @@ Now BMA CLI will start automatically every time you boot your Raspberry Pi!
 
 ## 🎉 You're Done!
 
-Your BMA CLI music server is now running and ready to stream your music. When the mobile app is available, you'll be able to connect to it and enjoy your music from anywhere!
-
-**Need help?** Check the main README.md file for more technical details.
+Your BMA CLI music server is now running and ready to stream your music.
