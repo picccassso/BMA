@@ -21,8 +21,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.model.LazyHeaders
+import androidx.core.view.isVisible
+import com.bma.android.ui.library.LibraryFragment
+import com.bma.android.ui.search.SearchFragment
+import com.bma.android.ui.settings.SettingsFragment
+import androidx.fragment.app.Fragment
 
-class AlbumDetailActivity : AppCompatActivity() {
+class AlbumDetailActivity : AppCompatActivity(), MusicService.MusicServiceListener {
 
     private lateinit var binding: ActivityAlbumDetailBinding
     private lateinit var album: Album
@@ -32,15 +37,44 @@ class AlbumDetailActivity : AppCompatActivity() {
     private var musicService: MusicService? = null
     private var serviceBound = false
     
+    // Pending playback request for when service connects
+    private var pendingPlayback: PlaybackRequest? = null
+    
+    private data class PlaybackRequest(
+        val song: Song,
+        val songs: List<Song>,
+        val currentPosition: Int,
+        val shuffled: Boolean
+    )
+    
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             val binder = service as MusicService.MusicBinder
             musicService = binder.getService()
             serviceBound = true
+            
+            // Add this activity as a listener
+            musicService?.addListener(this@AlbumDetailActivity)
+            
+            // Update mini player with current state
+            updateMiniPlayer()
+            
+            // Handle pending playback request
+            pendingPlayback?.let { request ->
+                musicService!!.loadAndPlay(request.song, request.songs, request.currentPosition)
+                
+                // Apply shuffle if requested
+                if (request.shuffled && !musicService!!.isShuffleEnabled()) {
+                    musicService!!.toggleShuffle()
+                }
+                
+                pendingPlayback = null
+            }
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
             serviceBound = false
+            musicService?.removeListener(this@AlbumDetailActivity)
             musicService = null
         }
     }
@@ -57,9 +91,12 @@ class AlbumDetailActivity : AppCompatActivity() {
                 return
             }
 
+        setupToolbar()
         setupUI()
         setupRecyclerView()
         setupClickListeners()
+        setupMiniPlayer()
+        setupBottomNavigation()
         bindMusicService()
     }
 
@@ -125,6 +162,7 @@ class AlbumDetailActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         if (serviceBound) {
+            musicService?.removeListener(this)
             unbindService(serviceConnection)
             serviceBound = false
         }
@@ -152,11 +190,17 @@ class AlbumDetailActivity : AppCompatActivity() {
         Toast.makeText(this, "Added next: ${song.title}", Toast.LENGTH_SHORT).show()
     }
 
-    private fun setupClickListeners() {
-        binding.backButton.setOnClickListener {
+    private fun setupToolbar() {
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        
+        binding.toolbar.setNavigationOnClickListener {
             finish()
         }
+    }
 
+    private fun setupClickListeners() {
         binding.playButton.setOnClickListener {
             if (album.songs.isNotEmpty()) {
                 playSong(album.songs.first(), startFromBeginning = true)
@@ -165,40 +209,36 @@ class AlbumDetailActivity : AppCompatActivity() {
 
         binding.shuffleButton.setOnClickListener {
             if (album.songs.isNotEmpty()) {
-                val shuffledSongs = album.songs.shuffled()
-                playSong(shuffledSongs.first(), startFromBeginning = true, shuffled = true)
+                // Pick a random song to start shuffle mode
+                val randomSong = album.songs.random()
+                playSong(randomSong, startFromBeginning = true, shuffled = true)
             }
         }
     }
 
         private fun playSong(song: Song, startFromBeginning: Boolean = false, shuffled: Boolean = false) {
-        val songs = if (shuffled) album.songs.shuffled() else album.songs
+        // Always pass the original album order - let service handle shuffling
+        val songs = album.songs
         val currentPosition = songs.indexOf(song)
         
         // Start music service
         val serviceIntent = Intent(this, MusicService::class.java)
         startService(serviceIntent)
         
-        val intent = Intent(this, PlayerActivity::class.java).apply {
-            putExtra("song_id", song.id)
-            putExtra("song_title", song.title)
-            putExtra("song_artist", song.artist)
-            putExtra("album_name", album.name)
+        // If service is bound, directly start playback without opening PlayerActivity
+        if (serviceBound && musicService != null) {
+            musicService!!.loadAndPlay(song, songs, currentPosition)
             
-            val songIds = songs.map { it.id }.toTypedArray()
-            val songTitles = songs.map { it.title }.toTypedArray()
-            val songArtists = songs.map { it.artist }.toTypedArray()
-            
-            putExtra("playlist_song_ids", songIds)
-            putExtra("playlist_song_titles", songTitles)
-            putExtra("playlist_song_artists", songArtists)
-            putExtra("current_position", currentPosition)
-            
-            if (shuffled) {
-                putExtra("shuffle_enabled", true)
+            // Apply shuffle if requested
+            if (shuffled && !musicService!!.isShuffleEnabled()) {
+                musicService!!.toggleShuffle()
             }
+        } else {
+            // Fallback: bind service and play when connected
+            bindMusicService()
+            // Store playback request for when service connects
+            pendingPlayback = PlaybackRequest(song, songs, currentPosition, shuffled)
         }
-        startActivity(intent)
     }
 
     // Simple adapter for songs in album detail
@@ -245,6 +285,149 @@ class AlbumDetailActivity : AppCompatActivity() {
                     true
                 }
             }
+        }
+    }
+    
+    // MusicServiceListener implementation
+    override fun onPlaybackStateChanged(state: Int) {
+        updateMiniPlayer()
+    }
+    
+    override fun onSongChanged(song: Song?) {
+        updateMiniPlayer()
+    }
+    
+    override fun onProgressChanged(progress: Int, duration: Int) {
+        // Update progress in mini player
+        if (duration > 0) {
+            val progressPercent = (progress * 100) / duration
+            binding.miniPlayer.miniPlayerProgress.progress = progressPercent
+        }
+    }
+    
+    private fun setupMiniPlayer() {
+        // Click mini-player to open PlayerActivity
+        binding.miniPlayer.root.setOnClickListener {
+            musicService?.getCurrentSong()?.let {
+                val intent = Intent(this, PlayerActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        
+        // Mini-player controls
+        binding.miniPlayer.miniPlayerPlayPause.setOnClickListener {
+            musicService?.let { service ->
+                if (service.isPlaying()) {
+                    service.pause()
+                } else {
+                    service.play()
+                }
+            }
+        }
+        
+        binding.miniPlayer.miniPlayerNext.setOnClickListener {
+            musicService?.skipToNext()
+        }
+        
+        binding.miniPlayer.miniPlayerPrevious.setOnClickListener {
+            musicService?.skipToPrevious()
+        }
+    }
+    
+    private fun setupBottomNavigation() {
+        binding.bottomNavView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_library -> {
+                    // Navigate back to MainActivity with Library selected
+                    val intent = Intent(this, MainActivity::class.java).apply {
+                        putExtra("selected_tab", "library")
+                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    }
+                    startActivity(intent)
+                    true
+                }
+                R.id.navigation_search -> {
+                    // Navigate back to MainActivity with Search selected
+                    val intent = Intent(this, MainActivity::class.java).apply {
+                        putExtra("selected_tab", "search")
+                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    }
+                    startActivity(intent)
+                    true
+                }
+                R.id.navigation_settings -> {
+                    // Navigate back to MainActivity with Settings selected
+                    val intent = Intent(this, MainActivity::class.java).apply {
+                        putExtra("selected_tab", "settings")
+                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    }
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+    
+    private fun updateMiniPlayer() {
+        musicService?.let { service ->
+            val currentSong = service.getCurrentSong()
+            val isPlaying = service.isPlaying()
+            
+            if (currentSong != null) {
+                // Show mini-player
+                binding.miniPlayer.root.isVisible = true
+                
+                // Update song info
+                binding.miniPlayer.miniPlayerTitle.text = currentSong.title
+                binding.miniPlayer.miniPlayerArtist.text = currentSong.artist.ifEmpty { "Unknown Artist" }
+                
+                // Update play/pause button
+                val playPauseIcon = if (isPlaying) R.drawable.ic_pause_circle else R.drawable.ic_play_circle
+                binding.miniPlayer.miniPlayerPlayPause.setImageResource(playPauseIcon)
+                
+                // Load album artwork
+                loadMiniPlayerArtwork(currentSong)
+                
+                // Update progress
+                val currentPos = service.getCurrentPosition()
+                val duration = service.getDuration()
+                val progress = if (duration > 0) {
+                    (currentPos * 100) / duration
+                } else 0
+                binding.miniPlayer.miniPlayerProgress.progress = progress
+                
+            } else {
+                // Hide mini-player
+                binding.miniPlayer.root.isVisible = false
+            }
+        } ?: run {
+            // Hide mini-player when no service
+            binding.miniPlayer.root.isVisible = false
+        }
+    }
+    
+    private fun loadMiniPlayerArtwork(song: Song) {
+        val artworkUrl = "${ApiClient.getServerUrl()}/artwork/${song.id}"
+        val authHeader = ApiClient.getAuthHeader()
+        
+        if (authHeader != null) {
+            val glideUrl = GlideUrl(
+                artworkUrl, 
+                LazyHeaders.Builder()
+                    .addHeader("Authorization", authHeader)
+                    .build()
+            )
+            
+            Glide.with(this)
+                .load(glideUrl)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.ic_music_note)
+                .error(R.drawable.ic_music_note)
+                .into(binding.miniPlayer.miniPlayerArtwork)
+        } else {
+            // Fallback to default icon
+            binding.miniPlayer.miniPlayerArtwork.setImageResource(R.drawable.ic_music_note)
         }
     }
 } 

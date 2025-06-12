@@ -45,6 +45,23 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- Standalone UP NEXT Header -->
+    <TextView
+        android:id="@+id/upNextHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UP NEXT"
+        android:textColor="#808080"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <!-- Queue RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/queueRecyclerView"
@@ -53,7 +70,7 @@
         android:layout_marginTop="8dp"
         android:clipToPadding="false"
         android:paddingBottom="16dp"
-        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintTop_toBottomOf="@id/upNextHeader"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

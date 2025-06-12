@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <!-- Playlist artwork (will be composite 2x2 or placeholder) -->
+    <ImageView
+        android:id="@+id/playlistArtwork"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:scaleType="centerCrop"
+        android:background="#333333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_queue_music" />
+
+    <!-- Playlist name -->
+    <TextView
+        android:id="@+id/playlistNameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toStartOf="@+id/playlistMenuButton"
+        app:layout_constraintStart_toEndOf="@+id/playlistArtwork"
+        app:layout_constraintTop_toTopOf="@+id/playlistArtwork"
+        tools:text="My Favorite Songs" />
+
+    <!-- Song count -->
+    <TextView
+        android:id="@+id/songCountText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#B3FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/playlistMenuButton"
+        app:layout_constraintStart_toStartOf="@+id/playlistNameText"
+        app:layout_constraintTop_toBottomOf="@+id/playlistNameText"
+        tools:text="12 songs" />
+
+
+    <!-- Menu/Options button -->
+    <ImageButton
+        android:id="@+id/playlistMenuButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Playlist options"
+        android:src="@drawable/ic_more_vert"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,15 +37,20 @@ public final class ActivityQueueBinding implements ViewBinding {
   @NonNull
   public final ConstraintLayout topBar;
 
+  @NonNull
+  public final TextView upNextHeader;
+
   private ActivityQueueBinding(@NonNull ConstraintLayout rootView, @NonNull ImageButton backButton,
       @NonNull LinearLayout emptyStateLayout, @NonNull RecyclerView queueRecyclerView,
-      @NonNull TextView titleText, @NonNull ConstraintLayout topBar) {
+      @NonNull TextView titleText, @NonNull ConstraintLayout topBar,
+      @NonNull TextView upNextHeader) {
     this.rootView = rootView;
     this.backButton = backButton;
     this.emptyStateLayout = emptyStateLayout;
     this.queueRecyclerView = queueRecyclerView;
     this.titleText = titleText;
     this.topBar = topBar;
+    this.upNextHeader = upNextHeader;
   }
 
   @Override
@@ -105,8 +110,14 @@ public final class ActivityQueueBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.upNextHeader;
+      TextView upNextHeader = ViewBindings.findChildViewById(rootView, id);
+      if (upNextHeader == null) {
+        break missingId;
+      }
+
       return new ActivityQueueBinding((ConstraintLayout) rootView, backButton, emptyStateLayout,
-          queueRecyclerView, titleText, topBar);
+          queueRecyclerView, titleText, topBar, upNextHeader);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

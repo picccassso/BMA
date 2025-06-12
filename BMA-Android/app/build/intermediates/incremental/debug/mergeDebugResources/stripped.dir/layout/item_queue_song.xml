@@ -5,27 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <!-- Section Header (for "Up Next") - Completely separate and non-draggable -->
-    <TextView
-        android:id="@+id/sectionHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="UP NEXT"
-        android:textColor="#808080"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="8dp"
-        android:visibility="gone"
-        android:clickable="false"
-        android:focusable="false"
-        android:longClickable="false"
-        android:focusableInTouchMode="false"
-        android:importantForAccessibility="no"
-        android:background="@android:color/transparent" />
-
-    <!-- Main Song Item - This is the ONLY draggable part -->
+    <!-- Main Song Item - This is the draggable part -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/draggableContainer"
         android:layout_width="match_parent"

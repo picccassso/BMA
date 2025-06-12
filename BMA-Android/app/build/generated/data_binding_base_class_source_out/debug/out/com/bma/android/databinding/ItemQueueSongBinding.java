@@ -38,9 +38,6 @@ public final class ItemQueueSongBinding implements ViewBinding {
   public final ImageButton removeButton;
 
   @NonNull
-  public final TextView sectionHeader;
-
-  @NonNull
   public final TextView songArtist;
 
   @NonNull
@@ -52,15 +49,14 @@ public final class ItemQueueSongBinding implements ViewBinding {
   private ItemQueueSongBinding(@NonNull LinearLayout rootView, @NonNull ImageView albumArtwork,
       @NonNull ImageView dragHandle, @NonNull ConstraintLayout draggableContainer,
       @NonNull TextView queuePosition, @NonNull ImageButton removeButton,
-      @NonNull TextView sectionHeader, @NonNull TextView songArtist,
-      @NonNull LinearLayout songInfoLayout, @NonNull TextView songTitle) {
+      @NonNull TextView songArtist, @NonNull LinearLayout songInfoLayout,
+      @NonNull TextView songTitle) {
     this.rootView = rootView;
     this.albumArtwork = albumArtwork;
     this.dragHandle = dragHandle;
     this.draggableContainer = draggableContainer;
     this.queuePosition = queuePosition;
     this.removeButton = removeButton;
-    this.sectionHeader = sectionHeader;
     this.songArtist = songArtist;
     this.songInfoLayout = songInfoLayout;
     this.songTitle = songTitle;
@@ -123,12 +119,6 @@ public final class ItemQueueSongBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.sectionHeader;
-      TextView sectionHeader = ViewBindings.findChildViewById(rootView, id);
-      if (sectionHeader == null) {
-        break missingId;
-      }
-
       id = R.id.songArtist;
       TextView songArtist = ViewBindings.findChildViewById(rootView, id);
       if (songArtist == null) {
@@ -148,8 +138,7 @@ public final class ItemQueueSongBinding implements ViewBinding {
       }
 
       return new ItemQueueSongBinding((LinearLayout) rootView, albumArtwork, dragHandle,
-          draggableContainer, queuePosition, removeButton, sectionHeader, songArtist,
-          songInfoLayout, songTitle);
+          draggableContainer, queuePosition, removeButton, songArtist, songInfoLayout, songTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

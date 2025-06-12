@@ -28,169 +28,49 @@ class QueueAdapter(
     
     private var currentSong: Song? = null
     private var queueItems: MutableList<Song> = mutableListOf()
-    private var originalQueueItems: List<Song> = emptyList() // Backup for drag operations
     private var isPlaying: Boolean = false
     private var currentProgress: Int = 0
     private var currentDuration: Int = 0
-    private var itemTouchHelper: ItemTouchHelper? = null
-    private var isDragging: Boolean = false
     
     fun updateQueue(currentSong: Song?, queueItems: List<Song>, isPlaying: Boolean) {
         this.currentSong = currentSong
+        this.queueItems.clear()
+        this.queueItems.addAll(queueItems)
         this.isPlaying = isPlaying
-        
-        // Only block updates during active dragging
-        if (!isDragging) {
-            android.util.Log.d("QueueDrag", "✅ Updating queue normally: ${queueItems.size} items")
-            this.queueItems.clear()
-            this.queueItems.addAll(queueItems)
-            this.originalQueueItems = queueItems.toList()
-            notifyDataSetChanged()
-        } else {
-            android.util.Log.d("QueueDrag", "🚫 Ignoring queue update during drag")
-        }
+        notifyDataSetChanged()
     }
     
     fun updateProgress(progress: Int, duration: Int) {
-        // Only update if values actually changed
         if (currentSong != null && (progress != this.currentProgress || duration != this.currentDuration)) {
             this.currentProgress = progress
             this.currentDuration = duration
-            // Use payload to indicate this is just a progress update, not full refresh
             notifyItemChanged(0, "progress_update")
         }
     }
     
-    fun hasCurrentSong(): Boolean = currentSong != null
-    
-    fun setDragState(dragging: Boolean) {
-        isDragging = dragging
+    fun setupDragAndDrop(recyclerView: RecyclerView) {
+        val itemTouchHelper = ItemTouchHelper(QueueItemTouchHelper(this))
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+        this.itemTouchHelper = itemTouchHelper
     }
     
-    /**
-     * Start drag operation - backup original queue state
-     */
-    fun startDrag(startPosition: Int) {
-        isDragging = true
-        originalQueueItems = queueItems.toList()
-        android.util.Log.d("QueueDrag", "Started drag from position $startPosition, queue size: ${queueItems.size}")
-    }
+    private var itemTouchHelper: ItemTouchHelper? = null
     
     /**
-     * Move item visually during drag for smooth real-time feedback
+     * Move item visually during drag without committing to service
      */
     fun moveItemVisually(fromPosition: Int, toPosition: Int) {
-        if (!isDragging) return
-        
-        // Only move queue items, not the current song (position 0)
-        val hasCurrentSong = hasCurrentSong()
+        val hasCurrentSong = currentSong != null
         val fromQueueIndex = if (hasCurrentSong) fromPosition - 1 else fromPosition
         val toQueueIndex = if (hasCurrentSong) toPosition - 1 else toPosition
         
         if (fromQueueIndex >= 0 && fromQueueIndex < queueItems.size &&
             toQueueIndex >= 0 && toQueueIndex < queueItems.size) {
             
-            // Move item in the list
             val item = queueItems.removeAt(fromQueueIndex)
             queueItems.add(toQueueIndex, item)
-            
-            // Notify adapter for smooth animation
             notifyItemMoved(fromPosition, toPosition)
-            
-            android.util.Log.d("QueueDrag", "Moved visually: $fromPosition -> $toPosition (queue: $fromQueueIndex -> $toQueueIndex)")
         }
-    }
-    
-    /**
-     * End drag operation without relying on final position - figure it out from queue state
-     */
-    fun endDragWithoutFinalPosition(startPosition: Int) {
-        android.util.Log.d("QueueDrag", "🎯 === ENDING DRAG OPERATION ===")
-        android.util.Log.d("QueueDrag", "startPosition=$startPosition")
-        
-        isDragging = false
-        
-        if (startPosition != -1) {
-            // Calculate the original queue position
-            val hasCurrentSong = hasCurrentSong()
-            val originalFromQueuePosition = if (hasCurrentSong) startPosition - 1 else startPosition
-            
-            android.util.Log.d("QueueDrag", "hasCurrentSong=$hasCurrentSong")
-            android.util.Log.d("QueueDrag", "originalFromQueuePosition=$originalFromQueuePosition")
-            android.util.Log.d("QueueDrag", "originalQueue size=${originalQueueItems.size}")
-            android.util.Log.d("QueueDrag", "currentQueue size=${queueItems.size}")
-            
-            // Log the original queue
-            android.util.Log.d("QueueDrag", "📝 Original queue:")
-            originalQueueItems.forEachIndexed { index, song ->
-                android.util.Log.d("QueueDrag", "  [$index] ${song.title}")
-            }
-            
-            // Log the current queue
-            android.util.Log.d("QueueDrag", "📝 Current queue:")
-            queueItems.forEachIndexed { index, song ->
-                android.util.Log.d("QueueDrag", "  [$index] ${song.title}")
-            }
-            
-            // Find what song was moved by looking at the original queue
-            if (originalFromQueuePosition >= 0 && originalFromQueuePosition < originalQueueItems.size) {
-                val movedSong = originalQueueItems[originalFromQueuePosition]
-                
-                // Find where this song ended up in the current (visually updated) queue
-                val currentToIndex = queueItems.indexOf(movedSong)
-                
-                android.util.Log.d("QueueDrag", "🎵 Moved song: '${movedSong.title}'")
-                android.util.Log.d("QueueDrag", "📍 Original position: $originalFromQueuePosition")
-                android.util.Log.d("QueueDrag", "📍 Current position: $currentToIndex")
-                
-                if (currentToIndex >= 0 && originalFromQueuePosition != currentToIndex) {
-                    android.util.Log.d("QueueDrag", "🚀 COMMITTING reorder: $originalFromQueuePosition -> $currentToIndex")
-                    
-                    // Commit to MusicService using original positions
-                    onReorder(originalFromQueuePosition, currentToIndex)
-                    
-                    android.util.Log.d("QueueDrag", "✅ Sent reorder to service")
-                    
-                    // Don't ignore next update - let the service send back the authoritative queue
-                    // The visual state is already correct, service update will confirm it
-                } else if (currentToIndex < 0) {
-                    android.util.Log.e("QueueDrag", "❌ Could not find moved song in current queue!")
-                    // Restore original state
-                    queueItems.clear()
-                    queueItems.addAll(originalQueueItems)
-                    notifyDataSetChanged()
-                } else {
-                    android.util.Log.d("QueueDrag", "ℹ️ No position change detected: $originalFromQueuePosition == $currentToIndex")
-                }
-            } else {
-                android.util.Log.w("QueueDrag", "❌ Invalid start position: $originalFromQueuePosition (queue size: ${originalQueueItems.size})")
-                // Restore original state
-                queueItems.clear()
-                queueItems.addAll(originalQueueItems)
-                notifyDataSetChanged()
-            }
-        } else {
-            android.util.Log.d("QueueDrag", "ℹ️ No valid start position, restored original queue")
-            // No actual move happened, restore original state
-            queueItems.clear()
-            queueItems.addAll(originalQueueItems)
-            notifyDataSetChanged()
-        }
-        
-        android.util.Log.d("QueueDrag", "🏁 === DRAG OPERATION COMPLETE ===")
-    }
-    
-    /**
-     * End drag operation - commit changes to MusicService (legacy method)
-     */
-    fun endDrag(startPosition: Int, finalPosition: Int) {
-        // Delegate to the new method that doesn't rely on finalPosition
-        endDragWithoutFinalPosition(startPosition)
-    }
-    
-    fun setupDragAndDrop(recyclerView: RecyclerView) {
-        itemTouchHelper = ItemTouchHelper(QueueItemTouchHelper(this))
-        itemTouchHelper?.attachToRecyclerView(recyclerView)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -211,10 +91,7 @@ class QueueAdapter(
             TYPE_QUEUE_ITEM -> {
                 val binding = ItemQueueSongBinding.inflate(inflater, parent, false)
                 val viewHolder = QueueItemViewHolder(binding)
-                // Set the ItemTouchHelper reference if available
-                itemTouchHelper?.let { helper ->
-                    viewHolder.setItemTouchHelper(helper)
-                }
+                viewHolder.setItemTouchHelper(itemTouchHelper)
                 viewHolder
             }
             else -> throw IllegalArgumentException("Unknown view type: $viewType")
@@ -231,8 +108,7 @@ class QueueAdapter(
             is QueueItemViewHolder -> {
                 val queuePosition = if (currentSong != null) position - 1 else position
                 if (queuePosition >= 0 && queuePosition < queueItems.size) {
-                    val isFirstQueueItem = queuePosition == 0 && currentSong != null
-                    holder.bind(queueItems[queuePosition], queuePosition + 1, isFirstQueueItem)
+                    holder.bind(queueItems[queuePosition], queuePosition + 1)
                 }
             }
         }
@@ -240,12 +116,10 @@ class QueueAdapter(
     
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int, payloads: MutableList<Any>) {
         if (payloads.isNotEmpty() && payloads.contains("progress_update")) {
-            // Handle partial update for progress only
             if (holder is CurrentSongViewHolder) {
                 holder.updateProgressOnly(currentProgress, currentDuration)
             }
         } else {
-            // Full update
             onBindViewHolder(holder, position)
         }
     }
@@ -260,16 +134,13 @@ class QueueAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(song: Song, isPlaying: Boolean, progress: Int, duration: Int) {
-            // Update song info
             binding.songTitle.text = song.title.replace(Regex("^\\d+\\.?\\s*"), "")
             binding.songArtist.text = song.artist.ifEmpty { "Unknown Artist" }
             
-            // Update play/pause button
             binding.playPauseButton.setImageResource(
                 if (isPlaying) com.bma.android.R.drawable.ic_pause else com.bma.android.R.drawable.ic_play_arrow
             )
             
-            // Update progress
             if (duration > 0) {
                 val progressPercent = (progress * 100) / duration
                 binding.progressBar.progress = progressPercent
@@ -277,21 +148,14 @@ class QueueAdapter(
                 binding.progressBar.progress = 0
             }
             
-            // Load album artwork
             loadArtwork(song, binding.albumArtwork)
             
-            // Set click listeners
             binding.playPauseButton.setOnClickListener {
                 onPlayPauseClick()
-            }
-            
-            binding.root.setOnClickListener {
-                // Optional: Could navigate to PlayerActivity
             }
         }
         
         fun updateProgressOnly(progress: Int, duration: Int) {
-            // Only update progress bar, don't touch other UI elements
             if (duration > 0) {
                 val progressPercent = (progress * 100) / duration
                 binding.progressBar.progress = progressPercent
@@ -307,47 +171,38 @@ class QueueAdapter(
         
         private var itemTouchHelper: ItemTouchHelper? = null
         
-        fun setItemTouchHelper(helper: ItemTouchHelper) {
+        fun setItemTouchHelper(helper: ItemTouchHelper?) {
             itemTouchHelper = helper
         }
 
-        fun bind(song: Song, position: Int, isFirstItem: Boolean) {
-            // Show "UP NEXT" header for first queue item, but make it non-draggable
-            binding.sectionHeader.isVisible = isFirstItem
-            
-            // Update song info
+        fun bind(song: Song, position: Int) {
             binding.songTitle.text = song.title.replace(Regex("^\\d+\\.?\\s*"), "")
             binding.songArtist.text = song.artist.ifEmpty { "Unknown Artist" }
             binding.queuePosition.text = position.toString()
             
-            // Load album artwork
             loadArtwork(song, binding.albumArtwork)
             
-            // Set click listeners - only on the draggable container, not the header
             binding.draggableContainer.setOnClickListener {
                 val queuePosition = if (currentSong != null) adapterPosition - 1 else adapterPosition
                 onSongClick(song, queuePosition)
             }
             
             binding.removeButton.setOnClickListener {
-                val queuePosition = if (currentSong != null) adapterPosition - 1 else adapterPosition
-                onRemoveClick(song, queuePosition)
+                // Pass the upcoming queue position - QueueActivity will convert to full queue position
+                val upcomingQueuePosition = if (currentSong != null) adapterPosition - 1 else adapterPosition
+                onRemoveClick(song, upcomingQueuePosition)
             }
             
-            // Drag handle functionality - ONLY from the drag handle
+            // Drag handle functionality
             binding.dragHandle.setOnTouchListener { _, event ->
                 when (event.action) {
                     android.view.MotionEvent.ACTION_DOWN -> {
-                        android.util.Log.d("QueueDrag", "🤏 Drag handle touched on position $adapterPosition")
                         itemTouchHelper?.startDrag(this)
                         true
                     }
                     else -> false
                 }
             }
-            
-            // Header is now in FrameLayout structure - completely isolated from drag operations
-            // No additional isolation needed since header is outside draggable container
         }
     }
     
@@ -376,33 +231,26 @@ class QueueAdapter(
 }
 
 /**
- * ItemTouchHelper callback for drag-and-drop reordering in queue
- * Modified to only drag the draggable container, not the header
+ * Simple, clean ItemTouchHelper for drag-and-drop
  */
 class QueueItemTouchHelper(
     private val adapter: QueueAdapter
 ) : ItemTouchHelper.SimpleCallback(
-    ItemTouchHelper.UP or ItemTouchHelper.DOWN, // Drag directions
-    0 // No swipe (we handle remove with button)
+    ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+    0
 ) {
     
     private var dragStartPosition = -1
+    private var dragEndPosition = -1
     
     override fun getMovementFlags(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder
     ): Int {
-        // Don't allow dragging the "Now Playing" item (position 0)
-        if (viewHolder.adapterPosition == 0 && adapter.hasCurrentSong()) {
-            return 0 // No movement for current song
+        // Don't allow dragging the current song (position 0)
+        if (viewHolder.adapterPosition == 0 && viewHolder is QueueAdapter.CurrentSongViewHolder) {
+            return 0
         }
-        
-        // Only allow queue items to be dragged, not current song
-        if (viewHolder !is QueueAdapter.QueueItemViewHolder) {
-            return 0 // No movement for non-queue items
-        }
-        
-        // Only allow drag from drag handle, not from anywhere else
         return super.getMovementFlags(recyclerView, viewHolder)
     }
 
@@ -414,11 +262,14 @@ class QueueItemTouchHelper(
         val fromPosition = viewHolder.adapterPosition
         val toPosition = target.adapterPosition
         
-        // Don't allow moving to/from position 0 (current song)
+        // Don't allow moving to/from current song position
         if (fromPosition == 0 || toPosition == 0) return false
         
-        // Perform real-time visual update for smooth dragging
+        // Perform visual move only
         adapter.moveItemVisually(fromPosition, toPosition)
+        
+        // Track the end position for when drag completes
+        dragEndPosition = toPosition
         
         return true
     }
@@ -428,62 +279,34 @@ class QueueItemTouchHelper(
         
         when (actionState) {
             ItemTouchHelper.ACTION_STATE_DRAG -> {
-                // Drag started - make sure it's a valid queue item
-                if (viewHolder is QueueAdapter.QueueItemViewHolder) {
-                    dragStartPosition = viewHolder.adapterPosition
-                    adapter.startDrag(dragStartPosition)
-                    android.util.Log.d("QueueDrag", "ItemTouchHelper: Drag started at position: $dragStartPosition")
-                } else {
-                    android.util.Log.w("QueueDrag", "ItemTouchHelper: Invalid drag attempt on non-queue item")
-                    dragStartPosition = -1
-                }
+                // Remember start position
+                dragStartPosition = viewHolder?.adapterPosition ?: -1
+                dragEndPosition = dragStartPosition
             }
             ItemTouchHelper.ACTION_STATE_IDLE -> {
-                // Drag ended - but viewHolder.adapterPosition is unreliable here
-                // Let the adapter figure out the final position based on current queue state
-                if (dragStartPosition != -1) {
-                    adapter.endDragWithoutFinalPosition(dragStartPosition)
-                    android.util.Log.d("QueueDrag", "ItemTouchHelper: Drag ended from start position: $dragStartPosition")
+                // Drag ended - commit to service
+                if (dragStartPosition != -1 && dragEndPosition != -1 && dragStartPosition != dragEndPosition) {
+                    // Convert to queue positions
+                    val hasCurrentSong = dragStartPosition > 0
+                    val fromQueuePos = if (hasCurrentSong) dragStartPosition - 1 else dragStartPosition
+                    val toQueuePos = if (hasCurrentSong) dragEndPosition - 1 else dragEndPosition
+                    
+                    android.util.Log.d("QueueDrag", "Committing drag: $dragStartPosition -> $dragEndPosition (queue: $fromQueuePos -> $toQueuePos)")
+                    
+                    // Commit to service
+                    adapter.onReorder(fromQueuePos, toQueuePos)
                 }
-                
-                // Reset
                 dragStartPosition = -1
+                dragEndPosition = -1
             }
         }
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        // We don't use swipe for removal, only button clicks
+        // No swipe functionality
     }
     
-    override fun isLongPressDragEnabled(): Boolean = false // We'll use drag handle
+    override fun isLongPressDragEnabled(): Boolean = false
     
-    override fun isItemViewSwipeEnabled(): Boolean = false // We use remove button instead
-    
-    override fun onChildDraw(
-        c: android.graphics.Canvas,
-        recyclerView: RecyclerView,
-        viewHolder: RecyclerView.ViewHolder,
-        dX: Float,
-        dY: Float,
-        actionState: Int,
-        isCurrentlyActive: Boolean
-    ) {
-        // For queue items, only move the draggable container, not the header
-        if (viewHolder is QueueAdapter.QueueItemViewHolder && actionState == ItemTouchHelper.ACTION_STATE_DRAG) {
-            // Find the draggable container and only translate that
-            val draggableContainer = viewHolder.itemView.findViewById<android.view.View>(com.bma.android.R.id.draggableContainer)
-            if (draggableContainer != null) {
-                // Only move the draggable container, header stays in place
-                draggableContainer.translationY = dY
-                android.util.Log.d("QueueDrag", "🎯 Moving only draggable container: dY=$dY")
-            } else {
-                // Fallback to default behavior
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-            }
-        } else {
-            // Default behavior for other view types
-            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-        }
-    }
+    override fun isItemViewSwipeEnabled(): Boolean = false
 }

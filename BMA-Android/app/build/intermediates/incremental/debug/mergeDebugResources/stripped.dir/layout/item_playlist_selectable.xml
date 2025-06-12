@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <!-- Playlist artwork -->
+    <ImageView
+        android:id="@+id/playlistArtwork"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="centerCrop"
+        android:background="#333333"
+        android:src="@drawable/ic_queue_music"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Playlist name -->
+    <TextView
+        android:id="@+id/playlistName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toStartOf="@+id/checkmark"
+        app:layout_constraintStart_toEndOf="@+id/playlistArtwork"
+        app:layout_constraintTop_toTopOf="@+id/playlistArtwork"
+        tools:text="My Playlist" />
+
+    <!-- Song count -->
+    <TextView
+        android:id="@+id/songCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#B3FFFFFF"
+        android:textSize="14sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toStartOf="@+id/checkmark"
+        app:layout_constraintStart_toStartOf="@+id/playlistName"
+        app:layout_constraintTop_toBottomOf="@+id/playlistName"
+        app:layout_constraintBottom_toBottomOf="@+id/playlistArtwork"
+        tools:text="12 songs" />
+
+    <!-- Checkmark -->
+    <ImageView
+        android:id="@+id/checkmark"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_check"
+        android:visibility="gone"
+        android:contentDescription="Selected"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,21 +1,32 @@
 package com.bma.android
 
+import android.Manifest
 import android.content.*
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.os.Handler
 import android.os.Looper
+import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.bma.android.api.ApiClient
 import com.bma.android.databinding.ActivityMainBinding
 import com.bma.android.models.Song
+import com.bma.android.storage.PlaybackStateManager
 import com.bma.android.ui.library.LibraryFragment
 import com.bma.android.ui.search.SearchFragment
 import com.bma.android.ui.settings.SettingsFragment
 import com.bma.android.ui.disconnection.DisconnectionFragment
+import com.bma.android.ui.album.AlbumDetailFragment
+import com.bma.android.ui.playlist.PlaylistDetailFragment
+import com.bma.android.models.Album
+import com.bma.android.models.Playlist
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.model.GlideUrl
@@ -31,6 +42,19 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
     private val settingsFragment = SettingsFragment()
     private val disconnectionFragment = DisconnectionFragment()
     
+    // Album detail overlay
+    private var albumDetailFragment: AlbumDetailFragment? = null
+    private var playlistDetailFragment: PlaylistDetailFragment? = null
+    private var albumTransitionAnimator: AlbumTransitionAnimator? = null
+    private var currentDisplayMode = DisplayMode.NORMAL
+    private var preventMiniPlayerUpdates = false
+    
+    enum class DisplayMode {
+        NORMAL,
+        ALBUM_DETAIL,
+        PLAYLIST_DETAIL
+    }
+    
     // Music service
     private var musicService: MusicService? = null
     private var serviceBound = false
@@ -43,6 +67,17 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
     private var healthCheckRunnable: Runnable? = null
     private var isInNormalMode = false
     
+    // Notification permission request
+    private val notificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            android.util.Log.d("MainActivity", "Notification permission granted")
+        } else {
+            android.util.Log.w("MainActivity", "Notification permission denied")
+        }
+    }
+    
     // Service connection
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
@@ -54,10 +89,20 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
             musicService?.addListener(this@MainActivity)
             android.util.Log.d("MainActivity", "Service bound successfully, listener added")
             
-            // Immediately check current state and update mini-player
+            // Try to restore playback state if no current song is playing
             val currentSong = musicService?.getCurrentSong()
             val isPlaying = musicService?.isPlaying() ?: false
             android.util.Log.d("MainActivity", "Current service state - Song: ${currentSong?.title}, Playing: $isPlaying")
+            
+            // If no song is currently playing, try to restore from saved state
+            if (currentSong == null) {
+                val playbackStateManager = PlaybackStateManager.getInstance(this@MainActivity)
+                if (playbackStateManager.hasValidPlaybackState()) {
+                    android.util.Log.d("MainActivity", "Attempting to restore playback state...")
+                    musicService?.restorePlaybackState()
+                }
+            }
+            
             updateMiniPlayer()
         }
 
@@ -88,11 +133,17 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
 
         android.util.Log.d("MainActivity", "=== ONCREATE STARTED ===")
         
+        // Request notification permission on Android 13+ (API 33+)
+        requestNotificationPermission()
+        
         // Load saved credentials so the app can auto-connect
         loadConnectionDetails()
         
         // Setup mini-player
         setupMiniPlayer()
+        
+        // Initialize album transition animator - use fragment container instead of root
+        albumTransitionAnimator = AlbumTransitionAnimator(binding.fragmentContainer)
 
         binding.bottomNavView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -242,9 +293,23 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
         binding.bottomNavView.isVisible = true
         binding.fragmentContainer.isVisible = true
         
-        // Load the initial fragment
-        binding.bottomNavView.selectedItemId = R.id.navigation_library
-        loadFragment(libraryFragment)
+        // Check if there's a specific tab to select from intent
+        val selectedTab = intent.getStringExtra("selected_tab")
+        when (selectedTab) {
+            "search" -> {
+                binding.bottomNavView.selectedItemId = R.id.navigation_search
+                loadFragment(searchFragment)
+            }
+            "settings" -> {
+                binding.bottomNavView.selectedItemId = R.id.navigation_settings
+                loadFragment(settingsFragment)
+            }
+            else -> {
+                // Default to library
+                binding.bottomNavView.selectedItemId = R.id.navigation_library
+                loadFragment(libraryFragment)
+            }
+        }
         
         // Start health check timer
         isInNormalMode = true
@@ -331,6 +396,29 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
         }
     }
     
+    private fun requestNotificationPermission() {
+        // Only request permission on Android 13+ (API 33+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            when {
+                ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED -> {
+                    // Permission already granted
+                    android.util.Log.d("MainActivity", "Notification permission already granted")
+                }
+                else -> {
+                    // Request permission
+                    android.util.Log.d("MainActivity", "Requesting notification permission")
+                    notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+            }
+        } else {
+            // On Android 12 and below, notification permission is granted by default
+            android.util.Log.d("MainActivity", "Notification permission not required on Android < 13")
+        }
+    }
+    
     private fun bindMusicService() {
         android.util.Log.d("MainActivity", "=== BINDING TO MUSIC SERVICE ===")
         val intent = Intent(this, MusicService::class.java)
@@ -372,37 +460,29 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
     }
     
     private fun updateMiniPlayer() {
-        android.util.Log.d("MainActivity", "=== UPDATE MINI-PLAYER CALLED ===")
-        android.util.Log.d("MainActivity", "Service bound: $serviceBound")
-        android.util.Log.d("MainActivity", "Service instance: ${musicService != null}")
+        // Prevent updates during album transition animations
+        if (preventMiniPlayerUpdates) {
+            return
+        }
         
         musicService?.let { service ->
             val currentSong = service.getCurrentSong()
             val isPlaying = service.isPlaying()
-            val playbackState = service.getPlaybackState()
-            
-            android.util.Log.d("MainActivity", "Service data - Song: ${currentSong?.title}, Playing: $isPlaying, State: $playbackState")
             
             if (currentSong != null) {
-                android.util.Log.d("MainActivity", "SHOWING mini-player for: ${currentSong.title} by ${currentSong.artist}")
-                
                 // Show mini-player
                 binding.miniPlayer.root.isVisible = true
-                android.util.Log.d("MainActivity", "Mini-player visibility set to true")
                 
                 // Update song info
                 binding.miniPlayer.miniPlayerTitle.text = currentSong.title
                 binding.miniPlayer.miniPlayerArtist.text = currentSong.artist.ifEmpty { "Unknown Artist" }
-                android.util.Log.d("MainActivity", "Song info updated")
                 
                 // Update play/pause button
                 val playPauseIcon = if (isPlaying) R.drawable.ic_pause_circle else R.drawable.ic_play_circle
                 binding.miniPlayer.miniPlayerPlayPause.setImageResource(playPauseIcon)
-                android.util.Log.d("MainActivity", "Play/pause button updated - isPlaying: $isPlaying")
                 
                 // Load album artwork
                 loadMiniPlayerArtwork(currentSong)
-                android.util.Log.d("MainActivity", "Loading artwork for song: ${currentSong.id}")
                 
                 // Update progress
                 val currentPos = service.getCurrentPosition()
@@ -411,21 +491,15 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
                     (currentPos * 100) / duration
                 } else 0
                 binding.miniPlayer.miniPlayerProgress.progress = progress
-                android.util.Log.d("MainActivity", "Progress updated: $currentPos/$duration ($progress%)")
                 
             } else {
-                android.util.Log.d("MainActivity", "HIDING mini-player - no current song")
                 // Hide mini-player
                 binding.miniPlayer.root.isVisible = false
             }
         } ?: run {
-            android.util.Log.w("MainActivity", "updateMiniPlayer called but musicService is NULL")
-            android.util.Log.w("MainActivity", "Service bound: $serviceBound")
             // Hide mini-player when no service
             binding.miniPlayer.root.isVisible = false
         }
-        
-        android.util.Log.d("MainActivity", "=== UPDATE MINI-PLAYER COMPLETED ===")
     }
     
     private fun loadMiniPlayerArtwork(song: Song) {
@@ -477,6 +551,12 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
     fun getMusicService(): MusicService? = musicService
     
     override fun onBackPressed() {
+        // Handle album detail back navigation first
+        if (currentDisplayMode == DisplayMode.ALBUM_DETAIL) {
+            onAlbumDetailBackPressed()
+            return
+        }
+        
         // If user is on Search or Settings tab, navigate back to Library
         when (binding.bottomNavView.selectedItemId) {
             R.id.navigation_search, R.id.navigation_settings -> {
@@ -487,5 +567,149 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
                 super.onBackPressed()
             }
         }
+    }
+    
+    // Store reference to background fragment to avoid lookups
+    private var backgroundFragment: Fragment? = null
+    
+    // Public method for album clicks from fragments
+    fun showAlbumDetail(album: Album) {
+        if (albumTransitionAnimator?.isCurrentlyAnimating() == true) {
+            return // Don't start new transitions while animating
+        }
+        
+        // Store reference to current fragment and hide it
+        backgroundFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+        backgroundFragment?.view?.visibility = android.view.View.INVISIBLE // Use INVISIBLE instead of GONE
+        
+        // Create album detail fragment
+        albumDetailFragment = AlbumDetailFragment.newInstance(album)
+        
+        // Add fragment to container
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragment_container, albumDetailFragment!!, "album_detail")
+            .commit() // Use commit instead of commitNow for smoother transitions
+        
+        // Wait for fragment to be added then start animation
+        supportFragmentManager.executePendingTransactions()
+        
+        // Start animation after ensuring view is ready
+        albumDetailFragment?.view?.let { fragmentView ->
+            // Ensure the fragment view is fully laid out
+            fragmentView.post {
+                albumTransitionAnimator?.fadeToBlackAndShowContent(fragmentView) {
+                    currentDisplayMode = DisplayMode.ALBUM_DETAIL
+                    // Keep mini-player visible during album detail
+                }
+            }
+        }
+    }
+    
+    // Method called by AlbumDetailFragment when back is pressed
+    fun onAlbumDetailBackPressed() {
+        if (albumTransitionAnimator?.isCurrentlyAnimating() == true) {
+            return // Don't start new transitions while animating
+        }
+        
+        albumDetailFragment?.let { fragment ->
+            // Prevent mini-player updates during back animation
+            preventMiniPlayerUpdates = true
+            
+            // Start reverse animation
+            albumTransitionAnimator?.fadeToBlackAndHideContent(fragment.requireView()) {
+                // Remove fragment after animation completes
+                try {
+                    if (fragment.isAdded && !isFinishing && !isDestroyed) {
+                        supportFragmentManager.beginTransaction()
+                            .remove(fragment)
+                            .commitNowAllowingStateLoss() // Prevent IllegalStateException
+                    }
+                } catch (e: Exception) {
+                    // Ignore any fragment transaction exceptions during cleanup
+                }
+                
+                albumDetailFragment = null
+                currentDisplayMode = DisplayMode.NORMAL
+                
+                // Restore the background fragment visibility using stored reference
+                backgroundFragment?.view?.visibility = android.view.View.VISIBLE
+                backgroundFragment = null
+                
+                // Re-enable mini-player updates after animation completes
+                preventMiniPlayerUpdates = false
+            }
+        }
+    }
+    
+    // Public method for playlist clicks from fragments
+    fun showPlaylistDetail(playlist: Playlist) {
+        if (albumTransitionAnimator?.isCurrentlyAnimating() == true) {
+            return // Don't start new transitions while animating
+        }
+        
+        // Store reference to current fragment and hide it
+        backgroundFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+        backgroundFragment?.view?.visibility = android.view.View.INVISIBLE
+        
+        // Create playlist detail fragment
+        playlistDetailFragment = PlaylistDetailFragment.newInstance(playlist)
+        
+        // Add fragment to container
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragment_container, playlistDetailFragment!!, "playlist_detail")
+            .commit()
+        
+        // Wait for fragment to be added then start animation
+        supportFragmentManager.executePendingTransactions()
+        
+        // Start animation after ensuring view is ready
+        playlistDetailFragment?.view?.let { fragmentView ->
+            fragmentView.post {
+                albumTransitionAnimator?.fadeToBlackAndShowContent(fragmentView) {
+                    currentDisplayMode = DisplayMode.PLAYLIST_DETAIL
+                }
+            }
+        }
+    }
+    
+    // Method called by PlaylistDetailFragment when back is pressed
+    fun onPlaylistDetailBackPressed() {
+        if (albumTransitionAnimator?.isCurrentlyAnimating() == true) {
+            return // Don't start new transitions while animating
+        }
+        
+        playlistDetailFragment?.let { fragment ->
+            // Prevent mini-player updates during back animation
+            preventMiniPlayerUpdates = true
+            
+            // Start reverse animation
+            albumTransitionAnimator?.fadeToBlackAndHideContent(fragment.requireView()) {
+                // Remove fragment after animation completes
+                try {
+                    if (fragment.isAdded && !isFinishing && !isDestroyed) {
+                        supportFragmentManager.beginTransaction()
+                            .remove(fragment)
+                            .commitNowAllowingStateLoss()
+                    }
+                } catch (e: Exception) {
+                    // Ignore any fragment transaction exceptions during cleanup
+                }
+                
+                playlistDetailFragment = null
+                currentDisplayMode = DisplayMode.NORMAL
+                
+                // Restore the background fragment visibility
+                backgroundFragment?.view?.visibility = android.view.View.VISIBLE
+                backgroundFragment = null
+                
+                // Re-enable mini-player updates after animation completes
+                preventMiniPlayerUpdates = false
+            }
+        }
+    }
+    
+    // Public method to get all songs for PlaylistDetailFragment
+    fun getAllSongs(): List<Song> {
+        return libraryFragment.getAllSongs()
     }
 }

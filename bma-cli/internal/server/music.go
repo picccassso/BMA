@@ -508,7 +508,7 @@ func (ms *MusicServer) handleQRPage(w http.ResponseWriter, r *http.Request) {
         <div class="info">
             <strong>Instructions:</strong><br>
             1. Open the BMA app on your phone<br>
-            2. Look for "Add Server" or "Scan QR Code"<br>
+            2. Tap "Scan QR Code"<br>
             3. Scan the QR code below
         </div>
         
