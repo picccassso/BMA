@@ -45,9 +45,13 @@ linux: deps
 macos darwin: deps
 	@echo "🍎 Building for macOS..."
 	@mkdir -p $(BUILD_DIR)
+	@echo "Building Intel (amd64) binary..."
 	@GOOS=darwin GOARCH=amd64 CGO_ENABLED=1 go build $(GO_FLAGS) -o $(BUILD_DIR)/$(APP_NAME)-macos-amd64 .
+	@echo "Building Apple Silicon (arm64) binary..."
 	@GOOS=darwin GOARCH=arm64 CGO_ENABLED=1 go build $(GO_FLAGS) -o $(BUILD_DIR)/$(APP_NAME)-macos-arm64 .
-	@echo "✅ macOS builds complete"
+	@echo "Creating universal binary..."
+	@lipo -create -output $(BUILD_DIR)/$(APP_NAME)-macos-universal $(BUILD_DIR)/$(APP_NAME)-macos-amd64 $(BUILD_DIR)/$(APP_NAME)-macos-arm64
+	@echo "✅ macOS universal binary complete: $(BUILD_DIR)/$(APP_NAME)-macos-universal"
 
 # Build for Windows (requires mingw-w64)
 .PHONY: windows

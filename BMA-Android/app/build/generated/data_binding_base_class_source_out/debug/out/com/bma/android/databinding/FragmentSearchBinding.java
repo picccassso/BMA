@@ -22,10 +22,10 @@ public final class FragmentSearchBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final RecyclerView recentSearchesRecyclerView;
+  public final RecyclerView recentlyPlayedRecyclerView;
 
   @NonNull
-  public final TextView recentSearchesTitle;
+  public final TextView recentlyPlayedTitle;
 
   @NonNull
   public final RecyclerView searchResultsRecyclerView;
@@ -34,11 +34,11 @@ public final class FragmentSearchBinding implements ViewBinding {
   public final SearchView searchView;
 
   private FragmentSearchBinding(@NonNull ConstraintLayout rootView,
-      @NonNull RecyclerView recentSearchesRecyclerView, @NonNull TextView recentSearchesTitle,
+      @NonNull RecyclerView recentlyPlayedRecyclerView, @NonNull TextView recentlyPlayedTitle,
       @NonNull RecyclerView searchResultsRecyclerView, @NonNull SearchView searchView) {
     this.rootView = rootView;
-    this.recentSearchesRecyclerView = recentSearchesRecyclerView;
-    this.recentSearchesTitle = recentSearchesTitle;
+    this.recentlyPlayedRecyclerView = recentlyPlayedRecyclerView;
+    this.recentlyPlayedTitle = recentlyPlayedTitle;
     this.searchResultsRecyclerView = searchResultsRecyclerView;
     this.searchView = searchView;
   }
@@ -70,15 +70,15 @@ public final class FragmentSearchBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.recent_searches_recycler_view;
-      RecyclerView recentSearchesRecyclerView = ViewBindings.findChildViewById(rootView, id);
-      if (recentSearchesRecyclerView == null) {
+      id = R.id.recently_played_recycler_view;
+      RecyclerView recentlyPlayedRecyclerView = ViewBindings.findChildViewById(rootView, id);
+      if (recentlyPlayedRecyclerView == null) {
         break missingId;
       }
 
-      id = R.id.recent_searches_title;
-      TextView recentSearchesTitle = ViewBindings.findChildViewById(rootView, id);
-      if (recentSearchesTitle == null) {
+      id = R.id.recently_played_title;
+      TextView recentlyPlayedTitle = ViewBindings.findChildViewById(rootView, id);
+      if (recentlyPlayedTitle == null) {
         break missingId;
       }
 
@@ -94,8 +94,8 @@ public final class FragmentSearchBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentSearchBinding((ConstraintLayout) rootView, recentSearchesRecyclerView,
-          recentSearchesTitle, searchResultsRecyclerView, searchView);
+      return new FragmentSearchBinding((ConstraintLayout) rootView, recentlyPlayedRecyclerView,
+          recentlyPlayedTitle, searchResultsRecyclerView, searchView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

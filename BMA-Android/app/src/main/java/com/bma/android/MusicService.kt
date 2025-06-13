@@ -3,6 +3,8 @@ package com.bma.android
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.media.AudioAttributes
 import android.media.AudioFocusRequest
 import android.media.AudioManager
@@ -11,15 +13,23 @@ import android.os.Build
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
+import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.session.PlaybackStateCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.media.app.NotificationCompat.MediaStyle
 import com.bma.android.api.ApiClient
 import com.bma.android.models.Song
+import com.bma.android.storage.PlaybackStateManager
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.source.DefaultMediaSourceFactory
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.net.URL
 
 /**
  * Queue management class for handling both normal and shuffled playback order
@@ -43,23 +53,40 @@ private class MusicQueue {
         // Get current song before shuffling
         val currentSong = getCurrentSong()
         
-        // Create shuffled copy using Fisher-Yates algorithm
-        val shuffled = originalPlaylist.toMutableList()
-        for (i in shuffled.size - 1 downTo 1) {
-            val j = (0..i).random()
-            val temp = shuffled[i]
-            shuffled[i] = shuffled[j]
-            shuffled[j] = temp
+        if (currentSong != null) {
+            // Create list of all songs except current song
+            val songsToShuffle = originalPlaylist.filter { it.id != currentSong.id }.toMutableList()
+            
+            // Shuffle the remaining songs using Fisher-Yates algorithm
+            for (i in songsToShuffle.size - 1 downTo 1) {
+                val j = (0..i).random()
+                val temp = songsToShuffle[i]
+                songsToShuffle[i] = songsToShuffle[j]
+                songsToShuffle[j] = temp
+            }
+            
+            // Create new queue with current song at position 0, followed by shuffled songs
+            currentQueue = mutableListOf<Song>().apply {
+                add(currentSong)  // Current song at position 0
+                addAll(songsToShuffle)  // Shuffled songs after
+            }
+            
+            // Set position to 0 so current song is playing and all others are upcoming
+            queuePosition = 0
+        } else {
+            // No current song - just shuffle entire playlist
+            val shuffled = originalPlaylist.toMutableList()
+            for (i in shuffled.size - 1 downTo 1) {
+                val j = (0..i).random()
+                val temp = shuffled[i]
+                shuffled[i] = shuffled[j]
+                shuffled[j] = temp
+            }
+            currentQueue = shuffled
+            queuePosition = 0
         }
         
-        currentQueue = shuffled
         isShuffled = true
-        
-        // Find current song in shuffled queue and set position
-        currentSong?.let { song ->
-            queuePosition = currentQueue.indexOfFirst { it.id == song.id }
-            if (queuePosition == -1) queuePosition = 0
-        }
     }
     
     fun unshuffle() {
@@ -290,6 +317,10 @@ class MusicService : Service() {
     private var musicQueue = MusicQueue()
     private var playbackState = STATE_IDLE
     private var repeatMode = 0 // 0 = off, 1 = all, 2 = one
+    private var currentAlbumArt: Bitmap? = null
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    private var isForegroundStarted = false
+    private lateinit var playbackStateManager: PlaybackStateManager
     
     // Audio focus management
     private lateinit var audioManager: AudioManager
@@ -315,12 +346,21 @@ class MusicService : Service() {
     
     // Progress update handler
     private val handler = Handler(Looper.getMainLooper())
+    private var lastStateSaveTime = 0L
     private val progressUpdateRunnable = object : Runnable {
         override fun run() {
             if (isPlaying() && listeners.isNotEmpty()) {
                 listeners.forEach { listener ->
                     listener.onProgressChanged(getCurrentPosition(), getDuration())
                 }
+                
+                // Save playback state every 10 seconds during playback
+                val currentTime = System.currentTimeMillis()
+                if (currentTime - lastStateSaveTime > 10000) { // 10 seconds
+                    saveCurrentPlaybackState()
+                    lastStateSaveTime = currentTime
+                }
+                
                 handler.postDelayed(this, 1000) // Update every second
             }
         }
@@ -393,6 +433,7 @@ class MusicService : Service() {
         super.onCreate()
         android.util.Log.d("MusicService", "=== SERVICE ONCREATE ===")
         audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        playbackStateManager = PlaybackStateManager.getInstance(this)
         createNotificationChannel()
         initializeMediaSession()
         android.util.Log.d("MusicService", "Service created successfully")
@@ -512,11 +553,37 @@ class MusicService : Service() {
         return START_STICKY
     }
     
+    override fun onTaskRemoved(rootIntent: Intent?) {
+        android.util.Log.w("MusicService", "=== TASK REMOVED (APP SWIPED AWAY) ===")
+        android.util.Log.w("MusicService", "Current song: ${currentSong?.title}")
+        android.util.Log.w("MusicService", "Is playing: ${isPlaying()}")
+        
+        // Save current playback state before stopping
+        saveCurrentPlaybackState()
+        
+        // Stop music playback immediately
+        exoPlayer?.stop()
+        playbackState = STATE_STOPPED
+        
+        // Remove notification and stop foreground service
+        stopForeground(true)
+        isForegroundStarted = false
+        
+        // Stop the service completely
+        stopSelf()
+        
+        android.util.Log.w("MusicService", "Music stopped and service stopping due to app being swiped away")
+        super.onTaskRemoved(rootIntent)
+    }
+
     override fun onDestroy() {
         android.util.Log.w("MusicService", "=== SERVICE ONDESTROY ===")
         android.util.Log.w("MusicService", "Current song: ${currentSong?.title}")
         android.util.Log.w("MusicService", "Playback state: $playbackState")
         android.util.Log.w("MusicService", "Is playing: ${isPlaying()}")
+        
+        // Save current playback state before destroying
+        saveCurrentPlaybackState()
         
         super.onDestroy()
         stopProgressUpdates()
@@ -525,6 +592,93 @@ class MusicService : Service() {
         mediaSession?.release()
         
         android.util.Log.w("MusicService", "Service destroyed - all resources released")
+    }
+    
+    private fun saveCurrentPlaybackState() {
+        try {
+            if (currentSong != null && !musicQueue.isEmpty()) {
+                playbackStateManager.savePlaybackState(
+                    currentSong = currentSong,
+                    currentPosition = getCurrentPosition(),
+                    queue = musicQueue.getQueueContents(),
+                    queuePosition = musicQueue.getCurrentPosition(),
+                    isShuffled = musicQueue.getIsShuffled(),
+                    repeatMode = repeatMode
+                )
+                android.util.Log.d("MusicService", "Playback state saved successfully")
+            } else {
+                android.util.Log.d("MusicService", "No playback state to save (no song or empty queue)")
+            }
+        } catch (e: Exception) {
+            android.util.Log.e("MusicService", "Error saving playback state: ${e.message}", e)
+        }
+    }
+    
+    fun restorePlaybackState(): Boolean {
+        try {
+            val savedState = playbackStateManager.getPlaybackState()
+            if (savedState != null && savedState.currentSong != null && savedState.queue.isNotEmpty()) {
+                android.util.Log.d("MusicService", "Restoring playback state: ${savedState.currentSong.title}")
+                
+                // Restore the queue and position
+                musicQueue.setPlaylist(savedState.queue, savedState.queuePosition)
+                if (savedState.isShuffled) {
+                    musicQueue.shuffle()
+                }
+                
+                // Restore other settings
+                repeatMode = savedState.repeatMode
+                currentSong = savedState.currentSong
+                
+                // Prepare the player for the saved song
+                releasePlayer()
+                createExoPlayer()
+                
+                val streamUrl = "${ApiClient.getServerUrl()}/stream/${savedState.currentSong.id}"
+                val authHeader = ApiClient.getAuthHeader()
+                
+                if (authHeader != null) {
+                    val mediaItem = MediaItem.Builder()
+                        .setUri(streamUrl)
+                        .setMediaId(savedState.currentSong.id)
+                        .build()
+                    
+                    exoPlayer?.apply {
+                        setMediaItem(mediaItem)
+                        prepare()
+                        // Don't start playing automatically - let user choose
+                        playWhenReady = false
+                        
+                        // Seek to saved position once ready
+                        addListener(object : Player.Listener {
+                            override fun onPlaybackStateChanged(state: Int) {
+                                if (state == Player.STATE_READY) {
+                                    seekTo(savedState.currentPosition)
+                                    // Remove this listener after seeking
+                                    removeListener(this)
+                                    
+                                    // Notify listeners of restored state
+                                    listeners.forEach { listener ->
+                                        listener.onSongChanged(currentSong)
+                                        listener.onPlaybackStateChanged(playbackState)
+                                    }
+                                }
+                            }
+                        })
+                    }
+                    
+                    android.util.Log.d("MusicService", "Playback state restored successfully")
+                    return true
+                } else {
+                    android.util.Log.e("MusicService", "No auth header available for restoration")
+                }
+            } else {
+                android.util.Log.d("MusicService", "No valid playback state to restore")
+            }
+        } catch (e: Exception) {
+            android.util.Log.e("MusicService", "Error restoring playback state: ${e.message}", e)
+        }
+        return false
     }
     
     private fun createNotificationChannel() {
@@ -536,6 +690,10 @@ class MusicService : Service() {
             ).apply {
                 description = "Controls for music playback"
                 setShowBadge(false)
+                enableLights(false)
+                enableVibration(false)
+                setSound(null, null) // No sound for updates
+                lockscreenVisibility = Notification.VISIBILITY_PUBLIC
             }
             
             val notificationManager = getSystemService(NotificationManager::class.java)
@@ -648,15 +806,44 @@ class MusicService : Service() {
             override fun onIsPlayingChanged(isPlaying: Boolean) {
                 android.util.Log.d("MusicService", "ExoPlayer isPlaying changed: $isPlaying")
                 playbackState = if (isPlaying) STATE_PLAYING else STATE_PAUSED
-                if (isPlaying) {
-                    // Temporarily disable foreground service to prevent crashes
-                    // startForeground(NOTIFICATION_ID, createNotification())
-                    startProgressUpdates()
-                } else {
-                    // stopForeground(false)
-                    // updateNotification()
-                    stopProgressUpdates()
+                
+                try {
+                    // Always ensure we have a foreground service when there's music activity
+                    if (!isForegroundStarted && currentSong != null) {
+                        android.util.Log.d("MusicService", "=== STARTING FOREGROUND SERVICE (ONCE) ===")
+                        val basicNotification = createBasicNotification()
+                        startForeground(NOTIFICATION_ID, basicNotification)
+                        isForegroundStarted = true
+                        android.util.Log.d("MusicService", "✅ Foreground service started successfully")
+                    }
+                    
+                    // Always update notification content for any state change
+                    if (isForegroundStarted) {
+                        currentSong?.let { song ->
+                            android.util.Log.d("MusicService", "Updating notification for: ${song.title} (playing: $isPlaying)")
+                            try {
+                                updateMediaMetadata(song)
+                                if (isPlaying) {
+                                    loadAlbumArt(song) // Only load album art when playing
+                                }
+                                updateNotification()
+                            } catch (e: Exception) {
+                                android.util.Log.e("MusicService", "Error updating notification: ${e.message}", e)
+                            }
+                        }
+                    }
+                    
+                    // Handle progress updates
+                    if (isPlaying) {
+                        startProgressUpdates()
+                    } else {
+                        stopProgressUpdates()
+                    }
+                    
+                } catch (e: Exception) {
+                    android.util.Log.e("MusicService", "❌ CRITICAL ERROR in onIsPlayingChanged: ${e.message}", e)
                 }
+                
                 android.util.Log.d("MusicService", "Notifying listener of playback state change: $playbackState")
                 listeners.forEach { listener ->
                     listener.onPlaybackStateChanged(playbackState)
@@ -741,8 +928,8 @@ class MusicService : Service() {
     fun stop() {
         exoPlayer?.stop()
         playbackState = STATE_STOPPED
-        // Temporarily disable foreground service to prevent crashes
-        // stopForeground(true)
+        stopForeground(true)
+        isForegroundStarted = false
         listeners.forEach { listener ->
             listener.onPlaybackStateChanged(playbackState)
         }
@@ -891,6 +1078,10 @@ class MusicService : Service() {
         
         val isShuffleEnabled = musicQueue.getIsShuffled()
         android.util.Log.d("MusicService", "Shuffle toggled: $isShuffleEnabled")
+        
+        // CRITICAL FIX: Notify Queue UI of the shuffle change
+        notifyQueueChanged()
+        
         return isShuffleEnabled
     }
     
@@ -1043,50 +1234,115 @@ class MusicService : Service() {
     }
     
     private fun createNotification(): Notification {
+        android.util.Log.d("MusicService", "Creating notification for song: ${currentSong?.title}")
+        
+        val intent = Intent(this, PlayerActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+        }
+        val pendingIntent = PendingIntent.getActivity(
+            this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        
+        val song = currentSong ?: return createBasicNotification()
+        
+        return try {
+            val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setContentTitle(song.title)
+                .setContentText(song.artist)
+                .setSubText(song.album)
+                .setSmallIcon(R.drawable.ic_music_note)
+                .setContentIntent(pendingIntent)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setOngoing(isPlaying()) // Only ongoing when actually playing
+                .setShowWhen(false)
+                .setOnlyAlertOnce(true) // Prevent notification sound/vibration on updates
+                .setCategory(NotificationCompat.CATEGORY_TRANSPORT)
+                .setPriority(NotificationCompat.PRIORITY_LOW) // Low priority to reduce interruptions
+                .apply {
+                    currentAlbumArt?.let { bitmap ->
+                        setLargeIcon(bitmap)
+                    }
+                }
+                .addAction(
+                    R.drawable.ic_skip_previous, 
+                    "Previous",
+                    createActionPendingIntent("PREVIOUS")
+                )
+                .addAction(
+                    if (isPlaying()) R.drawable.ic_pause else R.drawable.ic_play_arrow,
+                    if (isPlaying()) "Pause" else "Play",
+                    createActionPendingIntent("PLAY_PAUSE")
+                )
+                .addAction(
+                    R.drawable.ic_skip_next, 
+                    "Next",
+                    createActionPendingIntent("NEXT")
+                )
+                .setStyle(MediaStyle()
+                    .setMediaSession(mediaSession?.sessionToken)
+                    .setShowActionsInCompactView(0, 1, 2)
+                    .setShowCancelButton(false))
+                .build()
+                
+            android.util.Log.d("MusicService", "Notification created successfully")
+            notification
+        } catch (e: Exception) {
+            android.util.Log.e("MusicService", "Error creating notification: ${e.message}", e)
+            createBasicNotification()
+        }
+    }
+    
+    private fun createBasicNotification(): Notification {
+        android.util.Log.d("MusicService", "Creating basic notification")
+        
         val intent = Intent(this, PlayerActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(
             this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
         
-        return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle(currentSong?.title ?: "Unknown")
-            .setContentText(currentSong?.artist ?: "Unknown Artist")
-            .setSmallIcon(R.drawable.ic_music_note)
-            .setContentIntent(pendingIntent)
-            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-            .addAction(
-                R.drawable.ic_skip_previous, "Previous",
-                createActionPendingIntent("PREVIOUS")
-            )
-            .addAction(
-                if (isPlaying()) R.drawable.ic_pause else R.drawable.ic_play_arrow,
-                if (isPlaying()) "Pause" else "Play",
-                createActionPendingIntent("PLAY_PAUSE")
-            )
-            .addAction(
-                R.drawable.ic_skip_next, "Next",
-                createActionPendingIntent("NEXT")
-            )
-            .setStyle(androidx.media.app.NotificationCompat.MediaStyle()
-                .setMediaSession(mediaSession?.sessionToken)
-                .setShowActionsInCompactView(0, 1, 2))
-            .build()
+        return try {
+            val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setContentTitle("Music Player")
+                .setContentText("Ready to play")
+                .setSmallIcon(R.drawable.ic_music_note)
+                .setContentIntent(pendingIntent)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setOngoing(true)
+                .build()
+                
+            android.util.Log.d("MusicService", "Basic notification created successfully")
+            notification
+        } catch (e: Exception) {
+            android.util.Log.e("MusicService", "Error creating basic notification: ${e.message}", e)
+            // Fallback to absolute minimum notification
+            NotificationCompat.Builder(this, CHANNEL_ID)
+                .setContentTitle("Music")
+                .setSmallIcon(android.R.drawable.ic_media_play)
+                .build()
+        }
     }
     
     private fun updateNotification() {
-        if (playbackState != STATE_STOPPED) {
-            val notification = createNotification()
-            
-            // Check notification permission on API 33+
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) == 
-                    android.content.pm.PackageManager.PERMISSION_GRANTED) {
+        try {
+            if (playbackState != STATE_STOPPED && currentSong != null) {
+                val notification = createNotification()
+                
+                // Check notification permission on API 33+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) == 
+                        android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                        NotificationManagerCompat.from(this).notify(NOTIFICATION_ID, notification)
+                    } else {
+                        android.util.Log.w("MusicService", "Notification permission not granted")
+                    }
+                } else {
+                    // Below API 33, no explicit permission needed
                     NotificationManagerCompat.from(this).notify(NOTIFICATION_ID, notification)
                 }
-            } else {
-                // Below API 33, no explicit permission needed
-                NotificationManagerCompat.from(this).notify(NOTIFICATION_ID, notification)
+                android.util.Log.d("MusicService", "Notification updated")
             }
+        } catch (e: Exception) {
+            android.util.Log.e("MusicService", "Failed to update notification: ${e.message}", e)
         }
     }
     
@@ -1117,5 +1373,101 @@ class MusicService : Service() {
             .build()
             
         mediaSession?.setPlaybackState(playbackState)
+    }
+    
+    private fun loadAlbumArt(song: Song) {
+        android.util.Log.d("MusicService", "🎨 === ALBUM ART LOADING DEBUG ===")
+        android.util.Log.d("MusicService", "Song: ${song.title}")
+        android.util.Log.d("MusicService", "Song ID: ${song.id}")
+        android.util.Log.d("MusicService", "Has artwork flag: ${song.hasArtwork}")
+        android.util.Log.d("MusicService", "Server URL: ${ApiClient.getServerUrl()}")
+        android.util.Log.d("MusicService", "Auth header present: ${ApiClient.getAuthHeader() != null}")
+        
+        // Always try loading album art for debugging (ignore hasArtwork flag)
+        android.util.Log.d("MusicService", "🚀 Starting coroutine...")
+        
+        coroutineScope.launch {
+            android.util.Log.d("MusicService", "🔄 Inside coroutine - starting album art load")
+            try {
+                val artworkUrl = "${ApiClient.getServerUrl()}/artwork/${song.id}"
+                val authHeader = ApiClient.getAuthHeader()
+                
+                android.util.Log.d("MusicService", "🌐 Attempting to load from: $artworkUrl")
+                android.util.Log.d("MusicService", "🔐 Auth header: ${authHeader?.take(20)}...")
+                
+                if (authHeader != null) {
+                    val bitmap = withContext(Dispatchers.IO) {
+                        try {
+                            android.util.Log.d("MusicService", "📡 Making HTTP request...")
+                            val connection = URL(artworkUrl).openConnection()
+                            connection.setRequestProperty("Authorization", authHeader)
+                            connection.connectTimeout = 5000
+                            connection.readTimeout = 10000
+                            
+                            android.util.Log.d("MusicService", "📊 Response code: ${(connection as java.net.HttpURLConnection).responseCode}")
+                            
+                            if (connection.responseCode == 200) {
+                                val inputStream = connection.getInputStream()
+                                val result = BitmapFactory.decodeStream(inputStream)
+                                inputStream.close()
+                                android.util.Log.d("MusicService", "🖼️ Bitmap decoded: ${result != null}")
+                                if (result != null) {
+                                    android.util.Log.d("MusicService", "📏 Bitmap size: ${result.width}x${result.height}")
+                                }
+                                result
+                            } else {
+                                android.util.Log.w("MusicService", "❌ HTTP ${connection.responseCode}: ${connection.responseMessage}")
+                                null
+                            }
+                        } catch (e: Exception) {
+                            android.util.Log.e("MusicService", "💥 Network error: ${e.message}", e)
+                            null
+                        }
+                    }
+                    
+                    if (bitmap != null) {
+                        android.util.Log.d("MusicService", "✅ Album art loaded successfully!")
+                        currentAlbumArt = bitmap
+                        
+                        // Only update if we're still playing the same song
+                        if (currentSong?.id == song.id) {
+                            android.util.Log.d("MusicService", "🔄 Updating notification with album art...")
+                            updateMediaMetadata(song)
+                            updateNotification()
+                        } else {
+                            android.util.Log.w("MusicService", "⚠️ Song changed, not updating notification")
+                        }
+                    } else {
+                        android.util.Log.w("MusicService", "❌ Album art bitmap is null")
+                    }
+                } else {
+                    android.util.Log.e("MusicService", "❌ No auth header available for album art")
+                }
+                
+            } catch (e: Exception) {
+                android.util.Log.e("MusicService", "💥 Critical error loading album art: ${e.message}", e)
+            }
+        }
+    }
+    
+    private fun updateMediaMetadata(song: Song) {
+        try {
+            val metadata = MediaMetadataCompat.Builder()
+                .putString(MediaMetadataCompat.METADATA_KEY_TITLE, song.title)
+                .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, song.artist)
+                .putString(MediaMetadataCompat.METADATA_KEY_ALBUM, song.album)
+                .putLong(MediaMetadataCompat.METADATA_KEY_DURATION, getDuration().toLong())
+                .apply {
+                    currentAlbumArt?.let { bitmap ->
+                        putBitmap(MediaMetadataCompat.METADATA_KEY_ALBUM_ART, bitmap)
+                    }
+                }
+                .build()
+                
+            mediaSession?.setMetadata(metadata)
+            android.util.Log.d("MusicService", "MediaMetadata updated for: ${song.title}")
+        } catch (e: Exception) {
+            android.util.Log.e("MusicService", "Failed to update MediaMetadata: ${e.message}", e)
+        }
     }
 } 

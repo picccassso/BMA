@@ -8,6 +8,9 @@
     <!-- Foreground service permission for background playback -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     
+    <!-- Media playback foreground service permission (Android 14+) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    
     <!-- Camera permission for QR code scanning -->
     <uses-permission android:name="android.permission.CAMERA" />
     
@@ -32,6 +35,8 @@
         android:theme="@style/Theme.BMA"
         android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:roundIcon="@drawable/ic_launcher_foreground"
         tools:targetApi="31">
         
         <activity

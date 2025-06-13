@@ -35,16 +35,20 @@ public final class ItemAlbumHeaderBinding implements ViewBinding {
   @NonNull
   public final TextView trackCountText;
 
+  @NonNull
+  public final TextView typeTag;
+
   private ItemAlbumHeaderBinding(@NonNull ConstraintLayout rootView,
       @NonNull ImageView albumArtwork, @NonNull TextView albumNameText,
-      @NonNull TextView artistText, @NonNull ImageView expandIcon,
-      @NonNull TextView trackCountText) {
+      @NonNull TextView artistText, @NonNull ImageView expandIcon, @NonNull TextView trackCountText,
+      @NonNull TextView typeTag) {
     this.rootView = rootView;
     this.albumArtwork = albumArtwork;
     this.albumNameText = albumNameText;
     this.artistText = artistText;
     this.expandIcon = expandIcon;
     this.trackCountText = trackCountText;
+    this.typeTag = typeTag;
   }
 
   @Override
@@ -104,8 +108,14 @@ public final class ItemAlbumHeaderBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.typeTag;
+      TextView typeTag = ViewBindings.findChildViewById(rootView, id);
+      if (typeTag == null) {
+        break missingId;
+      }
+
       return new ItemAlbumHeaderBinding((ConstraintLayout) rootView, albumArtwork, albumNameText,
-          artistText, expandIcon, trackCountText);
+          artistText, expandIcon, trackCountText, typeTag);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

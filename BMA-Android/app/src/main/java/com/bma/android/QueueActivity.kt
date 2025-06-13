@@ -81,8 +81,20 @@ class QueueActivity : AppCompatActivity(), MusicService.MusicServiceListener {
             onRemoveClick = { song, position ->
                 // Remove song from queue
                 musicService?.let { service ->
-                    val success = service.removeFromQueue(position)
-                    android.util.Log.d("QueueActivity", "Remove from position $position: $success")
+                    // Convert adapter position to full queue position
+                    // Same logic as reorder but for single position
+                    val currentQueue = service.getCurrentQueue()
+                    val upcomingQueue = service.getUpcomingQueue()
+                    val currentPos = currentQueue.size - upcomingQueue.size - 1 // Calculate current position
+                    val fullQueuePosition = currentPos + 1 + position  // +1 to skip current song
+                    
+                    android.util.Log.d("QueueActivity", "🗑️ === REMOVE REQUESTED ===")
+                    android.util.Log.d("QueueActivity", "Adapter position: $position")
+                    android.util.Log.d("QueueActivity", "Current position in full queue: $currentPos")
+                    android.util.Log.d("QueueActivity", "Adapter position $position → Full queue $fullQueuePosition")
+                    
+                    val success = service.removeFromQueue(fullQueuePosition)
+                    android.util.Log.d("QueueActivity", "Remove from full queue position $fullQueuePosition: $success")
                 }
             },
             onPlayPauseClick = {
@@ -151,17 +163,22 @@ class QueueActivity : AppCompatActivity(), MusicService.MusicServiceListener {
                 binding.queueRecyclerView.isVisible = true
                 binding.emptyStateLayout.isVisible = false
                 
+                // Show UP NEXT header only if there are upcoming songs
+                binding.upNextHeader.isVisible = upcomingQueue.isNotEmpty()
+                
                 // Update adapter with current queue state
                 queueAdapter.updateQueue(currentSong, upcomingQueue, isPlaying)
             } else {
                 // Show empty state
                 binding.queueRecyclerView.isVisible = false
                 binding.emptyStateLayout.isVisible = true
+                binding.upNextHeader.isVisible = false
             }
         } ?: run {
             // No service, show empty state
             binding.queueRecyclerView.isVisible = false
             binding.emptyStateLayout.isVisible = true
+            binding.upNextHeader.isVisible = false
         }
     }
     

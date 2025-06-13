@@ -3,24 +3,24 @@
 3    package="com.bma.android.test" >
 4
 5    <uses-sdk
-5-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14283350861415225430.xml:5:5-74
+5-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3843274234632775637.xml:5:5-74
 6        android:minSdkVersion="24"
-6-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14283350861415225430.xml:5:15-41
+6-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3843274234632775637.xml:5:15-41
 7        android:targetSdkVersion="34" />
-7-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14283350861415225430.xml:5:42-71
+7-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3843274234632775637.xml:5:42-71
 8
 9    <instrumentation
-9-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14283350861415225430.xml:11:5-15:65
+9-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3843274234632775637.xml:11:5-15:65
 10        android:name="androidx.test.runner.AndroidJUnitRunner"
-10-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14283350861415225430.xml:11:22-76
+10-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3843274234632775637.xml:11:22-76
 11        android:functionalTest="false"
-11-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14283350861415225430.xml:14:22-52
+11-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3843274234632775637.xml:14:22-52
 12        android:handleProfiling="false"
-12-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14283350861415225430.xml:13:22-53
+12-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3843274234632775637.xml:13:22-53
 13        android:label="Tests for com.bma.android"
-13-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14283350861415225430.xml:15:22-63
+13-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3843274234632775637.xml:15:22-63
 14        android:targetPackage="com.bma.android" />
-14-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14283350861415225430.xml:12:22-61
+14-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3843274234632775637.xml:12:22-61
 15
 16    <uses-permission android:name="android.permission.REORDER_TASKS" />
 16-->[androidx.test:core:1.5.0] /Users/alex/.gradle/caches/transforms-3/8fd765524307c8356670437453753f1f/transformed/jetified-core-1.5.0/AndroidManifest.xml:24:5-72
@@ -40,12 +40,12 @@
 22    </queries>
 23
 24    <application
-24-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14283350861415225430.xml:7:5-9:19
+24-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3843274234632775637.xml:7:5-9:19
 25        android:debuggable="true"
 26        android:extractNativeLibs="false" >
 27        <uses-library android:name="android.test.runner" />
-27-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14283350861415225430.xml:8:9-60
-27-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest14283350861415225430.xml:8:23-57
+27-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3843274234632775637.xml:8:9-60
+27-->/Users/alex/Documents/Spotify Type App/BasicStreamingApp/BMA-Android/app/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3843274234632775637.xml:8:23-57
 28
 29        <activity
 29-->[androidx.test:core:1.5.0] /Users/alex/.gradle/caches/transforms-3/8fd765524307c8356670437453753f1f/transformed/jetified-core-1.5.0/AndroidManifest.xml:27:9-34:20

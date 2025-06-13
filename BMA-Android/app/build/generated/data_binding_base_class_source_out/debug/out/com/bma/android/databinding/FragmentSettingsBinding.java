@@ -4,10 +4,10 @@ package com.bma.android.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.bma.android.R;
@@ -18,7 +18,22 @@ import java.lang.String;
 
 public final class FragmentSettingsBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final ScrollView rootView;
+
+  @NonNull
+  public final MaterialButton backupButton;
+
+  @NonNull
+  public final TextView backupDescription;
+
+  @NonNull
+  public final TextView backupSettingsTitle;
+
+  @NonNull
+  public final MaterialButton clearCacheButton;
+
+  @NonNull
+  public final TextView connectionSettingsTitle;
 
   @NonNull
   public final TextView connectionStatusLabel;
@@ -30,26 +45,60 @@ public final class FragmentSettingsBinding implements ViewBinding {
   public final MaterialButton disconnectButton;
 
   @NonNull
+  public final TextView downloadComingSoon;
+
+  @NonNull
+  public final TextView downloadDescription;
+
+  @NonNull
+  public final MaterialButton downloadQualityButton;
+
+  @NonNull
+  public final TextView downloadSettingsTitle;
+
+  @NonNull
   public final MaterialButton reconnectButton;
+
+  @NonNull
+  public final MaterialButton restoreButton;
 
   @NonNull
   public final TextView settingsTitle;
 
-  private FragmentSettingsBinding(@NonNull ConstraintLayout rootView,
-      @NonNull TextView connectionStatusLabel, @NonNull TextView connectionStatusText,
-      @NonNull MaterialButton disconnectButton, @NonNull MaterialButton reconnectButton,
-      @NonNull TextView settingsTitle) {
+  @NonNull
+  public final MaterialButton storageLocationButton;
+
+  private FragmentSettingsBinding(@NonNull ScrollView rootView,
+      @NonNull MaterialButton backupButton, @NonNull TextView backupDescription,
+      @NonNull TextView backupSettingsTitle, @NonNull MaterialButton clearCacheButton,
+      @NonNull TextView connectionSettingsTitle, @NonNull TextView connectionStatusLabel,
+      @NonNull TextView connectionStatusText, @NonNull MaterialButton disconnectButton,
+      @NonNull TextView downloadComingSoon, @NonNull TextView downloadDescription,
+      @NonNull MaterialButton downloadQualityButton, @NonNull TextView downloadSettingsTitle,
+      @NonNull MaterialButton reconnectButton, @NonNull MaterialButton restoreButton,
+      @NonNull TextView settingsTitle, @NonNull MaterialButton storageLocationButton) {
     this.rootView = rootView;
+    this.backupButton = backupButton;
+    this.backupDescription = backupDescription;
+    this.backupSettingsTitle = backupSettingsTitle;
+    this.clearCacheButton = clearCacheButton;
+    this.connectionSettingsTitle = connectionSettingsTitle;
     this.connectionStatusLabel = connectionStatusLabel;
     this.connectionStatusText = connectionStatusText;
     this.disconnectButton = disconnectButton;
+    this.downloadComingSoon = downloadComingSoon;
+    this.downloadDescription = downloadDescription;
+    this.downloadQualityButton = downloadQualityButton;
+    this.downloadSettingsTitle = downloadSettingsTitle;
     this.reconnectButton = reconnectButton;
+    this.restoreButton = restoreButton;
     this.settingsTitle = settingsTitle;
+    this.storageLocationButton = storageLocationButton;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -74,6 +123,36 @@ public final class FragmentSettingsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.backup_button;
+      MaterialButton backupButton = ViewBindings.findChildViewById(rootView, id);
+      if (backupButton == null) {
+        break missingId;
+      }
+
+      id = R.id.backup_description;
+      TextView backupDescription = ViewBindings.findChildViewById(rootView, id);
+      if (backupDescription == null) {
+        break missingId;
+      }
+
+      id = R.id.backup_settings_title;
+      TextView backupSettingsTitle = ViewBindings.findChildViewById(rootView, id);
+      if (backupSettingsTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.clear_cache_button;
+      MaterialButton clearCacheButton = ViewBindings.findChildViewById(rootView, id);
+      if (clearCacheButton == null) {
+        break missingId;
+      }
+
+      id = R.id.connection_settings_title;
+      TextView connectionSettingsTitle = ViewBindings.findChildViewById(rootView, id);
+      if (connectionSettingsTitle == null) {
+        break missingId;
+      }
+
       id = R.id.connection_status_label;
       TextView connectionStatusLabel = ViewBindings.findChildViewById(rootView, id);
       if (connectionStatusLabel == null) {
@@ -92,9 +171,39 @@ public final class FragmentSettingsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.download_coming_soon;
+      TextView downloadComingSoon = ViewBindings.findChildViewById(rootView, id);
+      if (downloadComingSoon == null) {
+        break missingId;
+      }
+
+      id = R.id.download_description;
+      TextView downloadDescription = ViewBindings.findChildViewById(rootView, id);
+      if (downloadDescription == null) {
+        break missingId;
+      }
+
+      id = R.id.download_quality_button;
+      MaterialButton downloadQualityButton = ViewBindings.findChildViewById(rootView, id);
+      if (downloadQualityButton == null) {
+        break missingId;
+      }
+
+      id = R.id.download_settings_title;
+      TextView downloadSettingsTitle = ViewBindings.findChildViewById(rootView, id);
+      if (downloadSettingsTitle == null) {
+        break missingId;
+      }
+
       id = R.id.reconnect_button;
       MaterialButton reconnectButton = ViewBindings.findChildViewById(rootView, id);
       if (reconnectButton == null) {
+        break missingId;
+      }
+
+      id = R.id.restore_button;
+      MaterialButton restoreButton = ViewBindings.findChildViewById(rootView, id);
+      if (restoreButton == null) {
         break missingId;
       }
 
@@ -104,8 +213,17 @@ public final class FragmentSettingsBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentSettingsBinding((ConstraintLayout) rootView, connectionStatusLabel,
-          connectionStatusText, disconnectButton, reconnectButton, settingsTitle);
+      id = R.id.storage_location_button;
+      MaterialButton storageLocationButton = ViewBindings.findChildViewById(rootView, id);
+      if (storageLocationButton == null) {
+        break missingId;
+      }
+
+      return new FragmentSettingsBinding((ScrollView) rootView, backupButton, backupDescription,
+          backupSettingsTitle, clearCacheButton, connectionSettingsTitle, connectionStatusLabel,
+          connectionStatusText, disconnectButton, downloadComingSoon, downloadDescription,
+          downloadQualityButton, downloadSettingsTitle, reconnectButton, restoreButton,
+          settingsTitle, storageLocationButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

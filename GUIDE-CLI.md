@@ -35,6 +35,11 @@ You'll need:
 curl -fsSL https://tailscale.com/install.sh | sh
 ```
 
+**On macOS:**
+1. Go to https://tailscale.com/download/mac
+2. Download and install the Tailscale app
+3. Open Tailscale from Applications
+
 ### Connect to Tailscale:
 1. In terminal, type:
 ```bash
@@ -95,6 +100,12 @@ go version
 
 You should see "go version go1.20.14 linux/arm64" or similar.
 
+### On macOS:
+1. Go to https://golang.org/dl/
+2. Download the macOS installer
+3. Double-click the downloaded file and follow the installer
+
+---
 
 ## 📥 Step 3: Download BMA CLI
 
@@ -184,6 +195,7 @@ Open this URL in your web browser to configure BMA CLI
 - **You should see a green checkmark** ✅ saying "Tailscale is configured and authenticated!"
 - This means the Tailscale setup from Step 1 worked correctly
 - **If you see a red X** ❌, go back to Step 1 and make sure Tailscale is properly installed and connected
+- **If you see a QR code**, use the Tailscale app on your phone to scan it, or visit the shown URL
 
 ### Step 2: Music Directory
 - **Enter the path to your music folder**
@@ -267,6 +279,17 @@ Once you have the BMA mobile app:
    **Note:** First connection may take 10-30 seconds over mobile data due to VPN encryption and Pi processing time.
 
 ### **Manual Connection (Alternative):**
+
+**For Local Access (same WiFi):**
+1. Make sure your phone is on the same WiFi network  
+2. In the BMA app, manually enter: `http://[PI-IP]:8080`
+
+**For Remote Access (anywhere in the world):**
+1. **Install Tailscale on your phone**:
+   - iPhone: Get "Tailscale" from App Store
+   - Android: Get "Tailscale" from Play Store
+2. **Log in with the same Tailscale account** you created in Step 1
+3. **In the BMA app, enter your Tailscale URL**: `http://100.87.136.73:8080`
 
 **🌍 With Tailscale, you can access your music from anywhere in the world!**
 
@@ -436,4 +459,4 @@ Now BMA CLI will start automatically every time you boot your Raspberry Pi!
 
 ## 🎉 You're Done!
 
-Your BMA CLI music server is now running and ready to stream your music!
+Your BMA CLI music server is now running and ready to stream your music.

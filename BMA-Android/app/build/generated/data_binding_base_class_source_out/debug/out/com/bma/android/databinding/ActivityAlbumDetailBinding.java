@@ -4,17 +4,20 @@ package com.bma.android.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.bma.android.R;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -22,7 +25,7 @@ import java.lang.String;
 
 public final class ActivityAlbumDetailBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final CoordinatorLayout rootView;
 
   @NonNull
   public final LinearLayout actionButtonsLayout;
@@ -34,10 +37,19 @@ public final class ActivityAlbumDetailBinding implements ViewBinding {
   public final TextView albumTitle;
 
   @NonNull
+  public final AppBarLayout appBarLayout;
+
+  @NonNull
   public final TextView artistName;
 
   @NonNull
-  public final ImageButton backButton;
+  public final BottomNavigationView bottomNavView;
+
+  @NonNull
+  public final CollapsingToolbarLayout collapsingToolbar;
+
+  @NonNull
+  public final MiniPlayerBinding miniPlayer;
 
   @NonNull
   public final MaterialButton playButton;
@@ -49,28 +61,38 @@ public final class ActivityAlbumDetailBinding implements ViewBinding {
   public final RecyclerView songsRecyclerView;
 
   @NonNull
+  public final Toolbar toolbar;
+
+  @NonNull
   public final TextView trackCount;
 
-  private ActivityAlbumDetailBinding(@NonNull ConstraintLayout rootView,
+  private ActivityAlbumDetailBinding(@NonNull CoordinatorLayout rootView,
       @NonNull LinearLayout actionButtonsLayout, @NonNull ImageView albumArtwork,
-      @NonNull TextView albumTitle, @NonNull TextView artistName, @NonNull ImageButton backButton,
+      @NonNull TextView albumTitle, @NonNull AppBarLayout appBarLayout,
+      @NonNull TextView artistName, @NonNull BottomNavigationView bottomNavView,
+      @NonNull CollapsingToolbarLayout collapsingToolbar, @NonNull MiniPlayerBinding miniPlayer,
       @NonNull MaterialButton playButton, @NonNull MaterialButton shuffleButton,
-      @NonNull RecyclerView songsRecyclerView, @NonNull TextView trackCount) {
+      @NonNull RecyclerView songsRecyclerView, @NonNull Toolbar toolbar,
+      @NonNull TextView trackCount) {
     this.rootView = rootView;
     this.actionButtonsLayout = actionButtonsLayout;
     this.albumArtwork = albumArtwork;
     this.albumTitle = albumTitle;
+    this.appBarLayout = appBarLayout;
     this.artistName = artistName;
-    this.backButton = backButton;
+    this.bottomNavView = bottomNavView;
+    this.collapsingToolbar = collapsingToolbar;
+    this.miniPlayer = miniPlayer;
     this.playButton = playButton;
     this.shuffleButton = shuffleButton;
     this.songsRecyclerView = songsRecyclerView;
+    this.toolbar = toolbar;
     this.trackCount = trackCount;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public CoordinatorLayout getRoot() {
     return rootView;
   }
 
@@ -113,17 +135,36 @@ public final class ActivityAlbumDetailBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.appBarLayout;
+      AppBarLayout appBarLayout = ViewBindings.findChildViewById(rootView, id);
+      if (appBarLayout == null) {
+        break missingId;
+      }
+
       id = R.id.artistName;
       TextView artistName = ViewBindings.findChildViewById(rootView, id);
       if (artistName == null) {
         break missingId;
       }
 
-      id = R.id.backButton;
-      ImageButton backButton = ViewBindings.findChildViewById(rootView, id);
-      if (backButton == null) {
+      id = R.id.bottom_nav_view;
+      BottomNavigationView bottomNavView = ViewBindings.findChildViewById(rootView, id);
+      if (bottomNavView == null) {
         break missingId;
       }
+
+      id = R.id.collapsingToolbar;
+      CollapsingToolbarLayout collapsingToolbar = ViewBindings.findChildViewById(rootView, id);
+      if (collapsingToolbar == null) {
+        break missingId;
+      }
+
+      id = R.id.mini_player;
+      View miniPlayer = ViewBindings.findChildViewById(rootView, id);
+      if (miniPlayer == null) {
+        break missingId;
+      }
+      MiniPlayerBinding binding_miniPlayer = MiniPlayerBinding.bind(miniPlayer);
 
       id = R.id.playButton;
       MaterialButton playButton = ViewBindings.findChildViewById(rootView, id);
@@ -143,15 +184,21 @@ public final class ActivityAlbumDetailBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.toolbar;
+      Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
+      if (toolbar == null) {
+        break missingId;
+      }
+
       id = R.id.trackCount;
       TextView trackCount = ViewBindings.findChildViewById(rootView, id);
       if (trackCount == null) {
         break missingId;
       }
 
-      return new ActivityAlbumDetailBinding((ConstraintLayout) rootView, actionButtonsLayout,
-          albumArtwork, albumTitle, artistName, backButton, playButton, shuffleButton,
-          songsRecyclerView, trackCount);
+      return new ActivityAlbumDetailBinding((CoordinatorLayout) rootView, actionButtonsLayout,
+          albumArtwork, albumTitle, appBarLayout, artistName, bottomNavView, collapsingToolbar,
+          binding_miniPlayer, playButton, shuffleButton, songsRecyclerView, toolbar, trackCount);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

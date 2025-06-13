@@ -20,12 +20,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/recent_searches_title"
+        android:id="@+id/recently_played_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:text="Recent Searches"
+        android:text="Recently Played from Search"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -33,14 +33,15 @@
         app:layout_constraintTop_toBottomOf="@+id/search_view" />
         
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recent_searches_recycler_view"
+        android:id="@+id/recently_played_recycler_view"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recent_searches_title"
-        tools:listitem="@layout/item_recent_search" />
+        app:layout_constraintTop_toBottomOf="@+id/recently_played_title"
+        tools:listitem="@layout/item_song" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_results_recycler_view"
