@@ -2,6 +2,8 @@
 
 A secure, self-hosted music streaming solution built in Go (Desktop & CLI) and Kotlin (Android).
 
+YouTube Video Demonstration: 
+
 🖥️ What is **BMA**?
 
 BMA turns your personal music library into a private streaming service — powered by your own devices. Whether you're on a PC, Mac, Linux machine, or a Raspberry Pi, BMA lets you stream music to your Android phone securely using Tailscale, without exposing anything to the public internet.
