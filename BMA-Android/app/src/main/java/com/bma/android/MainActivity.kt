@@ -46,8 +46,13 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
     private var albumDetailFragment: AlbumDetailFragment? = null
     private var playlistDetailFragment: PlaylistDetailFragment? = null
     private var albumTransitionAnimator: AlbumTransitionAnimator? = null
+    private var navigationTransitionAnimator: NavigationTransitionAnimator? = null
     private var currentDisplayMode = DisplayMode.NORMAL
     private var preventMiniPlayerUpdates = false
+    
+    // Navigation state tracking
+    private var currentFragmentId = R.id.navigation_library
+    private var currentFragment: Fragment? = null
     
     enum class DisplayMode {
         NORMAL,
@@ -144,22 +149,51 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
         
         // Initialize album transition animator - use fragment container instead of root
         albumTransitionAnimator = AlbumTransitionAnimator(binding.fragmentContainer)
+        
+        // Initialize navigation transition animator
+        navigationTransitionAnimator = NavigationTransitionAnimator(binding.fragmentContainer)
 
         binding.bottomNavView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_library -> {
-                    loadFragment(libraryFragment)
-                    true
-                }   
-                R.id.navigation_search -> {
-                    loadFragment(searchFragment)
-                    true
+            // Skip animation if we're in a detail mode (album/playlist)
+            if (currentDisplayMode != DisplayMode.NORMAL) {
+                when (item.itemId) {
+                    R.id.navigation_library -> {
+                        loadFragment(libraryFragment)
+                        currentFragmentId = item.itemId
+                        currentFragment = libraryFragment
+                        true
+                    }   
+                    R.id.navigation_search -> {
+                        loadFragment(searchFragment)
+                        currentFragmentId = item.itemId
+                        currentFragment = searchFragment
+                        true
+                    }
+                    R.id.navigation_settings -> {
+                        loadFragment(settingsFragment)
+                        currentFragmentId = item.itemId
+                        currentFragment = settingsFragment
+                        true
+                    }
+                    else -> false
                 }
-                R.id.navigation_settings -> {
-                    loadFragment(settingsFragment)
-                    true
+            } else {
+                // Use animated transitions for normal navigation
+                when (item.itemId) {
+                    R.id.navigation_library -> {
+                        navigateToFragmentWithAnimation(libraryFragment, item.itemId)
+                        true
+                    }   
+                    R.id.navigation_search -> {
+                        navigateToFragmentWithAnimation(searchFragment, item.itemId)
+                        true
+                    }
+                    R.id.navigation_settings -> {
+                        navigateToFragmentWithAnimation(settingsFragment, item.itemId)
+                        true
+                    }
+                    else -> false
                 }
-                else -> false
             }
         }
 
@@ -214,6 +248,22 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .commit()
+    }
+
+    private fun navigateToFragmentWithAnimation(targetFragment: Fragment, targetFragmentId: Int) {
+        // Don't animate if we're already on this fragment or if animation is in progress
+        if (currentFragmentId == targetFragmentId || navigationTransitionAnimator?.isCurrentlyAnimating() == true) {
+            return
+        }
+        
+        navigationTransitionAnimator?.transitionToFragment(
+            fragmentContainer = binding.fragmentContainer
+        ) {
+            // This callback executes during the transition (at the black screen)
+            loadFragment(targetFragment)
+            currentFragmentId = targetFragmentId
+            currentFragment = targetFragment
+        }
     }
 
     private fun loadConnectionDetails() {
@@ -299,15 +349,21 @@ class MainActivity : AppCompatActivity(), MusicService.MusicServiceListener {
             "search" -> {
                 binding.bottomNavView.selectedItemId = R.id.navigation_search
                 loadFragment(searchFragment)
+                currentFragmentId = R.id.navigation_search
+                currentFragment = searchFragment
             }
             "settings" -> {
                 binding.bottomNavView.selectedItemId = R.id.navigation_settings
                 loadFragment(settingsFragment)
+                currentFragmentId = R.id.navigation_settings
+                currentFragment = settingsFragment
             }
             else -> {
                 // Default to library
                 binding.bottomNavView.selectedItemId = R.id.navigation_library
                 loadFragment(libraryFragment)
+                currentFragmentId = R.id.navigation_library
+                currentFragment = libraryFragment
             }
         }
         

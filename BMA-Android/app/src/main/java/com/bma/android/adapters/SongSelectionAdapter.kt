@@ -72,13 +72,16 @@ class SongSelectionAdapter(
             binding.songTitle.text = song.title
             binding.songArtist.text = song.artist.ifEmpty { "Unknown Artist" }
             
+            // Clear listener before setting checkbox state to prevent unwanted triggers
+            binding.songCheckbox.setOnCheckedChangeListener(null)
+            
             // Set checkbox state
             binding.songCheckbox.isChecked = selectedSongIds.contains(song.id)
             
             // Load song artwork
             loadSongArtwork(song)
             
-            // Handle checkbox clicks
+            // Handle checkbox clicks - set listener after state is set
             binding.songCheckbox.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     selectedSongIds.add(song.id)

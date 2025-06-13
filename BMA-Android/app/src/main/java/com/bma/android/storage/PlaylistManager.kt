@@ -1,13 +1,20 @@
 package com.bma.android.storage
 
 import android.content.Context
+import android.net.Uri
 import com.bma.android.models.Playlist
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileNotFoundException
+import java.io.InputStream
+import java.io.OutputStream
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 /**
  * Manages local storage of playlists using JSON files
@@ -16,6 +23,8 @@ class PlaylistManager private constructor(private val context: Context) {
     
     companion object {
         private const val PLAYLISTS_FILE = "playlists.json"
+        private const val BACKUP_VERSION = 1
+        private const val MIN_BACKUP_VERSION = 1
         
         @Volatile
         private var INSTANCE: PlaylistManager? = null
@@ -27,7 +36,7 @@ class PlaylistManager private constructor(private val context: Context) {
         }
     }
     
-    private val gson = Gson()
+    private val gson = GsonBuilder().setPrettyPrinting().create()
     private val playlistsFile = File(context.filesDir, PLAYLISTS_FILE)
     
     /**
@@ -202,5 +211,144 @@ class PlaylistManager private constructor(private val context: Context) {
         } catch (e: Exception) {
             android.util.Log.e("PlaylistManager", "Error clearing playlists", e)
         }
+    }
+    
+    /**
+     * Export playlists to a backup file
+     * @param outputUri URI where the backup should be saved
+     * @return true if backup was successful, false otherwise
+     */
+    suspend fun exportBackup(outputUri: Uri): Boolean = withContext(Dispatchers.IO) {
+        try {
+            val playlists = loadPlaylists()
+            val backupData = createBackupData(playlists)
+            val json = gson.toJson(backupData)
+            
+            context.contentResolver.openOutputStream(outputUri)?.use { outputStream ->
+                outputStream.write(json.toByteArray())
+                outputStream.flush()
+            }
+            
+            android.util.Log.d("PlaylistManager", "Successfully exported ${playlists.size} playlists to backup")
+            return@withContext true
+        } catch (e: Exception) {
+            android.util.Log.e("PlaylistManager", "Error exporting backup", e)
+            return@withContext false
+        }
+    }
+    
+    /**
+     * Import playlists from a backup file
+     * @param inputUri URI of the backup file to import
+     * @param mergeWithExisting if true, merge with existing playlists; if false, replace all
+     * @return ImportResult indicating success and details
+     */
+    suspend fun importBackup(inputUri: Uri, mergeWithExisting: Boolean = true): ImportResult = withContext(Dispatchers.IO) {
+        try {
+            val json = context.contentResolver.openInputStream(inputUri)?.use { inputStream ->
+                inputStream.readBytes().toString(Charsets.UTF_8)
+            } ?: return@withContext ImportResult.Error("Could not read backup file")
+            
+            val backupData = gson.fromJson(json, BackupData::class.java)
+                ?: return@withContext ImportResult.Error("Invalid backup file format")
+            
+            // Validate backup data
+            if (!isValidBackupData(backupData)) {
+                return@withContext ImportResult.Error("Invalid or corrupted backup data")
+            }
+            
+            val existingPlaylists = if (mergeWithExisting) loadPlaylists().toMutableList() else mutableListOf()
+            val importedPlaylists = backupData.playlists.toMutableList()
+            
+            // Handle duplicate names when merging
+            if (mergeWithExisting) {
+                importedPlaylists.forEach { importedPlaylist ->
+                    var newName = importedPlaylist.name
+                    var counter = 1
+                    
+                    while (existingPlaylists.any { it.name == newName }) {
+                        newName = "${importedPlaylist.name} ($counter)"
+                        counter++
+                    }
+                    
+                    if (newName != importedPlaylist.name) {
+                        val index = importedPlaylists.indexOf(importedPlaylist)
+                        importedPlaylists[index] = importedPlaylist.copy(
+                            name = newName,
+                            updatedAt = System.currentTimeMillis()
+                        )
+                    }
+                }
+            }
+            
+            val finalPlaylists = existingPlaylists + importedPlaylists
+            savePlaylists(finalPlaylists)
+            
+            val message = if (mergeWithExisting) {
+                "Successfully imported ${importedPlaylists.size} playlists (merged with existing)"
+            } else {
+                "Successfully imported ${importedPlaylists.size} playlists (replaced existing)"
+            }
+            
+            android.util.Log.d("PlaylistManager", message)
+            return@withContext ImportResult.Success(importedPlaylists.size, message)
+            
+        } catch (e: Exception) {
+            android.util.Log.e("PlaylistManager", "Error importing backup", e)
+            return@withContext ImportResult.Error("Error importing backup: ${e.message}")
+        }
+    }
+    
+    /**
+     * Generate a suggested filename for backup
+     */
+    fun generateBackupFilename(): String {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.getDefault())
+        val timestamp = dateFormat.format(Date())
+        return "BMA_Playlists_Backup_$timestamp.json"
+    }
+    
+    /**
+     * Create backup data structure with metadata
+     */
+    private suspend fun createBackupData(playlists: List<Playlist>): BackupData {
+        return BackupData(
+            version = BACKUP_VERSION,
+            exportDate = System.currentTimeMillis(),
+            playlistCount = playlists.size,
+            playlists = playlists
+        )
+    }
+    
+    /**
+     * Validate backup data structure
+     */
+    private fun isValidBackupData(backupData: BackupData): Boolean {
+        return try {
+            backupData.version >= MIN_BACKUP_VERSION &&
+            backupData.playlists.isNotEmpty() &&
+            backupData.playlistCount == backupData.playlists.size &&
+            backupData.playlists.all { it.name.isNotBlank() }
+        } catch (e: Exception) {
+            false
+        }
+    }
+    
+    /**
+     * Data class for backup file structure
+     */
+    data class BackupData(
+        val version: Int,
+        val exportDate: Long,
+        val playlistCount: Int,
+        val playlists: List<Playlist>
+    )
+    
+    /**
+     * Result of import operation
+     */
+    sealed class ImportResult {
+        data class Success(val importedCount: Int, val message: String) : ImportResult()
+        data class Error(val message: String) : ImportResult()
     }
 }

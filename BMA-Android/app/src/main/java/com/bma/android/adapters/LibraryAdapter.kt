@@ -1,5 +1,8 @@
 package com.bma.android.adapters
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +21,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.model.LazyHeaders
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 
 class LibraryAdapter(
     private val onSongClick: (Song) -> Unit,
@@ -303,13 +308,91 @@ class LibraryAdapter(
         }
         
         private fun createCompositeArtwork(songs: List<Song>) {
-            // For now, use the first song's artwork as a placeholder
-            // TODO: Implement proper 2x2 composite artwork generation
-            if (songs.isNotEmpty()) {
-                loadSingleArtwork(songs[0])
-            } else {
+            val authHeader = ApiClient.getAuthHeader()
+            if (authHeader == null) {
                 binding.playlistArtwork.setImageResource(R.drawable.ic_queue_music)
+                return
             }
+            
+            // Get unique songs for the composite (avoid duplicates)
+            val uniqueSongs = songs.distinctBy { it.id }.take(4)
+            
+            if (uniqueSongs.size == 1) {
+                loadSingleArtwork(uniqueSongs[0])
+                return
+            }
+            
+            // Load artworks and create composite
+            val loadedBitmaps = arrayOfNulls<Bitmap>(4)
+            var loadCount = 0
+            val targetSize = 128 // Size for each quadrant
+            
+            fun checkAndCreateComposite() {
+                if (loadCount >= uniqueSongs.size) {
+                    createCompositeBitmap(loadedBitmaps.toList())
+                }
+            }
+            
+            // Load artworks for each position
+            uniqueSongs.forEachIndexed { index, song ->
+                val artworkUrl = "${ApiClient.getServerUrl()}/artwork/${song.id}"
+                val glideUrl = GlideUrl(
+                    artworkUrl, 
+                    LazyHeaders.Builder()
+                        .addHeader("Authorization", authHeader)
+                        .build()
+                )
+                
+                Glide.with(binding.root.context)
+                    .asBitmap()
+                    .load(glideUrl)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .override(targetSize, targetSize)
+                    .into(object : CustomTarget<Bitmap>() {
+                        override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                            loadedBitmaps[index] = resource
+                            loadCount++
+                            checkAndCreateComposite()
+                        }
+                        
+                        override fun onLoadCleared(placeholder: Drawable?) {
+                            loadCount++
+                            checkAndCreateComposite()
+                        }
+                    })
+            }
+        }
+        
+        private fun createCompositeBitmap(bitmaps: List<Bitmap?>) {
+            val compositeSize = 256 // Final composite size
+            val quadrantSize = compositeSize / 2
+            
+            val compositeBitmap = Bitmap.createBitmap(compositeSize, compositeSize, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(compositeBitmap)
+            
+            // Fill background with dark color
+            canvas.drawColor(0xFF333333.toInt())
+            
+            // Draw up to 4 quadrants
+            val positions = listOf(
+                Pair(0, 0),           // Top-left
+                Pair(quadrantSize, 0), // Top-right
+                Pair(0, quadrantSize), // Bottom-left
+                Pair(quadrantSize, quadrantSize) // Bottom-right
+            )
+            
+            for (i in 0 until minOf(4, bitmaps.size)) {
+                val bitmap = bitmaps[i]
+                if (bitmap != null) {
+                    val scaledBitmap = Bitmap.createScaledBitmap(bitmap, quadrantSize, quadrantSize, true)
+                    val (x, y) = positions[i]
+                    canvas.drawBitmap(scaledBitmap, x.toFloat(), y.toFloat(), null)
+                    scaledBitmap.recycle()
+                }
+            }
+            
+            // Set the composite bitmap to the ImageView
+            binding.playlistArtwork.setImageBitmap(compositeBitmap)
         }
     }
 

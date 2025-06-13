@@ -163,6 +163,24 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 }
             },
             onAlbumClick = { album ->
+                // Add album to search history using a unique album identifier
+                if (album.songs.isNotEmpty()) {
+                    val firstSong = album.songs.first()
+                    // Create a pseudo-song entry for the album with unique ID
+                    val albumEntry = Song(
+                        id = "album_${album.name.hashCode()}", // Unique ID for albums
+                        filename = "album_${album.name}", // Pseudo filename for albums
+                        title = album.name,
+                        artist = album.artist ?: "Unknown Artist",
+                        album = album.name,
+                        sortOrder = firstSong.sortOrder
+                    )
+                    searchPlayHistoryManager.addToHistory(albumEntry, album.name)
+                    refreshRecentlyPlayed()
+                } else {
+                    Toast.makeText(requireContext(), "Album has no songs!", Toast.LENGTH_SHORT).show()
+                }
+                
                 // Use new animation system instead of AlbumDetailActivity
                 (requireActivity() as? MainActivity)?.showAlbumDetail(album)
             }
@@ -174,23 +192,33 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         // For recently played songs from search
         recentlyPlayedAdapter = RecentlyPlayedAdapter(
+            allAlbums = { allAlbums }, // Pass albums for artwork loading
             onItemClick = { historyItem ->
-                // Find the song and play it
-                val song = allSongs.find { it.id == historyItem.songId }
-                val album = allAlbums.find { it.name == historyItem.albumName }
-                
-                if (song != null && album != null) {
-                    // Don't add to history when playing from recently played list
-                    // Start music service
-                    val serviceIntent = Intent(requireContext(), MusicService::class.java)
-                    requireContext().startService(serviceIntent)
+                // Check if this is an album entry (has album_ prefix in songId)
+                if (historyItem.songId.startsWith("album_")) {
+                    // This is an album entry - navigate to album detail
+                    val album = allAlbums.find { it.name == historyItem.albumName }
+                    if (album != null) {
+                        (requireActivity() as? MainActivity)?.showAlbumDetail(album)
+                    }
+                } else {
+                    // This is a regular song entry - find the song and play it
+                    val song = allSongs.find { it.id == historyItem.songId }
+                    val album = allAlbums.find { it.name == historyItem.albumName }
                     
-                    // Play the song
-                    if (serviceBound && musicService != null) {
-                        musicService!!.loadAndPlay(song, listOf(song), 0)
-                    } else {
-                        bindMusicService()
-                        pendingPlayback = PlaybackRequest(song, album)
+                    if (song != null && album != null) {
+                        // Don't add to history when playing from recently played list
+                        // Start music service
+                        val serviceIntent = Intent(requireContext(), MusicService::class.java)
+                        requireContext().startService(serviceIntent)
+                        
+                        // Play the song
+                        if (serviceBound && musicService != null) {
+                            musicService!!.loadAndPlay(song, listOf(song), 0)
+                        } else {
+                            bindMusicService()
+                            pendingPlayback = PlaybackRequest(song, album)
+                        }
                     }
                 }
             },
@@ -364,7 +392,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
     
     private fun refreshRecentlyPlayed() {
-        loadRecentlyPlayed()
+        val recentlyPlayed = searchPlayHistoryManager.getHistory()
+        recentlyPlayedAdapter.updateHistory(recentlyPlayed)
+        // Don't automatically switch to recently played view - only update the data
     }
     
     private fun showRecentlyPlayedOptions(historyItem: SearchPlayHistory) {
@@ -506,6 +536,17 @@ class SearchResultsAdapter(
             binding.titleText.text = song.title
             binding.artistText.text = song.artist.ifEmpty { "Unknown Artist" }
             
+            // Show type tag safely for search results only
+            try {
+                val typeTag = binding.root.findViewById<TextView>(R.id.typeTag)
+                typeTag?.let {
+                    it.visibility = View.VISIBLE
+                    it.text = "SONG"
+                }
+            } catch (e: Exception) {
+                // Type tag not available, continue without it
+            }
+            
             // Load album artwork for the song
             loadAlbumArtwork(song)
             
@@ -546,6 +587,17 @@ class SearchResultsAdapter(
             binding.albumNameText.text = album.name
             binding.artistText.text = album.artist ?: "Unknown Artist"
             binding.trackCountText.text = "• ${album.trackCount} tracks"
+            
+            // Show type tag safely for search results only
+            try {
+                val typeTag = binding.root.findViewById<TextView>(R.id.typeTag)
+                typeTag?.let {
+                    it.visibility = View.VISIBLE
+                    it.text = "ALBUM"
+                }
+            } catch (e: Exception) {
+                // Type tag not available, continue without it
+            }
             
             // Show right chevron to indicate navigation
             binding.expandIcon.setImageResource(R.drawable.ic_chevron_right)
@@ -592,6 +644,7 @@ class SearchResultsAdapter(
 
 // Adapter for recently played songs from search
 class RecentlyPlayedAdapter(
+    private val allAlbums: () -> List<Album>, // Function to get current albums
     private val onItemClick: (SearchPlayHistory) -> Unit,
     private val onItemLongClick: (SearchPlayHistory) -> Unit,
     private val onRemoveClick: (SearchPlayHistory) -> Unit
@@ -622,8 +675,18 @@ class RecentlyPlayedAdapter(
             binding.titleText.text = historyItem.songTitle
             binding.artistText.text = historyItem.artist
             
+            // Determine the correct song ID for artwork
+            val artworkSongId = if (historyItem.songId.startsWith("album_")) {
+                // This is an album entry - use the first song from the album for artwork
+                val album = allAlbums().find { it.name == historyItem.albumName }
+                album?.songs?.firstOrNull()?.id ?: historyItem.songId
+            } else {
+                // Regular song entry
+                historyItem.songId
+            }
+            
             // Try to load artwork, fall back to default icon
-            val artworkUrl = "${ApiClient.getServerUrl()}/artwork/${historyItem.songId}"
+            val artworkUrl = "${ApiClient.getServerUrl()}/artwork/$artworkSongId"
             val authHeader = ApiClient.getAuthHeader()
             
             if (authHeader != null) {

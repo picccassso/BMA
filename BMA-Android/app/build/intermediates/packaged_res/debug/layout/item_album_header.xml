@@ -51,6 +51,20 @@
         app:layout_constraintTop_toBottomOf="@+id/artistText"
         tools:text="• 12 tracks" />
 
+    <TextView
+        android:id="@+id/typeTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Album"
+        android:textColor="#808080"
+        android:textSize="11sp"
+        android:textAllCaps="true"
+        android:letterSpacing="0.1"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/trackCountText"
+        app:layout_constraintTop_toBottomOf="@+id/trackCountText" />
+
     <ImageView
         android:id="@+id/expandIcon"
         android:layout_width="24dp"

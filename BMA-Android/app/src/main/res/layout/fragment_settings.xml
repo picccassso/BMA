@@ -1,69 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:padding="16dp"
-    tools:context=".ui.settings.SettingsFragment">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/settings_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Connection Settings"
-        android:textColor="@android:color/white"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/connection_status_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Status:"
-        android:textColor="#B3FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_title" />
+        <!-- Main Settings Title -->
+        <TextView
+            android:id="@+id/settings_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
 
-    <TextView
-        android:id="@+id/connection_status_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/connection_status_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/connection_status_label"
-        tools:text="✅ Connected to http://192.168.1.100:8008" />
-        
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/disconnect_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="🔌 Disconnect"
-        android:backgroundTint="#FF5722"
-        android:textColor="#FFFFFF"
-        app:rippleColor="#33FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/connection_status_text" />
+        <!-- Connection Settings Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_background"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/reconnect_button"
-        style="@style/Widget.BMA.Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="📱 Scan QR to Connect"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/disconnect_button" />
+            <TextView
+                android:id="@+id/connection_settings_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔗 Connection Settings"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout> 
+            <TextView
+                android:id="@+id/connection_status_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status:"
+                android:textColor="#B3FFFFFF"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/connection_status_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp"
+                tools:text="✅ Connected to http://192.168.1.100:8008" />
+                
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/disconnect_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🔌 Disconnect"
+                android:backgroundTint="#FF5722"
+                android:textColor="#FFFFFF"
+                app:rippleColor="#33FFFFFF"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/reconnect_button"
+                style="@style/Widget.BMA.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📱 Scan QR to Connect"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Backup and Restore Settings Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_background"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/backup_settings_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💾 Backup &amp; Restore"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:id="@+id/backup_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Backup and restore your playlists and app settings"
+                android:textColor="#B3FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/backup_button"
+                style="@style/Widget.BMA.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📤 Create Backup"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/restore_button"
+                style="@style/Widget.BMA.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📥 Restore Backup" />
+
+        </LinearLayout>
+
+        <!-- Download Settings Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_background"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/download_settings_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⬇️ Download Settings"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:id="@+id/download_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Configure offline downloads and storage options"
+                android:textColor="#B3FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/download_quality_button"
+                style="@style/Widget.BMA.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🎵 Download Quality"
+                android:enabled="false"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/storage_location_button"
+                style="@style/Widget.BMA.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📁 Storage Location"
+                android:enabled="false"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/clear_cache_button"
+                style="@style/Widget.BMA.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🗑️ Clear Cache"
+                android:enabled="false" />
+
+            <TextView
+                android:id="@+id/download_coming_soon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Coming soon..."
+                android:textColor="#66FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                android:gravity="center"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView> 

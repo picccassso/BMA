@@ -29,12 +29,16 @@ public final class ItemSongBinding implements ViewBinding {
   @NonNull
   public final TextView titleText;
 
+  @NonNull
+  public final TextView typeTag;
+
   private ItemSongBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView albumArtwork,
-      @NonNull TextView artistText, @NonNull TextView titleText) {
+      @NonNull TextView artistText, @NonNull TextView titleText, @NonNull TextView typeTag) {
     this.rootView = rootView;
     this.albumArtwork = albumArtwork;
     this.artistText = artistText;
     this.titleText = titleText;
+    this.typeTag = typeTag;
   }
 
   @Override
@@ -82,7 +86,14 @@ public final class ItemSongBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemSongBinding((ConstraintLayout) rootView, albumArtwork, artistText, titleText);
+      id = R.id.typeTag;
+      TextView typeTag = ViewBindings.findChildViewById(rootView, id);
+      if (typeTag == null) {
+        break missingId;
+      }
+
+      return new ItemSongBinding((ConstraintLayout) rootView, albumArtwork, artistText, titleText,
+          typeTag);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

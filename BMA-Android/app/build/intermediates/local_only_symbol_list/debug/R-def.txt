@@ -51,6 +51,7 @@ drawable ic_skip_next
 drawable ic_skip_previous
 drawable ic_warning
 drawable qr_scanner_overlay
+drawable rounded_background
 drawable scan_frame
 drawable search_view_bg
 id actionButtonsLayout
@@ -63,12 +64,17 @@ id appBarLayout
 id artistName
 id artistText
 id backButton
+id backup_button
+id backup_description
+id backup_settings_title
 id bottom_nav_view
 id cancelButton
 id check_progress
 id checkmark
+id clear_cache_button
 id closeButton
 id collapsingToolbar
+id connection_settings_title
 id connection_status_label
 id connection_status_text
 id createNewPlaylistOption
@@ -77,6 +83,10 @@ id createPlaylistText
 id dialogTitle
 id disconnect_button
 id doneButton
+id download_coming_soon
+id download_description
+id download_quality_button
+id download_settings_title
 id dragHandle
 id draggableContainer
 id durationText
@@ -146,6 +156,7 @@ id refreshButton
 id removeButton
 id remove_recent_search
 id repeatButton
+id restore_button
 id retry_button
 id scan_area
 id scan_frame
@@ -171,6 +182,7 @@ id status_card
 id status_description
 id status_icon
 id status_title
+id storage_location_button
 id timeLayout
 id titleText
 id toolbar
@@ -178,6 +190,7 @@ id topBar
 id trackCount
 id trackCountText
 id trackIcon
+id typeTag
 id upNextHeader
 id welcome_subtitle
 id welcome_title

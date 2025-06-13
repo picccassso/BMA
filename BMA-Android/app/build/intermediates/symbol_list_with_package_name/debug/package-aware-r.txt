@@ -3316,6 +3316,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable qr_scanner_overlay
+drawable rounded_background
 drawable scan_frame
 drawable search_view_bg
 drawable test_level_drawable
@@ -3422,6 +3423,9 @@ id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
 id backButton
+id backup_button
+id backup_description
+id backup_settings_title
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3455,6 +3459,7 @@ id checked
 id checkmark
 id chronometer
 id circle_center
+id clear_cache_button
 id clear_text
 id clip_horizontal
 id clip_vertical
@@ -3466,6 +3471,7 @@ id collapsingToolbar
 id compatible
 id compress
 id confirm_button
+id connection_settings_title
 id connection_status_label
 id connection_status_text
 id constraint
@@ -3509,6 +3515,10 @@ id disableScroll
 id disconnect_button
 id disjoint
 id doneButton
+id download_coming_soon
+id download_description
+id download_quality_button
+id download_settings_title
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -3842,6 +3852,7 @@ id removeButton
 id remove_recent_search
 id repeatButton
 id report_drawn
+id restore_button
 id retry_button
 id reverseSawtooth
 id right
@@ -3933,6 +3944,7 @@ id status_description
 id status_icon
 id status_title
 id stop
+id storage_location_button
 id stretch
 id submenuarrow
 id submit_area
@@ -3992,6 +4004,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id typeTag
 id unchecked
 id uniform
 id unlabeled
