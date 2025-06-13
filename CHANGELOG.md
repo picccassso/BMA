@@ -14,10 +14,11 @@
   - Connection status clearly displayed.
   - Backup & Restore playlists (JSON file, still under refinement).
   - Planned offline song download functionality (currently not implemented).
+- **Notification Controls:** Added notification system to control playback directly from the notification shade and lockscreen.
 
 ## 🛠️ Known Issues (Pending Fixes):
 
-- Persistent "currently playing" display upon disconnection/reconnection.
+- Persistent \"currently playing\" display upon disconnection/reconnection.
 - Crashes when switching servers or if Tailscale isn't connected.
 - Intermittent disappearance of 2x2 playlist grid.
 - Multiple bugs in desktop applications and CLI version.
